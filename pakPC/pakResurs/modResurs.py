@@ -40,7 +40,7 @@ class clsRes:
                     '''.decode('utf8')
 
     def create_res(self):
-        self.vers='201' # текущая версия сборки
+        self.vers='210' # текущая версия сборки
         self.max_adr=2**16 # максимальный адрес памяти
         self.max_reg_val=2**16 # максимальное значение регистра
 
@@ -56,3 +56,4 @@ class clsRes:
         self.winMain_mbtCustom_name='Настройка'
         self.winMain_mbtHelp_name='Справка'
         self.winMain_mbtHelp_help='Справка по программе'
+        self.winMain_mbtHelp_about='О программе'
