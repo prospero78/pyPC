@@ -28,5 +28,5 @@ class clsPC:
         '''
         Запускает главный цикл изменений.
         '''
-        self.GUI.run()
+        self.Control.run()
         return 0
