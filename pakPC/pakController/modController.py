@@ -14,3 +14,6 @@ class clsController:
     
     def about(self, event=None):
         print 'about()'
+    
+    def exit(self, event=None):
+        print 'exit()'
