@@ -11,9 +11,14 @@ class clsGUI:
         '''
         Класс загружает графику, должен запускаться последним!!!
         '''
-        # импорт глвного класса окна
+        # импорт главного класса окна
         from pakWinMain.modWinMain import clsWinMain
         self.winMain=clsWinMain(root=self.root)
-        # запуск беконечной петли
+        
+        # импорт окна "О программе"
+        from pakWinAbout.modWinAbout import clsWinAbout
+        self.winAbout=clsWinAbout(root=self.root)
+        
+        # запуск бесконечной петли
         self.winMain.begin()
         pass
