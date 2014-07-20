@@ -39,8 +39,13 @@ class clsWinMain(Tk):
                     
                 def create_mnuHelp():
                     # добавление менюхи справка
-                    self.mbtHelp=Menubutton(self.frmMenu, text=self.root.Res.winMain_mbtHelp_name, relief='raised', border=3)
-                    self.mbtHelp.pack(side='right')
+                    self.btmHelp=Menubutton(self.frmMenu, text=self.root.Res.winMain_mbtHelp_name, relief='raised', border=3)
+                    self.btmHelp.pack(side='right')
+                    
+                    self.mnuHelp=Menu(self.btmHelp)
+                    self.mnuHelp.add_command(label='Help')
+                    
+                    self.btmHelp.config(menu=self.mnuHelp)
                     
                 # фрейм меню (в верхней части)
                 self.frmMenu=Frame(self, border=3, relief='sunken')
