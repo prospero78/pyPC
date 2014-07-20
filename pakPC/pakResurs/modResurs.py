@@ -55,3 +55,4 @@ class clsRes:
         self.winMain_mbtEdit_name='Правка'
         self.winMain_mbtCustom_name='Настройка'
         self.winMain_mbtHelp_name='Справка'
+        self.winMain_mbtHelp_help='Справка по программе'
