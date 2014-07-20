@@ -16,4 +16,4 @@ class clsController:
         print 'about()'
     
     def exit(self, event=None):
-        print 'exit()'
+        self.root.Logic.exit()
