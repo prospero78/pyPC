@@ -20,6 +20,10 @@ class clsPC:
         from pakCPU.cmodCPU import clsCPU
         pass
         
+        # импорт класса контроллера
+        from pakController.modController import clsController
+        self.Control=clsController(root=self)
+        
     def run(self):
         '''
         Запускает главный цикл изменений.
