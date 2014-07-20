@@ -6,6 +6,8 @@
 class clsController:
     def __init__(self, root=None):
         self.root=root
+        self.GUI=self.root.GUI
     
-    def run(event=None):
+    def run(self, event=None):
         print 'clsController.run()'
+        self.GUI.run()
