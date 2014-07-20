@@ -45,7 +45,7 @@ class clsWinMain(Tk):
                     self.mnuHelp=Menu(self.btmHelp)
                     self.mnuHelp.add_command(label=self.root.Res.winMain_mbtHelp_help, accelerator='F1')
                     self.mnuHelp.add_separator()
-                    self.mnuHelp.add_command(label=self.root.Res.winMain_mbtHelp_about, accelerator='Ctrl-F1')
+                    self.mnuHelp.add_command(label=self.root.Res.winMain_mbtHelp_about, accelerator='Ctrl-F1', command=self.root.Control.about)
                     
                     self.btmHelp.config(menu=self.mnuHelp)
                     
