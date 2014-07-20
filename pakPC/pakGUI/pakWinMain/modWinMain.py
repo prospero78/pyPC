@@ -18,7 +18,9 @@ class clsWinMain(Tk):
                 self.btnStep.pack(side='left')
                 
                 # кнопка "выход" главного окна
-                self.btnExit=Button(self.frmBtn, text=self.root.Res.winMain_btnExit_name)
+                self.btnExit=Button(self.frmBtn,
+                            text=self.root.Res.winMain_btnExit_name,
+                            command=self.root.Control.exit)
                 self.btnExit.pack(side='right')
                 
             def create_menu():
