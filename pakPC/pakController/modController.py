@@ -11,3 +11,6 @@ class clsController:
     def run(self, event=None):
         print 'clsController.run()'
         self.GUI.run()
+    
+    def about(self, event=None):
+        print 'about()'
