@@ -14,6 +14,10 @@ class clsWinAbout(Toplevel):
         
     def show(self):
         self.state('normal')
+        # показать поверх всех с фокусом
+        self.focus_set()
+        self.grab_set()
+        self.wait_window()
         
     def destroy(self):
         self.state('withdrawn')
