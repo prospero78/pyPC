@@ -21,3 +21,4 @@ class clsWinAbout(Toplevel):
         
     def destroy(self):
         self.state('withdrawn')
+        self.grab_release()
