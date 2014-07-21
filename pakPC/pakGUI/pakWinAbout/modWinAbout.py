@@ -14,3 +14,6 @@ class clsWinAbout(Toplevel):
         
     def show(self):
         self.state('normal')
+        
+    def destroy(self):
+        self.state('withdrawn')
