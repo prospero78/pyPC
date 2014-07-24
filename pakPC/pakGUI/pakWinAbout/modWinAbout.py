@@ -3,7 +3,7 @@
 Класс окна "О программе".
 '''
 
-from Tkinter import Toplevel, Frame, Button, Label
+from Tkinter import Toplevel, Frame, Button, Label, Text
 
 class clsWinAbout(Toplevel):
     def __init__(self, root=None):
@@ -16,6 +16,13 @@ class clsWinAbout(Toplevel):
         def create_frmUp():
             self.frmUp=Frame(self, border=3, relief='groove')
             self.frmUp.pack(fill='both', expand=1, side='top')
+            
+            self.lblPyPC=Label(self.frmUp, border=3, relief='sunken', text=' pyPC ', bg='white', fg='red', font='Arial 24 bold')
+            self.lblPyPC.pack(side='left', fill='y')
+            
+            self.txtAbout=Text(self.frmUp, height=12, width=30)
+            self.txtAbout.pack(fill='both', expand=1)
+            self.txtAbout.insert('end','bla-bla-bla')
             
             self.lblGit=Label(self.frmUp, text=self.root.Res.winAbout_url, fg='blue', cursor='hand2')
             self.lblGit.pack(side='bottom', fill='x')
