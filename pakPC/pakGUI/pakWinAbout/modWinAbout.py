@@ -10,7 +10,7 @@ class clsWinAbout(Toplevel):
         self.root=root
         Toplevel.__init__(self)
         self.state('withdrawn')
-        self.title('About')
+        self.title(self.root.Res.winAbout_name)
         
     def show(self):
         self.state('normal')
