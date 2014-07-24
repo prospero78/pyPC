@@ -22,7 +22,7 @@ class clsWinAbout(Toplevel):
             
             self.txtAbout=Text(self.frmUp, height=12, width=30)
             self.txtAbout.pack(fill='both', expand=1)
-            self.txtAbout.insert('end','bla-bla-bla')
+            self.txtAbout.insert('end', self.root.Res.winAbout_txt)
             
             self.lblGit=Label(self.frmUp, text=self.root.Res.winAbout_url, fg='blue', cursor='hand2')
             self.lblGit.pack(side='bottom', fill='x')
