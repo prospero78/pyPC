@@ -57,3 +57,5 @@ class clsRes:
         self.winMain_mbtHelp_name='Справка'
         self.winMain_mbtHelp_help='Справка по программе'
         self.winMain_mbtHelp_about='О программе'
+        
+        self.winAbout_name='О программе'
