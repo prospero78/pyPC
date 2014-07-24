@@ -59,4 +59,5 @@ class clsRes:
         self.winMain_mbtHelp_about='О программе'
         
         self.winAbout_name='О программе'
+        self.winAbout_close='Закрыть это окно'
         self.winAbout_url='http://github.com/prospero78/pyPC'
