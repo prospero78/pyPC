@@ -24,7 +24,7 @@ class clsWinAbout(Toplevel):
             self.frmBtn=Frame(self, border=3, relief='raised')
             self.frmBtn.pack(side='bottom', fill='x')
             
-            self.btnCloseAbout=Button(self.frmBtn, text='Close About', bg='gray', command=self.destroy)
+            self.btnCloseAbout=Button(self.frmBtn, text=self.root.Res.winAbout_close, bg='gray', command=self.destroy)
             self.btnCloseAbout.pack(side='right')
         
         self.root=root
