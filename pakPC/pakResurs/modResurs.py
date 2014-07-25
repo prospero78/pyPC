@@ -47,7 +47,13 @@ class clsRes:
         # инициализация биоса
         from modBios import bios
         self.bios=bios
-
+        
+        # чтение файла лицензии
+        self.winLicense_title='Лицензионное требование'
+        f=open('./pakPC/pakResurs/txt/GNU_GPL_v3_eng.txt','r')
+        self.winLicense_eng=f.read()
+        f.close()
+        
     def create_ru(self):
         self.winMain_name='pyPC    Vers. '+self.vers
         self.winMain_btnExit_name='Выход'
@@ -77,3 +83,6 @@ class clsRes:
         self.winAbout_license='Лицензионное требование'
         
         self.winLicense_title='Лицензионное требование'
+        f=open('./pakPC/pakResurs/txt/GNU_GPL_v3_rus.txt','r')
+        self.winLicense_locale=f.read()
+        f.close()
