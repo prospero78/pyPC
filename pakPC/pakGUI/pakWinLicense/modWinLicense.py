@@ -3,7 +3,7 @@
 Класс окна "Лицензия".
 '''
 
-from Tkinter import Toplevel, Frame, Button
+from Tkinter import Toplevel, Frame, Button, Scrollbar, Text
 
 class clsWinLicense(Toplevel):
     def __init__(self, root=None):
@@ -22,9 +22,24 @@ class clsWinLicense(Toplevel):
             
             self.btnLocalLicense=Button(self.frmBtn, text='Russian', bg='gray', command=self.root.Control.show_winLicense)
             self.btnLocalLicense.pack(side='left')
+        
+        def create_frmUp():
+            self.frmUp=Frame(self, border=3, relief='groove')
+            self.frmUp.pack(fill='both', expand=1, side='top')
+            
+            self.scbLicense=Scrollbar(self.frmUp)
+            self.scbLicense.pack(side='right', fill='y')
+            
+            self.txtLicense=Text(self.frmUp, height=12, width=30, font='Courier 9')
+            self.txtLicense.pack(fill='both', expand=1, side='left')
+            self.txtLicense.insert('end', self.root.Res.winLicense_locale)
+            
+            self.scbLicense.config(command=self.txtLicense.yview)
+            self.txtLicense.config(yscrollcommand=self.scbLicense.set)
         self.root=root
         create_self()
         create_frmBtn()
+        create_frmUp()
         
     def show(self):
         self.state('normal')
