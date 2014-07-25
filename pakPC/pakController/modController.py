@@ -17,4 +17,5 @@ class clsController:
         self.root.GUI.winAbout.show()
     
     def exit(self, event=None):
+        print 'clsController.exit()'
         self.root.Logic.exit()
