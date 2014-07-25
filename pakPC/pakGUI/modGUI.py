@@ -21,7 +21,7 @@ class clsGUI:
         
         # импорт окна лицензии
         from pakWinLicense.modWinLicense import clsWinLicense
-        self.winLicense=clsWinLicense(root=self)
+        self.winLicense=clsWinLicense(root=self.root)
         
         # запуск бесконечной петли
         self.winMain.begin()
