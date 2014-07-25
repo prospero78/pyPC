@@ -11,7 +11,7 @@ class clsWinAbout(Toplevel):
             Toplevel.__init__(self)
             self.state('withdrawn')
             self.title(self.root.Res.winAbout_name)
-            self.minsize(300, 200)
+            self.minsize(380, 200)
         
         def create_frmUp():
             self.frmUp=Frame(self, border=3, relief='groove')
@@ -20,7 +20,7 @@ class clsWinAbout(Toplevel):
             self.lblPyPC=Label(self.frmUp, border=3, relief='sunken', text=' pyPC ', bg='white', fg='red', font='Arial 24 bold')
             self.lblPyPC.pack(side='left', fill='y')
             
-            self.txtAbout=Text(self.frmUp, height=12, width=30)
+            self.txtAbout=Text(self.frmUp, height=12, width=30, font='Courier 9')
             self.txtAbout.pack(fill='both', expand=1)
             self.txtAbout.insert('end', self.root.Res.winAbout_txt)
             
