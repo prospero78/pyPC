@@ -16,6 +16,7 @@ class clsLogic:
         Всякие финальные действия.
         '''
         print 'clsLogic.exit()'
+        self.root.GUI.winLicense.destroy()
         self.root.GUI.winAbout.destroy()
         self.root.GUI.winMain.destroy()
         sys.exit(0)
