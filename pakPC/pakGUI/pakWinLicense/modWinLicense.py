@@ -14,10 +14,13 @@ class clsWinLicense(Toplevel):
             self.state('withdrawn')
        
         def create_frmBtn():
+            def btnEngLic_click(event=None):
+                self.txtLicense.delete('1.0', 'end')
+                self.txtLicense.insert('end',self.root.Res.winLicense_eng)
             self.frmBtn=Frame(self, border=3, relief='raised')
             self.frmBtn.pack(side='bottom', fill='x')
             
-            self.btnEngLicence=Button(self.frmBtn, text='England', bg='gray', command=self.destroy)
+            self.btnEngLicence=Button(self.frmBtn, text='England', bg='gray', command=btnEngLic_click)
             self.btnEngLicence.pack(side='left')
             
             self.btnLocalLicense=Button(self.frmBtn, text='Russian', bg='gray', command=self.root.Control.show_winLicense)
