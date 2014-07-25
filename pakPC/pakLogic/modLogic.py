@@ -5,7 +5,7 @@
 import sys
 class clsLogic:
     def __init__(self, root=None):
-        self.root=None
+        self.root=root
         
     def run(self):
         pass
@@ -15,4 +15,7 @@ class clsLogic:
         Общесистемный выход из программы.
         Всякие финальные действия.
         '''
+        print 'clsLogic.exit()'
+        self.root.GUI.winAbout.destroy()
+        self.root.GUI.winMain.destroy()
         sys.exit(0)
