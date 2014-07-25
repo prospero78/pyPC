@@ -20,3 +20,9 @@ class clsLogic:
         self.root.GUI.winAbout.destroy()
         self.root.GUI.winMain.destroy()
         sys.exit(0)
+        
+    def show_winLicense(self):
+        self.root.GUI.winLicense.show()
+        
+    def hide_winLicense(self):
+        self.root.GUI.winAbout.grab_set()
