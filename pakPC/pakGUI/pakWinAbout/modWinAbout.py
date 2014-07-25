@@ -3,7 +3,7 @@
 Класс окна "О программе".
 '''
 
-from Tkinter import Toplevel, Frame, Button, Label, Text
+from Tkinter import Toplevel, Frame, Button, Label, Text, Scrollbar
 
 class clsWinAbout(Toplevel):
     def __init__(self, root=None):
@@ -20,12 +20,19 @@ class clsWinAbout(Toplevel):
             self.lblPyPC=Label(self.frmUp, border=3, relief='sunken', text=' pyPC ', bg='white', fg='red', font='Arial 24 bold')
             self.lblPyPC.pack(side='left', fill='y')
             
-            self.txtAbout=Text(self.frmUp, height=12, width=30, font='Courier 9')
-            self.txtAbout.pack(fill='both', expand=1)
-            self.txtAbout.insert('end', self.root.Res.winAbout_txt)
-            
             self.lblGit=Label(self.frmUp, text=self.root.Res.winAbout_url, fg='blue', cursor='hand2')
             self.lblGit.pack(side='bottom', fill='x')
+            
+            self.scbAbout=Scrollbar(self.frmUp)
+            self.scbAbout.pack(side='right', fill='y')
+            
+            self.txtAbout=Text(self.frmUp, height=12, width=30, font='Courier 9')
+            self.txtAbout.pack(fill='both', expand=1, side='left')
+            self.txtAbout.insert('end', self.root.Res.winAbout_txt)
+            
+            self.scbAbout.config(command=self.txtAbout.yview)
+            self.txtAbout.config(yscrollcommand=self.scbAbout.set)
+            
         
         def create_frmBtn():
             self.frmBtn=Frame(self, border=3, relief='raised')
