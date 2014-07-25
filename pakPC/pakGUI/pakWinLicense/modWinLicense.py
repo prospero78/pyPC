@@ -22,6 +22,9 @@ class clsWinLicense(Toplevel):
             
             self.btnLocalLicense=Button(self.frmBtn, text='Russian', bg='gray', command=self.root.Control.show_winLicense)
             self.btnLocalLicense.pack(side='left')
+            
+            self.btnClose=Button(self.frmBtn, text='Close', bg='gray', command=self.destroy)
+            self.btnClose.pack(side='right')
         
         def create_frmUp():
             self.frmUp=Frame(self, border=3, relief='groove')
@@ -36,6 +39,7 @@ class clsWinLicense(Toplevel):
             
             self.scbLicense.config(command=self.txtLicense.yview)
             self.txtLicense.config(yscrollcommand=self.scbLicense.set)
+            
         self.root=root
         create_self()
         create_frmBtn()
