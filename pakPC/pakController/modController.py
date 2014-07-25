@@ -19,3 +19,9 @@ class clsController:
     def exit(self, event=None):
         print 'clsController.exit()'
         self.root.Logic.exit()
+        
+    def show_winLicense(self, event=None):
+        self.root.Logic.show_winLicense()
+        
+    def hide_winLicense(self, event=None):
+        self.root.Logic.hide_winLicense()
