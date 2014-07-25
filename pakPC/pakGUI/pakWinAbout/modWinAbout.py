@@ -40,6 +40,9 @@ class clsWinAbout(Toplevel):
             
             self.btnCloseAbout=Button(self.frmBtn, text=self.root.Res.winAbout_close, bg='gray', command=self.destroy)
             self.btnCloseAbout.pack(side='right')
+            
+            self.btnLicense=Button(self.frmBtn, text=' License ', bg='gray', command=self.destroy)
+            self.btnLicense.pack()
         
         self.root=root
         create_self()
