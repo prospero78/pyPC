@@ -7,6 +7,10 @@ from Tkinter import Toplevel
 
 class clsWinLicense(Toplevel):
     def __init__(self, root=None):
+        def create_self():
+            Toplevel.__init__(self)
+            self.title(self.root.Res.winLicense_title)
+            self.minsize(350,240)
+       
         self.root=root
-        Toplevel.__init__(self)
-        self.title(self.root.Res.winLicense_title)
+        create_self()
