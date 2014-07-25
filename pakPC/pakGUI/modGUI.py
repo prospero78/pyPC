@@ -19,6 +19,10 @@ class clsGUI:
         from pakWinAbout.modWinAbout import clsWinAbout
         self.winAbout=clsWinAbout(root=self.root)
         
+        # импорт окна лицензии
+        from pakWinLicense.modWinLicense import clsWinLicense
+        self.winLicense=clsWinLicense(root=self)
+        
         # запуск бесконечной петли
         self.winMain.begin()
         pass
