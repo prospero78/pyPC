@@ -1,11 +1,11 @@
 # -*- coding: utf8 -*-
 '''
-Класс окна "О программе".
+Класс окна экрана виртуального компьютера.
 '''
 
 from Tkinter import Toplevel, Frame, Button, Label, Text, Scrollbar
 
-class clsWinAbout(Toplevel):
+class clsWinScreen(Toplevel):
     def __init__(self, root=None):
         def create_self():
             Toplevel.__init__(self)
