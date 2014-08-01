@@ -24,7 +24,9 @@ class clsWinMain(Tk):
                 self.btnExit.pack(side='right')
                 
                 # кнопка для показа экрана виртуального компьютера
-                self.btnShowScreen=Button(self.frmBtn, text='Show screen')
+                self.btnShowScreen=Button(self.frmBtn,
+                            text=self.root.Res.winLicense_btnShowScreen_text,
+                            command=self.root.Control.show_screen)
                 self.btnShowScreen.pack(side='left')
                 
             def create_menu():
