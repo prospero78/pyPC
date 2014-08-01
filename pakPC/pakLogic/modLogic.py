@@ -7,6 +7,9 @@ class clsLogic:
     def __init__(self, root=None):
         self.root=root
         
+    def show_screen(self):
+        self.root.GUI.winScreen.show()
+        
     def run(self):
         pass
         
