@@ -23,6 +23,10 @@ class clsGUI:
         from pakWinLicense.modWinLicense import clsWinLicense
         self.winLicense=clsWinLicense(root=self.root)
         
+        # импорт окна экрана виртуального компьютера
+        from pakWinScreen.modWinScreen import clsWinScreen
+        self.winScreen=clsWinScreen(root=self.root)
+        
         # запуск бесконечной петли
         self.winMain.begin()
         pass
