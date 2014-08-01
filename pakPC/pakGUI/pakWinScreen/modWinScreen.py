@@ -10,8 +10,8 @@ class clsWinScreen(Toplevel):
         def create_self():
             Toplevel.__init__(self)
             self.state('withdrawn')
-            self.title(self.root.Res.winAbout_name)
-            self.minsize(380, 200)
+            self.title(self.root.Res.winScreen_title)
+            self.minsize(640, 480)
         
         def create_frmUp():
             self.frmUp=Frame(self, border=3, relief='groove')
