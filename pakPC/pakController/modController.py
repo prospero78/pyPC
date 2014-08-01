@@ -8,6 +8,10 @@ class clsController:
         self.root=root
         self.GUI=self.root.GUI
     
+    def show_screen(self, event=None):
+        print 'clsController.show_screen()'
+        self.root.Logic.show_screen()
+    
     def run(self, event=None):
         print 'clsController.run()'
         self.GUI.run()
