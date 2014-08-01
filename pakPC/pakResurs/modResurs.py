@@ -90,4 +90,5 @@ class clsRes:
         self.winLicense_btnShowScreen_text='Показать экран'
         
         self.winScreen_title='Экран pyPC'
+        self.winScreen_btnScreenClose_text='Закрыть'
         f.close()
