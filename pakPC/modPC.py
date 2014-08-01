@@ -24,6 +24,10 @@ class clsPC:
         from pakCPU.cmodCPU import clsCPU
         pass
         
+        # импрот класса видеокарты
+        from pakVideo.modVideo import clsVideo
+        pass
+        
         # импорт класса контроллера
         from pakController.modController import clsController
         self.Control=clsController(root=self)
