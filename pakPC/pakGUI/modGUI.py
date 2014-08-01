@@ -6,11 +6,6 @@
 class clsGUI:
     def __init__(self, root=None):
         self.root=root
-        
-    def run(self):
-        '''
-        Класс загружает графику, должен запускаться последним!!!
-        '''
         # импорт главного класса окна
         from pakWinMain.modWinMain import clsWinMain
         self.winMain=clsWinMain(root=self.root)
@@ -27,6 +22,11 @@ class clsGUI:
         from pakWinScreen.modWinScreen import clsWinScreen
         self.winScreen=clsWinScreen(root=self.root)
         
+        
+    def run(self):
+        '''
+        Класс загружает графику, должен запускаться последним!!!
+        '''
         # запуск бесконечной петли
         self.winMain.begin()
         pass
