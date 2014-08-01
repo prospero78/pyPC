@@ -14,7 +14,7 @@ class clsWinMain(Tk):
                 self.frmBtn.pack(side='bottom', fil='x')
                 
                 # кнопка "шаг" главного окна
-                self.btnStep=Button(self.frmBtn, text='Step')
+                self.btnStep=Button(self.frmBtn, text=self.root.Res.winLicense_btnStep_text)
                 self.btnStep.pack(side='left')
                 
                 # кнопка "выход" главного окна
