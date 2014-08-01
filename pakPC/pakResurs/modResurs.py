@@ -88,4 +88,6 @@ class clsRes:
         self.winLicense_btnLocalLicense_text='Русский'
         self.winLicense_btnStep_text='Шаг >>'
         self.winLicense_btnShowScreen_text='Показать экран'
+        
+        self.winScreen_title='Экран pyPC'
         f.close()
