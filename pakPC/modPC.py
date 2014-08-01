@@ -28,6 +28,10 @@ class clsPC:
         from pakVideo.modVideo import clsVideo
         self.Video=clsVideo(root=self)
         
+        # импорт класса интерфейса дискового кластера
+        from pakIDC.modIDC import clsIDC
+        self.IDC=clsIDC(root=self)
+        
         # импорт класса контроллера
         from pakController.modController import clsController
         self.Control=clsController(root=self)
