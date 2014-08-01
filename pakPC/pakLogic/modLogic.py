@@ -11,7 +11,8 @@ class clsLogic:
         self.root.GUI.winScreen.show()
         
     def run(self):
-        pass
+        self.GUI=self.root.GUI
+        self.GUI.run()
         
     def exit(self):
         '''
