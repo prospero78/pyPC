@@ -23,6 +23,10 @@ class clsWinMain(Tk):
                             command=self.root.Control.exit)
                 self.btnExit.pack(side='right')
                 
+                # кнопка для показа экрана виртуального компьютера
+                self.btnShowScreen=Button(self.frmBtn, text='Show screen')
+                self.btnShowScreen.pack(side='left')
+                
             def create_menu():
                 def create_mnuFile():
                     # добавление менюхи файл
