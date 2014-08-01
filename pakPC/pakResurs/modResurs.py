@@ -85,4 +85,5 @@ class clsRes:
         self.winLicense_title='Лицензионное требование'
         f=open('./pakPC/pakResurs/txt/GNU_GPL_v3_rus.txt','r')
         self.winLicense_locale=f.read()
+        self.winLicense_btnLocalLicense_text='Русский'
         f.close()
