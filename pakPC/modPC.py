@@ -16,13 +16,19 @@ class clsPC:
         from pakLogic.modLogic import clsLogic
         self.Logic=clsLogic(root=self)
         
-        # импорт класса графики
-        from pakGUI.modGUI import clsGUI
-        self.GUI=clsGUI(root=self)
+        
         
         # импорт клаcса центрального процессора
         from pakCPU.cmodCPU import clsCPU
         pass
+        
+        # импорт класса контроллера
+        from pakController.modController import clsController
+        self.Control=clsController(root=self)
+        
+        # импорт класса графики
+        from pakGUI.modGUI import clsGUI
+        self.GUI=clsGUI(root=self)
         
         # импрот класса видеокарты
         from pakVideo.modVideo import clsVideo
@@ -32,9 +38,7 @@ class clsPC:
         from pakIDC.modIDC import clsIDC
         self.IDC=clsIDC(root=self)
         
-        # импорт класса контроллера
-        from pakController.modController import clsController
-        self.Control=clsController(root=self)
+        
         
     def run(self):
         '''
