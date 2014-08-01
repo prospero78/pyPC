@@ -6,15 +6,16 @@
 class clsController:
     def __init__(self, root=None):
         self.root=root
-        self.GUI=self.root.GUI
     
     def show_screen(self, event=None):
         print 'clsController.show_screen()'
         self.root.Logic.show_screen()
     
     def run(self, event=None):
+        self.GUI=self.root.GUI
+        self.Logic=self.root.Logic
         print 'clsController.run()'
-        self.GUI.run()
+        self.Logic.run()
     
     def about(self, event=None):
         print 'about()'
