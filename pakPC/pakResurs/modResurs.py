@@ -40,7 +40,7 @@ class clsRes:
                     '''.decode('utf8')
 
     def create_res(self):
-        self.vers='301' # текущая версия сборки
+        self.vers='340' # текущая версия сборки
         self.max_adr=2**16 # максимальный адрес памяти
         self.max_reg_val=2**16 # максимальное значение регистра
 
@@ -59,6 +59,7 @@ class clsRes:
         self.winMain_btnExit_name='Выход'
         self.winMain_mbtFile_name='Файл'
         self.winMain_mbtEdit_name='Правка'
+        self.winMain_mbtEdit_disk='Настройка дисков'
         self.winMain_mbtCustom_name='Настройка'
         self.winMain_mbtHelp_name='Справка'
         self.winMain_mbtHelp_help='Справка по программе'
@@ -91,4 +92,7 @@ class clsRes:
         
         self.winScreen_title='Экран pyPC'
         self.winScreen_btnScreenClose_text='Закрыть'
+        
+        self.winIDC_name='Интерфейс дискового кластера'
+        
         f.close()
