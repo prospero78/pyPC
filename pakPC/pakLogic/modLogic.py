@@ -27,6 +27,9 @@ class clsLogic:
         
     def show_winLicense(self):
         self.root.GUI.winLicense.show()
+    
+    def show_winIDC(self):
+        self.root.GUI.winIDC.show()
         
     def hide_winLicense(self):
         if 'lin' not in sys.platform:
