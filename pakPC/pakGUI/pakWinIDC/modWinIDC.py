@@ -32,22 +32,10 @@ class clsWinIDC(Toplevel):
             self.frmIDC=Frame(self, border=2, relief='sunken')
             self.frmIDC.pack(side='top', fill='both', expand=1)
             
-            self.frmDisk0=clsFrmDiskSelect(root=self, text='Disk-0:')
-            self.frmDisk1=clsFrmDiskSelect(root=self, text='Disk-1:')
-            self.frmDisk2=clsFrmDiskSelect(root=self, text='Disk-2:')
-            self.frmDisk3=clsFrmDiskSelect(root=self, text='Disk-3:')
-            
-            self.lblDisk0=Label(self.frmIDC, text='./data/default.dsk', anchor='w', border=2, relief='groove')
-            self.lblDisk0.pack(side='top', fill='x')
-            
-            self.lblDisk1=Label(self.frmIDC, text='None', anchor='w', border=2, relief='groove')
-            self.lblDisk1.pack(side='top', fill='x')
-            
-            self.lblDisk2=Label(self.frmIDC, text='None', anchor='w', border=2, relief='groove')
-            self.lblDisk2.pack(side='top', fill='x')
-            
-            self.lblDisk3=Label(self.frmIDC, text='None', anchor='w', border=2, relief='groove')
-            self.lblDisk3.pack(side='top', fill='x')
+            self.frmDisk0=clsFrmDiskSelect(root=self.frmIDC, text='Disk-0:')
+            self.frmDisk1=clsFrmDiskSelect(root=self.frmIDC, text='Disk-1:', path='None')
+            self.frmDisk2=clsFrmDiskSelect(root=self.frmIDC, text='Disk-2:', path='None')
+            self.frmDisk3=clsFrmDiskSelect(root=self.frmIDC, text='Disk-3:', path='None')
             
         self.root=root
         create_self()
