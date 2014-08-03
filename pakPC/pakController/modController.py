@@ -30,3 +30,6 @@ class clsController:
         
     def hide_winLicense(self, event=None):
         self.root.Logic.hide_winLicense()
+    
+    def show_winIDC(self, event=None):
+        self.root.Logic.show_winIDC()
