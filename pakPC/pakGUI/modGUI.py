@@ -24,6 +24,7 @@ class clsGUI:
         
         # импорт окна создания/монтирования дисков (IDC)
         from pakWinIDC.modWinIDC import clsWinIDC
+        self.winIDC=clsWinIDC(root=self.root)
         
         
     def run(self):
