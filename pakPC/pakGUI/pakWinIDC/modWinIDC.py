@@ -5,6 +5,8 @@
 
 from Tkinter import Toplevel, Frame, Button, Label
 
+from pakPC.pakGUI.pakWidgets.modFrmDiskSelect import clsFrmDiskSelect
+
 class clsWinIDC(Toplevel):
     def __init__(self, root=None):
         def create_self():
