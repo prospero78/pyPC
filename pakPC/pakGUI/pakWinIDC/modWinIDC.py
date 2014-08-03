@@ -38,6 +38,9 @@ class clsWinIDC(Toplevel):
             self.frmIDC=Frame(self, border=2, relief='sunken')
             self.frmIDC.pack(side='top', fill='both', expand=1)
             
+            self.frmDisk0=clsFrmDiskSelect(root=self)
+            
+            
             self.lblDisk0=Label(self.frmIDC, text='./data/default.dsk', anchor='w', border=2, relief='groove')
             self.lblDisk0.pack(side='top', fill='x')
             
