@@ -10,7 +10,7 @@ class clsWinIDC(Toplevel):
         def create_self():
             Toplevel.__init__(self)
             self.state('withdrawn')
-            self.title('Interface Disk Claster')
+            self.title(self.root.Res.winIDC_name)
             self.minsize(350, 200)
         
         self.root=root
