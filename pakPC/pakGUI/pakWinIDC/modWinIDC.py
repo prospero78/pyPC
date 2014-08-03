@@ -28,11 +28,7 @@ class clsWinIDC(Toplevel):
             self.btnOk=Button(self.frmBtn, text=' Ok ')
             self.btnOk.pack(side='right')
             
-            self.btnCreate=Button(self.frmBtn, text='Create')
-            self.btnCreate.pack(side='left')
             
-            self.btnOpen=Button(self.frmBtn, text='Open')
-            self.btnOpen.pack(side='left')
             
         def create_frmIDC():
             self.frmIDC=Frame(self, border=2, relief='sunken')
