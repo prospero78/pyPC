@@ -28,14 +28,14 @@ class clsWinIDC(Toplevel):
             self.btnOk=Button(self.frmBtn, text=' Ok ')
             self.btnOk.pack(side='right')
             
-            
-            
         def create_frmIDC():
             self.frmIDC=Frame(self, border=2, relief='sunken')
             self.frmIDC.pack(side='top', fill='both', expand=1)
             
-            self.frmDisk0=clsFrmDiskSelect(root=self)
-            
+            self.frmDisk0=clsFrmDiskSelect(root=self, text='Disk-0:')
+            self.frmDisk1=clsFrmDiskSelect(root=self, text='Disk-1:')
+            self.frmDisk2=clsFrmDiskSelect(root=self, text='Disk-2:')
+            self.frmDisk3=clsFrmDiskSelect(root=self, text='Disk-3:')
             
             self.lblDisk0=Label(self.frmIDC, text='./data/default.dsk', anchor='w', border=2, relief='groove')
             self.lblDisk0.pack(side='top', fill='x')
