@@ -45,6 +45,12 @@ class clsWinMain(Tk):
                     self.mbtCustom=Menubutton(self.frmMenu, text=self.root.Res.winMain_mbtCustom_name, relief='raised', border=3)
                     self.mbtCustom.pack(side='left')
                     
+                    self.mnuCustom=Menu(self.mbtCustom)
+                    self.mnuCustom.add_separator()
+                    self.mnuCustom.add_command(label='Custom', accelerator='F12', command=self.root.Control.show_winIDC)
+                    
+                    self.mbtCustom.config(menu=self.mnuCustom)
+                    
                 def create_mnuHelp():
                     # добавление менюхи справка
                     self.btmHelp=Menubutton(self.frmMenu, text=self.root.Res.winMain_mbtHelp_name, relief='raised', border=3)
