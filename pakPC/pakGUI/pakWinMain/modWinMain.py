@@ -47,7 +47,7 @@ class clsWinMain(Tk):
                     
                     self.mnuCustom=Menu(self.mbtCustom)
                     self.mnuCustom.add_separator()
-                    self.mnuCustom.add_command(label='Custom', accelerator='F12', command=self.root.Control.show_winIDC)
+                    self.mnuCustom.add_command(label=self.root.Res.winMain_mbtEdit_disk, accelerator='F12', command=self.root.Control.show_winIDC)
                     
                     self.mbtCustom.config(menu=self.mnuCustom)
                     
