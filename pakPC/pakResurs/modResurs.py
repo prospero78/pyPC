@@ -40,7 +40,7 @@ class clsRes:
                     '''.decode('utf8')
 
     def create_res(self):
-        self.vers='340' # текущая версия сборки
+        self.vers='360' # текущая версия сборки
         self.max_adr=2**16 # максимальный адрес памяти
         self.max_reg_val=2**16 # максимальное значение регистра
 
