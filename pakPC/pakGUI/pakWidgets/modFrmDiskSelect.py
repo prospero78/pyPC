@@ -25,7 +25,7 @@ class clsFrmDiskSelect(Frame):
             self.lblDiskPath=Label(self, text=self.path, anchor='w', border=2, relief='groove')
             self.lblDiskPath.pack(side='left', fill='both', expand=1)
             
-            self.btnCreate=Button(self, text='Create')
+            self.btnCreate=Button(self, text=self.root.Res.winIDC_ImageCreate)
             self.btnCreate.pack(side='left')
             
             self.btnOpen=Button(self, text=self.root.Res.winIDC_open, command=open_disk)
