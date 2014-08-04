@@ -32,10 +32,10 @@ class clsWinIDC(Toplevel):
             self.frmIDC=Frame(self, border=2, relief='sunken')
             self.frmIDC.pack(side='top', fill='both', expand=1)
             
-            self.frmDisk0=clsFrmDiskSelect(root=self.frmIDC, text='Disk-0:')
-            self.frmDisk1=clsFrmDiskSelect(root=self.frmIDC, text='Disk-1:', path='None')
-            self.frmDisk2=clsFrmDiskSelect(root=self.frmIDC, text='Disk-2:', path='None')
-            self.frmDisk3=clsFrmDiskSelect(root=self.frmIDC, text='Disk-3:', path='None')
+            self.frmDisk0=clsFrmDiskSelect(master=self.frmIDC, root=self.root, text='Disk-0:')
+            self.frmDisk1=clsFrmDiskSelect(master=self.frmIDC, root=self.root, text='Disk-1:', path='None')
+            self.frmDisk2=clsFrmDiskSelect(master=self.frmIDC, root=self.root, text='Disk-2:', path='None')
+            self.frmDisk3=clsFrmDiskSelect(master=self.frmIDC, root=self.root, text='Disk-3:', path='None')
             
         self.root=root
         create_self()
