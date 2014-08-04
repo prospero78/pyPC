@@ -4,10 +4,13 @@
 '''
 
 from Tkinter import Frame, Label, Button
+from tkFileDialog import askopenfilename
 
 class clsFrmDiskSelect(Frame):
     def __init__(self, root=None, text='Disk-0:', path='./data/default.dsk'):
         def create_self():
+            def open_disk(event=''):
+                d=askopenfilename()
             Frame.__init__(self, master=self.root)
             self.pack(side='top', fill='x')
             
@@ -20,7 +23,7 @@ class clsFrmDiskSelect(Frame):
             self.btnCreate=Button(self, text='Create')
             self.btnCreate.pack(side='left')
             
-            self.btnOpen=Button(self, text='Open')
+            self.btnOpen=Button(self, text='Open', command=open_disk)
             self.btnOpen.pack(side='left')
             
             self.btnClear=Button(self, text='Clear')
