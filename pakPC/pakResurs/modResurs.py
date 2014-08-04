@@ -103,5 +103,6 @@ class clsRes:
         self.winIDC_open='Открыть'
         self.winIDC_OpenDiskImage='Открыть дисковый образ...'
         self.winIDC_ImageCreate='Cоздать'
+        self.winIDC_ImageUnpath='Очистить'
         
         f.close()
