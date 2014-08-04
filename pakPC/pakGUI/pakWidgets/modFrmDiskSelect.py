@@ -15,7 +15,7 @@ class clsFrmDiskSelect(Frame):
             self.lblPath.pack(side='left')
             
             self.lblDiskPath=Label(self, text=self.path, anchor='w', border=2, relief='groove')
-            self.lblDiskPath.pack(side='left', fill='x', expand=1)
+            self.lblDiskPath.pack(side='left', fill='both', expand=1)
             
             self.btnCreate=Button(self, text='Create')
             self.btnCreate.pack(side='left')
