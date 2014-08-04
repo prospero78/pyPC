@@ -13,7 +13,7 @@ class clsFrmDiskSelect(Frame):
                 d=askopenfilename(defaultextension='.dsk',
                         initialfile='./data/default.dsk',
                         filetypes=[('Disk images','.dsk'),],
-                        title='Open disk image...')
+                        title=self.root.Res.winIDC_OpenDiskImage)
                 self.root.GUI.winIDC.lift()
                 self.root.GUI.winIDC.focus_get()
             Frame.__init__(self, master=self.master)
