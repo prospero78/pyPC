@@ -102,5 +102,6 @@ class clsRes:
         self.winIDC_name='Интерфейс дискового кластера'
         self.winIDC_open='Открыть'
         self.winIDC_OpenDiskImage='Открыть дисковый образ...'
+        self.winIDC_ImageCreate='Cоздать'
         
         f.close()
