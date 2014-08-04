@@ -7,6 +7,9 @@ class clsLogic:
     def __init__(self, root=None):
         self.root=root
         
+    def create_disk(self):
+        print 'clsLogic.create_disk()'
+        
     def show_screen(self):
         self.root.GUI.winScreen.show()
         
