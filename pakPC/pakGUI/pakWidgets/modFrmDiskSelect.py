@@ -31,7 +31,7 @@ class clsFrmDiskSelect(Frame):
             self.btnOpen=Button(self, text=self.root.Res.winIDC_open, command=open_disk)
             self.btnOpen.pack(side='left')
             
-            self.btnClear=Button(self, text='Clear')
+            self.btnClear=Button(self, text=self.root.Res.winIDC_ImageUnpath)
             self.btnClear.pack(side='left')
             
             
