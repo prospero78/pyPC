@@ -94,5 +94,6 @@ class clsRes:
         self.winScreen_btnScreenClose_text='Закрыть'
         
         self.winIDC_name='Интерфейс дискового кластера'
+        self.winIDC_open='Открыть'
         
         f.close()
