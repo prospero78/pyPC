@@ -9,6 +9,7 @@ class clsController:
     
     def create_disk(self, event=None):
         print 'clsController.create_disk()'
+        self.Logic.create_disk()
         
     def show_screen(self, event=None):
         print 'clsController.show_screen()'
