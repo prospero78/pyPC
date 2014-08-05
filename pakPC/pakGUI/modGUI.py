@@ -22,6 +22,10 @@ class clsGUI:
         from pakWinScreen.modWinScreen import clsWinScreen
         self.winScreen=clsWinScreen(root=self.root)
         
+        # импорт окна для создания нового диска
+        from pakWinCreateDisk.modWinCreateDisk import clsWinCreateDisk
+        
+        
         # импорт окна создания/монтирования дисков (IDC)
         from pakWinIDC.modWinIDC import clsWinIDC
         self.winIDC=clsWinIDC(root=self.root)
