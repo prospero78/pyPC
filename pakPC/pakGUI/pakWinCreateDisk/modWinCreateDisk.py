@@ -4,6 +4,7 @@
 '''
 
 from Tkinter import Toplevel, Frame, Button, Canvas
+from pakPC.pakGUI.pakWidgets.modFrmKeyValue import clsFrmKeyValue
 
 class clsWinCreateDisk(Toplevel):
     def __init__(self, root=None):
