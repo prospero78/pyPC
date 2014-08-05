@@ -5,7 +5,7 @@
 
 from Tkinter import Toplevel, Frame, Button, Canvas
 
-class clsWinScreen(Toplevel):
+class clsWinCreateDisk(Toplevel):
     def __init__(self, root=None):
         def create_self():
             Toplevel.__init__(self)
