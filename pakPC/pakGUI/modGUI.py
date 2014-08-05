@@ -24,7 +24,7 @@ class clsGUI:
         
         # импорт окна для создания нового диска
         from pakWinCreateDisk.modWinCreateDisk import clsWinCreateDisk
-        
+        self.winCreateDisk=clsWinCreateDisk(root=self.root)
         
         # импорт окна создания/монтирования дисков (IDC)
         from pakWinIDC.modWinIDC import clsWinIDC
