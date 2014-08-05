@@ -7,6 +7,10 @@ class clsLogic:
     def __init__(self, root=None):
         self.root=root
         
+    def create_new_disk(self):
+        #TODO: дописать процедуру создания нового диска
+        pass
+    
     def create_disk(self):
         print 'clsLogic.create_disk()'
         self.root.GUI.winCreateDisk.show()
