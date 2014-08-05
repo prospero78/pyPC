@@ -12,7 +12,7 @@ class clsFrmKeyValue(Frame):
         Frame.__init__(self, master=root, border=2, relief='ridge')
         self.pack(fill='x', side='top')
         
-        self.lblKey=Label(self, text=key, border=1, relief='ridge')
+        self.lblKey=Label(self, text=key, border=1, relief='ridge', width=14)
         self.lblKey.pack(side='left', fill='x', expand=1)
         
         self.entVal=Entry(self, border=1, relief='groove')
