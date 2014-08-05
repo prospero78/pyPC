@@ -25,7 +25,7 @@ class clsWinIDC(Toplevel):
             self.btnReset=Button(self.frmBtn, text=self.root.Res.winIDC_reset)
             self.btnReset.pack(side='right')
             
-            self.btnOk=Button(self.frmBtn, text=' Ok ')
+            self.btnOk=Button(self.frmBtn, text=' Ok ', command=self.root.Control.winIDC_ok)
             self.btnOk.pack(side='right')
             
         def create_frmIDC():
