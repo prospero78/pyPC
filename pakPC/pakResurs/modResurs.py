@@ -105,4 +105,6 @@ class clsRes:
         self.winIDC_ImageCreate='Cоздать'
         self.winIDC_ImageUnpath='Очистить'
         
+        self.winCreateDisk_title='Создание нового диска...'
+        
         f.close()
