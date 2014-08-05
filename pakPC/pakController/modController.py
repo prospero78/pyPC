@@ -7,6 +7,10 @@ class clsController:
     def __init__(self, root=None):
         self.root=root
     
+    def winIDC_ok(self, event=None):
+        print 'clsController.winIDC_ok()'
+        self.GUI.winIDC.destroy()
+    
     def winIDC_cancel(self, event=None):
         print 'clsController.winIDC_cancel()'
         self.GUI.winIDC.destroy()
