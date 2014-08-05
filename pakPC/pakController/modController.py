@@ -7,6 +7,10 @@ class clsController:
     def __init__(self, root=None):
         self.root=root
     
+    def winIDC_cancel(self, event=None):
+        print 'clsController.winIDC_cancel()'
+        self.GUI.winIDC.destroy()
+    
     def create_disk(self, event=None):
         print 'clsController.create_disk()'
         self.Logic.create_disk()
