@@ -10,7 +10,7 @@ class clsWinCreateDisk(Toplevel):
         def create_self():
             Toplevel.__init__(self)
             self.state('withdrawn')
-            self.title('Create New Disk')
+            self.title(self.root.Res.winCreateDisk_title)
             #self.minsize(640, 480)
             
         self.root=root
