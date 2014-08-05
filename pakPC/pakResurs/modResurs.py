@@ -104,6 +104,7 @@ class clsRes:
         self.winIDC_OpenDiskImage='Открыть дисковый образ...'
         self.winIDC_ImageCreate='Cоздать'
         self.winIDC_ImageUnpath='Очистить'
+        self.winIDC_cancel='Отменить'
         
         self.winCreateDisk_title='Создание нового диска...'
         
