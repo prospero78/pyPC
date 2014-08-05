@@ -13,8 +13,16 @@ class clsWinCreateDisk(Toplevel):
             self.title(self.root.Res.winCreateDisk_title)
             #self.minsize(640, 480)
             
+        def create_frmBtn():
+            self.frmBtn=Frame(self, border=2, relief='sunken')
+            self.frmBtn.pack(side='bottom', fill='x')
+            
+            self.btnOk=Button(self.frmBtn, text=' Ok ')#, command=self.root.Control.winIDC_ok)
+            self.btnOk.pack(side='right')
+        
         self.root=root
         create_self()
+        create_frmBtn()
         
     def show(self):
         self.state('normal')
