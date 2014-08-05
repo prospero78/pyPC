@@ -27,6 +27,8 @@ class clsWinCreateDisk(Toplevel):
             self.frmDiskParam=Frame(self, border=2, relief='sunken')
             self.frmDiskParam.pack(side='top', fill='both', expand=1)
             
+            #TODO: надо запилить виджет -- пара ключ:значение
+            
         self.root=root
         create_self()
         create_frmBtn()
