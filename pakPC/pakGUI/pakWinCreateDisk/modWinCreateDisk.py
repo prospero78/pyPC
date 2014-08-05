@@ -29,6 +29,7 @@ class clsWinCreateDisk(Toplevel):
             self.frmDiskParam.pack(side='top', fill='both', expand=1)
             
             #TODO: надо запилить виджет -- пара ключ:значение
+            self.fkvName=clsFrmKeyValue(root=self.frmDiskParam, key='Name Disk', value='default.dsk')
             
         self.root=root
         create_self()
