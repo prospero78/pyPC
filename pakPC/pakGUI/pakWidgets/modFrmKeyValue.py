@@ -13,10 +13,10 @@ class clsFrmKeyValue(Frame):
         self.pack(fill='x', side='top')
         
         self.lblKey=Label(self, text=key, border=1, relief='ridge')
-        self.lblKey.pack(side='left', fill='x')
+        self.lblKey.pack(side='left', fill='x', expand=1)
         
         self.entVal=Entry(self, border=1, relief='groove')
-        self.entVal.pack(side='left')
+        self.entVal.pack(side='left', fill='x', expand=1)
         self.entVal.delete(0,'end')
         self.entVal.insert(0,value)
 
