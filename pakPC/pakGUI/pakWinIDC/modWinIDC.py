@@ -19,7 +19,7 @@ class clsWinIDC(Toplevel):
             self.frmBtn=Frame(self, border=2, relief='sunken')
             self.frmBtn.pack(side='bottom', fill='x')
             
-            self.btnCancel=Button(self.frmBtn, text='Cancel', command=self.root.Control.winIDC_cancel)
+            self.btnCancel=Button(self.frmBtn, text=self.root.Res.winIDC_cancel, command=self.root.Control.winIDC_cancel)
             self.btnCancel.pack(side='right')
             
             self.btnReturn=Button(self.frmBtn, text='Return')
