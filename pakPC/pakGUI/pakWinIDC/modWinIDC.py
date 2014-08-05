@@ -22,7 +22,7 @@ class clsWinIDC(Toplevel):
             self.btnCancel=Button(self.frmBtn, text=self.root.Res.winIDC_cancel, command=self.root.Control.winIDC_cancel)
             self.btnCancel.pack(side='right')
             
-            self.btnReset=Button(self.frmBtn, text='Reset')
+            self.btnReset=Button(self.frmBtn, text=self.root.Res.winIDC_reset)
             self.btnReset.pack(side='right')
             
             self.btnOk=Button(self.frmBtn, text=' Ok ')
