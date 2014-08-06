@@ -21,7 +21,7 @@ class clsWinCreateDisk(Toplevel):
             self.btnOk=Button(self.frmBtn, text=' Ok ')#, command=self.root.Control.winIDC_ok)
             self.btnOk.pack(side='right')
             
-            self.btnCancel=Button(self.frmBtn, text='Cancel')#, command=self.root.Control.winIDC_cancel)
+            self.btnCancel=Button(self.frmBtn, text='Cancel', command=self.destroy)
             self.btnCancel.pack(side='right')
         
         def create_frmDiskParam():
@@ -47,3 +47,5 @@ class clsWinCreateDisk(Toplevel):
     def destroy(self):
         self.state('withdrawn')
         self.grab_release()
+        self.root.GUI.winIDC.focus_set()
+        self.root.GUI.winIDC.grab_set()
