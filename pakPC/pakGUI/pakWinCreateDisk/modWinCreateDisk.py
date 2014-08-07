@@ -18,7 +18,7 @@ class clsWinCreateDisk(Toplevel):
             self.frmBtn=Frame(self, border=2, relief='sunken')
             self.frmBtn.pack(side='bottom', fill='x')
             
-            self.btnOk=Button(self.frmBtn, text=' Ok ')#, command=self.root.Control.winIDC_ok)
+            self.btnOk=Button(self.frmBtn, text=' Ok ', command=self.root.Control.winCreateDisk_ok)
             self.btnOk.pack(side='right')
             
             self.btnCancel=Button(self.frmBtn, text='Cancel', command=self.destroy)
