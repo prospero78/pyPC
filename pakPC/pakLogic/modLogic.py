@@ -6,6 +6,10 @@ import sys
 class clsLogic:
     def __init__(self, root=None):
         self.root=root
+       
+    def generate_new_disk(self):
+        print 'generate_new_fisk()'
+        self.GUI.winCreateDisk.destroy()
         
     def create_new_disk(self):
         #TODO: дописать процедуру создания нового диска
