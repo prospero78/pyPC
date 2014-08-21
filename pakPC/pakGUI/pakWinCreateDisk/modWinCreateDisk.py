@@ -30,7 +30,7 @@ class clsWinCreateDisk(Toplevel):
             
             #TODO: надо запилить виджет -- пара ключ:значение
             self.fkvName=clsFrmKeyValue(root=self.frmDiskParam, key='Name Disk', value='default.dsk')
-            self.fkvSize=clsFrmKeyValue(root=self.frmDiskParam, key='Size Disk (MB)', value='1')
+            self.fkvSize=clsFrmKeyValue(root=self.frmDiskParam, key='Size Disk (kB)', value='1')
             
         self.root=root
         create_self()
