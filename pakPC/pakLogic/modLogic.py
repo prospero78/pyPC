@@ -7,6 +7,18 @@ class clsLogic:
     def __init__(self, root=None):
         self.root=root
        
+    def load_bios(self):
+        '''
+        Загружает BIOS по умолчанию.
+        BIOS находится в файле './data/bios.csv'
+        Имеет формат реального csv файла для облегчения чтения и парсинга
+        '''
+        print 'clsLogic.load_bios()'
+        f=open('./data/bios.csv', 'r')
+        biso_csv=f.read()
+        f.close()
+        
+    
     def generate_new_disk(self):
         print 'generate_new_disk()'
         self.GUI.winCreateDisk.destroy()
@@ -30,6 +42,7 @@ class clsLogic:
         self.root.GUI.winScreen.show()
         
     def run(self):
+        self.load_bios()
         self.GUI=self.root.GUI
         self.GUI.run()
         
