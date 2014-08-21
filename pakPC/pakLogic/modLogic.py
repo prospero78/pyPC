@@ -10,13 +10,9 @@ class clsLogic:
     def load_bios(self):
         '''
         Загружает BIOS по умолчанию.
-        BIOS находится в файле './data/bios.csv'
-        Имеет формат реального csv файла для облегчения чтения и парсинга
+        BIOS содержится в py-файле, обычный хитрый словарь.
         '''
-        print 'clsLogic.load_bios()'
-        f=open('./data/bios.csv', 'r')
-        biso_csv=f.read()
-        f.close()
+        pass
         
     
     def generate_new_disk(self):
