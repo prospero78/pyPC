@@ -13,7 +13,7 @@ class clsLogic:
         disk_size=int(self.GUI.winCreateDisk.fkvSize.get_val())
         disk_name=self.GUI.winCreateDisk.fkvName.get_val()
         str_='\0'*(2**10)
-        f=open('./data/'+disk_name,'wb')
+        f=open('./data/'+disk_name+'.dsk','wb')
         for i in xrange(0, disk_size):
             f.write(str_)
         f.close()
