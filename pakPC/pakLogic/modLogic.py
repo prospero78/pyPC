@@ -10,9 +10,10 @@ class clsLogic:
     def generate_new_disk(self):
         print 'generate_new_disk()'
         self.GUI.winCreateDisk.destroy()
-        disk_size=int(self.GUI.winCreateDisk.fkvSize.get())
+        disk_size=int(self.GUI.winCreateDisk.fkvSize.get_val())
+        disk_name=self.GUI.winCreateDisk.fkvName.get_val()
         str_='\0'*(2**10)
-        f=open('./data/default.dsk','wb')
+        f=open('./data/'+disk_name,'wb')
         for i in xrange(0, disk_size):
             f.write(str_)
         f.close()
