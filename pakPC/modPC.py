@@ -12,6 +12,10 @@ class clsPC:
         from pakResurs.modResurs import clsRes
         self.Res=clsRes(root=self, lang='ru', arg=arg)
         
+        # импорт словаря биоса
+        from pakBIOS.modBIOS import bios
+        self.Bios=bios
+        
         # импорт класса общей логики
         from pakLogic.modLogic import clsLogic
         self.Logic=clsLogic(root=self)
