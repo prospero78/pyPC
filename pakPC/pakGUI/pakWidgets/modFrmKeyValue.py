@@ -19,6 +19,9 @@ class clsFrmKeyValue(Frame):
         self.entVal.pack(side='left', fill='x', expand=1)
         self.entVal.delete(0,'end')
         self.entVal.insert(0,value)
+    
+    def get(self):
+        return self.entVal.get()
 
         
 if __name__=='__main__':
