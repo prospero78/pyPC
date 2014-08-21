@@ -20,7 +20,7 @@ class clsFrmKeyValue(Frame):
         self.entVal.delete(0,'end')
         self.entVal.insert(0,value)
     
-    def get(self):
+    def get_val(self):
         return self.entVal.get()
 
         
