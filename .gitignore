@@ -5,3 +5,4 @@ geany_run_script.bat
 >>>>>>> origin/master
 *.pyc
 *.pmak
+*.html#
