@@ -8,8 +8,14 @@ class clsLogic:
         self.root=root
        
     def generate_new_disk(self):
-        print 'generate_new_fisk()'
+        print 'generate_new_disk()'
         self.GUI.winCreateDisk.destroy()
+        disk_size=int(self.GUI.winCreateDisk.fkvSize.get())
+        str_='\0'*(2**10)
+        f=open('./data/default.dsk','wb')
+        for i in xrange(0, disk_size):
+            f.write(str_)
+        f.close()
         
     def create_new_disk(self):
         #TODO: дописать процедуру создания нового диска
