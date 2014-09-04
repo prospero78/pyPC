@@ -6,3 +6,4 @@ geany_run_script.bat
 *.pyc
 *.pmak
 *.html#
+*.odt#
