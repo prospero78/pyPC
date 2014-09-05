@@ -50,6 +50,7 @@ if True:
     DEF A_add_nn=19
     DEF A_sub_nn=20
     DEF A_inc_nn=21
+    DEF A_dec_nn=22
     
     
 
@@ -325,7 +326,7 @@ cdef class clsCPU:
                 self.RegA.FlagS=0
             self.RegA.FlagO=0
             self.PC.val+=2
-        elif cop==A_inc_nn:      # увеличить на 1 значения регистра А из ячейки с адресом nn
+        elif cop==A_inc_nn:      # увеличить на 1 значение регистра А из ячейки с адресом nn
             nn=self.Mem.adr[self.PC.val+1] # получить адрес nn, в котором лежит число
             self.RegA.val=self.Mem.adr[nn]+1 # сложить
             if self.RegA.val==0:
@@ -339,4 +340,19 @@ cdef class clsCPU:
                 self.RegA.FlagO=0
             self.RegA.FlagS=0
             self.RegA.FlagC=0
+            self.PC.val+=2
+        elif cop==A_dec_nn:      # уменьшить на 1 значение регистра А из ячейки с адресом nn
+            nn=self.Mem.adr[self.PC.val+1] # получить адрес nn, в котором лежит число
+            self.RegA.val=self.Mem.adr[nn]-1 # вычесть
+            if self.RegA.val==0:
+                self.RegA.FlagZ=1
+                self.RegA.FlagC=0
+            else:
+                self.RegA.FlagZ=0
+            if self.RegA.val<=0:
+                self.RegA.val=self.max_val
+                self.RegA.FlagC=1
+            else:
+                self.RegA.FlagO=0
+            self.RegA.FlagS=0
             self.PC.val+=2
