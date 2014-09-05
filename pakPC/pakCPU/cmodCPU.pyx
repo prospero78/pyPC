@@ -56,7 +56,7 @@ if True:
     DEF A_or_nn =25
     DEF A_and_nn=26
     DEF A_shr_nn=27
-    
+    DEF A_shl_nn=28
     
 
 cdef class clsCPU:
@@ -409,6 +409,17 @@ cdef class clsCPU:
         elif cop==A_shr_nn:      # правый сдвиг значения регистра А из ячейки с адресом nn
             nn=self.Mem.adr[self.PC.val+1] # получить адрес nn, в котором лежит число
             self.RegA.val>>self.Mem.adr[nn] # правый сдвиг
+            if self.RegA.val==0:
+                self.RegA.FlagZ=1
+            else:
+                self.RegA.FlagZ=0
+            self.RegA.FlagO=0
+            self.RegA.FlagS=0
+            self.RegA.FlagC=0
+            self.PC.val+=2
+        elif cop==A_shl_nn:      # левый сдвиг значения регистра А из ячейки с адресом nn
+            nn=self.Mem.adr[self.PC.val+1] # получить адрес nn, в котором лежит число
+            self.RegA.val<<self.Mem.adr[nn] # левый сдвиг
             if self.RegA.val==0:
                 self.RegA.FlagZ=1
             else:
