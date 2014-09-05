@@ -51,6 +51,7 @@ if True:
     DEF A_sub_nn=20
     DEF A_inc_nn=21
     DEF A_dec_nn=22
+    DEF A_not_nn=23
     
     
 
@@ -353,6 +354,18 @@ cdef class clsCPU:
                 self.RegA.val=self.max_val
                 self.RegA.FlagC=1
             else:
-                self.RegA.FlagO=0
+                self.RegA.FlagC=0
+            self.RegA.FlagO=0
             self.RegA.FlagS=0
+            self.PC.val+=2
+        elif cop==A_not_nn:      # инвертировать значение регистра А из ячейки с адресом nn
+            nn=self.Mem.adr[self.PC.val+1] # получить адрес nn, в котором лежит число
+            self.RegA.val=~self.Mem.adr[nn] # инвертировать
+            if self.RegA.val==0:
+                self.RegA.FlagZ=1
+            else:
+                self.RegA.FlagZ=0
+            self.RegA.FlagO=0
+            self.RegA.FlagS=0
+            self.RegA.FlagC=0
             self.PC.val+=2
