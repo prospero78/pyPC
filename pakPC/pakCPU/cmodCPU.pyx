@@ -57,6 +57,7 @@ if True:
     DEF A_and_nn=26
     DEF A_shr_nn=27
     DEF A_shl_nn=28
+    DEF A_getf  =29
     
 
 cdef class clsCPU:
@@ -417,7 +418,7 @@ cdef class clsCPU:
             self.RegA.FlagS=0
             self.RegA.FlagC=0
             self.PC.val+=2
-        elif cop==A_shl_nn:      # левый сдвиг значения регистра А из ячейки с адресом nn
+        elif cop==A_shl_nn:      # получить флаги регистра А
             nn=self.Mem.adr[self.PC.val+1] # получить адрес nn, в котором лежит число
             self.RegA.val<<self.Mem.adr[nn] # левый сдвиг
             if self.RegA.val==0:
@@ -428,3 +429,22 @@ cdef class clsCPU:
             self.RegA.FlagS=0
             self.RegA.FlagC=0
             self.PC.val+=2
+        elif cop==A_getf:      # левый сдвиг значения регистра А из ячейки с адресом nn
+            self.RegA.val=0
+            if self.RegA.FlagC==1:
+                self.RegA.val+=2
+            
+            if self.RegA.FlagO==1:
+                self.RegA.val+=4
+            
+            if self.RegA.FlagS==1:
+                self.RegA.val+=8
+            
+            if self.RegA.FlagZ==1:
+                self.RegA.val+=1
+                self.RegA.FlagZ=0
+            
+            self.RegA.FlagO=0
+            self.RegA.FlagS=0
+            self.RegA.FlagC=0
+            self.PC.val+=1
