@@ -54,6 +54,7 @@ if True:
     DEF A_not_nn=23
     DEF A_xor_nn=24
     DEF A_or_nn =25
+    DEF A_and_nn=26
     
     
 
@@ -382,9 +383,20 @@ cdef class clsCPU:
             self.RegA.FlagS=0
             self.RegA.FlagC=0
             self.PC.val+=2
-        elif cop==A_or_nn:      # логическое ИЛИ значение регистра А из ячейки с адресом nn
+        elif cop==A_or_nn:      # логическое И значение регистра А из ячейки с адресом nn
             nn=self.Mem.adr[self.PC.val+1] # получить адрес nn, в котором лежит число
             self.RegA.val|=self.Mem.adr[nn] # логическое ИЛИ
+            if self.RegA.val==0:
+                self.RegA.FlagZ=1
+            else:
+                self.RegA.FlagZ=0
+            self.RegA.FlagO=0
+            self.RegA.FlagS=0
+            self.RegA.FlagC=0
+            self.PC.val+=2
+        elif cop==A_and_nn:      # логическое И значение регистра А из ячейки с адресом nn
+            nn=self.Mem.adr[self.PC.val+1] # получить адрес nn, в котором лежит число
+            self.RegA.val&=self.Mem.adr[nn] # логическое ИЛИ
             if self.RegA.val==0:
                 self.RegA.FlagZ=1
             else:
