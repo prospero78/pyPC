@@ -64,6 +64,7 @@ if True:
     DEF A_setf  =30
     #---------------
     DEF A_ifz_nn=31
+    DEF A_cmp_n =32
     
 
 cdef class clsCPU:
@@ -481,3 +482,10 @@ cdef class clsCPU:
                 self.PC.val=self.Mem.adr[self.PC.val+1]
             else:
                 self.PC.val+=2
+        elif cop==A_cmp_n:      # сравнить с числом
+            self.PC.val+=1
+            if self.RegA.val==self.Mem.adr[self.PC.val]:
+                sel.RegA.FlagZ=1
+            else:
+                self.RegA.FlagZ=0
+            self.PC.val+=1
