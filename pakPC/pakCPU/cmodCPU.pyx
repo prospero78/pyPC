@@ -39,6 +39,7 @@ if True:
     DEF A_and_A=8
     DEF A_shr_A=9
     DEF A_shl_A=10
+    #----------------------
     DEF A_set_n=11
     DEF A_add_n=12
     DEF A_sub_n=13
@@ -46,6 +47,7 @@ if True:
     DEF A_xor_n=15
     DEF A_or_n =16
     DEF A_and_n=17
+    #---------------------
     DEF A_set_nn=18
     DEF A_add_nn=19
     DEF A_sub_nn=20
@@ -57,7 +59,9 @@ if True:
     DEF A_and_nn=26
     DEF A_shr_nn=27
     DEF A_shl_nn=28
+    #-----------------
     DEF A_getf  =29
+    DEF A_setf  =30
     
 
 cdef class clsCPU:
@@ -429,8 +433,12 @@ cdef class clsCPU:
             self.RegA.FlagS=0
             self.RegA.FlagC=0
             self.PC.val+=2
-        elif cop==A_getf:      # левый сдвиг значения регистра А из ячейки с адресом nn
+        elif cop==A_getf:      # получить флаги регистра А в регистр А
             self.RegA.val=0
+            if self.RegA.FlagZ==1:
+                self.RegA.val+=1
+                self.RegA.FlagZ=0
+            
             if self.RegA.FlagC==1:
                 self.RegA.val+=2
             
@@ -440,11 +448,28 @@ cdef class clsCPU:
             if self.RegA.FlagS==1:
                 self.RegA.val+=8
             
-            if self.RegA.FlagZ==1:
-                self.RegA.val+=1
-                self.RegA.FlagZ=0
-            
             self.RegA.FlagO=0
             self.RegA.FlagS=0
             self.RegA.FlagC=0
+            self.PC.val+=1
+        elif cop==A_setf:      # установить флаги регистра А из регистра А
+            if self.RegA.val & 1:
+                self.RegA.FlagZ=1
+            else:
+                self.RegA.FlagZ=0
+            
+            if self.RegA.val & 2:
+                self.RegA.FlagC=1
+            else:
+                self.RegA.FlagC=0
+            
+            if self.RegA.val & 4:
+                self.RegA.FlagO=1
+            else:
+                self.RegA.FlagO=0
+            
+            if self.RegA.val & 8:
+                self.RegA.FlagS=1
+            else:
+                self.RegA.FlagS=0
             self.PC.val+=1
