@@ -65,6 +65,7 @@ if True:
     #---------------
     DEF A_ifz_nn=31
     DEF A_cmp_n =32
+    DEF A_ifnz_nn=33
     
 
 cdef class clsCPU:
@@ -477,7 +478,7 @@ cdef class clsCPU:
                 self.RegA.FlagS=0
             self.PC.val+=1
         elif cop==A_ifz_nn:      # переход если "0"
-            if self.RegA.FlagZ & 1:
+            if self.RegA.FlagZ == 1:
                 # переход, если регистр А равен нулю
                 self.PC.val=self.Mem.adr[self.PC.val+1]
             else:
@@ -489,3 +490,9 @@ cdef class clsCPU:
             else:
                 self.RegA.FlagZ=0
             self.PC.val+=1
+        elif cop==A_ifnz_nn:      # переход если "0"
+            if self.RegA.FlagZ <> 1:
+                # переход, если регистр А равен нулю
+                self.PC.val=self.Mem.adr[self.PC.val+1]
+            else:
+                self.PC.val+=2
