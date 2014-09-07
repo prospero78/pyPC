@@ -485,7 +485,7 @@ cdef class clsCPU:
         elif cop==A_cmp_n:      # сравнить с числом
             self.PC.val+=1
             if self.RegA.val==self.Mem.adr[self.PC.val]:
-                sel.RegA.FlagZ=1
+                self.RegA.FlagZ=1
             else:
                 self.RegA.FlagZ=0
             self.PC.val+=1
