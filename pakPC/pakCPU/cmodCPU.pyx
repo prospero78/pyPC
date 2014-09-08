@@ -48,7 +48,7 @@ if True:
     DEF A_nor =16
     DEF A_nand=17
     #---------------------
-    DEF A_mset=18
+    DEF A_mget=18
     DEF A_madd=19
     DEF A_msub=20
     DEF A_minc=21
@@ -66,7 +66,7 @@ if True:
     DEF A_ifz=31
     DEF A_ncmp =32
     DEF A_ifnz=33
-    DEF A_mmov=34
+    DEF A_mset=34
     
 cdef class clsCPU:
     '''
@@ -298,7 +298,7 @@ cdef class clsCPU:
             self.RegA.FlagC=0
             self.RegA.FlagS=0
             self.PC.val+=1
-        elif cop==A_mset:      # установка значения регистра А из ячейки с адресом nn
+        elif cop==A_mget:      # установка значения регистра А из ячейки с адресом nn
             nn=self.Mem.adr[self.PC.val+1] # получить адрес nn, в котором лежит число
             self.RegA.val=self.Mem.adr[nn] # присовить
             if self.RegA.val==0:
@@ -496,7 +496,7 @@ cdef class clsCPU:
                 self.PC.val=self.Mem.adr[self.PC.val+1]
             else:
                 self.PC.val+=2
-        elif cop==A_mmov:      # сохранить регистр А по адресу nn
+        elif cop==A_mset:      # сохранить регистр А по адресу nn
             self.PC.val+=1
             # переход, если регистр А равен нулю
             self.Mem.adr[self.PC.val]=self.RegA.val
