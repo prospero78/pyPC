@@ -8,8 +8,8 @@ class clsRes:
         self.lang=lang
         self.arg=arg
 
-        self.pars_arg()
         self.create_res()
+        self.pars_arg()
         if self.lang=='ru':
             self.create_ru()
 
@@ -24,7 +24,7 @@ class clsRes:
     --about (-a)     о программе
                     '''.decode('utf8')
                 elif ('--about' in i) or ('-a' in i):
-                    print '''
+                    print '''pyPC vers. ''' + self.vers + '''
 О программе:
     Эта программа представляет собой вымышленный
     (но вполне рабочий) виртуальный компьютер.
@@ -46,7 +46,7 @@ class clsRes:
         1.ххх -- зарелизенная версия
         И других вариантов не будет.
         '''
-        self.vers='0.406' # текущая версия сборки
+        self.vers='0.461' # текущая версия сборки
         self.max_adr=2**16 # максимальный адрес памяти
         self.max_reg_val=2**16 # максимальное значение регистра
 
