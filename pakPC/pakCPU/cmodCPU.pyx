@@ -66,6 +66,7 @@ if True:
     DEF A_ifz_nn=31
     DEF A_cmp_n =32
     DEF A_ifnz_nn=33
+    DEF A_mov_nn=34
     
 
 cdef class clsCPU:
@@ -496,3 +497,8 @@ cdef class clsCPU:
                 self.PC.val=self.Mem.adr[self.PC.val+1]
             else:
                 self.PC.val+=2
+        elif cop==A_mov_nn:      # сохранить регистр А по адресу nn
+            self.PC.val+=1
+            # переход, если регистр А равен нулю
+            self.Mem.adr[self.PC.val]=self.RegA.val
+            self.PC.val+=1
