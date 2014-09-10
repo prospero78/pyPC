@@ -113,6 +113,7 @@ cdef class clsCPU:
         
         self.PC.val=0
         self.PC.max_adr=self.SP.min_adr-1 # максимальный адрес -- на 1 меньше, чем дно стека
+        #test
         
         self.RegA.val=0
         self.RegA.FlagZ=1
