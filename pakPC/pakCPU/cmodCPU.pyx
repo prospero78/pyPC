@@ -11,6 +11,10 @@ cdef struct RegPC: # описание регистра программного 
     int val     # текущее значение регистра программного счётчика
     int max_adr # макисмальное значение регистра
     
+cdef struct RegSP: # описание регистра стека
+    int val     # значение регистра стека
+    int min_adr # минмальный адрес стека
+
 cdef struct Reg: # описание структуры регистра общего назначения
     int val     # текущее значение регистра
     int FlagZ   # флаг нуля
@@ -92,6 +96,7 @@ cdef class clsCPU:
     cdef RegPC PC          # программный счётчик
     cdef Mem *Mem           # память виртуального компьютера
     cdef int nn         # служебная переменная для хранения адреса ячейки памяти
+    cdef RegPC SP   # указатель стека с контролем дна
     
     def __init__(self, root=None):
         self.root=root
@@ -103,8 +108,11 @@ cdef class clsCPU:
         for i in xrange(0,self.Mem.max_adr):
             self.Mem.adr[i]=0
         
+        self.SP.val=self.root.Res.max_adr
+        self.SP.min_adr=self.SP.val-100
+        
         self.PC.val=0
-        self.PC.max_adr=self.root.Res.max_adr
+        self.PC.max_adr=self.SP.min_adr-1 # максимальный адрес -- на 1 меньше, чем дно стека
         
         self.RegA.val=0
         self.RegA.FlagZ=1
