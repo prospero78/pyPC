@@ -64,13 +64,14 @@ if True:
     DEF A_mshr=27
     DEF A_mshl=28
     #-----------------
-    DEF A_getf  =29
-    DEF A_setf  =30
+    DEF A_getf =29
+    DEF A_setf =30
     #---------------
-    DEF A_ifz=31
-    DEF A_ncmp =32
+    DEF A_ifz =31
+    DEF A_ncmp=32
     DEF A_ifnz=33
     DEF A_mset=34
+    DEF A_push=35
     
 cdef class clsCPU:
     '''
@@ -113,7 +114,6 @@ cdef class clsCPU:
         
         self.PC.val=0
         self.PC.max_adr=self.SP.min_adr-1 # максимальный адрес -- на 1 меньше, чем дно стека
-        #test
         
         self.RegA.val=0
         self.RegA.FlagZ=1
@@ -506,6 +506,11 @@ cdef class clsCPU:
             else:
                 self.PC.val+=2
         elif cop==A_mset:      # сохранить регистр А по адресу nn
+            self.PC.val+=1
+            # переход, если регистр А равен нулю
+            self.Mem.adr[self.PC.val]=self.RegA.val
+            self.PC.val+=1
+        elif cop==A_call:      # вызвать процедуру по адресу в регистре А
             self.PC.val+=1
             # переход, если регистр А равен нулю
             self.Mem.adr[self.PC.val]=self.RegA.val
