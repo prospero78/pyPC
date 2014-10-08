@@ -439,8 +439,7 @@ cdef class clsCPU:
             self.PC.val+=2
         elif cop==A_mshr:      # правый сдвиг значения регистра А из ячейки с адресом nn
             nn=self.Mem.adr[self.PC.val+1] # получить адрес nn, в котором лежит число
-            a=self.Mem.adr[nn] # число правого сдвига
-            self.RegA.val>>a
+            self.RegA.val=self.RegA.val>>(self.Mem.adr[nn]) # правый сдвиг
             if self.RegA.val==0:
                 self.RegA.FlagZ=1
             else:
@@ -451,8 +450,7 @@ cdef class clsCPU:
             self.PC.val+=2
         elif cop==A_mshl:      # получить флаги регистра А
             nn=self.Mem.adr[self.PC.val+1] # получить адрес nn, в котором лежит число
-            a=self.Mem.adr[nn] # число левого сдвига
-            self.RegA.val<<a # левый сдвиг
+            self.RegA.val=self.RegA.val>>self.Mem.adr[nn] # левый сдвиг
             if self.RegA.val==0:
                 self.RegA.FlagZ=1
             else:
