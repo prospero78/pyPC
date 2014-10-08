@@ -74,6 +74,7 @@ if True:
     DEF A_mset=34
     DEF A_push=35
     DEF A_pop =36
+    DEF A_call=37
     
 cdef class clsCPU:
     '''
@@ -520,3 +521,7 @@ cdef class clsCPU:
             self.RegA.val=self.Mem.adr[self.SP.val]
             self.SP.val+=1
             self.PC.val+=1
+        elif cop==A_call:      # вызвать процедуру по адресу в регистре А
+            self.Mem.adr[self.SP.val]=self.RegA.val
+            self.SP.val-=1
+            self.PC.val=self.RegA.val
