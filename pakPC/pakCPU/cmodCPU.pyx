@@ -84,6 +84,7 @@ if True:
     DEF A_call=37
     DEF A_ret =38
     DEF A_in  =39
+    DEF A_out =40
     
 cdef class clsCPU:
     '''
@@ -541,4 +542,8 @@ cdef class clsCPU:
         elif cop==A_in:      # чтение из порта
             self.PC.val+=1
             self.RegA.val=self.Port.adr[self.Mem.adr[self.PC.val]]
+            self.PC.val+=1
+        elif cop==A_out:      # запись в порт
+            self.PC.val+=1
+            self.Port.adr[self.Mem.adr[self.PC.val]]=self.RegA.val
             self.PC.val+=1
