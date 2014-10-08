@@ -75,6 +75,7 @@ if True:
     DEF A_push=35
     DEF A_pop =36
     DEF A_call=37
+    DEF A_ret =38
     
 cdef class clsCPU:
     '''
@@ -525,3 +526,6 @@ cdef class clsCPU:
             self.Mem.adr[self.SP.val]=self.RegA.val
             self.SP.val-=1
             self.PC.val=self.RegA.val
+        elif cop==A_ret:      # возврат из процедуры
+            self.PC.val=self.RegA.val
+            self.SP.val+=1
