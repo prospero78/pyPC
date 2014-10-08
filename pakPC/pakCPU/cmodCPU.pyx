@@ -510,8 +510,8 @@ cdef class clsCPU:
             # переход, если регистр А равен нулю
             self.Mem.adr[self.PC.val]=self.RegA.val
             self.PC.val+=1
-        elif cop==A_call:      # вызвать процедуру по адресу в регистре А
+        elif cop==A_push:      # сохранить регистр А в стеке
             self.PC.val+=1
-            # переход, если регистр А равен нулю
-            self.Mem.adr[self.PC.val]=self.RegA.val
+            self.Mem.adr[self.SP.val]=self.RegA.val
+            self.SP.val-=1
             self.PC.val+=1
