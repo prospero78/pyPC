@@ -10,6 +10,7 @@ cdef struct Mem: # описание структуры памяти
 cdef struct RegPC: # описание регистра программного счётчика
     int val     # текущее значение регистра программного счётчика
     int max_adr # макисмальное значение регистра
+    int min_adr # мимнимальный адрес регистра
     
 cdef struct RegSP: # описание регистра стека
     int val     # значение регистра стека
@@ -72,6 +73,7 @@ if True:
     DEF A_ifnz=33
     DEF A_mset=34
     DEF A_push=35
+    DEF A_pop =36
     
 cdef class clsCPU:
     '''
@@ -511,7 +513,10 @@ cdef class clsCPU:
             self.Mem.adr[self.PC.val]=self.RegA.val
             self.PC.val+=1
         elif cop==A_push:      # сохранить регистр А в стеке
-            self.PC.val+=1
             self.Mem.adr[self.SP.val]=self.RegA.val
             self.SP.val-=1
+            self.PC.val+=1
+        elif cop==A_pop:      # восстановить регистр А из стека
+            self.RegA.val=self.Mem.adr[self.SP.val]
+            self.SP.val+=1
             self.PC.val+=1
