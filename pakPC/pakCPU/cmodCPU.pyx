@@ -3,6 +3,8 @@
 Класс центрального процессора.
 '''
 
+#define max_adr 0xFFFF
+
 cdef struct Mem: # описание структуры памяти
     int adr[0xFFFF]
     int max_adr
@@ -22,6 +24,11 @@ cdef struct Reg: # описание структуры регистра обще
     int FlagO   # флаг переполнения
     int FlagC   # флаг переноса
     int FlagS   # флаг знака
+
+cdef struct _port: # описание структуры регистра общего назначения
+    int adr[0xFFFF] # массив портов ввода вывода
+    int max_adr     # максимальный номер порта
+
     
 # константы для регистров
 if True:
@@ -76,6 +83,7 @@ if True:
     DEF A_pop =36
     DEF A_call=37
     DEF A_ret =38
+    DEF A_in  =39
     
 cdef class clsCPU:
     '''
@@ -102,6 +110,7 @@ cdef class clsCPU:
     cdef Mem *Mem           # память виртуального компьютера
     cdef int nn         # служебная переменная для хранения адреса ячейки памяти
     cdef RegPC SP   # указатель стека с контролем дна
+    cdef _port Port # ссылка на массив портов
     
     def __init__(self, root=None):
         self.root=root
@@ -148,9 +157,9 @@ cdef class clsCPU:
         cop=self.Mem.adr[self.PC.val]     # получить текущую команду из памяти
         # сначала вычислить регистр
         reg=(cop & REG_MASK)>>8
-        if reg<REG_A or reg>=NOT_REG:
-            print 'ERROR! In', self.PC.val, 'invalid reg! reg=', reg
-            return 1
+        #if reg<REG_A or reg>=NOT_REG:
+        #    print 'ERROR! In', self.PC.val, 'invalid reg! reg=', reg
+        #    return 1
         # если это всё-таки регистр -- продолжить детектирование
         if cop==A_rset:          # установка значения регистра А значением регистра А
             self.PC.val+=1           # выровнять укзатель команд на следующую команду
@@ -430,7 +439,8 @@ cdef class clsCPU:
             self.PC.val+=2
         elif cop==A_mshr:      # правый сдвиг значения регистра А из ячейки с адресом nn
             nn=self.Mem.adr[self.PC.val+1] # получить адрес nn, в котором лежит число
-            self.RegA.val>>self.Mem.adr[nn] # правый сдвиг
+            a=self.Mem.adr[nn] # число правого сдвига
+            self.RegA.val>>a
             if self.RegA.val==0:
                 self.RegA.FlagZ=1
             else:
@@ -441,7 +451,8 @@ cdef class clsCPU:
             self.PC.val+=2
         elif cop==A_mshl:      # получить флаги регистра А
             nn=self.Mem.adr[self.PC.val+1] # получить адрес nn, в котором лежит число
-            self.RegA.val<<self.Mem.adr[nn] # левый сдвиг
+            a=self.Mem.adr[nn] # число левого сдвига
+            self.RegA.val<<a # левый сдвиг
             if self.RegA.val==0:
                 self.RegA.FlagZ=1
             else:
@@ -529,3 +540,7 @@ cdef class clsCPU:
         elif cop==A_ret:      # возврат из процедуры
             self.PC.val=self.RegA.val
             self.SP.val+=1
+        elif cop==A_in:      # чтение из порта
+            self.PC.val+=1
+            self.RegA.val=self.Port.adr[self.Mem.adr[self.PC.val]]
+            self.PC.val+=1
