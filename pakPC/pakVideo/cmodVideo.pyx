@@ -12,13 +12,22 @@
     (
 '''
 
-class clsVideo():
-    cdef int Mem[3888000]=0 # блок видеопамяти рассчитанный на 1024х768х24 бита
-    cdef int mode=0 # регистр отвечающий за режим видеокарты
-    cdef int command=0 # регистр типа команды
-    cdef char buf[1024]=' ' # строковый буфер для работы с экраном
+cdef struct VideoMemory:
+    char adr[3888000] # блок видеопамяти рассчитанный на 1024х768х24 бита
+
+cdef struct BufChar:
+    char buf[1024] # строковый буфер для работы с экраном
+
+
+cdef class clsVideo:
+    cdef VideoMemory *Mem # ссылка на структуру видеопамяти
+    cdef int mode # регистр отвечающий за режим видеокарты
+    cdef int command # регистр типа команды
+    cdef BufChar *buf  # строковый буфер для работы с экраном
+    
     def __init__(self, root=None):
         self.root=root
+        self.mode=0
     
     def fill(self, color='#000'):
         '''
