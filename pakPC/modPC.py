@@ -24,6 +24,8 @@ class clsPC:
         
         # импорт клаcса центрального процессора
         from pakCPU.cmodCPU import clsCPU
+        for i in dir(clsCPU):
+            print i
         self.CPU=clsCPU(root=self)
         
         # импорт класса контроллера
