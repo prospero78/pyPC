@@ -7,5 +7,5 @@ cOptions.annotate=True
 
 setup(
     cmdclass = {'build_ext': build_ext},
-    ext_modules = [Extension("cmodReg", ["cmodReg.pyx"])]
+    ext_modules = [Extension("cmodVideo", ["cmodVideo.pyx"])]
 )
