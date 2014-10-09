@@ -1,3 +1,3 @@
 echo off
 cls
-python setup_cmodReg.py build_ext --inplace
+python setup_cmodVideo.py build_ext --inplace
