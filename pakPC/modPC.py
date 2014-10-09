@@ -24,7 +24,7 @@ class clsPC:
         
         # импорт клаcса центрального процессора
         from pakCPU.cmodCPU import clsCPU
-        pass
+        self.CPU=clsCPU(root=self)
         
         # импорт класса контроллера
         from pakController.modController import clsController
@@ -35,7 +35,7 @@ class clsPC:
         self.GUI=clsGUI(root=self)
         
         # импрот класса видеокарты
-        from pakVideo.modVideo import clsVideo
+        from pakVideo.cmodVideo import clsVideo
         self.Video=clsVideo(root=self)
         
         # импорт класса интерфейса дискового кластера
