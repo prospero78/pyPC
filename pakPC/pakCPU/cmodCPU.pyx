@@ -85,6 +85,7 @@ if True:
     DEF A_ret =38
     DEF A_in  =39
     DEF A_out =40
+    DEF A_vin =40
     
 cdef class clsCPU:
     '''
@@ -547,3 +548,7 @@ cdef class clsCPU:
             self.PC.val+=1
             self.Port.adr[self.Mem.adr[self.PC.val]]=self.RegA.val
             self.PC.val+=1
+        #elif cop==A_vin:      # чтение из видеопорта
+        #    self.PC.val+=1
+        #    self.Port.adr[self.Mem.adr[self.PC.val]]=self.RegA.val
+        #    self.PC.val+=1
