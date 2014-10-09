@@ -113,6 +113,7 @@ cdef class clsCPU:
     cdef int nn         # служебная переменная для хранения адреса ячейки памяти
     cdef RegPC SP   # указатель стека с контролем дна
     cdef _port Port # ссылка на массив портов
+    #cdef public root
     
     def __init__(self, root=None):
         self.root=root
