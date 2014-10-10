@@ -12,10 +12,13 @@ class clsLogic:
         Метод исполняет шаг процессора с выводом результата.
         '''
         def update_monitor():
-            self.GUI.winMain.frmCPU.frmRegA.lblVal['text']=self.CPU.RegA.val
-            self.GUI.winMain.frmCPU.frmRegA.lblValZ['text']=self.CPU.RegA.FlagZ
-            self.GUI.winMain.frmCPU.frmRegA.lblValO['text']=self.CPU.RegA.FlagO
-            self.GUI.winMain.frmCPU.frmRegA.lblValC['text']=self.CPU.RegA.FlagC
+            RegA=self.GUI.winMain.frmCPU.frmRegA
+            RegA.lblVal['text']=self.CPU.RegA.val
+            RegA.lblValZ['text']=self.CPU.RegA.FlagZ
+            RegA.lblValO['text']=self.CPU.RegA.FlagO
+            RegA.lblValC['text']=self.CPU.RegA.FlagC
+            #-------------------------
+            self.GUI.winMain.frmCPU.frmRegPC.lblVal['text']=self.CPU.RegPC.val
         print 'clsLogic.step_CPU()'
         self.CPU.step()
         update_monitor()
