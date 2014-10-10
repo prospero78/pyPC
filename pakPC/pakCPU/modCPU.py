@@ -4,6 +4,7 @@
 '''
 from pakReg.modReg import clsReg
 from pakMem.modMemory import clsMemory
+from pakReg.modRegSP import clsRegSP
 
 # константы для кодов операций
 if True:
@@ -81,8 +82,7 @@ class clsCPU:
        
         self.Mem=clsMemory(root=self.root)
         
-        self.SP.val=self.root.Res.max_adr
-        self.SP.min_adr=self.SP.val-100
+        self.RegSP=clsRegSP(root=self.root, val=self.root.Res.max_adr, min_adr=self.root.Res.max_adr-100)
         
         self.PC.val=0
         self.PC.max_adr=self.SP.min_adr-1 # максимальный адрес -- на 1 меньше, чем дно стека
