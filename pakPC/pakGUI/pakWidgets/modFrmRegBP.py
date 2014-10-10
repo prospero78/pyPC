@@ -15,23 +15,24 @@ class clsFrmRegBP(Frame):
         self.lblName=Label(self, text='RegBP', border=1, relief='ridge')
         self.lblName.pack(side='left', fill='x')
         
-        self.lblVal=Label(self, text='0000', border=1, relief='groove')
-        self.lblVal.pack(side='left')
+        self.lblBreak=Label(self, text='adr_break', border=1, relief='groove', bg='gray')
+        self.lblBreak.pack(side='left')
         
-        self.lblAct=Label(self, text='act', border=1, relief='groove')
-        self.lblAct.pack(side='left')
+        self.lblBreakVal=Label(self, text='0', border=1, relief='groove')
+        self.lblBreakVal.pack(side='left')
         
-        self.lblActVal=Label(self, text='0', border=1, relief='groove')
-        self.lblActVal.pack(side='left')
-        
-        self.lblProc=Label(self, text='adr_proc', border=1, relief='groove')
+        self.lblProc=Label(self, text='adr_proc', border=1, relief='groove', bg='gray')
         self.lblProc.pack(side='left')
         
         self.lblProcVal=Label(self, text='0', border=1, relief='groove')
         self.lblProcVal.pack(side='left')
         
+        self.lblAct=Label(self, text='act', border=1, relief='groove', bg='gray')
+        self.lblAct.pack(side='left')
         
-
+        self.lblActVal=Label(self, text='0', border=1, relief='groove')
+        self.lblActVal.pack(side='left')
+        
         
 if __name__=='__main__':
     from Tkinter import Tk
