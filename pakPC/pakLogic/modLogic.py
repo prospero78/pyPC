@@ -14,6 +14,8 @@ class clsLogic:
         def update_monitor():
             self.GUI.winMain.frmCPU.frmRegA.lblVal['text']=self.CPU.RegA.val
             self.GUI.winMain.frmCPU.frmRegA.lblValZ['text']=self.CPU.RegA.FlagZ
+            self.GUI.winMain.frmCPU.frmRegA.lblValO['text']=self.CPU.RegA.FlagO
+            self.GUI.winMain.frmCPU.frmRegA.lblValC['text']=self.CPU.RegA.FlagC
         print 'clsLogic.step_CPU()'
         self.CPU.step()
         update_monitor()
