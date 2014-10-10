@@ -50,7 +50,8 @@ if True:
     A_ret =38
     A_in  =39
     A_out =40
-    A_vin =40
+    A_vin =41
+    A_jmp = 42
 
 class clsReg:
     def __init__(self, root=None, mem=None, pc=None):
@@ -67,8 +68,6 @@ class clsReg:
         self.FlagZ=1
         self.FlagO=0
         self.FlagC=0
-        
-        
         
     def command(self, cop=0):
         '''
@@ -467,3 +466,6 @@ class clsReg:
         #    self.RegPC.val+=1
         #    self.Port.adr[self.Mem.adr[self.RegPC.val]]=self.val
         #    self.RegPC.val+=1
+        elif cop==A_jmp:      # запись в порт
+            self.RegPC.val+=1
+            self.RegPC.val=self.Mem.adr[self.RegPC.val]
