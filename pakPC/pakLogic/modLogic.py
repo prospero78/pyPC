@@ -6,6 +6,9 @@ import sys
 class clsLogic:
     def __init__(self, root=None):
         self.root=root
+        
+    def show_winEditBP(self):
+        print 'clsLogic.show_winEditBP()'
        
     def debug_CPU(self):
         print 'clsLogic.debug_CPU()'
