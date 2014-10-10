@@ -30,6 +30,10 @@ class clsGUI:
         from pakWinIDC.modWinIDC import clsWinIDC
         self.winIDC=clsWinIDC(root=self.root)
         
+        # импорт окна редактирования настроек регистра программного прерывания (winBP)
+        from pakWinEditBP.modWinEditBP import clsWinEditBP
+        self.winEditBP=clsWinEditBP(root=self.root)
+        
         
     def run(self):
         '''
