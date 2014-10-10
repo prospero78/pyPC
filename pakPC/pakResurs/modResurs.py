@@ -46,7 +46,7 @@ class clsRes:
         1.ххх -- зарелизенная версия
         И других вариантов не будет.
         '''
-        self.vers='0.461' # текущая версия сборки
+        self.vers='0.561' # текущая версия сборки
         self.max_adr=2**16 # максимальный адрес памяти
         self.max_reg_val=2**16 # максимальное значение регистра
 
@@ -70,6 +70,7 @@ class clsRes:
         self.winMain_mbtHelp_name='Справка'
         self.winMain_mbtHelp_help='Справка по программе'
         self.winMain_mbtHelp_about='О программе'
+        self.winMain_btnStep_text='Шаг >>'
         
         self.winAbout_name='О программе'
         self.winAbout_close='Закрыть это окно'
@@ -93,7 +94,7 @@ class clsRes:
         f=open('./pakPC/pakResurs/txt/GNU_GPL_v3_rus.txt','r')
         self.winLicense_locale=f.read()
         self.winLicense_btnLocalLicense_text='Русский'
-        self.winLicense_btnStep_text='Шаг >>'
+        
         self.winLicense_btnShowScreen_text='Показать экран'
         
         self.winScreen_title='Экран pyPC'
