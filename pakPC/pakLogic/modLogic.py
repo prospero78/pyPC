@@ -7,29 +7,31 @@ class clsLogic:
     def __init__(self, root=None):
         self.root=root
        
+    def debug_CPU(self):
+        print 'clsLogic.debug_CPU()'
+       
     def step_CPU(self):
         '''
         Метод исполняет шаг процессора с выводом результата.
         '''
-        def update_monitor():
-            RegA=self.GUI.winMain.frmCPU.frmRegA
-            RegA.lblVal['text']=self.CPU.RegA.val
-            RegA.lblValZ['text']=self.CPU.RegA.FlagZ
-            RegA.lblValO['text']=self.CPU.RegA.FlagO
-            RegA.lblValC['text']=self.CPU.RegA.FlagC
-            #-------------------------
-            self.GUI.winMain.frmCPU.frmRegPC.lblVal['text']=self.CPU.RegPC.val
-            #-------------------------
-            RegBP=self.GUI.winMain.frmCPU.frmRegBP
-            RegA.lblVal['text']=self.CPU.RegBP.val
-            RegA.lblProcVal['text']=self.CPU.RegBP.adr_proc
-            RegA.lblProcVal['text']=self.CPU.RegBP.adr_break
         print 'clsLogic.step_CPU()'
         self.CPU.step()
-        update_monitor()
+        self.update_monitor()
         
-       
-       
+    def update_monitor(self):
+        RegA=self.GUI.winMain.frmCPU.frmRegA
+        RegA.lblVal['text']=self.CPU.RegA.val
+        RegA.lblValZ['text']=self.CPU.RegA.FlagZ
+        RegA.lblValO['text']=self.CPU.RegA.FlagO
+        RegA.lblValC['text']=self.CPU.RegA.FlagC
+        #-------------------------
+        self.GUI.winMain.frmCPU.frmRegPC.lblVal['text']=self.CPU.RegPC.val
+        #-------------------------
+        RegBP=self.GUI.winMain.frmCPU.frmRegBP
+        RegBP.lblActVal['text']=self.CPU.RegBP.act
+        RegBP.lblProcVal['text']=self.CPU.RegBP.adr_proc
+        RegBP.lblProcVal['text']=self.CPU.RegBP.adr_break
+   
     def load_bios(self):
         '''
         Загружает BIOS по умолчанию.
@@ -40,7 +42,6 @@ class clsLogic:
             print i, Bios.data[i], '\n'
             self.CPU.Mem.adr[i]=Bios.data[i]
         
-    
     def generate_new_disk(self):
         print 'generate_new_disk()'
         self.GUI.winCreateDisk.destroy()
