@@ -51,8 +51,8 @@ class clsRes:
         self.max_reg_val=2**16 # максимальное значение регистра
 
         # инициализация биоса
-        from modBios import bios
-        self.bios=bios
+        from modBios import clsBios
+        self.Bios=clsBios(root=self.root)
         
         # чтение файла лицензии
         self.winLicense_title='Лицензионное требование'
