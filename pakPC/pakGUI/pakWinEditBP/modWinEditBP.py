@@ -5,7 +5,7 @@
 
 from Tkinter import Toplevel, Frame, Button, Label, Text, Scrollbar
 
-class clsWinAbout(Toplevel):
+class clsWinEditBP(Toplevel):
     def __init__(self, root=None):
         def create_self():
             Toplevel.__init__(self)
@@ -38,11 +38,9 @@ class clsWinAbout(Toplevel):
             self.frmBtn=Frame(self, border=3, relief='raised')
             self.frmBtn.pack(side='bottom', fill='x')
             
-            self.btnCloseAbout=Button(self.frmBtn, text=self.root.Res.winAbout_close, bg='gray', command=self.destroy)
-            self.btnCloseAbout.pack(side='right')
+            self.btnClose=Button(self.frmBtn, text=self.root.Res.winEditBP_btnClose, bg='gray', command=self.destroy)
+            self.btnClose.pack(side='right')
             
-            self.btnLicense=Button(self.frmBtn, text=self.root.Res.winAbout_license, bg='gray', command=self.root.Control.show_winLicense)
-            self.btnLicense.pack()
         
         self.root=root
         create_self()
