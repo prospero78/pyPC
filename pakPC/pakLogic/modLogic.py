@@ -7,6 +7,13 @@ class clsLogic:
     def __init__(self, root=None):
         self.root=root
        
+    def step_CPU(self):
+        '''
+        Метод исполняет шаг процессора с выводом результата.
+        '''
+        print 'clsLogic.step_CPU()'
+       
+       
     def load_bios(self):
         '''
         Загружает BIOS по умолчанию.
