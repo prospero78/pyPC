@@ -33,7 +33,6 @@ class clsFrmRegBP(Frame):
         self.lblActVal=Label(self, text='0', border=1, relief='groove')
         self.lblActVal.pack(side='left')
         
-        
 if __name__=='__main__':
     from Tkinter import Tk
     root=Tk()
