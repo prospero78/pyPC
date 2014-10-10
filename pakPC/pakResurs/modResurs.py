@@ -46,7 +46,7 @@ class clsRes:
         1.ххх -- зарелизенная версия
         И других вариантов не будет.
         '''
-        self.vers='0.561' # текущая версия сборки
+        self.vers='0.600' # текущая версия сборки
         self.max_adr=2**16 # максимальный адрес памяти
         self.max_reg_val=2**16 # максимальное значение регистра
 
@@ -111,6 +111,7 @@ class clsRes:
         
         self.winCreateDisk_title='Создание нового диска...'
         
+        self.winEditBP_title='Свойства регистра BP'
         self.winEditBP_btnClose='Закрыть'
         
         f.close()
