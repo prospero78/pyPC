@@ -21,4 +21,3 @@ class clsFrmCPU(Frame):
         # отображение регистра А
         self.frmRegA=clsFrmReg(root=self)
         self.frmRegA.lblName['text']='RegA'
-        #TODO: пора делать сам проц )))
