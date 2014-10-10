@@ -399,7 +399,7 @@ class clsReg:
             self.RegPC.val=self.Mem.adr[self.RegPC.val]
         
         #-------Control FlagZ--------------
-        if not_Z==1 and self.val==0:
+        if not_Z==0 and self.val==0:
                 self.FlagZ=1
         else:
             self.FlagZ=0
