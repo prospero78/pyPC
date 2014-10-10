@@ -3,6 +3,54 @@
 Класс регистра общего назначения.
 По умолчанию класс имеет 8 бит (0...255) -- MAX_REG_VAL
 '''
+# константы для кодов операций
+if True:
+    A_rset=0
+    A_radd=1
+    A_rsub=2
+    A_rinc=3
+    A_rdec=4
+    A_rnot=5
+    A_rxor=6
+    A_ror =7
+    A_rand=8
+    A_rshr=9
+    A_rshl=10
+    #----------------------
+    A_nset=11
+    A_nadd=12
+    A_nsub=13
+    A_nnot=14
+    A_nxor=15
+    A_nor =16
+    A_nand=17
+    #---------------------
+    A_mget=18
+    A_madd=19
+    A_msub=20
+    A_minc=21
+    A_mdec=22
+    A_mnot=23
+    A_mxor=24
+    A_mor =25
+    A_mand=26
+    A_mshr=27
+    A_mshl=28
+    #-----------------
+    A_getf =29
+    A_setf =30
+    #---------------
+    A_ifz =31
+    A_ncmp=32
+    A_ifnz=33
+    A_mset=34
+    A_push=35
+    A_pop =36
+    A_call=37
+    A_ret =38
+    A_in  =39
+    A_out =40
+    A_vin =40
 
 class clsReg:
     def __init__(self, root=None, mem=None, pc=None):
@@ -30,13 +78,6 @@ class clsReg:
             cop - "код операции"
             -------------------
         '''
-        cop=self.Mem.adr[self.RegPC.val]     # получить текущую команду из памяти
-        # сначала вычислить регистр
-        reg=(cop & REG_MASK)>>8
-        #if reg<REG_A or reg>=NOT_REG:
-        #    print 'ERROR! In', self.RegPC.val, 'invalid reg! reg=', reg
-        #    return 1
-        # если это всё-таки регистр -- продолжить детектирование
         if cop==A_rset:          # установка значения регистра А значением регистра А
             self.RegPC.val+=1           # выровнять укзатель команд на следующую команду
             # сбросить все флаги, кроме Zero и Signed
