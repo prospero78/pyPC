@@ -50,6 +50,7 @@ class clsWinMain(Tk):
                     self.mbtCustom.pack(side='left')
                     
                     self.mnuCustom=Menu(self.mbtCustom)
+                    self.mnuCustom.add_command(label=self.root.Res.winMain_mbtEditBP, accelerator='F11', command=self.root.Control.show_winEditBP)
                     self.mnuCustom.add_separator()
                     self.mnuCustom.add_command(label=self.root.Res.winMain_mbtEdit_disk, accelerator='F12', command=self.root.Control.show_winIDC)
                     
