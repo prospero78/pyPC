@@ -3,7 +3,7 @@
 Класс окна "О программе".
 '''
 
-from Tkinter import Toplevel, Frame, Button, Label, Text, Scrollbar
+from Tkinter import Toplevel, Frame, Button, Label, Entry
 
 class clsWinEditBP(Toplevel):
     def __init__(self, root=None):
@@ -17,21 +17,16 @@ class clsWinEditBP(Toplevel):
             self.frmUp=Frame(self, border=3, relief='groove')
             self.frmUp.pack(fill='both', expand=1, side='top')
             
-            self.lblPyPC=Label(self.frmUp, border=3, relief='sunken', text=' pyPC ', bg='white', fg='red', font='Arial 24 bold')
-            self.lblPyPC.pack(side='left', fill='y')
+            self.lblRegBP=Label(self.frmUp, border=3, relief='raised', text=' RegBP ', bg='white', fg='red', font='Arial 24 bold')
+            self.lblRegBP.pack(side='left', fill='y')
             
-            self.lblGit=Label(self.frmUp, text=self.root.Res.winAbout_url, fg='blue', cursor='hand2')
-            self.lblGit.pack(side='bottom', fill='x')
+            self.lblAdrBreak=Label(self.frmUp, text='adr_break')
+            self.lblAdrBreak.pack(side='top', fill='x')
             
-            self.scbAbout=Scrollbar(self.frmUp)
-            self.scbAbout.pack(side='right', fill='y')
+            self.entAdrBreakVal=Entry(self.frmUp, cursor='hand2')
+            self.entAdrBreakVal.pack(side='top', fill='x')
             
-            self.txtAbout=Text(self.frmUp, height=12, width=30, font='Courier 9')
-            self.txtAbout.pack(fill='both', expand=1, side='left')
-            self.txtAbout.insert('end', self.root.Res.winAbout_txt)
-            
-            self.scbAbout.config(command=self.txtAbout.yview)
-            self.txtAbout.config(yscrollcommand=self.scbAbout.set)
+            self.entAdrBreakVal.insert(0, self.root.CPU.RegBP.adr_break)
             
         
         def create_frmBtn():
