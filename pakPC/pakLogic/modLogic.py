@@ -9,6 +9,7 @@ class clsLogic:
         
     def show_winEditBP(self):
         print 'clsLogic.show_winEditBP()'
+        self.GUI.winEditBP.show()
        
     def debug_CPU(self):
         print 'clsLogic.debug_CPU()'
