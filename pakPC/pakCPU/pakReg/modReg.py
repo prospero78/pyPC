@@ -48,9 +48,9 @@ if True:
     A_pop =36
     A_call=37
     A_ret =38
-    A_in  =39
-    A_out =40
-    A_vin =41
+    A_pin  =39
+    A_pout =40
+    XXXX  =41
     A_jmp = 42
 
 class clsReg:
@@ -382,11 +382,11 @@ class clsReg:
         elif cop==A_ret:      # возврат из процедуры
             self.RegPC.val=self.val
             self.RegSP.val+=1
-        elif cop==A_in:      # чтение из порта
+        elif cop==A_pin:      # чтение из порта
             self.RegPC.val+=1
             self.val=self.Port.adr[self.Mem.adr[self.RegPC.val]]
             self.RegPC.val+=1
-        elif cop==A_out:      # запись в порт
+        elif cop==A_pout:      # запись в порт
             self.RegPC.val+=1
             self.Port.adr[self.Mem.adr[self.RegPC.val]]=self.val
             self.RegPC.val+=1
