@@ -94,7 +94,6 @@ class clsRes:
         f=open('./pakPC/pakResurs/txt/GNU_GPL_v3_rus.txt','r')
         self.winLicense_locale=f.read()
         self.winLicense_btnLocalLicense_text='Русский'
-        
         self.winLicense_btnShowScreen_text='Показать экран'
         
         self.winScreen_title='Экран pyPC'
