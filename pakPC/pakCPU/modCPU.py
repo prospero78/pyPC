@@ -7,7 +7,7 @@ from pakMem.modMemory import clsMemory
 from pakReg.modRegSP import clsRegSP
 from pakReg.modRegPC import clsRegPC
 from pakReg.modReg   import clsReg
-from pakReg.modRegBP import clsBP
+from pakReg.modRegBP import clsRegBP
 
 class clsCPU:
     '''
@@ -43,7 +43,7 @@ class clsCPU:
         self.RegA=clsReg(root=self.root, mem=self.Mem, pc=self.RegPC)
         
         # регистр для установки принудительного прерывания исполнения программы
-        self.RegBP=clsRegBP(root=self.root, act=0)
+        self.RegBP=clsRegBP(root=self.root, act=0, adr_break=0, adr_proc=0)
         
     def run(self):
         pass
