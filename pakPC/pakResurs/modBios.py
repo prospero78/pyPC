@@ -21,7 +21,7 @@ class clsBios:
         self.data={
             0:11, # A.nset(10)
             1:10, # n=10
-            2:12,  # A.nadd(1)
+            2:12, # A.nadd(1)
             3:1,  # n=1
             4:12, # A.nadd(5)
             5:5,  # n=5
