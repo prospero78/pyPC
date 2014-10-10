@@ -30,7 +30,10 @@ class clsLogic:
         Загружает BIOS по умолчанию.
         BIOS содержится в py-файле, обычный хитрый словарь.
         '''
-        pass
+        Bios=self.Res.Bios
+        for i in Bios.data:
+            print i, Bios.data[i], '\n'
+            self.CPU.Mem.adr[i]=Bios.data[i]
         
     
     def generate_new_disk(self):
@@ -56,9 +59,10 @@ class clsLogic:
         self.root.GUI.winScreen.show()
         
     def run(self):
-        self.load_bios()
         self.CPU=self.root.CPU
         self.GUI=self.root.GUI
+        self.Res=self.root.Res
+        self.load_bios()
         self.GUI.run()
         
     def exit(self):
