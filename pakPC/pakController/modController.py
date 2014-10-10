@@ -9,7 +9,7 @@ class clsController:
         
     def winMain_stepCPU(self, event=''):
         print  'clsController.winMain_stepCPU()'
-        self.CPU.step()
+        self.Logic.step_CPU()
     
     def winCreateDisk_ok(self, event=''):
         print 'clsController.winCreateDisk_ok()'
