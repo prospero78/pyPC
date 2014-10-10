@@ -111,4 +111,6 @@ class clsRes:
         
         self.winCreateDisk_title='Создание нового диска...'
         
+        self.winEditBP_btnClose='Закрыть'
+        
         f.close()
