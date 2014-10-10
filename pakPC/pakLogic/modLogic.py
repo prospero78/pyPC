@@ -19,6 +19,11 @@ class clsLogic:
             RegA.lblValC['text']=self.CPU.RegA.FlagC
             #-------------------------
             self.GUI.winMain.frmCPU.frmRegPC.lblVal['text']=self.CPU.RegPC.val
+            #-------------------------
+            RegBP=self.GUI.winMain.frmCPU.frmRegBP
+            RegA.lblVal['text']=self.CPU.RegBP.val
+            RegA.lblProcVal['text']=self.CPU.RegBP.adr_proc
+            RegA.lblProcVal['text']=self.CPU.RegBP.adr_break
         print 'clsLogic.step_CPU()'
         self.CPU.step()
         update_monitor()
