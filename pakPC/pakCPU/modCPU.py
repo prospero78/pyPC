@@ -45,5 +45,4 @@ class clsCPU:
         pass
     
     def step(self):
-        cop=self.Mem.adr[self.RegPC.val]
-        self.RegA.command(cop=cop)
+        self.RegA.command()
