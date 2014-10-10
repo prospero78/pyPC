@@ -10,7 +10,7 @@ class clsWinEditBP(Toplevel):
         def create_self():
             Toplevel.__init__(self)
             self.state('withdrawn')
-            self.title(self.root.Res.winAbout_name)
+            self.title(self.root.Res.winEditBP_title)
             self.minsize(380, 200)
         
         def create_frmUp():
