@@ -70,7 +70,8 @@ class clsRes:
         self.winMain_mbtHelp_name='Справка'
         self.winMain_mbtHelp_help='Справка по программе'
         self.winMain_mbtHelp_about='О программе'
-        self.winMain_btnStep_text='Шаг >>'
+        self.winMain_btnStep='Шаг >'
+        self.winMain_btnDebug='Отладка  >>'
         
         self.winAbout_name='О программе'
         self.winAbout_close='Закрыть это окно'
