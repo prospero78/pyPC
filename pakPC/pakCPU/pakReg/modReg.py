@@ -57,6 +57,9 @@ class clsReg:
     def __init__(self, root=None, mem=None, pc=None):
         self.root=root
         
+        # максимальное значение в регистре
+        self.max_val=2**16
+        
         # ссылка на память
         self.Mem=mem
         
@@ -77,6 +80,8 @@ class clsReg:
             cop - "код операции"
             -------------------
         '''
+        # признак "нельзя перебивать флаг Z" -- для команды сравнения с числом
+        not_Z=0
         if cop==A_rset:          # установка значения регистра А значением регистра А
             self.RegPC.val+=1           # выровнять укзатель команд на следующую команду
             # сбросить все флаги, кроме Zero и Signed
@@ -95,7 +100,6 @@ class clsReg:
             self.FlagS=0
         elif cop==A_rsub:        # установка регистра А с вычитанием содержимого регистра А
             self.val=0
-            self.FlagZ=1
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
@@ -105,8 +109,6 @@ class clsReg:
             if self.val>=self.max_val: # если в регистре перебор
                 self.FlagO=1   # установить флаг перебора
                 self.val=self.max_val-self.val
-            if self.val==0:
-                self.FlagZ=1
             self.FlagC=0
             self.FlagS=0
             self.RegPC.val+=1
@@ -115,21 +117,16 @@ class clsReg:
             if self.val<0: # если в регистре недобор
                 self.FlagC=1   # установить флаг заёма
                 self.val=self.max_val+self.val
-            if self.val==0:
-                self.FlagZ=1
             self.FlagO=0
             self.RegPC.val+=1
         elif cop==A_rnot:      # инвертировать регистр А инверсным значением регистра А
             self.val=~self.val
-            if self.val==0:
-                self.FlagZ=1
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
             self.RegPC.val+=1
         elif cop==A_rxor:      # поксорить регистр А значением регистра А
             self.val=0
-            self.FlagZ=1
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
@@ -140,16 +137,12 @@ class clsReg:
             self.RegPC.val+=1
         elif cop==A_rshr:      # сдвиг вправо регистра А со значением регистра А
             self.val>>=1
-            if self.val==0:
-                self.FlagZ=1
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
             self.RegPC.val+=1
         elif cop==A_rshl:      # сдвиг влево регистра А со значением регистра А
             self.val<<=1
-            if self.val==0:
-                self.FlagZ=1
             if self.val>self.max_val: # превышено ли максимальное значение?
                 self.FlagO=1
                 self.val=self.val-self.max_val
@@ -159,8 +152,6 @@ class clsReg:
         elif cop==A_nset:      # установить регистр А значением числа n
             self.RegPC.val+=1
             self.val=self.Mem.adr[self.RegPC.val]
-            if self.val==0:
-                self.FlagZ=1
             self.FlagO=1
             self.FlagC=0
             self.FlagS=0
@@ -173,17 +164,11 @@ class clsReg:
                 self.val=self.max_val-self.val
             self.RegPC.val+=1
             # установка необходимых флагов
-            if self.val==0:
-                self.FlagZ=1
             self.FlagC=0
             self.FlagS=0
         elif cop==A_nsub:        # установка регистра А с вычитанием числа n
             self.RegPC.val+=1
             self.val=self.val-self.Mem.adr[self.RegPC.val]
-            if self.val==0:
-                self.FlagZ=1
-            else:
-                self.FlagZ=0
             if self.val<0:
                 self.val=self.max_val+self.val
                 self.FlagS=1
@@ -195,10 +180,6 @@ class clsReg:
         elif cop==A_nnot:      # инвертировать регистр А инверсным значением числа n
             self.RegPC.val+=1
             self.val=~self.Mem.adr[self.RegPC.val]
-            if self.val==0:
-                self.FlagZ=1
-            else:
-                self.FlagZ=0
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
@@ -206,10 +187,6 @@ class clsReg:
         elif cop==A_nxor:      # поксорить регистр А значением n
             self.RegPC.val+=1
             self.val^=self.Mem.adr[self.RegPC.val]
-            if self.val==0:
-                self.FlagZ=1
-            else:
-                self.FlagZ=0
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
@@ -217,10 +194,6 @@ class clsReg:
         elif cop==A_nor:      # OR регистра А со значением n
             self.RegPC.val+=1
             self.val|=self.Mem.adr[self.RegPC.val]
-            if self.val==0:
-                self.FlagZ=1
-            else:
-                self.FlagZ=0
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
@@ -228,10 +201,6 @@ class clsReg:
         elif cop==A_nand:      # AND регистра А со значением n
             self.RegPC.val+=1
             self.val&=self.Mem.adr[self.RegPC.val]
-            if self.val==0:
-                self.FlagZ=1
-            else:
-                self.FlagZ=0
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
@@ -239,10 +208,6 @@ class clsReg:
         elif cop==A_mget:      # установка значения регистра А из ячейки с адресом nn
             nn=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
             self.val=self.Mem.adr[nn] # присовить
-            if self.val==0:
-                self.FlagZ=1
-            else:
-                self.FlagZ=0
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
@@ -250,10 +215,6 @@ class clsReg:
         elif cop==A_madd:      # сложение значения регистра А из ячейки с адресом nn
             nn=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
             self.val+=self.Mem.adr[nn] # сложить
-            if self.val==0:
-                self.FlagZ=1
-            else:
-                self.FlagZ=0
             if self.val>=self.max_val:
                 self.val=self.val-self.max_val
                 self.FlagO=1
@@ -265,10 +226,6 @@ class clsReg:
         elif cop==A_msub:      # вычитание значения регистра А из ячейки с адресом nn
             nn=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
             self.val-=self.Mem.adr[nn] # сложить
-            if self.val==0:
-                self.FlagZ=1
-            else:
-                self.FlagZ=0
             if self.val<0:
                 self.val=self.val*(-1)
                 self.FlagC=1
@@ -281,10 +238,6 @@ class clsReg:
         elif cop==A_minc:      # увеличить на 1 значение регистра А из ячейки с адресом nn
             nn=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
             self.val=self.Mem.adr[nn]+1 # сложить
-            if self.val==0:
-                self.FlagZ=1
-            else:
-                self.FlagZ=0
             if self.val>=self.max_val:
                 self.val=self.val-self.max_val
                 self.FlagO=1
@@ -297,10 +250,7 @@ class clsReg:
             nn=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
             self.val=self.Mem.adr[nn]-1 # вычесть
             if self.val==0:
-                self.FlagZ=1
                 self.FlagC=0
-            else:
-                self.FlagZ=0
             if self.val<=0:
                 self.val=self.max_val
                 self.FlagC=1
@@ -312,10 +262,6 @@ class clsReg:
         elif cop==A_mnot:      # инвертировать значение регистра А из ячейки с адресом nn
             nn=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
             self.val=~self.Mem.adr[nn] # инвертировать
-            if self.val==0:
-                self.FlagZ=1
-            else:
-                self.FlagZ=0
             self.FlagO=0
             self.FlagS=0
             self.FlagC=0
@@ -323,10 +269,6 @@ class clsReg:
         elif cop==A_mxor:      # исключающее ИЛИ значение регистра А из ячейки с адресом nn
             nn=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
             self.val^=self.Mem.adr[nn] # исключающее ИЛИ
-            if self.val==0:
-                self.FlagZ=1
-            else:
-                self.FlagZ=0
             self.FlagO=0
             self.FlagS=0
             self.FlagC=0
@@ -334,10 +276,6 @@ class clsReg:
         elif cop==A_mor:      # логическое И значение регистра А из ячейки с адресом nn
             nn=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
             self.val|=self.Mem.adr[nn] # логическое ИЛИ
-            if self.val==0:
-                self.FlagZ=1
-            else:
-                self.FlagZ=0
             self.FlagO=0
             self.FlagS=0
             self.FlagC=0
@@ -345,10 +283,6 @@ class clsReg:
         elif cop==A_mand:      # логическое И значение регистра А из ячейки с адресом nn
             nn=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
             self.val&=self.Mem.adr[nn] # логическое ИЛИ
-            if self.val==0:
-                self.FlagZ=1
-            else:
-                self.FlagZ=0
             self.FlagO=0
             self.FlagS=0
             self.FlagC=0
@@ -356,10 +290,6 @@ class clsReg:
         elif cop==A_mshr:      # правый сдвиг значения регистра А из ячейки с адресом nn
             nn=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
             self.val=self.val>>(self.Mem.adr[nn]) # правый сдвиг
-            if self.val==0:
-                self.FlagZ=1
-            else:
-                self.FlagZ=0
             self.FlagO=0
             self.FlagS=0
             self.FlagC=0
@@ -367,10 +297,6 @@ class clsReg:
         elif cop==A_mshl:      # получить флаги регистра А
             nn=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
             self.val=self.val>>self.Mem.adr[nn] # левый сдвиг
-            if self.val==0:
-                self.FlagZ=1
-            else:
-                self.FlagZ=0
             self.FlagO=0
             self.FlagS=0
             self.FlagC=0
@@ -415,7 +341,7 @@ class clsReg:
             else:
                 self.FlagS=0
             self.RegPC.val+=1
-        elif cop==A_ifz:      # переход если "0"
+        elif cop==A_ifz:      # переход если Z==1
             if self.FlagZ == 1:
                 # переход, если регистр А равен нулю
                 self.RegPC.val=self.Mem.adr[self.RegPC.val+1]
@@ -428,8 +354,9 @@ class clsReg:
             else:
                 self.FlagZ=0
             self.RegPC.val+=1
-        elif cop==A_ifnz:      # переход если "0"
-            if self.FlagZ <> 1:
+            not_Z=1
+        elif cop==A_ifnz:      # переход если Z==0
+            if self.FlagZ==0:
                 # переход, если регистр А равен нулю
                 self.RegPC.val=self.Mem.adr[self.RegPC.val+1]
             else:
@@ -469,3 +396,9 @@ class clsReg:
         elif cop==A_jmp:      # запись в порт
             self.RegPC.val+=1
             self.RegPC.val=self.Mem.adr[self.RegPC.val]
+        
+        #-------Control FlagZ--------------
+        if not_Z==1 and self.val==0:
+                self.FlagZ=1
+        else:
+            self.FlagZ=0
