@@ -65,6 +65,7 @@ class clsRes:
         self.winMain_btnExit_name='Выход'
         self.winMain_mbtFile_name='Файл'
         self.winMain_mbtEdit_name='Правка'
+        self.winMain_mbtEditBP='Настройка регистра отладка'
         self.winMain_mbtEdit_disk='Настройка дисков'
         self.winMain_mbtCustom_name='Настройка'
         self.winMain_mbtHelp_name='Справка'
