@@ -11,7 +11,12 @@ class clsLogic:
         '''
         Метод исполняет шаг процессора с выводом результата.
         '''
+        def update_monitor():
+            self.GUI.winMain.frmCPU.frmRegA.lblVal['text']=self.CPU.RegA.val
         print 'clsLogic.step_CPU()'
+        self.CPU.step()
+        update_monitor()
+        
        
        
     def load_bios(self):
@@ -46,6 +51,7 @@ class clsLogic:
         
     def run(self):
         self.load_bios()
+        self.CPU=self.root.CPU
         self.GUI=self.root.GUI
         self.GUI.run()
         
