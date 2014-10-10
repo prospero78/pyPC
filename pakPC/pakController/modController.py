@@ -6,6 +6,9 @@
 class clsController:
     def __init__(self, root=None):
         self.root=root
+        
+    def winMain_stepCPU(self, event=''):
+        print  'clsController.winMain_stepCPU()'
     
     def winCreateDisk_ok(self, event=''):
         print 'clsController.winCreateDisk_ok()'
