@@ -6,6 +6,7 @@ from pakReg.modReg import clsReg
 from pakMem.modMemory import clsMemory
 from pakReg.modRegSP import clsRegSP
 from pakReg.modRegPC import clsRegPC
+from pakReg.modReg   import clsReg
 
 # константы для кодов операций
 if True:
@@ -87,17 +88,7 @@ class clsCPU:
         
         self.RegPC=clsRegPC(root=self.root, val=0, max_adr=self.root.Res.max_adr-1)
         
-        self.RegA.val=0
-        self.RegA.FlagZ=1
-        self.RegA.FlagO=0
-        self.RegA.FlagC=0
-        self.RegA.FlagS=0
-        
-        self.RegB.val=0
-        self.RegB.FlagZ=1
-        self.RegB.FlagO=0
-        self.RegB.FlagC=0
-        self.RegB.FlagS=0
+        self.RegA=clsReg(root=self.root, mem=self.Mem, pc=self.RegPC)
         
     def run(self):
         pass
