@@ -3,6 +3,7 @@
 Класс центрального процессора.
 '''
 from pakReg.modReg import clsReg
+from pakMem.modMemory import clsMemory
 
 # константы для кодов операций
 if True:
@@ -78,11 +79,7 @@ class clsCPU:
         
         self.max_val=self.root.Res.max_reg_val
        
-        # инициализация памяти виртуального компьютера
-        self.Mem.adr={}
-        self.Mem.max_adr=2**24
-        for i in xrange(0,self.Mem.max_adr):
-            self.Mem.adr[i]=0
+        self.Mem=clsMemory(root=self.root)
         
         self.SP.val=self.root.Res.max_adr
         self.SP.min_adr=self.SP.val-100
