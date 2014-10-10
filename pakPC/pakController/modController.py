@@ -7,6 +7,10 @@ class clsController:
     def __init__(self, root=None):
         self.root=root
         
+    def show_winEditBP(self, event=''):
+        print  'clsController.show_winEditBP()'
+        self.Logic.show_winEditBP()
+        
     def winMain_debug(self, event=''):
         print  'clsController.winMain_debug()'
         self.Logic.debug_CPU()
