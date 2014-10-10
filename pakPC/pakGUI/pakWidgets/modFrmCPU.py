@@ -8,12 +8,15 @@ from Tkinter import Frame
 
 from pakPC.pakGUI.pakWidgets.modFrmReg import clsFrmReg
 from pakPC.pakGUI.pakWidgets.modFrmRegPC import clsFrmRegPC
-from pakPC.pakGUI.pakWidget.modFrmRegBP import clsRegBP
+from pakPC.pakGUI.pakWidgets.modFrmRegBP import clsFrmRegBP
 
 class clsFrmCPU(Frame):
     def __init__(self, root=None):
         Frame.__init__(self, master=root, border=3, relief='sunken')
         self.pack(side='top', fill='x')
+        
+        # отображаем регистр программной отладки
+        self.frmRegBP=clsFrmRegBP(root=self)
         
         # отображаем программный счётчик
         self.frmRegPC=clsFrmRegPC(root=self)
@@ -22,6 +25,3 @@ class clsFrmCPU(Frame):
         # отображение регистра А
         self.frmRegA=clsFrmReg(root=self)
         self.frmRegA.lblName['text']='RegA'
-        
-        # отображаем регистр программно отладки
-        self.frmRegBP=clsFrmRegBP(root=self)
