@@ -72,7 +72,7 @@ class clsReg:
         self.FlagO=0
         self.FlagC=0
         
-    def command(self, cop=0):
+    def command(self):
         '''
             Вычисляет что за команда поступила на вход и
             далее обрабатывает её, в зависимости от кода
@@ -82,6 +82,9 @@ class clsReg:
         '''
         # признак "нельзя перебивать флаг Z" -- для команды сравнения с числом
         not_Z=0
+        
+        cop=self.Mem.adr[self.RegPC.val]
+        
         if cop==A_rset:          # установка значения регистра А значением регистра А
             self.RegPC.val+=1           # выровнять укзатель команд на следующую команду
             # сбросить все флаги, кроме Zero и Signed
@@ -94,8 +97,6 @@ class clsReg:
                 self.val=self.max_val-self.val
             self.RegPC.val+=1
             # установка необходимых флагов
-            if self.val==0:
-                self.FlagZ=1
             self.FlagC=0
             self.FlagS=0
         elif cop==A_rsub:        # установка регистра А с вычитанием содержимого регистра А
@@ -152,7 +153,7 @@ class clsReg:
         elif cop==A_nset:      # установить регистр А значением числа n
             self.RegPC.val+=1
             self.val=self.Mem.adr[self.RegPC.val]
-            self.FlagO=1
+            #self.FlagO=1
             self.FlagC=0
             self.FlagS=0
             self.RegPC.val+=1
