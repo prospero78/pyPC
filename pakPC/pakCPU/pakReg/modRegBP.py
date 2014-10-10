@@ -11,6 +11,6 @@ class clsRegBP:
         adr_proc -- куда перекинуть управление
         '''
         self.root=root
-        self.adr_break=val
+        self.adr_break=adr_break
         self.act=act
         self.adr_proc=adr_proc
