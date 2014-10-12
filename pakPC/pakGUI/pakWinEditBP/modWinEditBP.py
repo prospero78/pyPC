@@ -24,25 +24,31 @@ class clsWinEditBP(Toplevel):
             self.frmAdrBreak.pack(fill='x', expand=1, side='top')
             
             self.lblAdrBreak=Label(self.frmAdrBreak, text='adr_break', relief='raised')
-            self.lblAdrBreak.pack()
+            self.lblAdrBreak.pack(side='top', fill='x')
             
             self.entAdrBreakVal=Entry(self.frmAdrBreak, cursor='hand2')
             self.entAdrBreakVal.pack(side='top', fill='x')
             
             self.entAdrBreakVal.insert(0, self.root.CPU.RegBP.adr_break)
             #--------------------------------------------------------------
-            self.lblAdrProc=Label(self.frmUp, text='adr_proc')
+            self.frmAdrProc=Frame(self.frmUp, border=3, relief='groove')
+            self.frmAdrProc.pack(fill='x', expand=1, side='top')
+            
+            self.lblAdrProc=Label(self.frmAdrProc, text='adr_proc')
             self.lblAdrProc.pack(side='top', fill='x')
             
-            self.entAdrProcVal=Entry(self.frmUp, cursor='hand2')
+            self.entAdrProcVal=Entry(self.frmAdrProc, cursor='hand2')
             self.entAdrProcVal.pack(side='top', fill='x')
             
             self.entAdrProcVal.insert(0, self.root.CPU.RegBP.adr_break)
             #--------------------------------------------------------------
-            self.lblAct=Label(self.frmUp, text='act')
+            self.frmAct=Frame(self.frmUp, border=3, relief='groove')
+            self.frmAct.pack(fill='both', expand=1, side='top')
+            
+            self.lblAct=Label(self.frmAct, text='act')
             self.lblAct.pack(side='top')
             
-            self.cheActVal=Checkbutton(self.frmUp, cursor='hand2')
+            self.cheActVal=Checkbutton(self.frmAct, cursor='hand2')
             self.cheActVal.pack(side='top', fill='x')
             
         
