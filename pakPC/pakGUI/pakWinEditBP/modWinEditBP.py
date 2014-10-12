@@ -19,11 +19,14 @@ class clsWinEditBP(Toplevel):
             
             self.lblRegBP=Label(self.frmUp, border=3, relief='raised', text=' RegBP ', bg='white', fg='red', font='Arial 24 bold')
             self.lblRegBP.pack(side='left', fill='y')
+            #--------------------------------------------------------------
+            self.frmAdrBreak=Frame(self.frmUp, border=3, relief='groove')
+            self.frmAdrBreak.pack(fill='x', expand=1, side='top')
             
-            self.lblAdrBreak=Label(self.frmUp, text='adr_break')
-            self.lblAdrBreak.pack(side='top', fill='x')
+            self.lblAdrBreak=Label(self.frmAdrBreak, text='adr_break', relief='raised')
+            self.lblAdrBreak.pack()
             
-            self.entAdrBreakVal=Entry(self.frmUp, cursor='hand2')
+            self.entAdrBreakVal=Entry(self.frmAdrBreak, cursor='hand2')
             self.entAdrBreakVal.pack(side='top', fill='x')
             
             self.entAdrBreakVal.insert(0, self.root.CPU.RegBP.adr_break)
