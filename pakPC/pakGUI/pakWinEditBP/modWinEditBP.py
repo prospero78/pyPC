@@ -27,6 +27,15 @@ class clsWinEditBP(Toplevel):
             self.entAdrBreakVal.pack(side='top', fill='x')
             
             self.entAdrBreakVal.insert(0, self.root.CPU.RegBP.adr_break)
+            #--------------------------------------------------------------
+            self.lblAdrProc=Label(self.frmUp, text='adr_proc')
+            self.lblAdrProc.pack(side='top', fill='x')
+            
+            self.entAdrProcVal=Entry(self.frmUp, cursor='hand2')
+            self.entAdrProcVal.pack(side='top', fill='x')
+            
+            self.entAdrProcVal.insert(0, self.root.CPU.RegBP.adr_break)
+            
             
         
         def create_frmBtn():
