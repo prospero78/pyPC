@@ -21,7 +21,7 @@ class clsWinEditBP(Toplevel):
             self.lblRegBP.pack(side='left', fill='y')
             #--------------------------------------------------------------
             self.frmAdrBreak=Frame(self.frmUp, border=3, relief='groove')
-            self.frmAdrBreak.pack(fill='x', expand=1, side='top')
+            self.frmAdrBreak.pack(fill='x', side='top')
             
             self.lblAdrBreak=Label(self.frmAdrBreak, text='adr_break', relief='raised')
             self.lblAdrBreak.pack(side='top', fill='x')
@@ -32,9 +32,9 @@ class clsWinEditBP(Toplevel):
             self.entAdrBreakVal.insert(0, self.root.CPU.RegBP.adr_break)
             #--------------------------------------------------------------
             self.frmAdrProc=Frame(self.frmUp, border=3, relief='groove')
-            self.frmAdrProc.pack(fill='x', expand=1, side='top')
+            self.frmAdrProc.pack(fill='x', side='top')
             
-            self.lblAdrProc=Label(self.frmAdrProc, text='adr_proc')
+            self.lblAdrProc=Label(self.frmAdrProc, text='adr_proc', relief='raised')
             self.lblAdrProc.pack(side='top', fill='x')
             
             self.entAdrProcVal=Entry(self.frmAdrProc, cursor='hand2')
@@ -45,8 +45,8 @@ class clsWinEditBP(Toplevel):
             self.frmAct=Frame(self.frmUp, border=3, relief='groove')
             self.frmAct.pack(fill='both', expand=1, side='top')
             
-            self.lblAct=Label(self.frmAct, text='act')
-            self.lblAct.pack(side='top')
+            self.lblAct=Label(self.frmAct, text='act', relief='raised')
+            self.lblAct.pack(side='top', fill='x')
             
             self.cheActVal=Checkbutton(self.frmAct, cursor='hand2')
             self.cheActVal.pack(side='top', fill='x')
