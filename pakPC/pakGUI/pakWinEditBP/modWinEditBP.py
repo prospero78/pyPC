@@ -80,3 +80,6 @@ class clsWinEditBP(Toplevel):
         self.state('withdrawn')
         self.grab_release()
         self.root.Control.winEditBP_hide()
+    
+    def win_exit(self):
+        self.destroy()
