@@ -7,6 +7,11 @@ class clsLogic:
     def __init__(self, root=None):
         self.root=root
         
+    def winEditBP_hide(self):
+        print '  clsLogic.winEditBP_hide()'
+        
+        
+        
     def show_winEditBP(self):
         print 'clsLogic.show_winEditBP()'
         self.GUI.winEditBP.show()
