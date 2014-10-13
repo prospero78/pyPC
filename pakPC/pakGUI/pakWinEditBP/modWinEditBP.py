@@ -3,7 +3,7 @@
 Класс окна "О программе".
 '''
 
-from Tkinter import Toplevel, Frame, Button, Label, Entry, Checkbutton
+from Tkinter import Toplevel, Frame, Button, Label, Entry, Checkbutton, IntVar
 
 class clsWinEditBP(Toplevel):
     def __init__(self, root=None):
@@ -48,7 +48,9 @@ class clsWinEditBP(Toplevel):
             self.lblAct=Label(self.frmAct, text='act', relief='raised')
             self.lblAct.pack(side='top', fill='x')
             
-            self.cheActVal=Checkbutton(self.frmAct, cursor='hand2')
+            self.Act=IntVar()
+            self.cheActVal=Checkbutton(self.frmAct, cursor='hand2', state='active', text='active register', variable=self.Act)
+            self.cheActVal.select()
             self.cheActVal.pack(side='top', fill='x')
             
         
