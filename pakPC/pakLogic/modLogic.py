@@ -11,8 +11,10 @@ class clsLogic:
         print '  clsLogic.winEditBP_hide()'
         #------- обновить содержимое реального регистра программных прерываний --------
         self.CPU.RegBP.act=self.GUI.winEditBP.Act.get()
+        self.CPU.RegBP.adr_break=int(self.GUI.winEditBP.entAdrBreakVal.get())
+        self.CPU.RegBP.adr_proc=int(self.GUI.winEditBP.entAdrProcVal.get())
         print 'act=', self.CPU.RegBP.act
-        
+        self.update_monitor()
         
     def show_winEditBP(self):
         print 'clsLogic.show_winEditBP()'
@@ -41,7 +43,7 @@ class clsLogic:
         RegBP=self.GUI.winMain.frmCPU.frmRegBP
         RegBP.lblActVal['text']=self.CPU.RegBP.act
         RegBP.lblProcVal['text']=self.CPU.RegBP.adr_proc
-        RegBP.lblProcVal['text']=self.CPU.RegBP.adr_break
+        RegBP.lblBreakVal['text']=self.CPU.RegBP.adr_break
    
     def load_bios(self):
         '''
@@ -88,6 +90,7 @@ class clsLogic:
         Всякие финальные действия.
         '''
         print 'clsLogic.exit()'
+        self.root.GUI.winEditBP.win_exit()
         self.root.GUI.winLicense.destroy()
         self.root.GUI.winAbout.destroy()
         self.root.GUI.winMain.destroy()
