@@ -9,7 +9,9 @@ class clsLogic:
         
     def winEditBP_hide(self):
         print '  clsLogic.winEditBP_hide()'
-        
+        #------- обновить содержимое реального регистра программных прерываний --------
+        self.CPU.RegBP.act=self.GUI.winEditBP.Act.get()
+        print 'act=', self.CPU.RegBP.act
         
         
     def show_winEditBP(self):
