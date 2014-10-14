@@ -52,3 +52,6 @@ class clsWinIDC(Toplevel):
     def destroy(self):
         self.state('withdrawn')
         self.grab_release()
+        
+    def win_exit(self):
+        self.destroy()
