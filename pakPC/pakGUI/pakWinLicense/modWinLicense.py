@@ -64,3 +64,6 @@ class clsWinLicense(Toplevel):
         self.state('withdrawn')
         self.grab_release()
         self.root.Control.hide_winLicense()
+    
+    def win_exit(self):
+        self.destroy()
