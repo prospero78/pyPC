@@ -49,3 +49,6 @@ class clsWinCreateDisk(Toplevel):
         self.grab_release()
         self.root.GUI.winIDC.focus_set()
         self.root.GUI.winIDC.grab_set()
+        
+    def win_exit(self):
+        self.destroy()
