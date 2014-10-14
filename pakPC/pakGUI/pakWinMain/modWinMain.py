@@ -96,3 +96,6 @@ class clsWinMain(Tk):
         В целях ухода от конфликтов имён пришлось назвать вот так ))).
         '''
         self.mainloop()
+    
+    def win_exit(self):
+        self.destroy()
