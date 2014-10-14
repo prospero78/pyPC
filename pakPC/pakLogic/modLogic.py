@@ -92,7 +92,7 @@ class clsLogic:
         print 'clsLogic.exit()'
         self.root.GUI.winEditBP.win_exit()
         self.root.GUI.winScreen.win_exit()
-        self.root.GUI.winLicense.destroy()
+        self.root.GUI.winLicense.win_exit()
         self.root.GUI.winAbout.destroy()
         self.root.GUI.winMain.destroy()
         sys.exit(0)
