@@ -96,7 +96,7 @@ class clsLogic:
         self.root.GUI.winIDC.win_exit()
         self.root.GUI.winCreateDisk.win_exit()
         self.root.GUI.winAbout.win_exit()
-        self.root.GUI.winMain.destroy()
+        self.root.GUI.winMain.win_exit()
         sys.exit(0)
         
     def show_winLicense(self):
