@@ -4,7 +4,7 @@
 '''
 
 class clsMemory:
-    def __init__(self, root=None, max_adr=2**24):
+    def __init__(self, root=None, max_adr=2**20):
         self.root=root
         self.max_adr=max_adr
         # инициализация памяти виртуального компьютера
