@@ -2,6 +2,8 @@
 '''
 Класс центрального процессора.
 '''
+
+from time import time
 from pakReg.modReg import clsReg
 from pakMem.modMemory import clsMemory
 from pakReg.modRegSP import clsRegSP
@@ -54,9 +56,11 @@ class clsCPU:
         
     def debug(self):
         i=0
+        time1=time()
         while self.RegBP.adr_old==0:
             self.RegA.command()
             i+=1;
             if i==100:
-                self.root.GUI.winMain.update()
                 i=0
+                self.root.Logic.update_speed(dtime=time()-time1)
+                time1=time()
