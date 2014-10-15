@@ -87,10 +87,11 @@ class clsReg:
         not_Z=0
         
         # проверить на достижение программного бряка -- регистр ВР
-        if self.RegBP.adr_break==self.RegPC.val:
-            print '    RegBP BREAK!!!'
-            self.RegBP.adr_old=self.RegPC.val
-            self.RegPC.val=self.RegBP.adr_proc
+        if self.RegBP.act==1:
+            if self.RegBP.adr_break==self.RegPC.val:
+                print '    RegBP BREAK!!!'
+                self.RegBP.adr_old=self.RegPC.val
+                self.RegPC.val=self.RegBP.adr_proc
         
         cop=self.Mem.adr[self.RegPC.val]
         
