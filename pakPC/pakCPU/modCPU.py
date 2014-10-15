@@ -5,7 +5,7 @@
 
 from time import time
 from pakReg.modReg import clsReg
-from pakMem.modMemory import clsMemory
+from pakMem.cmodMemory import clsMemory
 from pakReg.modRegSP import clsRegSP
 from pakReg.modRegPC import clsRegPC
 from pakReg.modReg   import clsReg
@@ -41,7 +41,7 @@ class clsCPU:
         
         self.max_val=self.root.Res.max_reg_val
        
-        self.Mem=clsMemory(root=self.root)
+        self.Mem=clsMemory()
         
         self.RegSP=clsRegSP(root=self.root, val=self.root.Res.max_adr, min_adr=self.root.Res.max_adr-100)
         
