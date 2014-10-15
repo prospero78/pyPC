@@ -51,3 +51,12 @@ class clsCPU:
     
     def step(self):
         self.RegA.command()
+        
+    def debug(self):
+        i=0
+        while self.RegBP.adr_old==0:
+            self.RegA.command()
+            i+=1;
+            if i==100:
+                self.root.GUI.winMain.update()
+                i=0
