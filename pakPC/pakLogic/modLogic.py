@@ -22,6 +22,7 @@ class clsLogic:
        
     def debug_CPU(self):
         print 'clsLogic.debug_CPU()'
+        self.CPU.debug()
        
     def step_CPU(self):
         '''
@@ -92,14 +93,16 @@ class clsLogic:
         Всякие финальные действия.
         '''
         print 'clsLogic.exit()'
-        self.root.GUI.winEditBP.win_exit()
-        self.root.GUI.winScreen.win_exit()
-        self.root.GUI.winLicense.win_exit()
-        self.root.GUI.winIDC.win_exit()
-        self.root.GUI.winCreateDisk.win_exit()
-        self.root.GUI.winAbout.win_exit()
-        self.root.GUI.winMain.win_exit()
-        sys.exit(0)
+        try:
+            self.root.GUI.winEditBP.win_exit()
+            self.root.GUI.winScreen.win_exit()
+            self.root.GUI.winLicense.win_exit()
+            self.root.GUI.winIDC.win_exit()
+            self.root.GUI.winCreateDisk.win_exit()
+            self.root.GUI.winAbout.win_exit()
+            self.root.GUI.winMain.win_exit()
+        finally:
+            sys.exit(0)
         
     def show_winLicense(self):
         self.root.GUI.winLicense.show()
