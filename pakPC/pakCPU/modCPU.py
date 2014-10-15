@@ -36,7 +36,6 @@ class clsCPU:
         
         # частота работы процессора
         self.frec=1.0
-        self.frec_old=1.0
         # количество команд для замера
         self.time_code=5000
         
