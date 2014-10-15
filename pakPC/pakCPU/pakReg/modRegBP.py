@@ -12,5 +12,6 @@ class clsRegBP:
         '''
         self.root=root
         self.adr_break=adr_break
+        self.adr_old=0
         self.act=act
         self.adr_proc=adr_proc
