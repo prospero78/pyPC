@@ -40,10 +40,11 @@ class clsCPU:
         
         self.RegPC=clsRegPC(root=self.root, val=0, max_adr=self.root.Res.max_adr-1)
         
-        self.RegA=clsReg(root=self.root, mem=self.Mem, pc=self.RegPC)
-        
         # регистр для установки принудительного прерывания исполнения программы
         self.RegBP=clsRegBP(root=self.root, act=0, adr_break=0, adr_proc=0)
+        
+        self.RegA=clsReg(root=self, mem=self.Mem, pc=self.RegPC)
+        
         
     def run(self):
         pass
