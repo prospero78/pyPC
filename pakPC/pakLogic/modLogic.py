@@ -77,7 +77,7 @@ class clsLogic:
         Bios=self.Res.Bios
         for i in Bios.data:
             print i, Bios.data[i], '\n'
-            self.CPU.Mem.adr[i]=Bios.data[i]
+            self.CPU.Mem.set_adr(i, Bios.data[i])
         
     def generate_new_disk(self):
         print 'generate_new_disk()'
