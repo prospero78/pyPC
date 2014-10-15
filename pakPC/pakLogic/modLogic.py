@@ -14,7 +14,7 @@ class clsLogic:
         self.CPU.RegBP.adr_break=int(self.GUI.winEditBP.entAdrBreakVal.get())
         self.CPU.RegBP.adr_proc=int(self.GUI.winEditBP.entAdrProcVal.get())
         print 'act=', self.CPU.RegBP.act
-        self.update_monitor()
+        self.post_update_monitor()
         
     def show_winEditBP(self):
         print 'clsLogic.show_winEditBP()'
@@ -28,17 +28,19 @@ class clsLogic:
         Метод исполняет шаг процессора с выводом результата.
         '''
         print 'clsLogic.step_CPU()'
+        self.pre_update_monitor()
         self.CPU.step()
-        self.update_monitor()
+        self.post_update_monitor()
+    
+    def pre_update_monitor(self):
+        self.GUI.winMain.frmCPU.frmRegPC.lblVal['text']=self.CPU.RegPC.val
         
-    def update_monitor(self):
+    def post_update_monitor(self):
         RegA=self.GUI.winMain.frmCPU.frmRegA
         RegA.lblVal['text']=self.CPU.RegA.val
         RegA.lblValZ['text']=self.CPU.RegA.FlagZ
         RegA.lblValO['text']=self.CPU.RegA.FlagO
         RegA.lblValC['text']=self.CPU.RegA.FlagC
-        #-------------------------
-        self.GUI.winMain.frmCPU.frmRegPC.lblVal['text']=self.CPU.RegPC.val
         #-------------------------
         RegBP=self.GUI.winMain.frmCPU.frmRegBP
         RegBP.lblActVal['text']=self.CPU.RegBP.act
