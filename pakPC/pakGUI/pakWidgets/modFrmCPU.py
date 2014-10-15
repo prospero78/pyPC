@@ -9,6 +9,7 @@ from Tkinter import Frame
 from pakPC.pakGUI.pakWidgets.modFrmReg import clsFrmReg
 from pakPC.pakGUI.pakWidgets.modFrmRegPC import clsFrmRegPC
 from pakPC.pakGUI.pakWidgets.modFrmRegBP import clsFrmRegBP
+from pakPC.pakGUI.pakWidgets.modFrmCpuFrec import clsFrmCpuFrec
 
 class clsFrmCPU(Frame):
     def __init__(self, root=None):
@@ -25,3 +26,6 @@ class clsFrmCPU(Frame):
         # отображение регистра А
         self.frmRegA=clsFrmReg(root=self)
         self.frmRegA.lblName['text']='RegA'
+        
+        # отображение частоты виртуального процессора
+        self.frmCpuFrec=clsFrmCpuFrec(root=self)
