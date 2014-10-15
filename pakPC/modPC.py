@@ -12,15 +12,13 @@ class clsPC:
         from pakResurs.modResurs import clsRes
         self.Res=clsRes(root=self, lang='ru', arg=arg)
         
-        # импорт класса общей логики
-        from pakLogic.modLogic import clsLogic
-        self.Logic=clsLogic(root=self)
-        
-        
-        
         # импорт клаcса центрального процессора
         from pakCPU.modCPU import clsCPU
         self.CPU=clsCPU(root=self)
+        
+        # импорт класса общей логики
+        from pakLogic.modLogic import clsLogic
+        self.Logic=clsLogic(root=self)
         
         # импорт класса контроллера
         from pakController.modController import clsController
