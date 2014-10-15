@@ -7,6 +7,12 @@ class clsLogic:
     def __init__(self, root=None):
         self.root=root
         
+    def update_speed(self, dtime=0):
+        '''
+        При отладке обновляент периодически монитор состояния ЦП и скорость виртуальной машины.
+        '''
+        print dtime
+        
     def winEditBP_hide(self):
         print '  clsLogic.winEditBP_hide()'
         #------- обновить содержимое реального регистра программных прерываний --------
