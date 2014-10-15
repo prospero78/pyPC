@@ -9,18 +9,21 @@ class clsLogic:
         
     def update_speed(self, dtime=0):
         '''
-        При отладке обновляент периодически монитор состояния ЦП и скорость виртуальной машины.
+        При отладке обновляет периодически монитор состояния ЦП и скорость виртуальной машины.
         '''
-        fr=self.CPU.frec=1.0/dtime*self.CPU.time_code
-        print dtime, self.CPU.frec
-        res=fr/self.CPU.frec_old
+        fr=1.0/dtime*self.CPU.time_code
+        #print dtime, self.CPU.frec
+        res=fr/self.CPU.frec
         if res>1.1 or res<0.9:
-            frec=self.GUI.winMain.frmCPU.frmCpuFrec
+            if fr>self.CPU.frec:
+                self.CPU.frec=self.CPU.frec+int(fr/100)
+            elif fr<self.CPU.frec:
+                self.CPU.frec=self.CPU.frec-int(fr/100)
             if fr>1000:
-                fr=str(int(fr/1000))+' kHz'
+                fr=str(int(self.CPU.frec/1000))+' kHz'
             else:
-                fr=str(int(fr))+' Hz'
-            self.CPU.frec_old=self.CPU.frec
+                fr=str(int(self.CPU.frec))+' Hz'
+            frec=self.GUI.winMain.frmCPU.frmCpuFrec
             frec.entVal.delete(0,'end')
             frec.entVal.insert(0, fr)
         self.GUI.winMain.update()
