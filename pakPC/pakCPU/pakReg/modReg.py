@@ -94,7 +94,7 @@ class clsReg:
                 self.RegPC.val=self.RegBP.adr_proc
         
         cop=self.Mem.adr[self.RegPC.val]
-        
+        print 'PC=', self.RegPC.val, 'cop=', cop
         if cop==A_rset:          # установка значения регистра А значением регистра А
             self.RegPC.val+=1           # выровнять укзатель команд на следующую команду
             # сбросить все флаги, кроме Zero и Signed
