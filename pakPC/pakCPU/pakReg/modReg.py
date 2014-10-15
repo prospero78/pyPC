@@ -66,6 +66,9 @@ class clsReg:
         # сылка на программный счётчик
         self.RegPC=pc
         
+        # ссылка на регистр программного прерывания
+        self.RegBP=self.root.RegBP
+        
         # сбросить регистр в ноль и установить флаг нуля
         self.val=0
         self.FlagZ=1
@@ -82,6 +85,12 @@ class clsReg:
         '''
         # признак "нельзя перебивать флаг Z" -- для команды сравнения с числом
         not_Z=0
+        
+        # проверить на достижение программного бряка -- регистр ВР
+        if self.RegBP.adr_break==self.RegPC.val:
+            print '    RegBP BREAK!!!'
+            self.RegBP.adr_old=self.RegPC.val
+            self.RegPC.val=self.RegBP.adr_proc
         
         cop=self.Mem.adr[self.RegPC.val]
         
