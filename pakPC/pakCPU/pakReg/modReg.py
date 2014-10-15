@@ -89,12 +89,12 @@ class clsReg:
         # проверить на достижение программного бряка -- регистр ВР
         if self.RegBP.act==1:
             if self.RegBP.adr_break==self.RegPC.val:
-                print '    RegBP BREAK!!!'
+                #print '    RegBP BREAK!!!'
                 self.RegBP.adr_old=self.RegPC.val
                 self.RegPC.val=self.RegBP.adr_proc
         
         cop=self.Mem.adr[self.RegPC.val]
-        print 'PC=', self.RegPC.val, 'cop=', cop
+        #print 'PC=', self.RegPC.val, 'cop=', cop
         if cop==A_rset:          # установка значения регистра А значением регистра А
             self.RegPC.val+=1           # выровнять укзатель команд на следующую команду
             # сбросить все флаги, кроме Zero и Signed
