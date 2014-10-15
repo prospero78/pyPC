@@ -35,7 +35,10 @@ class clsCPU:
         self.root=root
         
         # частота работы процессора
-        self.frec=0
+        self.frec=1.0
+        self.frec_old=1.0
+        # количество команд для замера
+        self.time_code=5000
         
         self.max_val=self.root.Res.max_reg_val
        
@@ -63,7 +66,7 @@ class clsCPU:
         while self.RegBP.adr_old==0:
             self.RegA.command()
             i+=1;
-            if i==1000:
+            if i==self.time_code:
                 i=0
                 self.root.Logic.update_speed(dtime=time()-time1)
                 time1=time()
