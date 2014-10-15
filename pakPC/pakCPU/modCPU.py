@@ -34,6 +34,9 @@ class clsCPU:
     def __init__(self, root=None):
         self.root=root
         
+        # частота работы процессора
+        self.frec=0
+        
         self.max_val=self.root.Res.max_reg_val
        
         self.Mem=clsMemory(root=self.root)
