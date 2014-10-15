@@ -60,7 +60,7 @@ class clsCPU:
         while self.RegBP.adr_old==0:
             self.RegA.command()
             i+=1;
-            if i==100:
+            if i==1000:
                 i=0
                 self.root.Logic.update_speed(dtime=time()-time1)
                 time1=time()
