@@ -12,6 +12,7 @@ class clsLogic:
         При отладке обновляент периодически монитор состояния ЦП и скорость виртуальной машины.
         '''
         print dtime
+        self.GUI.winMain.update()
         
     def winEditBP_hide(self):
         print '  clsLogic.winEditBP_hide()'
