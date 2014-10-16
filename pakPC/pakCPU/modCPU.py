@@ -5,6 +5,8 @@
 
 import multiprocessing
 
+
+
 from time import time, sleep
 from pakReg.modReg import clsReg
 from pakMem.modMemory import clsMemory
@@ -35,15 +37,17 @@ class clsCPU(multiprocessing.Process):
         На каждый регистр отводится по 128 простых команд (7 бит)
     '''
     
-    def __init__(self, max_value=0, max_adr=0, bios=None):
+    def __init__(self, max_value=0, max_adr=0):
         def load_bios(bios):
             '''
             Загружает BIOS по умолчанию.
             BIOS содержится в py-файле, обычный хитрый словарь.
             '''
-            for i in bios.data:
-                print i, bios.data[i], '\n'
-                self.Mem.adr[i] = bios.data[i]
+            # инициализация биоса
+            from pakPC.pakBIOS.modBIOS import bios
+            for i in bios:
+                self.Mem.adr[i] = bios[i]
+            print '  BIOS load ok.'
         # создание отдельного процесса
         multiprocessing.Process.__init__(self)
         self.daemon=True
