@@ -34,11 +34,15 @@ class clsLogic:
     def winEditBP_hide(self):
         print '  clsLogic.winEditBP_hide()'
         #------- обновить содержимое реального регистра программных прерываний --------
-        self.CPU.RegBP.act=self.GUI.winEditBP.Act.get()
-        self.CPU.RegBP.adr_break=int(self.GUI.winEditBP.entAdrBreakVal.get())
-        self.CPU.RegBP.adr_proc=int(self.GUI.winEditBP.entAdrProcVal.get())
-        print 'act=', self.CPU.RegBP.get_act()
-        self.post_update_monitor()
+        self.RegBP_act=self.GUI.winEditBP.Act.get()
+        self.RegBP_adr_break=int(self.GUI.winEditBP.entAdrBreakVal.get())
+        self.RegBP_adr_proc=int(self.GUI.winEditBP.entAdrProcVal.get())
+        
+        info={'RegBP':{'act':self.RegBP_act, 'adr_break':self.RegBP_adr_break, 'adr_proc':self.RegBP_adr_proc}}
+        self.CPU.qcom.put(info)
+        
+        #print 'act=', self.CPU.RegBP.get_act()
+        self.update_monitor()
         
     def show_winEditBP(self):
         #print 'clsLogic.show_winEditBP()'
@@ -55,10 +59,11 @@ class clsLogic:
         '''
         #print 'clsLogic.step_CPU()'
         #self.pre_update_monitor()
-        self.CPU.qcom.put('step()')
+        info={'com':'step()'}
+        self.CPU.qcom.put(info)
         #self.post_update_monitor()
         
-    def post_update_monitor(self):
+    def update_monitor(self):
         while not self.CPU.qinfo.empty():
             RegA=self.GUI.winMain.frmCPU.frmRegA
             info=self.CPU.qinfo.get()
