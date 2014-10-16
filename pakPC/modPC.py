@@ -14,7 +14,7 @@ class clsPC:
         
         # импорт клаcса центрального процессора
         from pakCPU.modCPU import clsCPU
-        self.CPU=clsCPU(max_value=self.Res.max_reg_val, max_adr=self.Res.max_adr, bios=self.Res.Bios)
+        self.CPU=clsCPU(max_value=self.Res.max_reg_val, max_adr=self.Res.max_adr)
         self.CPU.start()
         
         # импорт класса общей логики
