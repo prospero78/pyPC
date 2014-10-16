@@ -71,13 +71,11 @@ class clsCPU(multiprocessing.Process):
             if not self.qcom.empty():
                 com=self.qcom.get()
                 if com=='step()':
-                    self.step()
+                    self.RegA.command()
+                    print 'RegA.val=', self.RegA.val
                     info={'RegA.val':self.RegA.val}
                     self.qinfo.put(info)
             sleep(0.1)
-    
-    def step(self):
-        self.RegA.command()
         
     def debug(self):
         i=0
