@@ -8,58 +8,58 @@ class clsController:
         self.root=root
         
     def winEditBP_hide(self, event=''):
-        print  'clsController.winEditBP_hide()'
+        #print  'clsController.winEditBP_hide()'
         self.Logic.winEditBP_hide()
         
     def show_winEditBP(self, event=''):
-        print  'clsController.show_winEditBP()'
+        #print  'clsController.show_winEditBP()'
         self.Logic.show_winEditBP()
         
     def winMain_debug(self, event=''):
-        print  'clsController.winMain_debug()'
+        #print  'clsController.winMain_debug()'
         self.Logic.debug_CPU()
         
     def winMain_stepCPU(self, event=''):
-        print  'clsController.winMain_stepCPU()'
+        #print  'clsController.winMain_stepCPU()'
         self.Logic.step_CPU()
     
     def winCreateDisk_ok(self, event=''):
-        print 'clsController.winCreateDisk_ok()'
+        #print 'clsController.winCreateDisk_ok()'
         self.Logic.generate_new_disk()
     
     def create_new_disk(self, event=None):
-        print 'clsController.create_new_disk()'
+        #print 'clsController.create_new_disk()'
         self.Logic.create_new_disk()
     
     def winIDC_ok(self, event=None):
-        print 'clsController.winIDC_ok()'
+        #print 'clsController.winIDC_ok()'
         self.GUI.winIDC.destroy()
     
     def winIDC_cancel(self, event=None):
-        print 'clsController.winIDC_cancel()'
+        #print 'clsController.winIDC_cancel()'
         self.GUI.winIDC.destroy()
     
     def create_disk(self, event=None):
-        print 'clsController.create_disk()'
+        #print 'clsController.create_disk()'
         self.Logic.create_disk()
         
     def show_screen(self, event=None):
-        print 'clsController.show_screen()'
+        #print 'clsController.show_screen()'
         self.Logic.show_screen()
     
     def run(self, event=None):
         self.GUI=self.root.GUI
         self.Logic=self.root.Logic
         self.CPU=self.root.CPU
-        print 'clsController.run()'
+        #print 'clsController.run()'
         self.Logic.run()
     
     def about(self, event=None):
-        print 'about()'
+        #print 'about()'
         self.root.GUI.winAbout.show()
     
     def exit(self, event=None):
-        print 'clsController.exit()'
+        #print 'clsController.exit()'
         self.root.Logic.exit()
         
     def show_winLicense(self, event=None):
