@@ -106,7 +106,7 @@ class clsLogic:
     
     def create_disk(self):
         print 'clsLogic.create_disk()'
-        self.root.GUI.winCreateDisk.show()
+        self.GUI.winCreateDisk.show()
         
     def show_screen(self):
         self.root.GUI.winScreen.show()
