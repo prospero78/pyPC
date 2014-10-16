@@ -89,7 +89,7 @@ class clsReg:
         # проверить на достижение программного бряка -- регистр ВР
         if self.RegBP.act==1:
             if self.RegBP.adr_break==self.RegPC.val:
-                #print '    RegBP BREAK!!!'
+                print '    RegBP BREAK!!!'
                 self.RegBP.adr_old=self.RegPC.val
                 self.RegPC.val=self.RegBP.adr_proc
         
