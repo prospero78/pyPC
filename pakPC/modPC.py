@@ -15,6 +15,7 @@ class clsPC:
         # импорт клаcса центрального процессора
         from pakCPU.modCPU import clsCPU
         self.CPU=clsCPU(root=self)
+        self.CPU.start()
         
         # импорт класса общей логики
         from pakLogic.modLogic import clsLogic
