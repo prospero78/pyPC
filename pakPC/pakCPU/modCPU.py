@@ -38,7 +38,7 @@ class clsCPU(multiprocessing.Process):
     '''
     
     def __init__(self, max_value=0, max_adr=0):
-        def load_bios(bios):
+        def load_bios():
             '''
             Загружает BIOS по умолчанию.
             BIOS содержится в py-файле, обычный хитрый словарь.
@@ -46,8 +46,11 @@ class clsCPU(multiprocessing.Process):
             # инициализация биоса
             from pakPC.pakBIOS.modBIOS import bios
             for i in bios:
+                #print i, type(i)
+                if i>self.Mem.max_adr:
+                    self.Mem.add_adr()
                 self.Mem.adr[i] = bios[i]
-            print '  BIOS load ok.'
+            print '  = BIOS load OK ='
         # создание отдельного процесса
         multiprocessing.Process.__init__(self)
         self.daemon=True
@@ -65,7 +68,7 @@ class clsCPU(multiprocessing.Process):
         self.max_adr=max_adr
        
         self.Mem=clsMemory()
-        load_bios(bios)
+        load_bios()
         
         self.RegSP=clsRegSP(val=self.max_adr, min_adr=self.max_adr-100)
         self.RegPC=clsRegPC(val=0, max_adr=self.RegSP.min_adr-1)
