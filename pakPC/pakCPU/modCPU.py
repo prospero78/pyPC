@@ -38,8 +38,10 @@ class clsCPU(multiprocessing.Process):
     def __init__(self, root=None):
         # создание отдельного процесса
         multiprocessing.Process.__init__(self)
-        # очередь для обмена сообщениями
-        self.queue=multiprocessing.Queue()
+        # очередь для получения команд
+        self.qcom=multiprocessing.Queue()
+        # очередь для отправки информации
+        self.qinfo=multiprocessing.Queue()
         self.root=root
         
         # частота работы процессора
@@ -66,6 +68,10 @@ class clsCPU(multiprocessing.Process):
         '''
         while True:
             print("The process CPU!")
+            if not self.qcom.empty():
+                com=self.qcom.get()
+                if com=='step()':
+                    self.step()
             sleep(0.1)
     
     def step(self):
