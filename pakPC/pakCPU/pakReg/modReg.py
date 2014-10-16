@@ -90,8 +90,8 @@ class clsReg:
         if self.RegBP.get_act()==1:
             if self.RegBP.get_adr_break()==self.RegPC.val:
                 print '    RegBP BREAK!!!'
-                self.RegBP.adr_old=self.RegPC.val
-                self.RegPC.val=self.RegBP.adr_proc
+                self.RegBP.set_adr_old(self.RegPC.val)
+                self.RegPC.val=self.RegBP.get_adr_proc()
         
         cop=self.Mem.get_adr(self.RegPC.val)
         #print 'PC=', self.RegPC.val, 'cop=', cop
