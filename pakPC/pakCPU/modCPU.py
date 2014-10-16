@@ -5,11 +5,13 @@
 
 from time import time
 from pakReg.modReg import clsReg
+#from pakMem.cmodMemory import clsMemory
 from pakMem.cmodMemory import clsMemory
 from pakReg.modRegSP import clsRegSP
 from pakReg.modRegPC import clsRegPC
 from pakReg.modReg   import clsReg
-from pakReg.modRegBP import clsRegBP
+#from pakReg.modRegBP import clsRegBP
+from pakReg.cmodRegBP import clsRegBP
 
 class clsCPU:
     '''
@@ -48,7 +50,7 @@ class clsCPU:
         self.RegPC=clsRegPC(root=self.root, val=0, max_adr=self.root.Res.max_adr-1)
         
         # регистр для установки принудительного прерывания исполнения программы
-        self.RegBP=clsRegBP(root=self.root, act=0, adr_break=0, adr_proc=0)
+        self.RegBP=clsRegBP(act=0, adr_break=0, adr_proc=0)
         
         self.RegA=clsReg(root=self, mem=self.Mem, pc=self.RegPC)
         
