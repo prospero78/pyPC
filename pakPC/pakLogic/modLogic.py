@@ -65,26 +65,20 @@ class clsLogic:
             if info.has_key('RegA.val'):
                 print 'have key "RegA.val"!', info['RegA.val']
                 RegA.lblVal['text']=info['RegA.val']
+            if info.has_key('RegA.FlagZ'):
+                print 'have key "RegA.FlagZ"!', info['RegA.FlagZ']
+                RegA.lblValZ['text']=info['RegA.FlagZ']
+            if info.has_key('RegA.FlagO'):
+                print 'have key "RegA.FlagO"!', info['RegA.FlagO']
+                RegA.lblValO['text']=info['RegA.FlagO']
         
-        RegA.lblValZ['text']=self.CPU.RegA.FlagZ
-        RegA.lblValO['text']=self.CPU.RegA.FlagO
         RegA.lblValC['text']=self.CPU.RegA.FlagC
         #-------------------------
         RegBP=self.GUI.winMain.frmCPU.frmRegBP
-        RegBP.lblActVal['text']=self.CPU.RegBP.get_act()
-        RegBP.lblProcVal['text']=self.CPU.RegBP.get_adr_proc()
-        RegBP.lblBreakVal['text']=self.CPU.RegBP.get_adr_break()
-   
-    def load_bios(self):
-        '''
-        Загружает BIOS по умолчанию.
-        BIOS содержится в py-файле, обычный хитрый словарь.
-        '''
-        Bios=self.Res.Bios
-        for i in Bios.data:
-            print i, Bios.data[i], '\n'
-            self.CPU.Mem.set_adr(i, Bios.data[i])
-        
+        RegBP.lblActVal['text']=self.CPU.RegBP.act
+        RegBP.lblProcVal['text']=self.CPU.RegBP.adr_proc
+        RegBP.lblBreakVal['text']=self.CPU.RegBP.adr_break
+    
     def generate_new_disk(self):
         #print 'generate_new_disk()'
         self.GUI.winCreateDisk.destroy()
@@ -111,7 +105,6 @@ class clsLogic:
         self.CPU=self.root.CPU
         self.GUI=self.root.GUI
         self.Res=self.root.Res
-        self.load_bios()
         self.GUI.run()
         
     def exit(self):
