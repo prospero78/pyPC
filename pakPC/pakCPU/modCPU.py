@@ -54,7 +54,6 @@ class clsCPU:
         
         self.RegA=clsReg(root=self, mem=self.Mem, pc=self.RegPC)
         
-        
     def run(self):
         pass
     
@@ -64,7 +63,7 @@ class clsCPU:
     def debug(self):
         i=0
         time1=time()
-        while self.RegBP.adr_old==0:
+        while self.RegBP.get_adr_old()==0:
             self.RegA.command()
             i+=1;
             if i==self.time_code:
