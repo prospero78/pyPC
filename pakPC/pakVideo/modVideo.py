@@ -15,13 +15,17 @@
 
 class clsVideo:
     def __init__(self, root=None):
+        '''
+        По умолчанию создаётся один экран в текстовом режиме, монохромный,
+        размером 80*40 знакомест (3200 позиций).
+        '''
         self.root=root
         self.mode=0
         
         self.command=0
         self.buf=''
         self.adr={}
-        for i in xrange(0, 3888000):
+        for i in xrange(0, 3200):
             self.adr[i]=0
     
     def fill(self, color='#000'):
