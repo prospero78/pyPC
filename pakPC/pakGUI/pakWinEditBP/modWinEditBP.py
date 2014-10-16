@@ -29,7 +29,7 @@ class clsWinEditBP(Toplevel):
             self.entAdrBreakVal=Entry(self.frmAdrBreak, cursor='hand2')
             self.entAdrBreakVal.pack(side='top', fill='x')
             
-            self.entAdrBreakVal.insert(0, self.root.CPU.RegBP.adr_break)
+            self.entAdrBreakVal.insert(0, '0')
             #--------------------------------------------------------------
             self.frmAdrProc=Frame(self.frmUp, border=3, relief='groove')
             self.frmAdrProc.pack(fill='x', side='top')
@@ -40,7 +40,7 @@ class clsWinEditBP(Toplevel):
             self.entAdrProcVal=Entry(self.frmAdrProc, cursor='hand2')
             self.entAdrProcVal.pack(side='top', fill='x')
             
-            self.entAdrProcVal.insert(0, self.root.CPU.RegBP.adr_break)
+            self.entAdrProcVal.insert(0, '0')
             #--------------------------------------------------------------
             self.frmAct=Frame(self.frmUp, border=3, relief='groove')
             self.frmAct.pack(fill='both', expand=1, side='top')
