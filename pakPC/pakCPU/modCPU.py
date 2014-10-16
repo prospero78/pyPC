@@ -84,7 +84,10 @@ class clsCPU(multiprocessing.Process):
                     print 'get step()    RegA.val=', self.RegA.val
                     info={  'RegA.val'  :self.RegA.val,
                             'RegA.FlagZ':self.RegA.FlagZ,
-                            'RegA.FlagO':self.RegA.FlagO,}
+                            'RegA.FlagO':self.RegA.FlagO,
+                            'RegA.FlagC':self.RegA.FlagC,
+                            'RegPC.val' :self.RegPC.val,
+                            'RegBP.act' :self.RegBP.act,}
                     self.qinfo.put(info)
             sleep(0.1)
         
