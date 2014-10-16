@@ -4,8 +4,8 @@
 '''
 
 cdef class clsRegBP:
-    cdef int adr_break, adr_proc
-    def __init__(self, adr_break=0, act=0, adr_proc=0):
+    cdef int adr_break, adr_proc, adr_old, act
+    def __init__(self, adr_break=6, act=1, adr_proc=0):
         '''
         adr_break -- aдрес, на который бряк
         act -- активность регистра
@@ -27,3 +27,15 @@ cdef class clsRegBP:
         
     cpdef set_adr_proc(self, int adr_proc):
         self.adr_proc=adr_proc
+        
+    cpdef get_act(self):
+        return self.act
+        
+    cpdef set_act(self, int act):
+        self.act=act
+    
+    cpdef get_adr_old(self):
+        return self.adr_old
+        
+    cpdef set_adr_old(self, int adr_old):
+        self.adr_old=adr_old
