@@ -6,6 +6,9 @@ import sys
 class clsLogic:
     def __init__(self, root=None):
         self.root=root
+        # локальная переменная для регистра программного счётчика
+        self.RegPC_old=0
+        self.RegPC_val=0
         
     def update_speed(self, dtime=0):
         '''
@@ -51,31 +54,38 @@ class clsLogic:
         Команды отправляются в очередь между процессами.
         '''
         #print 'clsLogic.step_CPU()'
-        self.pre_update_monitor()
+        #self.pre_update_monitor()
         self.CPU.qcom.put('step()')
         #self.post_update_monitor()
     
-    def pre_update_monitor(self):
-        self.GUI.winMain.frmCPU.frmRegPC.lblVal['text']=self.CPU.RegPC.val
         
     def post_update_monitor(self):
-        RegA=self.GUI.winMain.frmCPU.frmRegA
+        RegBP=self.GUI.winMain.frmCPU.frmRegBP
         while not self.CPU.qinfo.empty():
+            RegA=self.GUI.winMain.frmCPU.frmRegA
             info=self.CPU.qinfo.get()
             if info.has_key('RegA.val'):
-                print 'have key "RegA.val"!', info['RegA.val']
+                #print 'have key "RegA.val"!', info['RegA.val']
                 RegA.lblVal['text']=info['RegA.val']
             if info.has_key('RegA.FlagZ'):
-                print 'have key "RegA.FlagZ"!', info['RegA.FlagZ']
+                #print 'have key "RegA.FlagZ"!', info['RegA.FlagZ']
                 RegA.lblValZ['text']=info['RegA.FlagZ']
             if info.has_key('RegA.FlagO'):
-                print 'have key "RegA.FlagO"!', info['RegA.FlagO']
+                #print 'have key "RegA.FlagO"!', info['RegA.FlagO']
                 RegA.lblValO['text']=info['RegA.FlagO']
-        
-        RegA.lblValC['text']=self.CPU.RegA.FlagC
-        #-------------------------
-        RegBP=self.GUI.winMain.frmCPU.frmRegBP
-        RegBP.lblActVal['text']=self.CPU.RegBP.act
+            if info.has_key('RegA.FlagC'):
+                #print 'have key "RegA.FlagC"!', info['RegA.FlagC']
+                RegA.lblValC['text']=info['RegA.FlagO']
+            #-------------------------
+            if info.has_key('RegPC.val'):
+                #print 'have key "RegPC.val"!', info['RegPC.val']
+                self.RegPC_val=info['RegPC.val']
+                self.GUI.winMain.frmCPU.frmRegPC.lblVal['text']=self.RegPC_old
+                self.RegPC_old=self.RegPC_val
+            #---------------------------
+            if info.has_key('RegBP.act'):
+                #print 'have key "RegBP.act"!', info['RegBP.act']
+                RegBP.lblActVal['text']=info['RegBP.act']
         RegBP.lblProcVal['text']=self.CPU.RegBP.adr_proc
         RegBP.lblBreakVal['text']=self.CPU.RegBP.adr_break
     
