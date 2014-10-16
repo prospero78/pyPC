@@ -50,12 +50,6 @@ class clsRes:
         self.max_adr=2**16 # максимальный адрес памяти
         self.max_reg_val=2**16 # максимальное значение регистра
         
-        # чтение файла лицензии
-        self.winLicense_title='Лицензионное требование'
-        f=open('./pakPC/pakResurs/txt/GNU_GPL_v3_eng.txt','r')
-        self.winLicense_eng=f.read()
-        f.close()
-        
     def create_ru(self):
         self.winMain_name='pyPC    Vers. '+self.vers
         self.winMain_btnExit_name='Выход'
@@ -89,8 +83,11 @@ class clsRes:
         self.winAbout_license='Лицензионное требование'
         
         self.winLicense_title='Лицензионное требование'
+        
         f=open('./pakPC/pakResurs/txt/GNU_GPL_v3_rus.txt','r')
         self.winLicense_locale=f.read()
+        f.close()
+        
         self.winLicense_btnLocalLicense_text='Русский'
         self.winLicense_btnShowScreen_text='Показать экран'
         
@@ -109,5 +106,3 @@ class clsRes:
         
         self.winEditBP_title='Свойства регистра BP'
         self.winEditBP_btnClose='Закрыть'
-        
-        f.close()
