@@ -35,27 +35,36 @@ class clsCPU(multiprocessing.Process):
         На каждый регистр отводится по 128 простых команд (7 бит)
     '''
     
-    def __init__(self, root=None):
+    def __init__(self, max_value=0, max_adr=0, bios=None):
+        def load_bios(bios):
+            '''
+            Загружает BIOS по умолчанию.
+            BIOS содержится в py-файле, обычный хитрый словарь.
+            '''
+            for i in bios.data:
+                print i, bios.data[i], '\n'
+                self.Mem.adr[i] = bios.data[i]
         # создание отдельного процесса
         multiprocessing.Process.__init__(self)
+        self.daemon=True
         # очередь для получения команд
         self.qcom=multiprocessing.Queue()
         # очередь для отправки информации
         self.qinfo=multiprocessing.Queue()
-        self.root=root
         
         # частота работы процессора
         self.frec=1.0
         # количество команд для замера
         self.time_code=5000
         
-        self.max_val=self.root.Res.max_reg_val
+        self.max_val=max_value
+        self.max_adr=max_adr
        
         self.Mem=clsMemory()
+        load_bios(bios)
         
-        self.RegSP=clsRegSP(root=self.root, val=self.root.Res.max_adr, min_adr=self.root.Res.max_adr-100)
-        
-        self.RegPC=clsRegPC(root=self.root, val=0, max_adr=self.root.Res.max_adr-1)
+        self.RegSP=clsRegSP(val=self.max_adr, min_adr=self.max_adr-100)
+        self.RegPC=clsRegPC(val=0, max_adr=self.RegSP.min_adr-1)
         
         # регистр для установки принудительного прерывания исполнения программы
         self.RegBP=clsRegBP(act=0, adr_break=0, adr_proc=0)
@@ -72,8 +81,10 @@ class clsCPU(multiprocessing.Process):
                 com=self.qcom.get()
                 if com=='step()':
                     self.RegA.command()
-                    print 'RegA.val=', self.RegA.val
-                    info={'RegA.val':self.RegA.val}
+                    print 'get step()    RegA.val=', self.RegA.val
+                    info={  'RegA.val'  :self.RegA.val,
+                            'RegA.FlagZ':self.RegA.FlagZ,
+                            'RegA.FlagO':self.RegA.FlagO,}
                     self.qinfo.put(info)
             sleep(0.1)
         
