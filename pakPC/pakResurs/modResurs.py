@@ -49,10 +49,6 @@ class clsRes:
         self.vers='0.700' # текущая версия сборки
         self.max_adr=2**16 # максимальный адрес памяти
         self.max_reg_val=2**16 # максимальное значение регистра
-
-        # инициализация биоса
-        from modBios import clsBios
-        self.Bios=clsBios(root=self.root)
         
         # чтение файла лицензии
         self.winLicense_title='Лицензионное требование'
