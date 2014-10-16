@@ -79,9 +79,9 @@ class clsCPU(multiprocessing.Process):
             #print("The process CPU!")
             if not self.qcom.empty():
                 com=self.qcom.get()
-                if com=='step()':
+                if com.has_key('com'):
                     self.RegA.command()
-                    print 'get step()    RegBP.adr_break=', self.RegBP.adr_break
+                    print 'com:step()    RegBP.adr_break=', self.RegBP.adr_break
                     info={  'RegA.val'  :self.RegA.val,
                             'RegA.FlagZ':self.RegA.FlagZ,
                             'RegA.FlagO':self.RegA.FlagO,
@@ -91,6 +91,12 @@ class clsCPU(multiprocessing.Process):
                             'RegBP.adr_proc':self.RegBP.adr_proc,
                             'RegBP.adr_break':self.RegBP.adr_break,}
                     self.qinfo.put(info)
+                if com.has_key('RegBP'):
+                    reg=com['RegBP']
+                    self.RegBP.act=reg['act']
+                    self.RegBP.adr_proc=reg['adr_proc']
+                    self.RegBP.adr_break=reg['adr_break']
+                    pass
             sleep(0.1)
         
     def debug(self):
