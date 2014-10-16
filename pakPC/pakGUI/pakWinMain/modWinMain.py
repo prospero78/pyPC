@@ -83,6 +83,7 @@ class clsWinMain(Tk):
             Tk.__init__(self)
             self.minsize(320,400)
             self.title(self.root.Res.winMain_name)
+            self.after(100, self.win_update)
             
             create_frmBtn()
             create_menu()
@@ -90,6 +91,10 @@ class clsWinMain(Tk):
         
         self.root=root
         create_self()
+    
+    def win_update(self):
+        self.root.Logic.post_update_monitor()
+        self.after(100, self.win_update)
     
     def begin(self):
         '''
