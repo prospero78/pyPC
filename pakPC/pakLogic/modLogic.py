@@ -64,30 +64,38 @@ class clsLogic:
         #self.post_update_monitor()
         
     def update_monitor(self):
-        while not self.CPU.qinfo.empty():
-            RegA=self.GUI.winMain.frmCPU.frmRegA
+        if not self.CPU.qinfo.empty():
             info=self.CPU.qinfo.get()
-            #print 'have key "RegA.val"!', info['RegA.val']
-            RegA.lblVal['text']=info['RegA.val']
-            #print 'have key "RegA.FlagZ"!', info['RegA.FlagZ']
-            RegA.lblValZ['text']=info['RegA.FlagZ']
-            #print 'have key "RegA.FlagO"!', info['RegA.FlagO']
-            RegA.lblValO['text']=info['RegA.FlagO']
-            #print 'have key "RegA.FlagC"!', info['RegA.FlagC']
-            RegA.lblValC['text']=info['RegA.FlagO']
+            if info.has_key('RegA'):
+                inf=info['RegA']
+                print 'detect RegA', inf
+                RegA=self.GUI.winMain.frmCPU.frmRegA
+                #print 'have key "RegA.val"!', info['RegA.val']
+                RegA.lblVal['text']=inf['val']
+                #print 'have key "RegA.FlagZ"!', info['RegA.FlagZ']
+                RegA.lblValZ['text']=inf['FlagZ']
+                #print 'have key "RegA.FlagO"!', info['RegA.FlagO']
+                RegA.lblValO['text']=inf['FlagO']
+                #print 'have key "RegA.FlagC"!', info['RegA.FlagC']
+                RegA.lblValC['text']=inf['FlagO']
             #-------------------------
-            #print 'have key "RegPC.val"!', info['RegPC.val']
-            self.RegPC_val=info['RegPC.val']
-            self.GUI.winMain.frmCPU.frmRegPC.lblVal['text']=self.RegPC_old
-            self.RegPC_old=self.RegPC_val
+            if info.has_key('RegPC'):
+                inf=info['RegPC']
+                print 'detect RegPC', inf
+                #print 'have key "RegPC.val"!', info['RegPC.val']
+                self.RegPC_val=inf['val']
+                self.GUI.winMain.frmCPU.frmRegPC.lblVal['text']=self.RegPC_old
+                self.RegPC_old=self.RegPC_val
             #---------------------------
-            RegBP=self.GUI.winMain.frmCPU.frmRegBP
-            #print 'have key "RegBP.act"!', info['RegBP.act']
-            RegBP.lblActVal['text']=info['RegBP.act']
-            #print 'have key "RegBP.adr_proc"!', info['RegBP.adr_proc']
-            RegBP.lblProcVal['text']=info['RegBP.adr_proc']
-            #print 'have key "RegBP.adr_break"!', info['RegBP.adr_break']
-            RegBP.lblBreakVal['text']=info['RegBP.adr_break']
+            if info.has_key('RegBP'):
+                info=info['RegBP']
+                RegBP=self.GUI.winMain.frmCPU.frmRegBP
+                #print 'have key "RegBP.act"!', info['RegBP.act']
+                RegBP.lblActVal['text']=info['act']
+                #print 'have key "RegBP.adr_proc"!', info['RegBP.adr_proc']
+                RegBP.lblProcVal['text']=info['adr_proc']
+                #print 'have key "RegBP.adr_break"!', info['RegBP.adr_break']
+                RegBP.lblBreakVal['text']=info['adr_break']
     
     def generate_new_disk(self):
         #print 'generate_new_disk()'
