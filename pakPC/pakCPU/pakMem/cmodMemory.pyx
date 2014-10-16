@@ -2,11 +2,12 @@
 '''
 Класс памяти с компиляцией. Будем со временем дорабатывать.
 '''
-DEF all_mem=2**24
+DEF all_mem=2**22 # 4M
+
 cdef class clsMemory:
-    cdef int adr[all_mem] # 2**24 16777216
+    cdef int adr[all_mem] # 2**24 16M
     cdef int max_adr
-    def __init__(self, long max_adr=2**24):
+    def __init__(self, long max_adr=all_mem):
         self.max_adr=max_adr
         #cdef int adr[2**24] # 2**24
         # инициализация памяти виртуального компьютера
