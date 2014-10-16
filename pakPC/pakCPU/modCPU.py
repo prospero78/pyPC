@@ -3,17 +3,19 @@
 Класс центрального процессора.
 '''
 
-from time import time
+import multiprocessing
+
+from time import time, sleep
 from pakReg.modReg import clsReg
+from pakMem.modMemory import clsMemory
 #from pakMem.cmodMemory import clsMemory
-from pakMem.cmodMemory import clsMemory
 from pakReg.modRegSP import clsRegSP
 from pakReg.modRegPC import clsRegPC
 from pakReg.modReg   import clsReg
-#from pakReg.modRegBP import clsRegBP
-from pakReg.cmodRegBP import clsRegBP
+from pakReg.modRegBP import clsRegBP
+#from pakReg.cmodRegBP import clsRegBP
 
-class clsCPU:
+class clsCPU(multiprocessing.Process):
     '''
         Здесь надо хорошо подумать сколько элементарных операций будет выполнять процессор.
         Длина команды (без старшего бита) ограничена семью битами.
@@ -34,6 +36,10 @@ class clsCPU:
     '''
     
     def __init__(self, root=None):
+        # создание отдельного процесса
+        multiprocessing.Process.__init__(self)
+        # очередь для обмена сообщениями
+        self.queue=multiprocessing.Queue()
         self.root=root
         
         # частота работы процессора
@@ -55,7 +61,12 @@ class clsCPU:
         self.RegA=clsReg(root=self, mem=self.Mem, pc=self.RegPC)
         
     def run(self):
-        pass
+        '''
+        Метод необходим для запуска отдельного процесса.
+        '''
+        while True:
+            print("The process CPU!")
+            sleep(0.1)
     
     def step(self):
         self.RegA.command()
@@ -63,7 +74,7 @@ class clsCPU:
     def debug(self):
         i=0
         time1=time()
-        while self.RegBP.get_adr_old()==0:
+        while self.RegBP.adr_old==0:
             self.RegA.command()
             i+=1;
             if i==self.time_code:
