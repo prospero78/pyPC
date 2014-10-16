@@ -9,6 +9,8 @@ class clsLogic:
         # локальная переменная для регистра программного счётчика
         self.RegPC_old=0
         self.RegPC_val=0
+        # признаки запущенности ЦП в debug mode
+        self.debug=0
         
     def update_speed(self, dtime=0):
         '''
@@ -42,7 +44,7 @@ class clsLogic:
         self.CPU.qcom.put(info)
         
         #print 'act=', self.CPU.RegBP.get_act()
-        self.update_monitor()
+        #self.update_monitor()
         
     def show_winEditBP(self):
         #print 'clsLogic.show_winEditBP()'
@@ -50,7 +52,13 @@ class clsLogic:
        
     def debug_CPU(self):
         #print 'clsLogic.debug_CPU()'
-        self.CPU.debug()
+        if self.debug==0:
+            self.debug=1
+            info={'com':'debug(on)'}
+        else:
+            self.debug=0
+            info={'com':'debug(off)'}
+        self.CPU.qcom.put(info)
        
     def step_CPU(self):
         '''
@@ -78,7 +86,6 @@ class clsLogic:
                 RegA.lblValO['text']=inf['FlagO']
                 #print 'have key "RegA.FlagC"!', info['RegA.FlagC']
                 RegA.lblValC['text']=inf['FlagO']
-            #-------------------------
             if info.has_key('RegPC'):
                 inf=info['RegPC']
                 print 'detect RegPC', inf
@@ -88,14 +95,18 @@ class clsLogic:
                 self.RegPC_old=self.RegPC_val
             #---------------------------
             if info.has_key('RegBP'):
-                info=info['RegBP']
+                inf=info['RegBP']
                 RegBP=self.GUI.winMain.frmCPU.frmRegBP
                 #print 'have key "RegBP.act"!', info['RegBP.act']
-                RegBP.lblActVal['text']=info['act']
+                RegBP.lblActVal['text']=inf['act']
                 #print 'have key "RegBP.adr_proc"!', info['RegBP.adr_proc']
-                RegBP.lblProcVal['text']=info['adr_proc']
+                RegBP.lblProcVal['text']=inf['adr_proc']
                 #print 'have key "RegBP.adr_break"!', info['RegBP.adr_break']
-                RegBP.lblBreakVal['text']=info['adr_break']
+                RegBP.lblBreakVal['text']=inf['adr_break']
+            #---------------------------
+            if info.has_key('debug'):
+                inf=info['debug']
+                print 'detect DEBUG', inf
     
     def generate_new_disk(self):
         #print 'generate_new_disk()'
