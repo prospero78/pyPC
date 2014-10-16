@@ -44,9 +44,9 @@ class clsCPU(multiprocessing.Process):
             BIOS содержится в py-файле, обычный хитрый словарь.
             '''
             # инициализация биоса
-            from pakPC.pakBIOS.modBIOS import bios
+            from pakPC.pakResurs.modBios import bios
             for i in bios:
-                #print i, type(i)
+                print i, bios[i], type(i)
                 if i>self.Mem.max_adr:
                     self.Mem.add_adr()
                 self.Mem.adr[i] = bios[i]
@@ -87,18 +87,24 @@ class clsCPU(multiprocessing.Process):
             if not self.qcom.empty():
                 com=self.qcom.get()
                 if com.has_key('com'):
-                    self.RegA.command()
-                    print 'com:step()    RegBP.adr_break=', self.RegBP.adr_break
-                    info={  'RegA.val'  :self.RegA.val,
-                            'RegA.FlagZ':self.RegA.FlagZ,
-                            'RegA.FlagO':self.RegA.FlagO,
-                            'RegA.FlagC':self.RegA.FlagC,
-                            'RegPC.val' :self.RegPC.val,
-                            'RegBP.act' :self.RegBP.act,
-                            'RegBP.adr_proc':self.RegBP.adr_proc,
-                            'RegBP.adr_break':self.RegBP.adr_break,}
-                    self.qinfo.put(info)
-                if com.has_key('RegBP'):
+                    com=com['com']
+                    if com=='step()':
+                        self.RegA.command()
+                        #print 'com:step()    RegBP.adr_break=', self.RegBP.adr_break
+                        RegA={  'val':self.RegA.val,
+                                'FlagZ':self.RegA.FlagZ,
+                                'FlagO':self.RegA.FlagO,
+                                'FlagC':self.RegA.FlagC}
+                        RegPC={'val':self.RegPC.val}
+                        RegBP={ 'act':self.RegBP.act,
+                                'adr_proc':self.RegBP.adr_proc,
+                                'adr_break':self.RegBP.adr_break}
+                        info={  'RegA':RegA,
+                                'RegPC' :RegPC,
+                                'RegBP' :RegBP,}
+                        self.qinfo.put(info)
+                        print '***'
+                elif com.has_key('RegBP'):
                     reg=com['RegBP']
                     self.RegBP.act=reg['act']
                     self.RegBP.adr_proc=reg['adr_proc']
