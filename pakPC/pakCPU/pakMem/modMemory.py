@@ -8,7 +8,7 @@ class clsMemory:
         self.max_adr=max_adr
         # инициализация памяти виртуального компьютера
         self.adr={}
-        for i in xrange(0,self.max_adr):
+        for i in xrange(0, 1024):
             self.adr[i]=0
     
     def get_adr(self, adr):
@@ -19,3 +19,8 @@ class clsMemory:
         
     def get_max_adr(self):
         return self.max_adr
+        
+    def add_memory(self):
+        for i in xrange(self.max_adr, self.max_adr+1024):
+            self.adr[i]=0
+        self.max_adr+=1024
