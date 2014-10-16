@@ -38,11 +38,11 @@ class clsLogic:
         self.post_update_monitor()
         
     def show_winEditBP(self):
-        print 'clsLogic.show_winEditBP()'
+        #print 'clsLogic.show_winEditBP()'
         self.GUI.winEditBP.show()
        
     def debug_CPU(self):
-        print 'clsLogic.debug_CPU()'
+        #print 'clsLogic.debug_CPU()'
         self.CPU.debug()
        
     def step_CPU(self):
@@ -50,7 +50,7 @@ class clsLogic:
         Метод исполняет шаг процессора с выводом результата.
         Команды отправляются в очередь между процессами.
         '''
-        print 'clsLogic.step_CPU()'
+        #print 'clsLogic.step_CPU()'
         self.pre_update_monitor()
         self.CPU.qcom.put('step()')
         #self.post_update_monitor()
@@ -60,7 +60,11 @@ class clsLogic:
         
     def post_update_monitor(self):
         RegA=self.GUI.winMain.frmCPU.frmRegA
-        RegA.lblVal['text']=self.CPU.RegA.val
+        while not self.CPU.qinfo.empty():
+            info=self.CPU.qinfo.get()
+            if info.has_key('RegA.val'):
+                RegA.lblVal['text']=info['RegA.val']
+        
         RegA.lblValZ['text']=self.CPU.RegA.FlagZ
         RegA.lblValO['text']=self.CPU.RegA.FlagO
         RegA.lblValC['text']=self.CPU.RegA.FlagC
@@ -81,7 +85,7 @@ class clsLogic:
             self.CPU.Mem.set_adr(i, Bios.data[i])
         
     def generate_new_disk(self):
-        print 'generate_new_disk()'
+        #print 'generate_new_disk()'
         self.GUI.winCreateDisk.destroy()
         disk_size=int(self.GUI.winCreateDisk.fkvSize.get_val())
         disk_name=self.GUI.winCreateDisk.fkvName.get_val()
@@ -114,7 +118,7 @@ class clsLogic:
         Общесистемный выход из программы.
         Всякие финальные действия.
         '''
-        print 'clsLogic.exit()'
+        #print 'clsLogic.exit()'
         try:
             self.root.GUI.winEditBP.win_exit()
             self.root.GUI.winScreen.win_exit()
