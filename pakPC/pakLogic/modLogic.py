@@ -63,6 +63,7 @@ class clsLogic:
         while not self.CPU.qinfo.empty():
             info=self.CPU.qinfo.get()
             if info.has_key('RegA.val'):
+                print 'have key "RegA.val"!', info['RegA.val']
                 RegA.lblVal['text']=info['RegA.val']
         
         RegA.lblValZ['text']=self.CPU.RegA.FlagZ
@@ -127,6 +128,7 @@ class clsLogic:
             self.root.GUI.winCreateDisk.win_exit()
             self.root.GUI.winAbout.win_exit()
             self.root.GUI.winMain.win_exit()
+            self.root.CPU.terminate()
             del self.root.CPU
         finally:
             sys.exit(0)
