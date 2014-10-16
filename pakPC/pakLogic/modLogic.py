@@ -65,9 +65,9 @@ class clsLogic:
         RegA.lblValC['text']=self.CPU.RegA.FlagC
         #-------------------------
         RegBP=self.GUI.winMain.frmCPU.frmRegBP
-        RegBP.lblActVal['text']=self.CPU.RegBP.act
-        RegBP.lblProcVal['text']=self.CPU.RegBP.adr_proc
-        RegBP.lblBreakVal['text']=self.CPU.RegBP.adr_break
+        RegBP.lblActVal['text']=self.CPU.RegBP.get_act()
+        RegBP.lblProcVal['text']=self.CPU.RegBP.get_adr_proc()
+        RegBP.lblBreakVal['text']=self.CPU.RegBP.get_adr_break()
    
     def load_bios(self):
         '''
