@@ -81,13 +81,15 @@ class clsCPU(multiprocessing.Process):
                 com=self.qcom.get()
                 if com=='step()':
                     self.RegA.command()
-                    print 'get step()    RegA.val=', self.RegA.val
+                    print 'get step()    RegBP.adr_break=', self.RegBP.adr_break
                     info={  'RegA.val'  :self.RegA.val,
                             'RegA.FlagZ':self.RegA.FlagZ,
                             'RegA.FlagO':self.RegA.FlagO,
                             'RegA.FlagC':self.RegA.FlagC,
                             'RegPC.val' :self.RegPC.val,
-                            'RegBP.act' :self.RegBP.act,}
+                            'RegBP.act' :self.RegBP.act,
+                            'RegBP.adr_proc':self.RegBP.adr_proc,
+                            'RegBP.adr_break':self.RegBP.adr_break,}
                     self.qinfo.put(info)
             sleep(0.1)
         
