@@ -46,7 +46,7 @@ class clsCPU(multiprocessing.Process):
             # инициализация биоса
             from pakPC.pakResurs.modBios import bios
             for i in bios:
-                print i, bios[i], type(i)
+                #print i, bios[i], type(i)
                 if i>self.Mem.max_adr:
                     self.Mem.add_adr()
                 self.Mem.adr[i] = bios[i]
@@ -63,6 +63,8 @@ class clsCPU(multiprocessing.Process):
         self.frec=1.0
         # количество команд для замера
         self.time_code=5000
+        # признак необходимости цикла отладки
+        self.run_debug=0
         
         self.max_val=max_value
         self.max_adr=max_adr
@@ -104,21 +106,41 @@ class clsCPU(multiprocessing.Process):
                                 'RegBP' :RegBP,}
                         self.qinfo.put(info)
                         print '***'
+                    elif com=='debug(on)':
+                        self.run_debug=1
+                        info={'debug':'on'}
+                        self.qinfo.put(info)
+                        self.debug()
+                    elif com=='debug(off)':
+                        self.run_debug=0
+                        info={'debug':'off'}
+                        self.qinfo.put(info)
                 elif com.has_key('RegBP'):
                     reg=com['RegBP']
                     self.RegBP.act=reg['act']
                     self.RegBP.adr_proc=reg['adr_proc']
                     self.RegBP.adr_break=reg['adr_break']
+                    RegBP={ 'act':self.RegBP.act,
+                                'adr_proc':self.RegBP.adr_proc,
+                                'adr_break':self.RegBP.adr_break}
+                    info={'RegBP':RegBP}
+                    self.qinfo.put(info)
                     pass
             sleep(0.1)
         
     def debug(self):
         i=0
-        time1=time()
-        while self.RegBP.adr_old==0:
-            self.RegA.command()
-            i+=1;
-            if i==self.time_code:
+        while self.run_debug==1:
+            time1=time()
+            while i<self.time_code:
+                self.RegA.command()
+                i+=1;
+            else:
                 i=0
-                self.root.Logic.update_speed(dtime=time()-time1)
+                dtime=time()-time1
+                inf_time={'dtime':dtime}
+                self.qinfo.put(inf_time)
                 time1=time()
+        else:
+            info={'debug':'end'}
+            self.qinfo.put(info)
