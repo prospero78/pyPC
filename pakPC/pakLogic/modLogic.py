@@ -48,11 +48,12 @@ class clsLogic:
     def step_CPU(self):
         '''
         Метод исполняет шаг процессора с выводом результата.
+        Команды отправляются в очередь между процессами.
         '''
         print 'clsLogic.step_CPU()'
         self.pre_update_monitor()
-        self.CPU.step()
-        self.post_update_monitor()
+        self.CPU.qcom.put('step()')
+        #self.post_update_monitor()
     
     def pre_update_monitor(self):
         self.GUI.winMain.frmCPU.frmRegPC.lblVal['text']=self.CPU.RegPC.val
