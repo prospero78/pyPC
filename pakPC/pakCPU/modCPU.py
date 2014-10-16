@@ -67,11 +67,13 @@ class clsCPU(multiprocessing.Process):
         Метод необходим для запуска отдельного процесса.
         '''
         while True:
-            print("The process CPU!")
+            #print("The process CPU!")
             if not self.qcom.empty():
                 com=self.qcom.get()
                 if com=='step()':
                     self.step()
+                    info={'RegA.val':self.RegA.val}
+                    self.qinfo.put(info)
             sleep(0.1)
     
     def step(self):
