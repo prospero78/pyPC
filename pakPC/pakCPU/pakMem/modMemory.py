@@ -5,10 +5,13 @@
 
 class clsMemory:
     def __init__(self, max_adr=2**22):
+        # максимально допустимое количество памяти
         self.max_adr=max_adr
+        # текущее количество памяти
+        self.act_mem=1024
         # инициализация памяти виртуального компьютера
         self.adr={}
-        for i in xrange(0, 1024):
+        for i in xrange(0, self.act_mem):
             self.adr[i]=0
     
     def get_adr(self, adr):
@@ -21,6 +24,7 @@ class clsMemory:
         return self.max_adr
         
     def add_memory(self):
-        for i in xrange(self.max_adr, self.max_adr+1024):
-            self.adr[i]=0
-        self.max_adr+=1024
+        if self.act_mem<self.max_adr-1024:
+            for i in xrange(self.act_mem, self.act_mem+1024):
+                self.adr[i]=0
+            self.act_mem+=1024
