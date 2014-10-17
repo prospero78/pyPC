@@ -62,7 +62,7 @@ class clsCPU(multiprocessing.Process):
         # частота работы процессора
         self.frec=1.0
         # количество команд для замера
-        self.time_code=5000
+        self.time_code=50000
         # признак необходимости цикла отладки
         self.run_debug=0
         
@@ -141,6 +141,12 @@ class clsCPU(multiprocessing.Process):
                 inf_time={'dtime':dtime}
                 self.qinfo.put(inf_time)
                 time1=time()
+                if not self.qcom.empty():
+                    com=self.qcom.get()
+                    if com.has_key('com'):
+                        self.run_debug=0
+                        info={'debug':'off'}
+                        self.qinfo.put(info)
         else:
             info={'debug':'end'}
             self.qinfo.put(info)
