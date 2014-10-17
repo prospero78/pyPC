@@ -31,7 +31,7 @@ class clsLogic:
             frec=self.GUI.winMain.frmCPU.frmCpuFrec
             frec.entVal.delete(0,'end')
             frec.entVal.insert(0, fr)
-        self.GUI.winMain.update()
+        #self.GUI.winMain.update()
         
     def winEditBP_hide(self):
         print '  clsLogic.winEditBP_hide()'
@@ -106,7 +106,12 @@ class clsLogic:
             #---------------------------
             if info.has_key('debug'):
                 inf=info['debug']
-                print 'detect DEBUG', inf
+                #print 'detect DEBUG', inf
+            #---------------------------
+            if info.has_key('dtime'):
+                inf=info['dtime']
+                print 'detect DTIME', inf
+                self.update_speed(dtime=inf)
     
     def generate_new_disk(self):
         #print 'generate_new_disk()'
