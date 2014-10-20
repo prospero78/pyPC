@@ -3,7 +3,7 @@
 Класс окна экрана виртуального компьютера.
 '''
 
-from Tkinter import Toplevel, Frame, Button, Canvas
+from Tkinter import Toplevel, Frame, Button, Canvas, Label
 
 class clsWinScreen(Toplevel):
     def __init__(self, root=None):
@@ -17,8 +17,18 @@ class clsWinScreen(Toplevel):
             self.frmScreen=Frame(self, border=3, relief='groove')
             self.frmScreen.pack(fill='both', expand=1, side='top')
             
-            self.cnvScreen=Canvas(self.frmScreen, bg='white', width=640, height=480)
-            self.cnvScreen.pack(fill='both')
+            #self.cnvScreen=Canvas(self.frmScreen, bg='white', width=640, height=480)
+            #self.cnvScreen.pack(fill='both')
+            
+            self.lblScreen=Label(self.frmScreen, bg='black', fg='yellow', font='Consolas 10')
+            self.lblScreen.pack(fill='both')
+            
+            a=''
+            for i in xrange(0,40):
+                for i1 in xrange(0,80):
+                    a+=' '
+                a+='\n'
+            self.lblScreen['text']=a
         
         def create_frmBtn():
             self.frmBtn=Frame(self, border=3, relief='raised')
