@@ -46,7 +46,7 @@ class clsRes:
         1.ххх -- зарелизенная версия
         И других вариантов не будет.
         '''
-        self.vers='0.700' # текущая версия сборки
+        self.vers='0.750' # текущая версия сборки
         self.max_adr=2**16 # максимальный адрес памяти
         self.max_reg_val=2**16 # максимальное значение регистра
         
@@ -62,7 +62,8 @@ class clsRes:
         self.winMain_mbtHelp_help='Справка по программе'
         self.winMain_mbtHelp_about='О программе'
         self.winMain_btnStep='Шаг >'
-        self.winMain_btnDebug='Отладка  >>'
+        self.winMain_btnDebug_0='Отладка  >>'
+        self.winMain_btnDebug_1='Отладка  [X]'
         
         self.winAbout_name='О программе'
         self.winAbout_close='Закрыть это окно'
