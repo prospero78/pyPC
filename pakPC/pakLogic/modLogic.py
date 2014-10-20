@@ -54,9 +54,11 @@ class clsLogic:
         #print 'clsLogic.debug_CPU()'
         if self.debug==0:
             self.debug=1
+            self.GUI.winMain.btnDebug['text']=self.Res.winMain_btnDebug_1
             info={'com':'debug(on)'}
         else:
             self.debug=0
+            self.GUI.winMain.btnDebug['text']=self.Res.winMain_btnDebug_0
             info={'com':'debug(off)'}
         self.CPU.qcom.put(info)
        
