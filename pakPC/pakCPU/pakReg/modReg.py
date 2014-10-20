@@ -95,11 +95,8 @@ class clsReg:
         
         cop=self.Mem.adr[self.RegPC.val]
         #print 'PC=', self.RegPC.val, 'cop=', cop
-        if cop==A_rset:          # установка значения регистра А значением регистра А
+        if cop==A_nop:          # тупой пропуск команды
             self.RegPC.val+=1           # выровнять укзатель команд на следующую команду
-            # сбросить все флаги, кроме Zero и Signed
-            self.FlagO=0
-            self.FlagC=0
         elif cop==A_radd:        # установка регистра А со сложением содержимого регистра А
             self.val+=self.val
             if self.val>=self.max_val: # если в регистре перебор
@@ -400,10 +397,6 @@ class clsReg:
             self.RegPC.val+=1
             self.Port.adr[self.Mem.adr[self.RegPC.val]]=self.val
             self.RegPC.val+=1
-        #elif cop==A_vin:      # чтение из видеопорта
-        #    self.RegPC.val+=1
-        #    self.Port.adr[self.Mem.adr[self.RegPC.val]]=self.val
-        #    self.RegPC.val+=1
         elif cop==A_jmp:      # запись в порт
             self.RegPC.val+=1
             self.RegPC.val=self.Mem.adr[self.RegPC.val]
