@@ -24,9 +24,10 @@ class clsVideo:
         
         self.command=0
         self.buf=''
-        self.adr={}
-        for i in xrange(0, 3200):
-            self.adr[i]=0
+#        self.adr={}
+#        for i in xrange(0, 3200):
+#            self.adr[i]=0
+        self.adr=' '*3200 # будет символный экран на 3200 символов.
     
     def fill(self, color='#000'):
         '''
