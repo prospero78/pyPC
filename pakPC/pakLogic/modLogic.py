@@ -74,7 +74,7 @@ class clsLogic:
         #self.post_update_monitor()
         
     def update_monitor(self):
-        if not self.CPU.qinfo.empty():
+        while not self.CPU.qinfo.empty():
             info=self.CPU.qinfo.get()
             if info.has_key('RegA'):
                 inf=info['RegA']
