@@ -18,7 +18,7 @@ class clsWinMain(Tk):
                 self.btnStep.pack(side='left')
                 
                 # кнопка "Отлдака" главного окна
-                self.btnDebug=Button(self.frmBtn, text=self.root.Res.winMain_btnDebug, command=self.root.Control.winMain_debug)
+                self.btnDebug=Button(self.frmBtn, text=self.root.Res.winMain_btnDebug_0, command=self.root.Control.winMain_debug)
                 self.btnDebug.pack(side='left')
                 
                 # кнопка "выход" главного окна
