@@ -50,8 +50,8 @@ if True:
     A_ret =38
     A_pin  =39
     A_pout =40
-    XXXX  =41
-    A_jmp = 42
+    A_jmp  =41
+    A_jmpr= 42
 
 class clsReg:
     def __init__(self, root=None, mem=None, pc=None):
@@ -382,7 +382,7 @@ class clsReg:
             self.val=self.Mem.adr[self.RegSP.val]
             self.RegSP.val+=1
             self.RegPC.val+=1
-        elif cop==A_call:      # вызвать процедуру по адресу в регистре А
+        elif cop==A_call:     # вызвать процедуру по адресу в регистре А
             self.Mem.adr[self.RegSP.val] = self.val
             self.RegSP.val-=1
             self.RegPC.val=self.val
@@ -393,13 +393,19 @@ class clsReg:
             self.RegPC.val+=1
             self.val=self.Port.adr[self.Mem.adr[self.RegPC.val]]
             self.RegPC.val+=1
-        elif cop==A_pout:      # запись в порт
+        elif cop==A_pout:     # запись в порт
             self.RegPC.val+=1
             self.Port.adr[self.Mem.adr[self.RegPC.val]]=self.val
             self.RegPC.val+=1
-        elif cop==A_jmp:      # запись в порт
+        elif cop==A_jmp:      # прыжок по абсолютному адресу
             self.RegPC.val+=1
             self.RegPC.val=self.Mem.adr[self.RegPC.val]
+        elif cop==A_jmpr:     # прыжок по относительному адресу
+            #self.RegPC.val+=1
+            self.RegPC.val=self.RegPC.val+self.Mem.adr[self.RegPC.val+1]
+        
+        
+        
         
         #-------Control FlagZ--------------
         if not_Z==0 and self.val==0:
