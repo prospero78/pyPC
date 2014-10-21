@@ -26,10 +26,18 @@ class clsVideo:
         
         self.command=0
         self.buf=''
-#        self.adr={}
-#        for i in xrange(0, 3200):
-#            self.adr[i]=0
-        self.adr=' '*3200 # будет символный экран на 3200 символов.
+        self.adr={}
+        for i in xrange(0, 40):
+            for i1 in xrange(0,81):
+                if i1==81:
+                    self.adr[i*i1]='\n'
+                else:
+                    self.adr[i*i1]=' '
+                
+        #self.adr=' '*3200 # будет символный экран на 3200 символов.
+    
+    def clear_screen(self):
+        
     
     def get_max_mode(self):
         print 'VIDEO: get_max_mode()'
