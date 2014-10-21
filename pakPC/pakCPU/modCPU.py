@@ -110,9 +110,11 @@ class clsCPU(multiprocessing.Process):
                         RegBP={ 'act':self.RegBP.act,
                                 'adr_proc':self.RegBP.adr_proc,
                                 'adr_break':self.RegBP.adr_break}
+                        RegSP={'val':self.RegSP.val}
                         info={  'RegA':RegA,
                                 'RegPC' :RegPC,
-                                'RegBP' :RegBP,}
+                                'RegBP' :RegBP,
+                                'RegSP':RegSP,}
                         self.qinfo.put(info)
                         print '***'
                     elif com=='debug(on)':
