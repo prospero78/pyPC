@@ -37,24 +37,29 @@ class clsWinScreen(Toplevel):
             self.btnScreenClose=Button(self.frmBtn, text=self.root.Res.winScreen_btnScreenClose_text, bg='gray', command=self.destroy)
             self.btnScreenClose.pack(side='right')
             
-        
         self.root=root
         create_self()
         create_frmBtn()
         create_frmScreen()
+        # признак отображённости окна терминала
+        self.winScreen_show=0
         
         
         
     def show(self):
+        self.winScreen_show=1
         self.state('normal')
-        # показать поверх всех с фокусом
+        # показать поверх всех с фокусом без удержания фокуса
         self.focus_set()
-        self.grab_set()
-        self.wait_window()
+        #self.grab_set()
+        #self.wait_window()
+        self.root.GUI.winMain.btnShowScreen['text']=self.root.Res.winMain_btnShowScreen_hide
         
     def destroy(self):
+        self.winScreen_show=0
         self.state('withdrawn')
         self.grab_release()
+        self.root.GUI.winMain.btnShowScreen['text']=self.root.Res.winMain_btnShowScreen_show
     
     def win_exit(self):
         self.destroy()
