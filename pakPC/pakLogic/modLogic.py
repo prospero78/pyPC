@@ -106,6 +106,11 @@ class clsLogic:
                 #print 'have key "RegBP.adr_break"!', info['RegBP.adr_break']
                 RegBP.lblBreakVal['text']=inf['adr_break']
             #---------------------------
+            if info.has_key('RegSP'):
+                inf=info['RegSP']
+                RegSP=self.GUI.winMain.frmCPU.frmRegSP
+                RegSP.lblVal['text']=inf['val']
+            #---------------------------
             if info.has_key('debug'):
                 inf=info['debug']
                 #print 'detect DEBUG', inf
