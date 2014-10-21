@@ -399,14 +399,22 @@ class clsReg:
         elif cop==A_ret:      # возврат из процедуры
             self.RegPC.val=self.Mem.adr[self.RegSP.val]
             self.RegSP.val+=1
-        elif cop==A_in:      # чтение из порта
+        elif cop==A_in:      # чтение из порта в регистр А
             self.RegPC.val+=1
-            self.val=self.Port.adr[self.Mem.adr[self.RegPC.val]]
+            port=self.Port.adr[self.Mem.adr[self.RegPC.val]]
+            # вызов процедуры детектирования используемого порта
+            # если порт висит в воздухе, то просто возврат хранимого
+            # значения.
+            val=self.Port.detect_port(port=port)
+            self.val=val
             self.RegPC.val+=1
+            
         elif cop==A_out:     # запись в порт
             self.RegPC.val+=1
             self.Port.adr[self.Mem.adr[self.RegPC.val]]=self.val
             self.RegPC.val+=1
+            self.Port.detect_port(port= self.Port.adr[self.Mem.adr[self.RegPC.val]])
+            
         elif cop==A_jmp:      # прыжок по абсолютному адресу
             self.RegPC.val+=1
             self.RegPC.val=self.Mem.adr[self.RegPC.val]
