@@ -5,7 +5,7 @@
 '''
 # константы для кодов операций
 if True:
-    A_rset=0
+    A_nop=0
     A_radd=1
     A_rsub=2
     A_rinc=3
@@ -54,7 +54,7 @@ if True:
     A_jmpr= 42
 
 class clsReg:
-    def __init__(self, root=None, mem=None, pc=None):
+    def __init__(self, root=None, mem=None, pc=None, sp=None):
         self.root=root
         
         # максимальное значение в регистре
@@ -65,6 +65,9 @@ class clsReg:
         
         # сылка на программный счётчик
         self.RegPC=pc
+        
+        # ссылка на указатель стека
+        self.RegSP=sp
         
         # ссылка на регистр программного прерывания
         self.RegBP=self.root.RegBP
@@ -385,7 +388,7 @@ class clsReg:
         elif cop==A_call:     # вызвать процедуру по адресу в регистре А
             self.Mem.adr[self.RegSP.val] = self.val
             self.RegSP.val-=1
-            self.RegPC.val=self.val
+            self.RegPC.val=self.Mem.adr[self.RegPC.val+1]
         elif cop==A_ret:      # возврат из процедуры
             self.RegPC.val=self.val
             self.RegSP.val+=1
