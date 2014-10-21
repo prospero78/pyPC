@@ -38,5 +38,8 @@ class clsPort:
         if port == 0:   # порт запроса поддерживаемых режимов видеокарты
             return self.Video.get_max_mode()
         elif port == 1: # порт установки режима видеокарты
-            mode=self.adr[port]
-            return mode
+            self.Video.set_current_mode(mode=1)
+        elif port ==2:  # режим исполнения команд
+            com=self.adr[port]
+            if com == 1:    # получена команда очистки экрана
+                self.Video.clear_screen()
