@@ -27,23 +27,41 @@ class clsVideo:
         self.command=0
         self.buf=''
         self.adr={}
+        self.clear_screen()
+                
+        #self.adr=' '*3200 # будет символный экран на 3200 символов.
+    
+    def clear_screen(self):
+        '''
+        Очищает терминал от текста.
+        Процедура заливки фактически это и делает.
+        '''
+        print 'VIDEO: clear_screen()'
+        self.fill_screen()
+        
+    def fill_screen(self, sym=' '):
+        '''
+        Заливка экрана заданным символом.
+        '''
+        print 'VIDEO: fill_screen()'
         for i in xrange(0, 40):
             for i1 in xrange(0,81):
                 if i1==81:
                     self.adr[i*i1]='\n'
                 else:
-                    self.adr[i*i1]=' '
-                
-        #self.adr=' '*3200 # будет символный экран на 3200 символов.
-    
-    def clear_screen(self):
-        
+                    self.adr[i*i1]=sym
     
     def get_max_mode(self):
+        '''
+        Возвращает допустимый предельный номер режима экрана.
+        '''
         print 'VIDEO: get_max_mode()'
         return self.mode_max
         
     def set_current_mode(self, mode=None):
+        '''
+        Устанавливает новый режим экрана.
+        '''
         print 'VIDEO: set_current_mode()', mode
         if mode>self.max_mode:
             self.mode_current=self.max_mode
