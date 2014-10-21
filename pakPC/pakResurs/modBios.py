@@ -10,7 +10,7 @@
     A.msub=20       A_minc=21       A_mdec=22       A_mnot=23
     A_mxor=24       A_mor =25       A_mand=26       A_mshr=27
     A_mshl=28       A_getf =29      A_setf =30      A_ifz =31
-    A_ncmp=32       A_ifnz=33       A_mset=34       A_push=35
+    A_ncmp=32       A_ifnz=33       A_mset=34       A.push()=35
     A_pop =36       A.call(m)=37    A.ret() =38     A.in(p)=39
     A.out(p)=40     A_vin =41       A.jmp(m)=42
     
@@ -23,6 +23,7 @@ SET_VIDEO_MODE -- установка режима экрана
 
 '''
 ADR_SET_VIDEO_MODE=2
+ADR_CLEAR_SCREEN = 5
 
 bios={
     0:42, # A.jmp(50) # обход начальных процедур.
@@ -30,14 +31,15 @@ bios={
     # --- SET_VIDEO_MODE  START ---
     2:40,  # A.out(1) -- запись в порт один режима видеокарты
     3:1,   # port=1
-    4:38,  # A.ret() =38
+    4:38,  # A.ret()
     # --- SET_VIDEO_MODE  END ---
-    5:0,  # 
-    6:0,  # 
-    7:0,  # 
-    8:0,  # 
-    9:0,  # 
-    10:0, # 
+    # --- CLEAR_SCREEN  START ---
+    5:35,  # A.push() # сохранить регистр в стеке
+    6:11,  # A.nset(1) # команда 1 -- очистка экрана
+    7:1,   # n=1
+    8:40,  # A.out(2) # записть в порт видеокарты команду
+    9:2,   # port=2
+    10:38, # A.ret()
     11:0, # 
     12:0, #
     13:0, #
@@ -78,9 +80,9 @@ bios={
     48:0, #
     49:0, #
     # инициализация режима видеокарты
-    50:11, # A.nset(1)=11
+    50:11, # A.nset(1)
     51:1,  # n=1
-    52:37, # A.call(ADR_SET_VIDEO_MODE)=37
+    52:37, # A.call(ADR_SET_VIDEO_MODE)
     53:ADR_SET_VIDEO_MODE, # 
     54:0, #
     55:0, #
