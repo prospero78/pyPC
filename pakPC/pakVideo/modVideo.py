@@ -3,15 +3,14 @@
 Класс видеокарты.
 Видеокарта приписана жёстко к портам.
 Порт:
-    0 -- запрос на поддерживаемые режимы (RegA)
-    1 -- запрос на установку режима (RegA)
+    0 -- запрос на поддерживаемые режимы 
+    1 -- запрос на установку режима 
 
 Команды запроса:
 SET_VIDEO_MODE
     1 -- установить режим 80*40 текст
     
 '''
-
 
 class clsVideo:
     def __init__(self, root=None):
@@ -32,8 +31,16 @@ class clsVideo:
 #            self.adr[i]=0
         self.adr=' '*3200 # будет символный экран на 3200 символов.
     
-    def fill(self, color='#000'):
-        '''
-        Заполнение экрана виртуального компьютера заданным цветом.
-        '''
-        pass
+    def get_max_mode(self):
+        print 'VIDEO: get_max_mode()'
+        return self.mode_max
+        
+    def set_current_mode(self, mode=None):
+        print 'VIDEO: set_current_mode()', mode
+        if mode>self.max_mode:
+            self.mode_current=self.max_mode
+        elif mod<0 or mode==None:
+            self.mode_current=0
+        else:
+            self.mode_current=mode
+        return self.mode_current
