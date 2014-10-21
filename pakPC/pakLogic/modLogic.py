@@ -78,7 +78,7 @@ class clsLogic:
             info=self.CPU.qinfo.get()
             if info.has_key('RegA'):
                 inf=info['RegA']
-                print 'detect RegA', inf
+                #print 'detect RegA', inf
                 RegA=self.GUI.winMain.frmCPU.frmRegA
                 #print 'have key "RegA.val"!', info['RegA.val']
                 RegA.lblVal['text']=inf['val']
@@ -90,7 +90,7 @@ class clsLogic:
                 RegA.lblValC['text']=inf['FlagO']
             if info.has_key('RegPC'):
                 inf=info['RegPC']
-                print 'detect RegPC', inf
+                #print 'detect RegPC', inf
                 #print 'have key "RegPC.val"!', info['RegPC.val']
                 self.RegPC_val=inf['val']
                 self.GUI.winMain.frmCPU.frmRegPC.lblVal['text']=self.RegPC_old
@@ -117,7 +117,7 @@ class clsLogic:
             #---------------------------
             if info.has_key('dtime'):
                 inf=info['dtime']
-                print 'detect DTIME', inf
+                #print 'detect DTIME', inf
                 self.update_speed(dtime=inf)
     
     def generate_new_disk(self):
@@ -140,8 +140,10 @@ class clsLogic:
         self.GUI.winCreateDisk.show()
         
     def show_screen(self):
-        self.root.GUI.winScreen.show()
-        
+        if not self.GUI.winScreen.winScreen_show:
+            self.GUI.winScreen.show()
+        else:
+            self.GUI.winScreen.destroy()
     def run(self):
         self.CPU=self.root.CPU
         self.GUI=self.root.GUI
