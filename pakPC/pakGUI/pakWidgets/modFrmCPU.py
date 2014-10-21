@@ -25,7 +25,7 @@ class clsFrmCPU(Frame):
         #self.frmRegA.lblName['text']='RegA'
         
         # отображаем указатель стека
-        self.frmRegSC=clsFrmRegSP(root=self)
+        self.frmRegSP=clsFrmRegSP(root=self)
         
         # отображение регистра А
         self.frmRegA=clsFrmReg(root=self)
