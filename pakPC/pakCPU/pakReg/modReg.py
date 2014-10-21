@@ -385,8 +385,8 @@ class clsReg:
             self.Mem.adr[self.RegPC.val] = self.val
             self.RegPC.val+=1
         elif cop==A_push:      # сохранить регистр А в стеке
-            self.Mem.adr[self.RegSP.val] = self.val
             self.RegSP.val-=1
+            self.Mem.adr[self.RegSP.val] = self.val
             self.RegPC.val+=1
         elif cop==A_pop:      # восстановить регистр А из стека
             self.val=self.Mem.adr[self.RegSP.val]
