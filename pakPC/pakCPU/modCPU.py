@@ -11,6 +11,7 @@ from time import time, sleep
 from pakReg.modReg import clsReg
 from pakMem.modMemory import clsMemory
 #from pakMem.cmodMemory import clsMemory
+from pakMem.modPort import clsPort
 from pakReg.modRegSP import clsRegSP
 from pakReg.modRegPC import clsRegPC
 from pakReg.modReg   import clsReg
@@ -69,8 +70,12 @@ class clsCPU(multiprocessing.Process):
         self.max_val=max_value
         self.max_adr=max_adr
        
+        # инициализация памяти
         self.Mem=clsMemory()
         load_bios()
+        
+        # инициализация портов
+        self.Port=clsPort(max_port=2**16)
         
         self.RegSP=clsRegSP(val=self.max_adr, min_adr=self.max_adr-100)
         self.RegPC=clsRegPC(val=0, max_adr=self.RegSP.min_adr-1)
@@ -78,7 +83,11 @@ class clsCPU(multiprocessing.Process):
         # регистр для установки принудительного прерывания исполнения программы
         self.RegBP=clsRegBP(act=0, adr_break=0, adr_proc=0)
         
-        self.RegA=clsReg(root=self, mem=self.Mem, pc=self.RegPC)
+        self.RegA=clsReg(root=self,
+                        mem=self.Mem,
+                        pc=self.RegPC,
+                        sp=self.RegSP,
+                        port=self.Port)
         
     def run(self):
         '''
