@@ -65,6 +65,9 @@ class clsRes:
         self.winMain_btnDebug_0='Отладка  >>'
         self.winMain_btnDebug_1='Отладка  [X]'
         
+        self.winMain_btnShowScreen_show='Показать экран'
+        self.winMain_btnShowScreen_hide='Скрыть экран'
+        
         self.winAbout_name='О программе'
         self.winAbout_close='Закрыть это окно'
         self.winAbout_url='http://github.com/prospero78/pyPC'
@@ -90,7 +93,6 @@ class clsRes:
         f.close()
         
         self.winLicense_btnLocalLicense_text='Русский'
-        self.winLicense_btnShowScreen_text='Показать экран'
         
         self.winScreen_title='Экран pyPC'
         self.winScreen_btnScreenClose_text='Закрыть'
