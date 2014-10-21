@@ -29,10 +29,6 @@ class clsPC:
         from pakGUI.modGUI import clsGUI
         self.GUI=clsGUI(root=self)
         
-        # импрот класса видеокарты
-        from pakVideo.modVideo import clsVideo
-        self.Video=clsVideo(root=self)
-        
         # импорт класса интерфейса дискового кластера
         from pakIDC.modIDC import clsIDC
         self.IDC=clsIDC(root=self)
