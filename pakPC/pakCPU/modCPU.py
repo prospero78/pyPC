@@ -117,7 +117,7 @@ class clsCPU(multiprocessing.Process):
                                 'RegBP' :RegBP,
                                 'RegSP':RegSP,}
                         self.qinfo.put(info)
-                        print '***'
+                        #print '***'
                     elif com=='debug(on)':
                         self.run_debug=1
                         info={'debug':'on'}
