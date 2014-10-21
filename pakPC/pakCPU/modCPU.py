@@ -77,7 +77,8 @@ class clsCPU(multiprocessing.Process):
         # инициализация портов
         self.Port=clsPort(max_port=2**16)
         
-        self.RegSP=clsRegSP(val=self.max_adr, min_adr=self.max_adr-100)
+        self.RegSP=clsRegSP(val=self.Mem.act_mem,
+                            min_adr=self.Mem.max_adr-100)
         self.RegPC=clsRegPC(val=0, max_adr=self.RegSP.min_adr-1)
         
         # регистр для установки принудительного прерывания исполнения программы
