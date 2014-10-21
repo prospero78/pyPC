@@ -10,6 +10,7 @@ from pakPC.pakGUI.pakWidgets.modFrmReg import clsFrmReg
 from pakPC.pakGUI.pakWidgets.modFrmRegPC import clsFrmRegPC
 from pakPC.pakGUI.pakWidgets.modFrmRegBP import clsFrmRegBP
 from pakPC.pakGUI.pakWidgets.modFrmCpuFrec import clsFrmCpuFrec
+from pakPC.pakGUI.pakWidgets.modFrmRegSP import clsFrmRegSP
 
 class clsFrmCPU(Frame):
     def __init__(self, root=None):
@@ -22,6 +23,9 @@ class clsFrmCPU(Frame):
         # отображаем программный счётчик
         self.frmRegPC=clsFrmRegPC(root=self)
         #self.frmRegA.lblName['text']='RegA'
+        
+        # отображаем указатель стека
+        self.frmRegSC=clsFrmRegSP(root=self)
         
         # отображение регистра А
         self.frmRegA=clsFrmReg(root=self)
