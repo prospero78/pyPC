@@ -11,7 +11,7 @@ class clsPort:
         self.max_port=max_port
         # инициализация адресов портов виртуального компьютера
         self.adr={}
-        for i in xrange(0, self.act_mem):
+        for i in xrange(0, max_port):
             self.adr[i]=0
     
     def get_adr(self, adr):
