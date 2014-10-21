@@ -54,7 +54,11 @@ if True:
     A_jmpr= 42
 
 class clsReg:
-    def __init__(self, root=None, mem=None, pc=None, sp=None):
+    def __init__(self, root=None,
+                        mem=None,
+                        pc=None,
+                        sp=None,
+                        port=None):
         self.root=root
         
         # максимальное значение в регистре
@@ -62,6 +66,9 @@ class clsReg:
         
         # ссылка на память
         self.Mem=mem
+        
+        # ссылка на порты
+        self.Port=port
         
         # сылка на программный счётчик
         self.RegPC=pc
@@ -390,7 +397,7 @@ class clsReg:
             self.RegSP.val-=1
             self.RegPC.val=self.Mem.adr[self.RegPC.val+1]
         elif cop==A_ret:      # возврат из процедуры
-            self.RegPC.val=self.val
+            self.RegPC.val=self.Mem.adr[self.RegSP.val]
             self.RegSP.val+=1
         elif cop==A_in:      # чтение из порта
             self.RegPC.val+=1
