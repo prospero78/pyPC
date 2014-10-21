@@ -392,9 +392,9 @@ class clsReg:
             self.val=self.Mem.adr[self.RegSP.val]
             self.RegSP.val+=1
             self.RegPC.val+=1
-        elif cop==A_call:     # вызвать процедуру по адресу в регистре А
-            self.Mem.adr[self.RegSP.val] = self.val
+        elif cop==A_call:     # вызвать процедуру по адресу в m
             self.RegSP.val-=1
+            self.Mem.adr[self.RegSP.val] = self.RegPC.val+2
             self.RegPC.val=self.Mem.adr[self.RegPC.val+1]
         elif cop==A_ret:      # возврат из процедуры
             self.RegPC.val=self.Mem.adr[self.RegSP.val]
