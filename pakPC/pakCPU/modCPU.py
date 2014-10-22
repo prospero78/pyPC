@@ -83,8 +83,8 @@ class clsCPU(multiprocessing.Process):
         # инициализация портов
         self.Port=clsPort(max_port=2**16, video=self.Video)
         
-        self.RegSP=clsRegSP(val=self.Mem.act_mem,
-                            min_adr=self.Mem.max_adr-100)
+        self.RegSP=clsRegSP(val=self.Mem.act_mem-1,
+                            min_adr=self.Mem.max_adr-101)
         self.RegPC=clsRegPC(val=0, max_adr=self.RegSP.min_adr-1)
         
         # регистр для установки принудительного прерывания исполнения программы
@@ -117,7 +117,8 @@ class clsCPU(multiprocessing.Process):
                         RegBP={ 'act':self.RegBP.act,
                                 'adr_proc':self.RegBP.adr_proc,
                                 'adr_break':self.RegBP.adr_break}
-                        RegSP={'val':self.RegSP.val}
+                        RegSP={ 'adr':self.RegSP.val,
+                                'val':self.Mem.adr[self.RegSP.val]}
                         info={  'RegA':RegA,
                                 'RegPC' :RegPC,
                                 'RegBP' :RegBP,
