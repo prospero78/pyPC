@@ -33,6 +33,12 @@ class clsWinMain(Tk):
                             command=self.root.Control.show_screen)
                 self.btnShowScreen.pack(side='left')
                 
+                # кнопка для сброса виртуального компьютера
+                self.btnReset=Button(self.frmBtn,
+                            text=self.root.Res.winMain_btnReset,
+                            command=self.root.Control.reset_pc)
+                self.btnReset.pack(side='left')
+                
             def create_menu():
                 def create_mnuFile():
                     # добавление менюхи файл
