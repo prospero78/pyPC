@@ -67,6 +67,7 @@ class clsRes:
         
         self.winMain_btnShowScreen_show='Показать экран'
         self.winMain_btnShowScreen_hide='Скрыть экран'
+        self.winMain_btnReset='Сброс (Х)'
         
         self.winAbout_name='О программе'
         self.winAbout_close='Закрыть это окно'
