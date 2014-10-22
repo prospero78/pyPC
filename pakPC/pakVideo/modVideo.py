@@ -1,15 +1,15 @@
 # -*- coding: utf8 -*-
 '''
-Класс видеокарты.
-Видеокарта приписана жёстко к портам.
-Порт:
-    0 -- запрос на поддерживаемые режимы 
-    1 -- запрос на установку режима 
+    Класс видеокарты.
+    Видеокарта приписана жёстко к портам.
+    Порт:
+        0 -- запрос на поддерживаемые режимы 
+        1 -- запрос на установку режима 
 
-Команды запроса:
-SET_VIDEO_MODE
-    1 -- установить режим 80*40 текст
-    
+    Команды запроса:
+    SET_VIDEO_MODE
+        1 -- установить режим 80*40 текст
+        
 '''
 
 class clsVideo:
@@ -28,7 +28,6 @@ class clsVideo:
         self.buf=''
         self.adr={}
         self.clear_screen()
-                
         #self.adr=' '*3200 # будет символный экран на 3200 символов.
     
     def clear_screen(self):
@@ -63,8 +62,8 @@ class clsVideo:
         Устанавливает новый режим экрана.
         '''
         print 'VIDEO: set_current_mode()', mode
-        if mode>self.max_mode:
-            self.mode_current=self.max_mode
+        if mode>self.mode_max:
+            self.mode_current=self.mode_max
         elif mod<0 or mode==None:
             self.mode_current=0
         else:
