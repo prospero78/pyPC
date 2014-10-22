@@ -109,7 +109,8 @@ class clsLogic:
             if info.has_key('RegSP'):
                 inf=info['RegSP']
                 RegSP=self.GUI.winMain.frmCPU.frmRegSP
-                RegSP.lblVal['text']=inf['val']
+                RegSP.lblAdrVal['text']=inf['adr']
+                RegSP.lblValVal['text']=inf['val']
             #---------------------------
             if info.has_key('debug'):
                 inf=info['debug']
