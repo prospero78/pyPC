@@ -7,6 +7,10 @@ class clsController:
     def __init__(self, root=None):
         self.root=root
         
+    def reset_pc(self, event=''):
+        print  'clsController.reset_pc()'
+        self.Logic.reset_pc()
+        
     def winEditBP_hide(self, event=''):
         #print  'clsController.winEditBP_hide()'
         self.Logic.winEditBP_hide()
