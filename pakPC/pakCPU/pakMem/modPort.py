@@ -32,16 +32,15 @@ class clsPort:
         print 'PORT: set(', adr, ')=', val
         self.adr[adr]=val
         
-    def detect_port(self, port=None):
+    def detect_port(self, port=None, com=None):
         '''
         Тут собственно сам детектор портов.
         '''
-        print 'PORT: detector   port=', port
+        print '   ## PORT: detector   port=', port
         if port == 0:   # порт запроса поддерживаемых режимов видеокарты
             return self.Video.get_max_mode()
         elif port == 1: # порт установки режима видеокарты
             self.Video.set_current_mode(mode=self.adr[1])
-        elif port ==2:  # режим исполнения команд
-            com=self.adr[port]
+        elif port == 2:  # режим исполнения команд
             if com == 1:    # получена команда очистки экрана
                 self.Video.clear_screen()
