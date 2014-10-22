@@ -12,6 +12,13 @@ class clsLogic:
         # признаки запущенности ЦП в debug mode
         self.debug=0
         
+    def reset_pc(self):
+        '''
+        Сброс состояния виртуального компьютера.
+        '''
+        info={'com':'reset'}
+        self.CPU.qcom.put(info)
+        
     def update_speed(self, dtime=0):
         '''
         При отладке обновляет периодически монитор состояния ЦП и скорость виртуальной машины.
@@ -149,6 +156,10 @@ class clsLogic:
         self.CPU=self.root.CPU
         self.GUI=self.root.GUI
         self.Res=self.root.Res
+        
+        info={'com':'get_info()'}
+        self.CPU.qcom.put(info)
+        
         self.GUI.run()
         
     def exit(self):
