@@ -109,21 +109,7 @@ class clsCPU(multiprocessing.Process):
                     if com=='step()':
                         self.RegA.command()
                         #print 'com:step()    RegBP.adr_break=', self.RegBP.adr_break
-                        RegA={  'val':self.RegA.val,
-                                'FlagZ':self.RegA.FlagZ,
-                                'FlagO':self.RegA.FlagO,
-                                'FlagC':self.RegA.FlagC}
-                        RegPC={'val':self.RegPC.val}
-                        RegBP={ 'act':self.RegBP.act,
-                                'adr_proc':self.RegBP.adr_proc,
-                                'adr_break':self.RegBP.adr_break}
-                        RegSP={ 'adr':self.RegSP.val,
-                                'val':self.Mem.adr[self.RegSP.val]}
-                        info={  'RegA':RegA,
-                                'RegPC' :RegPC,
-                                'RegBP' :RegBP,
-                                'RegSP':RegSP,}
-                        self.qinfo.put(info)
+                        self.send_info()
                         #print '***'
                     elif com=='debug(on)':
                         self.run_debug=1
@@ -134,6 +120,11 @@ class clsCPU(multiprocessing.Process):
                         self.run_debug=0
                         info={'debug':'off'}
                         self.qinfo.put(info)
+                    elif com=='reset':
+                        self.reset_pc()
+                        self.reset_pc()
+                    elif com=='get_info()':
+                        self.send_info()
                 elif com.has_key('RegBP'):
                     reg=com['RegBP']
                     self.RegBP.act=reg['act']
@@ -163,9 +154,45 @@ class clsCPU(multiprocessing.Process):
                 if not self.qcom.empty():
                     com=self.qcom.get()
                     if com.has_key('com'):
-                        self.run_debug=0
-                        info={'debug':'off'}
-                        self.qinfo.put(info)
+                        com=com['com']
+                        if com=='debug(off)':
+                            self.run_debug=0
+                            info={'debug':'off'}
+                            self.qinfo.put(info)
+                        elif com=='reset':
+                            self.reset_pc()
+                            info={'debug':'reset'}
+                            self.qinfo.put(info)
         else:
             info={'debug':'end'}
             self.qinfo.put(info)
+    
+    def reset_pc(self):
+        '''
+        Принудительно сбрасывает текущее состояние компьютера.
+        Пока без сброса RegBP, не подчищает стек.
+        '''
+        self.RegA.val=0
+        self.RegA.FlagZ=1
+        self.RegA.FlagO=0
+        self.RegA.FlagC=0
+        self.RegPC.val=0
+        self.RegSP.val=0
+        self.send_info()
+    
+    def send_info(self):
+        RegA={  'val':self.RegA.val,
+                'FlagZ':self.RegA.FlagZ,
+                'FlagO':self.RegA.FlagO,
+                'FlagC':self.RegA.FlagC}
+        RegPC={'val':self.RegPC.val}
+        RegBP={ 'act':self.RegBP.act,
+                'adr_proc':self.RegBP.adr_proc,
+                'adr_break':self.RegBP.adr_break}
+        RegSP={ 'adr':self.RegSP.val,
+                'val':self.Mem.adr[self.RegSP.val]}
+        info={  'RegA':RegA,
+                'RegPC' :RegPC,
+                'RegBP' :RegBP,
+                'RegSP':RegSP,}
+        self.qinfo.put(info)
