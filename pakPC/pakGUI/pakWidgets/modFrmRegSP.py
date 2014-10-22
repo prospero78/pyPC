@@ -14,8 +14,19 @@ class clsFrmRegSP(Frame):
         self.lblName=Label(self, text='RegSP', border=1, relief='ridge')
         self.lblName.pack(side='left', fill='x')
         
-        self.lblVal=Label(self, text='0000', border=1, relief='groove')
+        self.lblAdr=Label(self, text='adr', border=1, relief='groove', bg='gray')
+        self.lblAdr.pack(side='left')
+        
+        self.lblAdrVal=Label(self, text='0000', border=1, relief='groove')
+        self.lblAdrVal.pack(side='left')
+        
+        self.lblVal=Label(self, text='val', border=1, relief='groove', bg='gray')
         self.lblVal.pack(side='left')
+        
+        self.lblValVal=Label(self, text='0000', border=1, relief='groove')
+        self.lblValVal.pack(side='left')
+        
+        
 
         
 if __name__=='__main__':
