@@ -64,7 +64,7 @@ class clsVideo:
         print 'VIDEO: set_current_mode()', mode
         if mode>self.mode_max:
             self.mode_current=self.mode_max
-        elif mod<0 or mode==None:
+        elif mode<0 or mode==None:
             self.mode_current=0
         else:
             self.mode_current=mode
