@@ -26,7 +26,7 @@ class clsLogic:
         winMain.btnReset['text']=self.root.Res.winMain_btnReset
         winMain.mbtFile['text']=self.Res.winMain_mbtFile_name
         winMain.mbtEdit['text']=self.Res.winMain_mbtEdit_name
-        
+        winMain.mbtCustom['text']=self.Res.winMain_mbtCustom_name
         
     def reset_pc(self):
         '''
