@@ -57,7 +57,7 @@ class clsPort:
             self.vcom.put(vcom)
         elif port == 2:  # режим исполнения команд
             if com == 1:    # получена команда очистки экрана
-                vcom={'com':'clear_screen'}
+                vcom={'com':{'clear_screen':0}}
                 self.vcom.put(vcom)
         elif port == 3: # режим заливки экрана
             vcom={'com':{'char':chr(com)}}
