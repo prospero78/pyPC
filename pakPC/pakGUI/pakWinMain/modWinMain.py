@@ -42,7 +42,7 @@ class clsWinMain(Tk):
             def create_menu():
                 def create_mnuFile():
                     # добавление менюхи файл
-                    self.mbtFile=Menubutton(self.frmMenu, text=self.root.Res.winMain_mbtFile_name, relief='raised', border=3)
+                    self.mbtFile=Menubutton(self.frmMenu, text='File', relief='raised', border=3)
                     self.mbtFile.pack(side='left')
                     
                 def create_mnuEdit():
