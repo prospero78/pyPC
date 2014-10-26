@@ -40,7 +40,6 @@ class clsVideo(multiprocessing.Process):
         self.command=0
         self.buf=''
         self.adr={}
-        #self.adr=' '*3200 # будет символьный экран на 3200 символов.
     
     def run(self):
         '''
@@ -63,6 +62,10 @@ class clsVideo(multiprocessing.Process):
                         self.vinfo.put(info)
                     elif com.has_key('clear_screen'):
                         self.clear_screen()
+                    elif com.has_key('fill_screen'):
+                        com=com['fill_screen']
+                        print '       com=', com
+                        self.fill_screen(sym=com)
             sleep(0.1)
     
     def clear_screen(self):
@@ -77,7 +80,7 @@ class clsVideo(multiprocessing.Process):
         '''
         Заливка экрана заданным символом.
         '''
-        print 'VIDEO: fill_screen()'
+        print 'clsVideo.fill_screen()'
         for i in xrange(0, 40):
             for i1 in xrange(0,81):
                 if i1==81:
