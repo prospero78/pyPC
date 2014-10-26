@@ -37,7 +37,7 @@ class clsCPU(multiprocessing.Process):
         На каждый регистр отводится по 128 простых команд (7 бит)
     '''
     
-    def __init__(self, max_value=0, max_adr=0):
+    def __init__(self, max_value=0, max_adr=0, vcom=None, vinfo=None):
         def load_bios():
             '''
             Загружает BIOS по умолчанию.
@@ -73,7 +73,9 @@ class clsCPU(multiprocessing.Process):
         self.Mem=clsMemory()
         load_bios()
          # инициализация портов
-        self.Port=clsPort(max_port=2**16)
+        self.Port=clsPort(max_port=2**16,
+                            vinfo=vinfo,
+                            vcom=vcom)
         
         self.RegSP=clsRegSP(val=self.Mem.act_mem-1,
                             min_adr=self.Mem.max_adr-101)
