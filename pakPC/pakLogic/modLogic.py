@@ -173,6 +173,9 @@ class clsLogic:
         self.CPU=self.root.CPU
         self.GUI=self.root.GUI
         self.Res=self.root.Res
+        self.Video=self.root.Video
+        self.Video.start()
+        self.CPU.start()
         
         info={'com':'get_info()'}
         self.CPU.qcom.put(info)
