@@ -11,6 +11,16 @@ class clsLogic:
         self.RegPC_val=0
         # признаки запущенности ЦП в debug mode
         self.debug=0
+    
+    def set_Res_str(self):
+        '''
+        Присваивает строковые ресурсы графическому интерфейсу.
+        Процедура сделана с целью отвязки GUI от ресурсов
+        (повышение атомарности класса).
+        '''
+        winMain=self.GUI.winMain
+        winMain.btnStep['text']=self.Res.winMain_btnStep
+        
         
     def reset_pc(self):
         '''
@@ -159,6 +169,9 @@ class clsLogic:
         
         info={'com':'get_info()'}
         self.CPU.qcom.put(info)
+        
+        # присовение строковых ресурсов
+        self.set_Res_str()
         
         self.GUI.run()
         
