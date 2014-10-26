@@ -33,8 +33,6 @@ class clsPC:
         from pakIDC.modIDC import clsIDC
         self.IDC=clsIDC(root=self)
         
-        
-        
     def run(self):
         '''
         Запускает главный цикл изменений.
