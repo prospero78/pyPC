@@ -11,7 +11,7 @@
 import multiprocessing
 
 class clsPort:
-    def __init__(self, max_port=2**16):
+    def __init__(self, max_port=2**16, vinfo=None, vcom=None):
         # максимально допустимое количество портов
         self.max_port=max_port
         
@@ -19,6 +19,9 @@ class clsPort:
         self.adr={}
         for i in xrange(0, max_port):
             self.adr[i]=0
+        
+        self.vinfo=vinfo
+        self.vcom=vcom
     
     def get_adr(self, adr):
         '''
@@ -50,7 +53,8 @@ class clsPort:
             else:
                 return 0
         elif port == 1: # порт установки режима видеокарты
-            self.Video.set_current_mode(mode=self.adr[1])
+            com={'com':{'set_mode':self.adr[1]}}
+            self.vcom.put(com)
         elif port == 2:  # режим исполнения команд
             if com == 1:    # получена команда очистки экрана
                 self.Video.clear_screen()
