@@ -52,7 +52,7 @@ class clsWinMain(Tk):
                     
                 def create_mnuCustom():
                     # добавление менюхи настройка
-                    self.mbtCustom=Menubutton(self.frmMenu, text=self.root.Res.winMain_mbtCustom_name, relief='raised', border=3)
+                    self.mbtCustom=Menubutton(self.frmMenu, text='Custom', relief='raised', border=3)
                     self.mbtCustom.pack(side='left')
                     
                     self.mnuCustom=Menu(self.mbtCustom)
