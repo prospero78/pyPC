@@ -29,7 +29,7 @@ class clsWinMain(Tk):
                 
                 # кнопка для показа экрана виртуального компьютера
                 self.btnShowScreen=Button(self.frmBtn,
-                            text=self.root.Res.winMain_btnShowScreen_show,
+                            text='PC Screen',
                             command=self.root.Control.show_screen)
                 self.btnShowScreen.pack(side='left')
                 
