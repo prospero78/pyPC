@@ -42,8 +42,8 @@ class clsPort:
         '''
         print '   ## PORT: detector   port=', port
         if port == 0:   # порт запроса поддерживаемых режимов видеокарты
-            com={'com':'get_max_mode'}
-            self.vcom.put(com)
+            vcom={'com':{'get_max_mode':0}}
+            self.vcom.put(vcom)
             while self.vinfo.empty():
                 sleep(0.05)
             info=self.vinfo.get()
@@ -53,10 +53,12 @@ class clsPort:
             else:
                 return 0
         elif port == 1: # порт установки режима видеокарты
-            com={'com':{'set_mode':self.adr[1]}}
-            self.vcom.put(com)
+            vcom={'com':{'set_mode':self.adr[1]}}
+            self.vcom.put(vcom)
         elif port == 2:  # режим исполнения команд
             if com == 1:    # получена команда очистки экрана
-                self.Video.clear_screen()
+                vcom={'com':'clear_screen'}
+                self.vcom.put(vcom)
         elif port == 3: # режим заливки экрана
-            self.Video.fill_screen(sym=chr(com)) # залить символом переданным в параметре
+            vcom={'com':{'char':chr(com)}}
+            self.vcom.put(vcom) # залить символом переданным в параметре
