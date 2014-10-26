@@ -27,6 +27,7 @@ class clsLogic:
         winMain.mbtFile['text']=self.Res.winMain_mbtFile_name
         winMain.mbtEdit['text']=self.Res.winMain_mbtEdit_name
         winMain.mbtCustom['text']=self.Res.winMain_mbtCustom_name
+        winMain.frmCPU.frmCpuFreq.lblKey['text']=self.Res.winMain_frmCpuFreq_lblKey
         
     def reset_pc(self):
         '''
