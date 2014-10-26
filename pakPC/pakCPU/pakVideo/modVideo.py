@@ -15,9 +15,10 @@
 '''
 
 import multiprocessing
+from time import sleep
 
 class clsVideo(multiprocessing.Process):
-    def __init__(self, root=None):
+    def __init__(self):
         '''
         По умолчанию создаётся один экран в текстовом режиме, монохромный,
         размером 80*40 знакомест (3200 позиций).
@@ -27,12 +28,10 @@ class clsVideo(multiprocessing.Process):
         self.daemon=True
         
         # очередь для получения команд
-        self.qcom=multiprocessing.Queue()
+        self.vcom=multiprocessing.Queue()
         # очередь для отправки информации
-        self.qinfo=multiprocessing.Queue()
+        self.vinfo=multiprocessing.Queue()
         
-        
-        self.root=root
         # максимальный режим видеокарты
         self.mode_max=0
         # текущий режим видеокарты
@@ -41,8 +40,19 @@ class clsVideo(multiprocessing.Process):
         self.command=0
         self.buf=''
         self.adr={}
-        self.clear_screen()
         #self.adr=' '*3200 # будет символный экран на 3200 символов.
+    
+    def run(self):
+        '''
+        Вызывается при запуске отдельного процесса.
+        '''
+        self.clear_screen()
+        while True:
+            print("The process VideoCard!")
+            if not self.vcom.empty():
+                com=self.vcom.get()
+                print com
+            sleep(0.1)
     
     def clear_screen(self):
         '''
