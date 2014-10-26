@@ -4,7 +4,7 @@
 консоль (будут забиваться в BIOS)
 '''
 
-s='pyPC'
+s=' '
 
 for i in s:
     print i, 'ord=', ord(i)
