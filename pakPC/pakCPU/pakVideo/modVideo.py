@@ -22,6 +22,16 @@ class clsVideo(multiprocessing.Process):
         По умолчанию создаётся один экран в текстовом режиме, монохромный,
         размером 80*40 знакомест (3200 позиций).
         '''
+        # создание отдельного процесса
+        multiprocessing.Process.__init__(self)
+        self.daemon=True
+        
+        # очередь для получения команд
+        self.qcom=multiprocessing.Queue()
+        # очередь для отправки информации
+        self.qinfo=multiprocessing.Queue()
+        
+        
         self.root=root
         # максимальный режим видеокарты
         self.mode_max=0
