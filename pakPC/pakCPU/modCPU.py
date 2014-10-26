@@ -72,8 +72,7 @@ class clsCPU(multiprocessing.Process):
         # инициализация памяти
         self.Mem=clsMemory()
         load_bios()
-        
-        # инициализация портов
+         # инициализация портов
         self.Port=clsPort(max_port=2**16)
         
         self.RegSP=clsRegSP(val=self.Mem.act_mem-1,
@@ -88,11 +87,11 @@ class clsCPU(multiprocessing.Process):
                         pc=self.RegPC,
                         sp=self.RegSP,
                         port=self.Port)
-        
     def run(self):
         '''
         Метод необходим для запуска отдельного процесса.
         '''
+       
         while True:
             #print("The process CPU!")
             if not self.qcom.empty():
