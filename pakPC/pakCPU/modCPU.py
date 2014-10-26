@@ -16,8 +16,6 @@ from pakReg.modReg   import clsReg
 from pakReg.modRegBP import clsRegBP
 #from pakReg.cmodRegBP import clsRegBP
 
-# импрот класса видеокарты
-from pakVideo.modVideo import clsVideo
 
 class clsCPU(multiprocessing.Process):
     '''
@@ -75,11 +73,8 @@ class clsCPU(multiprocessing.Process):
         self.Mem=clsMemory()
         load_bios()
         
-        # инициализация класса видео-терминала
-        self.Video=clsVideo(root=self)
-        
         # инициализация портов
-        self.Port=clsPort(max_port=2**16, video=self.Video)
+        self.Port=clsPort(max_port=2**16)
         
         self.RegSP=clsRegSP(val=self.Mem.act_mem-1,
                             min_adr=self.Mem.max_adr-101)
