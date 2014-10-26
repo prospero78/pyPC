@@ -40,7 +40,7 @@ class clsVideo(multiprocessing.Process):
         self.command=0
         self.buf=''
         self.adr={}
-        #self.adr=' '*3200 # будет символный экран на 3200 символов.
+        #self.adr=' '*3200 # будет символьный экран на 3200 символов.
     
     def run(self):
         '''
