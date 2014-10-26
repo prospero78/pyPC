@@ -38,7 +38,7 @@ class clsVideo:
         print 'VIDEO: clear_screen()'
         self.fill_screen()
         
-    def fill_screen(self, sym=' '):
+    def fill_screen(self, sym='*'):
         '''
         Заливка экрана заданным символом.
         '''
