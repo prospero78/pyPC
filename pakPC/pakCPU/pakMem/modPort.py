@@ -10,9 +10,6 @@
 
 import multiprocessing
 
-# импрот класса видеокарты
-from pakPC.pakCPU.pakVideo.modVideo import clsVideo
-
 class clsPort:
     def __init__(self, max_port=2**16):
         # максимально допустимое количество портов
@@ -22,14 +19,6 @@ class clsPort:
         self.adr={}
         for i in xrange(0, max_port):
             self.adr[i]=0
-            
-        # инициализация класса видео-терминала
-        self.Video=clsVideo(root=self)
-        
-        # очередь для получения команд
-        self.qcom=multiprocessing.Queue()
-        # очередь для отправки информации
-        self.qinfo=multiprocessing.Queue()
     
     def get_adr(self, adr):
         '''
@@ -50,7 +39,16 @@ class clsPort:
         '''
         print '   ## PORT: detector   port=', port
         if port == 0:   # порт запроса поддерживаемых режимов видеокарты
-            return self.Video.get_max_mode()
+            com={'com':'get_max_mode'}
+            self.vcom.put(com)
+            while self.vinfo.empty():
+                sleep(0.05)
+            info=self.vinfo.get()
+            if info.has_key('max_mode'):
+                max_mode=info['max_mode']
+                return max_mode
+            else:
+                return 0
         elif port == 1: # порт установки режима видеокарты
             self.Video.set_current_mode(mode=self.adr[1])
         elif port == 2:  # режим исполнения команд
