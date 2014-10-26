@@ -47,7 +47,7 @@ class clsWinMain(Tk):
                     
                 def create_mnuEdit():
                     # добавление менюхи правка
-                    self.mbtEdit=Menubutton(self.frmMenu, text=self.root.Res.winMain_mbtEdit_name, relief='raised', border=3)
+                    self.mbtEdit=Menubutton(self.frmMenu, text='Edit', relief='raised', border=3)
                     self.mbtEdit.pack(side='left')
                     
                 def create_mnuCustom():
