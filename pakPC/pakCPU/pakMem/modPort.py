@@ -8,16 +8,28 @@
 процедуры для каждого порта отдельно.
 '''
 
+import multiprocessing
+
+# импрот класса видеокарты
+from pakPC.pakCPU.pakVideo.modVideo import clsVideo
+
 class clsPort:
-    def __init__(self, max_port=2**16, video=None):
+    def __init__(self, max_port=2**16):
         # максимально допустимое количество портов
         self.max_port=max_port
-        # ссылка на видео-карту
-        self.Video=video
+        
         # инициализация адресов портов виртуального компьютера
         self.adr={}
         for i in xrange(0, max_port):
             self.adr[i]=0
+            
+        # инициализация класса видео-терминала
+        self.Video=clsVideo(root=self)
+        
+        # очередь для получения команд
+        self.qcom=multiprocessing.Queue()
+        # очередь для отправки информации
+        self.qinfo=multiprocessing.Queue()
     
     def get_adr(self, adr):
         '''
