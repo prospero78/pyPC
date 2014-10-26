@@ -6,6 +6,6 @@
 
 from modFrmKeyValue import clsFrmKeyValue
 
-class clsFrmCpuFrec(clsFrmKeyValue):
+class clsFrmCpuFreq(clsFrmKeyValue):
     def __init__(self, root=None):
         clsFrmKeyValue.__init__(self, root=root, key='Frec', value='0 Hz')
