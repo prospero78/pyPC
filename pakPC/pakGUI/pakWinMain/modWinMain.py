@@ -35,7 +35,7 @@ class clsWinMain(Tk):
                 
                 # кнопка для сброса виртуального компьютера
                 self.btnReset=Button(self.frmBtn,
-                            text=self.root.Res.winMain_btnReset,
+                            text='Reset (x)',
                             command=self.root.Control.reset_pc)
                 self.btnReset.pack(side='left')
                 
