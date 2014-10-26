@@ -44,3 +44,5 @@ class clsPort:
         elif port == 2:  # режим исполнения команд
             if com == 1:    # получена команда очистки экрана
                 self.Video.clear_screen()
+        elif port == 3: # режим заливки экрана
+            self.Video.fill_screen(sym=chr(com)) # залить символом переданным в параметре
