@@ -197,6 +197,7 @@ class clsLogic:
             self.root.GUI.winAbout.win_exit()
             self.root.GUI.winMain.win_exit()
             self.root.CPU.terminate()
+            self.root.Video.terminate()
             del self.root.CPU
         finally:
             sys.exit(0)
