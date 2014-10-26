@@ -9,7 +9,7 @@ from Tkinter import Frame
 from pakPC.pakGUI.pakWidgets.modFrmReg import clsFrmReg
 from pakPC.pakGUI.pakWidgets.modFrmRegPC import clsFrmRegPC
 from pakPC.pakGUI.pakWidgets.modFrmRegBP import clsFrmRegBP
-from pakPC.pakGUI.pakWidgets.modFrmCpuFrec import clsFrmCpuFrec
+from pakPC.pakGUI.pakWidgets.modFrmCpuFrec import clsFrmCpuFreq
 from pakPC.pakGUI.pakWidgets.modFrmRegSP import clsFrmRegSP
 
 class clsFrmCPU(Frame):
@@ -32,4 +32,4 @@ class clsFrmCPU(Frame):
         self.frmRegA.lblName['text']='RegA'
         
         # отображение частоты виртуального процессора
-        self.frmCpuFrec=clsFrmCpuFrec(root=self)
+        self.frmCpuFreq=clsFrmCpuFreq(root=self)
