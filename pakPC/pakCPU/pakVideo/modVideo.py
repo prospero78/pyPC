@@ -48,7 +48,7 @@ class clsVideo(multiprocessing.Process):
         '''
         self.clear_screen()
         while True:
-            print("The process VideoCard!")
+            #print("The process VideoCard!")
             if not self.vcom.empty():
                 com=self.vcom.get()
                 print com
