@@ -8,10 +8,10 @@ from tkFileDialog import askopenfilename
 
 class clsFrmDiskSelect(Frame):
     def __init__(self,
-            master=None,
-            root=None,
-            text='Disk-0:',
-            path='./data/default.dsk'):
+                master=None,
+                root=None,
+                text='Disk-0:',
+                path='./data/default.dsk'):
         def create_self():
             def open_disk(event=''):
                 d=askopenfilename(defaultextension='.dsk',
