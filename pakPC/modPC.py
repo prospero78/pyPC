@@ -12,10 +12,26 @@ class clsPC:
         from pakResurs.modResurs import clsRes
         self.Res=clsRes(root=self, lang='ru', arg=arg)
         
+        
+        
+        
         # импорт клаcса центрального процессора
         from pakCPU.modCPU import clsCPU
         self.CPU=clsCPU(max_value=self.Res.max_reg_val, max_adr=self.Res.max_adr)
         self.CPU.start()
+        
+        #import time
+        #time.sleep(0.5)
+        
+        # импорт класса видеокарты
+        from pakPC.pakCPU.pakVideo.modVideo import clsVideo
+        self.Video=clsVideo()
+        self.Video.start()
+        
+        # очередь для получения команд
+        #self.vcom=multiprocessing.Queue()
+        # очередь для отправки информации
+        #self.vinfo=multiprocessing.Queue()
         
         # импорт класса общей логики
         from pakLogic.modLogic import clsLogic
