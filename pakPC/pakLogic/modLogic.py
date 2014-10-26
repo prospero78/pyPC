@@ -23,6 +23,7 @@ class clsLogic:
         winMain.btnDebug['text']=self.Res.winMain_btnDebug_0
         winMain.btnExit['text']=self.Res.winMain_btnExit_name
         winMain.btnShowScreen['text']=self.Res.winMain_btnShowScreen_show
+        winMain.btnReset['text']=self.root.Res.winMain_btnReset
         
     def reset_pc(self):
         '''
