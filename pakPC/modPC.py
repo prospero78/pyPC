@@ -15,12 +15,10 @@ class clsPC:
         # импорт класса видеокарты
         from pakPC.pakCPU.pakVideo.modVideo import clsVideo
         self.Video=clsVideo()
-        self.Video.start()
         
         # импорт клаcса центрального процессора
         from pakCPU.modCPU import clsCPU
         self.CPU=clsCPU(max_value=self.Res.max_reg_val, max_adr=self.Res.max_adr)
-        self.CPU.start()
         
         # импорт класса общей логики
         from pakLogic.modLogic import clsLogic
