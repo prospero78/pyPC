@@ -22,6 +22,7 @@ class clsLogic:
         winMain.btnStep['text']=self.Res.winMain_btnStep
         winMain.btnDebug['text']=self.Res.winMain_btnDebug_0
         winMain.btnExit['text']=self.Res.winMain_btnExit_name
+        winMain.btnShowScreen['text']=self.Res.winMain_btnShowScreen_show
         
     def reset_pc(self):
         '''
