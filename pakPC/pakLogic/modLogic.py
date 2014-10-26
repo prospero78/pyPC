@@ -180,7 +180,7 @@ class clsLogic:
         info={'com':'get_info()'}
         self.CPU.qcom.put(info)
         
-        # присовение строковых ресурсов
+        # присвоение строковых ресурсов
         self.set_Res_str()
         
         self.GUI.run()
