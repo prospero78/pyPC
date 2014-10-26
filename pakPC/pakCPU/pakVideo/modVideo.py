@@ -61,6 +61,8 @@ class clsVideo(multiprocessing.Process):
                     elif com.has_key('get_max_mode'):
                         info={'max_mode':self.mode_max}
                         self.vinfo.put(info)
+                    elif com.has_key('clear_screen'):
+                        self.clear_screen()
             sleep(0.1)
     
     def clear_screen(self):
