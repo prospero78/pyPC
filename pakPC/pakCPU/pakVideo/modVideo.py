@@ -51,7 +51,16 @@ class clsVideo(multiprocessing.Process):
             #print("The process VideoCard!")
             if not self.vcom.empty():
                 com=self.vcom.get()
-                print com
+                print 'clsVideo.run(): com=', com
+                if com.has_key('com'):
+                    com=com['com']
+                    if com.has_key('set_mode'):
+                        com=com['set_mode']
+                        print '       com=', com
+                        self.set_current_mode(mode=com)
+                    elif com.has_key('get_max_mode'):
+                        info={'max_mode':self.mode_max}
+                        self.vinfo.put(info)
             sleep(0.1)
     
     def clear_screen(self):
@@ -85,7 +94,7 @@ class clsVideo(multiprocessing.Process):
         '''
         Устанавливает новый режим экрана.
         '''
-        print 'VIDEO: set_current_mode()', mode
+        print 'clsVideo.set_current_mode(): mode=', mode
         if mode>self.mode_max:
             self.mode_current=self.mode_max
         elif mode<0 or mode==None:
