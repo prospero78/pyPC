@@ -60,5 +60,5 @@ class clsPort:
                 vcom={'com':{'clear_screen':0}}
                 self.vcom.put(vcom)
         elif port == 3: # режим заливки экрана
-            vcom={'com':{'char':chr(com)}}
+            vcom={'com':{'fill_screen':com}}
             self.vcom.put(vcom) # залить символом переданным в параметре
