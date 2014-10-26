@@ -5,8 +5,6 @@
 
 import multiprocessing
 
-
-
 from time import time, sleep
 from pakReg.modReg import clsReg
 from pakMem.modMemory import clsMemory
