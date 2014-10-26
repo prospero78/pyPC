@@ -58,7 +58,9 @@ class clsReg:
                         mem=None,
                         pc=None,
                         sp=None,
-                        port=None):
+                        port=None,
+                        vcom=None,
+                        vinfo=None):
         self.root=root
         
         # максимальное значение в регистре
