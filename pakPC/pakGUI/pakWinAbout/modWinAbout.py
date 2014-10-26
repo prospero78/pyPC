@@ -17,7 +17,7 @@ class clsWinAbout(Toplevel):
             self.frmUp=Frame(self, border=3, relief='groove')
             self.frmUp.pack(fill='both', expand=1, side='top')
             
-            self.lblPyPC=Label(self.frmUp, border=3, relief='sunken', text=' pyPC ', bg='white', fg='red', font='Arial 24 bold')
+            self.lblPyPC=Label(self.frmUp, border=3, relief='sunken', text=' pyPC \n'+self.root.Res.vers, bg='white', fg='red', font='Arial 24 bold')
             self.lblPyPC.pack(side='left', fill='y')
             
             self.lblGit=Label(self.frmUp, text=self.root.Res.winAbout_url, fg='blue', cursor='hand2')
