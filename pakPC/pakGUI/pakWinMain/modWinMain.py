@@ -23,7 +23,7 @@ class clsWinMain(Tk):
                 
                 # кнопка "выход" главного окна
                 self.btnExit=Button(self.frmBtn,
-                            text=self.root.Res.winMain_btnExit_name,
+                            text='Exit [X]',
                             command=self.root.Control.exit)
                 self.btnExit.pack(side='right')
                 
