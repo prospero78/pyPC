@@ -19,7 +19,7 @@ from pakReg.modRegBP import clsRegBP
 #from pakReg.cmodRegBP import clsRegBP
 
 # импрот класса видеокарты
-from pakPC.pakVideo.modVideo import clsVideo
+from pakVideo.modVideo import clsVideo
 
 class clsCPU(multiprocessing.Process):
     '''
