@@ -29,8 +29,11 @@ class clsVideo(multiprocessing.Process):
         
         # очередь для получения команд
         self.vcom=multiprocessing.Queue()
-        # очередь для отправки информации
+        # очередь для отправки информации назад в железную часть
         self.vinfo=multiprocessing.Queue()
+        
+        # очередь для отправки информации для прорисовки
+        self.vout=multiprocessing.Queue()
         
         # максимальный режим видеокарты
         self.mode_max=0
@@ -76,17 +79,23 @@ class clsVideo(multiprocessing.Process):
         print 'VIDEO: clear_screen()'
         self.fill_screen()
         
-    def fill_screen(self, sym='*'):
+    def fill_screen(self, sym=35):
         '''
         Заливка экрана заданным символом.
         '''
         print 'clsVideo.fill_screen()'
+        a=''
+        sym=chr(35)
         for i in xrange(0, 40):
             for i1 in xrange(0,81):
-                if i1==81:
+                if i1==80:
                     self.adr[i*i1]='\n'
+                    a+='\n'
                 else:
                     self.adr[i*i1]=sym
+                    a+=sym
+        self.vout.put(a)
+        print a
     
     def get_max_mode(self):
         '''
