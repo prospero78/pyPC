@@ -144,7 +144,9 @@ class clsLogic:
                 inf=info['dtime']
                 #print 'detect DTIME', inf
                 self.update_speed(dtime=inf)
-    
+        while not self.Video.vout.empty():
+            vout=self.Video.vout.get()
+            self.winScreen.lblScreen['text']=vout
     def generate_new_disk(self):
         #print 'generate_new_disk()'
         self.GUI.winCreateDisk.destroy()
@@ -172,6 +174,7 @@ class clsLogic:
     def run(self):
         self.CPU=self.root.CPU
         self.GUI=self.root.GUI
+        self.winScreen=self.GUI.winScreen
         self.Res=self.root.Res
         self.Video=self.root.Video
         self.Video.start()
