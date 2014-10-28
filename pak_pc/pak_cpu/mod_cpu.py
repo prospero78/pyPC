@@ -17,7 +17,7 @@ from pakReg.modRegBP import clsRegBP
 #from pakReg.cmodRegBP import clsRegBP
 
 
-class clsCPU(multiprocessing.Process):
+class ClsCPU(multiprocessing.Process):
     '''
         Здесь надо хорошо подумать сколько элементарных операций будет выполнять процессор.
         Длина команды (без старшего бита) ограничена семью битами.
