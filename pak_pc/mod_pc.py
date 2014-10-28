@@ -13,8 +13,8 @@ class ClsPC(object):
         self.res = ClsRes(root=self, lang='ru', arg=arg)
 
         # импорт класса видеокарты
-        from pak_pc.pakCPU.pakVideo.modVideo import clsVideo
-        self.video = clsVideo()
+        from pak_pc.pak_cpu.pak_video.mod_video import ClsVideo
+        self.video = ClsVideo()
 
         # импорт клаcса центрального процессора
         from pak_pc.pakCPU.modCPU import clsCPU
