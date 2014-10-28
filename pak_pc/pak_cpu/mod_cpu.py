@@ -73,7 +73,7 @@ class ClsCPU(multiprocessing.Process):
         self.Mem = ClsMemory()
         load_bios()
          # инициализация портов
-        self.Port = clsPort(max_port=2**16,
+        self.Port = ClsPort(max_port=2**16,
                             vinfo=vinfo,
                             vcom=vcom)
 
