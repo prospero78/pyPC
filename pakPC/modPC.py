@@ -7,38 +7,38 @@ class clsPC:
     '''
     Класс реализует логику работы всей системы.
     '''
-    def __init__(self, arg=[]):
+    def __init__(self, arg=None):
         # импорт класса ресурсов
-        from pakResurs.modResurs import clsRes
-        self.Res=clsRes(root=self, lang='ru', arg=arg)
-        
+        from pakPC.pakResurs.modResurs import clsRes
+        self.Res = clsRes(root=self, lang='ru', arg=arg)
+
         # импорт класса видеокарты
         from pakPC.pakCPU.pakVideo.modVideo import clsVideo
-        self.Video=clsVideo()
-        
+        self.Video = clsVideo()
+
         # импорт клаcса центрального процессора
-        from pakCPU.modCPU import clsCPU
-        self.CPU=clsCPU(max_value=self.Res.max_reg_val,
-                    max_adr=self.Res.max_adr,
-                    vcom=self.Video.vcom,
-                    vinfo=self.Video.vinfo)
-        
+        from pakPC.pakCPU.modCPU import clsCPU
+        self.CPU = clsCPU(max_value=self.Res.max_reg_val,
+                          max_adr=self.Res.max_adr,
+                          vcom=self.Video.vcom,
+                          vinfo=self.Video.vinfo)
+
         # импорт класса общей логики
-        from pakLogic.modLogic import clsLogic
-        self.Logic=clsLogic(root=self)
-        
+        from pakPC.pakLogic.modLogic import clsLogic
+        self.Logic = clsLogic(root=self)
+
         # импорт класса контроллера
-        from pakController.modController import clsController
-        self.Control=clsController(root=self)
-        
+        from pakPC.pakController.modController import clsController
+        self.Control = clsController(root=self)
+
         # импорт класса графики
-        from pakGUI.modGUI import clsGUI
-        self.GUI=clsGUI(root=self)
-        
+        from pakPC.pakGUI.modGUI import clsGUI
+        self.GUI = clsGUI(root=self)
+
         # импорт класса интерфейса дискового кластера
-        from pakIDC.modIDC import clsIDC
-        self.IDC=clsIDC(root=self)
-        
+        from pakPC.pakIDC.modIDC import clsIDC
+        self.IDC = clsIDC(root=self)
+
     def run(self):
         '''
         Запускает главный цикл изменений.
