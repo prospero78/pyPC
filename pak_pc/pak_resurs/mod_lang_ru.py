@@ -4,12 +4,12 @@
 '''
 from pak_pc.pak_resurs.mod_lang import ClsLang
 
-class ClsLangRU(ClsLang):
+class ClsLangRu(ClsLang):
     '''
     Класс обеспечивает строковыми ресурсами для русского языка.
     '''
-    def __init__(self):
-        ClsLang.__init__(self)
+    def __init__(self, lang='ru'):
+        ClsLang.__init__(self, lang='ru')
         self.__vers = 1 + ClsLang.vers
         self.win_main_name = 'pyPC    верс. ' + self.__vers
         self.win_main_btn_exit_name = 'Выход'
