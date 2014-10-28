@@ -44,7 +44,7 @@ class ClsCPU(multiprocessing.Process):
             BIOS содержится в py-файле, обычный хитрый словарь.
             '''
             # инициализация биоса
-            from pakPC.pakResurs.modBios import bios
+            from pak_pc.pak_resurs.mod_bios import bios
             for i in bios:
                 #print i, bios[i], type(i)
                 if i > self.Mem.max_adr:
@@ -70,7 +70,7 @@ class ClsCPU(multiprocessing.Process):
         self.max_adr = max_adr
 
         # инициализация памяти
-        self.Mem = clsMemory()
+        self.Mem = ClsMemory()
         load_bios()
          # инициализация портов
         self.Port = clsPort(max_port=2**16,
