@@ -10,7 +10,7 @@ def main():
     Импортирует главный класс, и запускает приложение.
     '''
     arg = sys.argv
-    from pakPC import ClsPC
+    from pak_pc import ClsPC
     app = ClsPC(arg=arg)
     app.run()
 
