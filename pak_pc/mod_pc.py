@@ -17,8 +17,8 @@ class ClsPC(object):
         self.video = ClsVideo()
 
         # импорт клаcса центрального процессора
-        from pak_pc.pakCPU.modCPU import clsCPU
-        self.cpu = clsCPU(max_value=self.res.max_reg_val,
+        from pak_pc.pak_cpu.mod_cpu import ClsCPU
+        self.cpu = ClsCPU(max_value=self.res.max_reg_val,
                           max_adr=self.res.max_adr,
                           vcom=self.video.vcom,
                           vinfo=self.video.vinfo)
