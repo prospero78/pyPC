@@ -38,3 +38,14 @@ class ClsLang(object):
         Свойство возвращающее версию текущего класса.
         '''
         return self.__vers
+    
+    @vers.setter
+    def vers(self, val=None):
+        ''''
+        Устанавливает текущую версию класса.
+        Если значение неприемлимое -- ничего не делает.
+        '''
+        if val == None or val == '':
+            print 'ClsLang.vers_setter(): invalid val version!'
+        else:
+            self.__vers = val
