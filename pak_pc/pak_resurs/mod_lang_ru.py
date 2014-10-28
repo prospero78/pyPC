@@ -2,10 +2,16 @@
 '''
 Модуль локализации русского языка.
 '''
+from pak_pc.pak_resurs.mod_lang import ClsLang
 
-class ClsLangRU(object):
+class ClsLangRU(ClsLang):
+    '''
+    Класс обеспечивает строковыми ресурсами для русского языка.
+    '''
     def __init__(self):
-        self.win_main_name = 'pyPC    верс. '+self.vers
+        ClsLang.__init__(self)
+        self.__vers = 1 + ClsLang.vers
+        self.win_main_name = 'pyPC    верс. ' + self.__vers
         self.win_main_btn_exit_name = 'Выход'
         self.win_main_mbt_file_name = 'Файл'
         self.win_main_mbt_edit_name = 'Правка'
@@ -40,28 +46,36 @@ class ClsLangRU(object):
 для своих нужд. Суперькомпьютера из этого не сделать,
 но и свои секреты, в целом -- доверить можно.
 Сделано в России с любовью. )'''
-        self.winAbout_license = 'Лицензионное требование'
+        self.win_about_license = 'Лицензионное требование'
 
-        self.winLicense_title = 'Лицензионное требование'
+        self.win_license_title = 'Лицензионное требование'
 
-        f = open('./pakPC/pakResurs/txt/GNU_GPL_v3_rus.txt', 'r')
-        self.winLicense_locale = f.read()
-        f.close()
+        fread = open('./pakPC/pakResurs/txt/GNU_GPL_v3_rus.txt', 'r')
+        self.win_license_locale = fread.read()
+        fread.close()
 
-        self.win_license_btn_local_license_text = 'Русский'
+        self.win_license_btn_local_text = 'Русский'
 
         self.win_screen_title = 'Экран pyPC'
-        self.win_screen_btn_screen_close_text = 'Закрыть'
+        self.win_screen_btn_close_text = 'Закрыть'
 
         self.win_idc_name = 'Интерфейс дискового кластера'
         self.win_idc_open = 'Открыть'
         self.win_idc_open_disk_image = 'Открыть дисковый образ...'
         self.win_idc_image_create = 'Cоздать'
-        self.winIDC_ImageUnpath = 'Очистить'
-        self.winIDC_cancel = 'Отменить'
-        self.winIDC_reset = 'Сбросить'
+        self.win_idc_image_unpath = 'Очистить'
+        self.win_idc_cancel = 'Отменить'
+        self.win_idc_reset = 'Сбросить'
 
-        self.winCreateDisk_title = 'Создание нового диска...'
+        self.win_create_disk_title = 'Создание нового диска...'
 
-        self.winEditBP_title = 'Свойства регистра BP'
-        self.winEditBP_btnClose = 'Закрыть'
+        self.win_edit_bp_title = 'Свойства регистра BP'
+        self.win_edit_bp_btn_close = 'Закрыть'
+
+    @property
+    def vers(self):
+        '''
+        Возвращает свойство версии для текущего класса, с учётом
+        версии родительских классов.
+        '''
+        return self.__vers
