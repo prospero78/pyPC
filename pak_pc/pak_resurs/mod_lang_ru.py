@@ -10,8 +10,8 @@ class ClsLangRu(ClsLang):
     '''
     def __init__(self, lang='ru'):
         ClsLang.__init__(self, lang='ru')
-        self.__vers = self._ClsLang__vers + 1
-        self.win_main_name = 'pyPC    верс. ' + self.__vers
+        self.__vers = self._ClsLang__vers + 2
+        self.win_main_name = 'pyPC    верс. ' + str(self.__vers)
         self.win_main_btn_exit_name = 'Выход'
         self.win_main_mbt_file_name = 'Файл'
         self.win_main_mbt_edit_name = 'Правка'
@@ -50,7 +50,7 @@ class ClsLangRu(ClsLang):
 
         self.win_license_title = 'Лицензионное требование'
 
-        fread = open('./pakPC/pakResurs/txt/GNU_GPL_v3_rus.txt', 'r')
+        fread = open('./pak_pc/pak_resurs/txt/GNU_GPL_v3_rus.txt', 'r')
         self.win_license_locale = fread.read()
         fread.close()
 
