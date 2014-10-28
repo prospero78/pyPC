@@ -3,8 +3,12 @@
 Класс ресурсов. Содержит всякие полезные штуки для интернационализации,
 графики и т. д.
 '''
-class ClsRes:
-    def __init__(self, root=None, lang='ru', arg=[]):
+from pak_pc.pak_resurs.mod_lang import ClsLang
+class ClsRes(ClsLang):
+    '''
+    Класс создаёт все необходимые ресурсы в программе.
+    '''
+    def __init__(self, root=None, lang='ru', arg=None):
         self.root = root
         self.lang = lang
         self.arg = arg
@@ -12,7 +16,8 @@ class ClsRes:
         self.create_res()
         self.pars_arg()
         if self.lang == 'ru':
-            self.create_ru()
+            from pak_pc.pak_resurs.mod_lang_ru import ClsLangRu
+            ClsLangRu.__init__(self, lang=self.lang)
 
     def pars_arg(self):
         if len(self.arg) > 1:
