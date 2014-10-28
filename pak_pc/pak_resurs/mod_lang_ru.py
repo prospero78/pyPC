@@ -10,7 +10,7 @@ class ClsLangRu(ClsLang):
     '''
     def __init__(self, lang='ru'):
         ClsLang.__init__(self, lang='ru')
-        self.__vers = 1 + ClsLang.vers
+        self.__vers = self._ClsLang__vers + 1
         self.win_main_name = 'pyPC    верс. ' + self.__vers
         self.win_main_btn_exit_name = 'Выход'
         self.win_main_mbt_file_name = 'Файл'
@@ -79,3 +79,14 @@ class ClsLangRu(ClsLang):
         версии родительских классов.
         '''
         return self.__vers
+
+    @vers.setter
+    def vers(self, val=None):
+        ''''
+        Устанавливает текущую версию класса.
+        Если значение неприемлимое -- ничего не делает.
+        '''
+        if val == None or val == '':
+            print 'ClsLangRu.vers_setter(): invalid val version!'
+        else:
+            self.__vers = val
