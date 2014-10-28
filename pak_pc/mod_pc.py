@@ -9,7 +9,7 @@ class ClsPC(object):
     '''
     def __init__(self, arg=None):
         # импорт класса ресурсов
-        from pak_pc.pakResurs.modResurs import ClsRes
+        from pak_pc.pak_resurs.mod_resurs import ClsRes
         self.res = ClsRes(root=self, lang='ru', arg=arg)
 
         # импорт класса видеокарты
