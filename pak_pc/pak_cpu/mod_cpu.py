@@ -6,14 +6,13 @@
 import multiprocessing
 
 from time import time, sleep
-from pakReg.modReg import clsReg
-from pakMem.modMemory import clsMemory
+from pak_pc.pak_cpu.pak_mem.mod_memory import ClsMemory
 #from pakMem.cmodMemory import clsMemory
-from pakMem.modPort import clsPort
-from pakReg.modRegSP import clsRegSP
-from pakReg.modRegPC import clsRegPC
-from pakReg.modReg   import clsReg
-from pakReg.modRegBP import clsRegBP
+from pak_pc.pak_cpu.pak_mem.modPort import clsPort
+from pak_pc.pak_cpu.pakReg.modRegSP import clsRegSP
+from pak_pc.pak_cpu.pakReg.modRegPC import clsRegPC
+from pak_pc.pak_cpu.pakReg.modReg   import clsReg
+from pak_pc.pak_cpu.pakReg.modRegBP import clsRegBP
 #from pakReg.cmodRegBP import clsRegBP
 
 
