@@ -47,9 +47,9 @@ class ClsCPU(multiprocessing.Process):
             from pak_pc.pak_resurs.mod_bios import bios
             for i in bios:
                 #print i, bios[i], type(i)
-                if i > self.Mem.max_adr:
-                    self.Mem.add_adr()
-                self.Mem.adr[i] = bios[i]
+                if i > self.mem.max_adr:
+                    self.mem.add_adr()
+                self.mem.adr[i] = bios[i]
             print '  = BIOS load OK ='
         # создание отдельного процесса
         multiprocessing.Process.__init__(self)
@@ -70,25 +70,25 @@ class ClsCPU(multiprocessing.Process):
         self.max_adr = max_adr
 
         # инициализация памяти
-        self.Mem = ClsMemory()
+        self.mem = ClsMemory()
         load_bios()
          # инициализация портов
-        self.Port = ClsPort(max_port=2**16,
+        self.port = ClsPort(max_port=2**16,
                             vinfo=vinfo,
                             vcom=vcom)
 
-        self.RegSP = clsRegSP(val=self.Mem.act_mem-1,
-                              min_adr=self.Mem.max_adr-101)
-        self.RegPC = clsRegPC(val=0, max_adr=self.RegSP.min_adr-1)
+        self.reg_sp = clsRegSP(val=self.mem.act_mem-1,
+                               min_adr=self.mem.max_adr-101)
+        self.reg_pc = clsRegPC(val=0, max_adr=self.RegSP.min_adr-1)
 
         # регистр для установки принудительного прерывания исполнения программы
-        self.RegBP = clsRegBP(act=0, adr_break=0, adr_proc=0)
+        self.reg_bp = clsRegBP(act=0, adr_break=0, adr_proc=0)
 
-        self.RegA = clsReg(root=self,
-                           mem=self.Mem,
-                           pc=self.RegPC,
-                           sp=self.RegSP,
-                           port=self.Port)
+        self.reg_a = clsReg(root=self,
+                            mem=self.mem,
+                            pc=self.RegPC,
+                            sp=self.RegSP,
+                            port=self.Port)
     def run(self):
         '''
         Метод необходим для запуска отдельного процесса.
@@ -184,7 +184,7 @@ class ClsCPU(multiprocessing.Process):
                  'adr_proc':self.RegBP.adr_proc,
                  'adr_break':self.RegBP.adr_break}
         RegSP = {'adr':self.RegSP.val,
-                 'val':self.Mem.adr[self.RegSP.val]}
+                 'val':self.mem.adr[self.RegSP.val]}
         info = {'RegA':RegA,
                 'RegPC' :RegPC,
                 'RegBP' :RegBP,
