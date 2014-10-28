@@ -10,7 +10,7 @@
 
 import multiprocessing
 
-class clsPort:
+class ClsPort:
     def __init__(self, max_port=2**16, vinfo=None, vcom=None):
         # максимально допустимое количество портов
         self.max_port=max_port
