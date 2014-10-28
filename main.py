@@ -9,12 +9,12 @@ def main():
     '''
     Импортирует главный класс, и запускает приложение.
     '''
-    arg=sys.argv
+    arg = sys.argv
     from pakPC import clsPC
-    app=clsPC(arg=arg)
+    app = clsPC(arg=arg)
     app.run()
 
-if __name__=='__main__':
+if __name__ == '__main__':
     '''
         #TODO: доделать возможность передачи аргументов
         Кое что уже сделано, но надо бы добавить ещё ключей для солидняка )))
