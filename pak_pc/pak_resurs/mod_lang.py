@@ -11,8 +11,11 @@ class ClsLang(object):
         '''
         Корневой класс для всех классов языков.
         '''
-        self.__vers = 2
+        self.vers = 2
         self.__lang = lang
+
+        # словарь переводов
+        self.lang_dict = {}
 
     @property
     def lang(self):
@@ -31,21 +34,3 @@ class ClsLang(object):
             print 'ClsLang.lang_setter(): invalid val language!'
         else:
             self.__lang = val
-
-    @property
-    def vers(self):
-        '''
-        Свойство возвращающее версию текущего класса.
-        '''
-        return self.__vers
-    
-    @vers.setter
-    def vers(self, val=None):
-        ''''
-        Устанавливает текущую версию класса.
-        Если значение неприемлимое -- ничего не делает.
-        '''
-        if val == None or val == '':
-            print 'ClsLang.vers_setter(): invalid val version!'
-        else:
-            self.__vers = val
