@@ -5,7 +5,7 @@
 а также создание/удаление/монтирование/демонтирование дисков
 '''
 
-class clsIDC:
+class ClsIDC:
     def __init__(self, root=None):
         self.root=root
     
