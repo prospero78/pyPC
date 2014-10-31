@@ -9,10 +9,10 @@ from time import time, sleep
 from pak_pc.pak_cpu.pak_mem.mod_memory import ClsMemory
 #from pakMem.cmodMemory import clsMemory
 from pak_pc.pak_cpu.pak_mem.mod_port import ClsPort
-from pak_pc.pak_cpu.pakReg.modRegSP import clsRegSP
-from pak_pc.pak_cpu.pakReg.modRegPC import clsRegPC
-from pak_pc.pak_cpu.pakReg.modReg   import clsReg
-from pak_pc.pak_cpu.pakReg.modRegBP import clsRegBP
+from pak_pc.pak_cpu.pak_reg.mod_reg_sp import ClsRegSP
+from pak_pc.pak_cpu.pak_reg.mod_reg_pc import ClsRegPC
+from pak_pc.pak_cpu.pak_reg.mod_reg   import ClsReg
+from pak_pc.pak_cpu.pak_reg.mod_reg_bp import ClsRegBP
 #from pakReg.cmodRegBP import clsRegBP
 
 
@@ -79,7 +79,7 @@ class ClsCPU(multiprocessing.Process):
 
         self.reg_sp = clsRegSP(val=self.mem.act_mem-1,
                                min_adr=self.mem.max_adr-101)
-        self.reg_pc = clsRegPC(val=0, max_adr=self.RegSP.min_adr-1)
+        self.reg_pc = ClsRegPC(val=0, max_adr=self.RegSP.min_adr-1)
 
         # регистр для установки принудительного прерывания исполнения программы
         self.reg_bp = clsRegBP(act=0, adr_break=0, adr_proc=0)
