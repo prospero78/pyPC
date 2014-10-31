@@ -201,7 +201,7 @@ class ClsLogic:
             self.root.gui.winLicense.win_exit()
             self.root.gui.win_idc.win_exit()
             self.root.gui.winCreateDisk.win_exit()
-            self.root.gui.winAbout.win_exit()
+            self.root.gui.win_about.win_exit()
             self.root.gui.win_main.win_exit()
             self.root.cpu.terminate()
             self.root.video.terminate()
@@ -217,4 +217,4 @@ class ClsLogic:
         
     def hide_winLicense(self):
         if 'lin' not in sys.platform:
-            self.root.gui.winAbout.grab_set()
+            self.root.gui.win_about.grab_set()
