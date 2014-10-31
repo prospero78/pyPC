@@ -23,8 +23,8 @@ class clsController:
         #print  'clsController.winMain_debug()'
         self.Logic.debug_CPU()
         
-    def winMain_stepCPU(self, event=''):
-        #print  'clsController.winMain_stepCPU()'
+    def win_main_step_cpu(self, event=''):
+        #print  'clsController.win_main_step_cpu()'
         self.Logic.step_CPU()
     
     def winCreateDisk_ok(self, event=''):
