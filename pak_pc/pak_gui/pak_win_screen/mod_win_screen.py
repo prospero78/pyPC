@@ -10,7 +10,7 @@ class ClsWinScreen(Toplevel):
         def create_self():
             Toplevel.__init__(self)
             self.state('withdrawn')
-            self.title(self.root.Res.winScreen_title)
+            self.title(self.root.res.winScreen_title)
             self.minsize(640, 480)
         
         def create_frmScreen():
@@ -34,7 +34,7 @@ class ClsWinScreen(Toplevel):
             self.frmBtn=Frame(self, border=3, relief='raised')
             self.frmBtn.pack(side='bottom', fill='x')
             
-            self.btnScreenClose=Button(self.frmBtn, text=self.root.Res.winScreen_btnScreenClose_text, bg='gray', command=self.destroy)
+            self.btnScreenClose=Button(self.frmBtn, text=self.root.res.winScreen_btnScreenClose_text, bg='gray', command=self.destroy)
             self.btnScreenClose.pack(side='right')
             
         self.root=root
@@ -53,13 +53,13 @@ class ClsWinScreen(Toplevel):
         self.focus_set()
         #self.grab_set()
         #self.wait_window()
-        self.root.GUI.winMain.btnShowScreen['text']=self.root.Res.winMain_btnShowScreen_hide
+        self.root.GUI.winMain.btnShowScreen['text']=self.root.res.winMain_btnShowScreen_hide
         
     def destroy(self):
         self.winScreen_show=0
         self.state('withdrawn')
         self.grab_release()
-        self.root.GUI.winMain.btnShowScreen['text']=self.root.Res.winMain_btnShowScreen_show
+        self.root.GUI.winMain.btnShowScreen['text']=self.root.res.winMain_btnShowScreen_show
     
     def win_exit(self):
         self.destroy()
