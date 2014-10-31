@@ -10,7 +10,7 @@ class ClsWinScreen(Toplevel):
         def create_self():
             Toplevel.__init__(self)
             self.state('withdrawn')
-            self.title(self.root.res.winScreen_title)
+            self.title(self.lang['win_screen_title'])
             self.minsize(640, 480)
         
         def create_frmScreen():
@@ -31,13 +31,14 @@ class ClsWinScreen(Toplevel):
             self.lblScreen['text']=a
         
         def create_frmBtn():
-            self.frmBtn=Frame(self, border=3, relief='raised')
-            self.frmBtn.pack(side='bottom', fill='x')
+            self.frm_btn=Frame(self, border=3, relief='raised')
+            self.frm_btn.pack(side='bottom', fill='x')
             
-            self.btnScreenClose=Button(self.frmBtn, text=self.root.res.winScreen_btnScreenClose_text, bg='gray', command=self.destroy)
+            self.btnScreenClose=Button(self.frm_btn, text=self.lang['win_screen_btn_close_text'], bg='gray', command=self.destroy)
             self.btnScreenClose.pack(side='right')
             
         self.root=root
+        self.lang=root.res.lang_str.lang_dict
         create_self()
         create_frmBtn()
         create_frmScreen()
