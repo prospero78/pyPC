@@ -22,19 +22,19 @@ class ClsPC(object):
                           vinfo=self.video.vinfo)
 
         # импорт класса общей логики
-        from pak_pc.pakLogic.modLogic import clsLogic
+        from pak_pc.pak_logic.modLogic import clsLogic
         self.logic = clsLogic(root=self)
 
         # импорт класса контроллера
-        from pak_pc.pakController.modController import clsController
+        from pak_pc.pak_controller.mod_controller import clsController
         self.control = clsController(root=self)
 
         # импорт класса графики
-        from pak_pc.pakGUI.modGUI import clsGUI
+        from pak_pc.pak_gui.modGUI import clsGUI
         self.gui = clsGUI(root=self)
 
         # импорт класса интерфейса дискового кластера
-        from pak_pc.pakIDC.modIDC import clsIDC
+        from pak_pc.pak_idc.modIDC import clsIDC
         self.idc = clsIDC(root=self)
 
     def run(self):
