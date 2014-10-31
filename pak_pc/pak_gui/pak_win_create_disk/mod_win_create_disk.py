@@ -6,22 +6,22 @@
 from Tkinter import Toplevel, Frame, Button, Canvas
 from pak_pc.pak_gui.pak_widgets.modFrmKeyValue import clsFrmKeyValue
 
-class clsWinCreateDisk(Toplevel):
+class ClsWinCreateDisk(Toplevel):
     def __init__(self, root=None):
         def create_self():
             Toplevel.__init__(self)
             self.state('withdrawn')
-            self.title(self.root.res.winCreateDisk_title)
+            self.title(self.lang['win_create_disk_title'])
             self.minsize(350, 200)
             
         def create_frmBtn():
-            self.frmBtn=Frame(self, border=2, relief='sunken')
-            self.frmBtn.pack(side='bottom', fill='x')
+            self.frm_btn=Frame(self, border=2, relief='sunken')
+            self.frm_btn.pack(side='bottom', fill='x')
             
-            self.btnOk=Button(self.frmBtn, text=' Ok ', command=self.root.control.winCreateDisk_ok)
-            self.btnOk.pack(side='right')
+            self.btn_ok=Button(self.frm_btn, text=' Ok ', command=self.lang['win_idc_image_create'])
+            self.btn_ok.pack(side='right')
             
-            self.btnCancel=Button(self.frmBtn, text='Cancel', command=self.destroy)
+            self.btnCancel=Button(self.frm_btn, text='Cancel', command=self.destroy)
             self.btnCancel.pack(side='right')
         
         def create_frmDiskParam():
@@ -33,6 +33,7 @@ class clsWinCreateDisk(Toplevel):
             self.fkvSize=clsFrmKeyValue(root=self.frmDiskParam, key='Size Disk (kB)', value='1')
             
         self.root=root
+        self.lang=root.res.lang_str.lang_dict
         create_self()
         create_frmBtn()
         create_frmDiskParam()
