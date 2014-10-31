@@ -11,8 +11,8 @@ class ClsFrmRegSP(Frame):
         Frame.__init__(self, master=root, border=2, relief='ridge')
         self.pack(fill='x', side='top')
         
-        self.lblName=Label(self, text='reg_sp', border=1, relief='ridge')
-        self.lblName.pack(side='left', fill='x')
+        self.lbl_name=Label(self, text='reg_sp', border=1, relief='ridge')
+        self.lbl_name.pack(side='left', fill='x')
         
         self.lblAdr=Label(self, text='adr', border=1, relief='groove', bg='gray')
         self.lblAdr.pack(side='left')
@@ -32,8 +32,8 @@ class ClsFrmRegSP(Frame):
 if __name__=='__main__':
     from Tkinter import Tk
     root=Tk()
-    root.title('test frmRegSP')
+    root.title('test frm_reg_sp')
     root.minsize(300,200)
     reg=ClsFrmRegPC(root=root)
-    reg.lblName['text']='reg_sp'
+    reg.lbl_name['text']='reg_sp'
     root.mainloop()
