@@ -76,7 +76,7 @@ class ClsReg:
         self.reg_pc=pc
         
         # ссылка на указатель стека
-        self.RegSP=sp
+        self.reg_sp=sp
         
         # ссылка на регистр программного прерывания
         self.reg_pc=self.root.reg_pc
@@ -387,20 +387,20 @@ class ClsReg:
             self.Mem.adr[self.reg_pc.val] = self.val
             self.reg_pc.val+=1
         elif cop==A_push:      # сохранить регистр А в стеке
-            self.RegSP.val-=1
-            self.Mem.adr[self.RegSP.val] = self.val
+            self.reg_sp.val-=1
+            self.Mem.adr[self.reg_sp.val] = self.val
             self.reg_pc.val+=1
         elif cop==A_pop:      # восстановить регистр А из стека
-            self.val=self.Mem.adr[self.RegSP.val]
-            self.RegSP.val+=1
+            self.val=self.Mem.adr[self.reg_sp.val]
+            self.reg_sp.val+=1
             self.reg_pc.val+=1
         elif cop==A_call:     # вызвать процедуру по адресу в m
-            self.RegSP.val-=1
-            self.Mem.adr[self.RegSP.val] = self.reg_pc.val+2
+            self.reg_sp.val-=1
+            self.Mem.adr[self.reg_sp.val] = self.reg_pc.val+2
             self.reg_pc.val=self.Mem.adr[self.reg_pc.val+1]
         elif cop==A_ret:      # возврат из процедуры
-            self.reg_pc.val=self.Mem.adr[self.RegSP.val]
-            self.RegSP.val+=1
+            self.reg_pc.val=self.Mem.adr[self.reg_sp.val]
+            self.reg_sp.val+=1
         elif cop==A_in:      # чтение из порта в регистр А
             port=self.Port.adr[self.Mem.adr[self.reg_pc.val+1]]
             print 'clsReg: port=', port
