@@ -9,7 +9,7 @@ class clsWinLicense(Toplevel):
     def __init__(self, root=None):
         def create_self():
             Toplevel.__init__(self)
-            self.title(self.root.res.winLicense_title)
+            self.title(self.lang['win_license_title'])
             self.minsize(350,240)
             self.state('withdrawn')
        
@@ -28,7 +28,7 @@ class clsWinLicense(Toplevel):
             self.btnEngLicence=Button(self.frmBtn, text='England', bg='gray', command=btnEngLic_click)
             self.btnEngLicence.pack(side='left')
             
-            self.btnLocalLicense=Button(self.frmBtn, text=self.root.res.winLicense_btnLocalLicense_text, bg='gray', command=btnLocalsLic_click)
+            self.btnLocalLicense=Button(self.frmBtn, text=self.lang['win_license_btn_local_license_text'], bg='gray', command=btnLocalsLic_click)
             self.btnLocalLicense.pack(side='left')
             
             self.btnClose=Button(self.frmBtn, text='Close', bg='gray', command=self.destroy)
@@ -49,6 +49,7 @@ class clsWinLicense(Toplevel):
             self.txtLicense.config(yscrollcommand=self.scbLicense.set)
             
         self.root=root
+        self.lang=root.res.lang_str.lang_dict
         create_self()
         create_frmBtn()
         create_frmUp()
