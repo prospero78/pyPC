@@ -22,14 +22,14 @@ class ClsFrmCPU(Frame):
         
         # отображаем программный счётчик
         self.frmreg_pc=ClsFrmRegPC(root=self)
-        #self.frmRegA.lblName['text']='RegA'
+        #self.frmRegA.lblName['text']='reg_a'
         
         # отображаем указатель стека
         self.frmRegSP=ClsFrmRegSP(root=self)
         
         # отображение регистра А
         self.frmRegA=ClsFrmReg(root=self)
-        self.frmRegA.lblName['text']='RegA'
+        self.frmRegA.lblName['text']='reg_a'
         
         # отображение частоты виртуального процессора
         self.frmCpuFreq=clsFrmCpuFreq(root=self)
