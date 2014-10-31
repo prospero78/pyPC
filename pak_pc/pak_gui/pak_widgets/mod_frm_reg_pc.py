@@ -12,8 +12,8 @@ class ClsFrmRegPC(Frame):
         Frame.__init__(self, master=root, border=2, relief='ridge')
         self.pack(fill='x', side='top')
         
-        self.lblName=Label(self, text='reg_pc', border=1, relief='ridge')
-        self.lblName.pack(side='left', fill='x')
+        self.lbl_name=Label(self, text='reg_pc', border=1, relief='ridge')
+        self.lbl_name.pack(side='left', fill='x')
         
         self.lblVal=Label(self, text='0000', border=1, relief='groove')
         self.lblVal.pack(side='left')
@@ -25,5 +25,5 @@ if __name__=='__main__':
     root.title('test frmreg_pc')
     root.minsize(300,200)
     reg=ClsFrmRegPC(root=root)
-    reg.lblName['text']='reg_pc'
+    reg.lbl_name['text']='reg_pc'
     root.mainloop()
