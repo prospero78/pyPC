@@ -25,7 +25,7 @@ g={
     'winMain_maxSizeY': 600
     }
 ru={
-    'winMain':  'Small Reporter for -=[fantom lab]=- '+vers,
+    'win_main':  'Small Reporter for -=[fantom lab]=- '+vers,
     'mnuFile': 'Файл',
     'mnuFile_New':  'Новый',
     'mnuFile_Open': 'Новый',
@@ -77,7 +77,7 @@ class ClsGUI(Tk):
             self.bind('<control-g>', generate_report)
 
         Tk.__init__(self)
-        self.title(ru['winMain'])
+        self.title(ru['win_main'])
         self.minsize(g['winMain_minSizeX'], g['winMain_minSizeY'])
         self.maxsize(g['winMain_maxSizeX'], g['winMain_maxSizeY'])
         self.CreateUpFrame()
