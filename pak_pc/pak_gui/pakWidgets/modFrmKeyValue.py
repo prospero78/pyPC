@@ -27,8 +27,8 @@ class clsFrmKeyValue(Frame):
 if __name__=='__main__':
     from Tkinter import Tk
     root=Tk()
-    root.title('test frmRegPC')
+    root.title('test frmreg_pc')
     root.minsize(300,200)
-    reg=clsFrmRegPC(root=root)
-    reg.lblName['text']='RegPC'
+    reg=clsFrmreg_pc(root=root)
+    reg.lblName['text']='reg_pc'
     root.mainloop()
