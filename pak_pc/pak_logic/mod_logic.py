@@ -19,15 +19,15 @@ class clsLogic:
         (повышение атомарности класса).
         '''
         winMain=self.GUI.winMain
-        winMain.btnStep['text']=self.Res.winMain_btnStep
-        winMain.btnDebug['text']=self.Res.winMain_btnDebug_0
-        winMain.btnExit['text']=self.Res.winMain_btnExit_name
-        winMain.btnShowScreen['text']=self.Res.winMain_btnShowScreen_show
-        winMain.btnReset['text']=self.root.Res.winMain_btnReset
-        winMain.mbtFile['text']=self.Res.winMain_mbtFile_name
-        winMain.mbtEdit['text']=self.Res.winMain_mbtEdit_name
-        winMain.mbtCustom['text']=self.Res.winMain_mbtCustom_name
-        winMain.frmCPU.frmCpuFreq.lblKey['text']=self.Res.winMain_frmCpuFreq_lblKey
+        winMain.btnStep['text']=self.res.winMain_btnStep
+        winMain.btnDebug['text']=self.res.winMain_btnDebug_0
+        winMain.btnExit['text']=self.res.winMain_btnExit_name
+        winMain.btnShowScreen['text']=self.res.winMain_btnShowScreen_show
+        winMain.btnReset['text']=self.root.res.winMain_btnReset
+        winMain.mbtFile['text']=self.res.winMain_mbtFile_name
+        winMain.mbtEdit['text']=self.res.winMain_mbtEdit_name
+        winMain.mbtCustom['text']=self.res.winMain_mbtCustom_name
+        winMain.frmCPU.frmCpuFreq.lblKey['text']=self.res.winMain_frmCpuFreq_lblKey
         
     def reset_pc(self):
         '''
@@ -78,11 +78,11 @@ class clsLogic:
         #print 'clsLogic.debug_CPU()'
         if self.debug==0:
             self.debug=1
-            self.GUI.winMain.btnDebug['text']=self.Res.winMain_btnDebug_1
+            self.GUI.winMain.btnDebug['text']=self.res.winMain_btnDebug_1
             info={'com':'debug(on)'}
         else:
             self.debug=0
-            self.GUI.winMain.btnDebug['text']=self.Res.winMain_btnDebug_0
+            self.GUI.winMain.btnDebug['text']=self.res.winMain_btnDebug_0
             info={'com':'debug(off)'}
         self.CPU.qcom.put(info)
        
