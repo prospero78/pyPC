@@ -84,7 +84,7 @@ class ClsWinMain(Tk):
                 create_mnuHelp()
             
             def create_frmCPU():
-                self.frmCPU=ClsFrmCPU(root=self)
+                self.frm_cpu=ClsFrmCPU(root=self)
                 
             Tk.__init__(self)
             self.minsize(320,400)
