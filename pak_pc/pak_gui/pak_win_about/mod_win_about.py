@@ -35,13 +35,13 @@ class clsWinAbout(Toplevel):
             
         
         def create_frmBtn():
-            self.frmBtn=Frame(self, border=3, relief='raised')
-            self.frmBtn.pack(side='bottom', fill='x')
+            self.frm_btn=Frame(self, border=3, relief='raised')
+            self.frm_btn.pack(side='bottom', fill='x')
             
-            self.btn_close_about=Button(self.frmBtn, text=self.lang['win_about_close'], bg='gray', command=self.destroy)
+            self.btn_close_about=Button(self.frm_btn, text=self.lang['win_about_close'], bg='gray', command=self.destroy)
             self.btn_close_about.pack(side='right')
             
-            self.btnLicense=Button(self.frmBtn, text=self.lang['win_about_license'], bg='gray', command=self.root.control.show_winLicense)
+            self.btnLicense=Button(self.frm_btn, text=self.lang['win_about_license'], bg='gray', command=self.root.control.show_winLicense)
             self.btnLicense.pack()
         
         self.root=root
