@@ -6,7 +6,7 @@
 
 from Tkinter import Frame, Label, Entry
 
-class clsFrmKeyValue(Frame):
+class ClsFrmKeyValue(Frame):
     def __init__(self, root=None, key='Key', value='None'):
         self.root=root
         Frame.__init__(self, master=root, border=2, relief='ridge')
@@ -30,5 +30,5 @@ if __name__=='__main__':
     root.title('test frmreg_pc')
     root.minsize(300,200)
     reg=ClsFrmRegPC(root=root)
-    reg.lblName['text']='reg_pc'
+    reg.lbl_name['text']='reg_pc'
     root.mainloop()
