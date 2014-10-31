@@ -3,7 +3,7 @@
 Класс регистра для остановки процессора.
 '''
 
-class Clsreg_pc:
+class ClsRegBP:
     def __init__(self, adr_break=0, act=0, adr_proc=0):
         '''
         adr_break -- aдрес, на который бряк
