@@ -10,17 +10,17 @@ class clsWinAbout(Toplevel):
         def create_self():
             Toplevel.__init__(self)
             self.state('withdrawn')
-            self.title(self.root.Res.winAbout_name)
+            self.title(self.root.res.winAbout_name)
             self.minsize(380, 200)
         
         def create_frmUp():
             self.frmUp=Frame(self, border=3, relief='groove')
             self.frmUp.pack(fill='both', expand=1, side='top')
             
-            self.lblPyPC=Label(self.frmUp, border=3, relief='sunken', text=' pyPC \n'+self.root.Res.vers, bg='white', fg='red', font='Arial 24 bold')
+            self.lblPyPC=Label(self.frmUp, border=3, relief='sunken', text=' pyPC \n'+self.root.res.vers, bg='white', fg='red', font='Arial 24 bold')
             self.lblPyPC.pack(side='left', fill='y')
             
-            self.lblGit=Label(self.frmUp, text=self.root.Res.winAbout_url, fg='blue', cursor='hand2')
+            self.lblGit=Label(self.frmUp, text=self.root.res.winAbout_url, fg='blue', cursor='hand2')
             self.lblGit.pack(side='bottom', fill='x')
             
             self.scbAbout=Scrollbar(self.frmUp)
@@ -28,7 +28,7 @@ class clsWinAbout(Toplevel):
             
             self.txtAbout=Text(self.frmUp, height=12, width=30, font='Courier 9')
             self.txtAbout.pack(fill='both', expand=1, side='left')
-            self.txtAbout.insert('end', self.root.Res.winAbout_txt)
+            self.txtAbout.insert('end', self.root.res.winAbout_txt)
             
             self.scbAbout.config(command=self.txtAbout.yview)
             self.txtAbout.config(yscrollcommand=self.scbAbout.set)
@@ -38,10 +38,10 @@ class clsWinAbout(Toplevel):
             self.frmBtn=Frame(self, border=3, relief='raised')
             self.frmBtn.pack(side='bottom', fill='x')
             
-            self.btnCloseAbout=Button(self.frmBtn, text=self.root.Res.winAbout_close, bg='gray', command=self.destroy)
+            self.btnCloseAbout=Button(self.frmBtn, text=self.root.res.winAbout_close, bg='gray', command=self.destroy)
             self.btnCloseAbout.pack(side='right')
             
-            self.btnLicense=Button(self.frmBtn, text=self.root.Res.winAbout_license, bg='gray', command=self.root.Control.show_winLicense)
+            self.btnLicense=Button(self.frmBtn, text=self.root.res.winAbout_license, bg='gray', command=self.root.control.show_winLicense)
             self.btnLicense.pack()
         
         self.root=root
