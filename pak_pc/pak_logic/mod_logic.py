@@ -146,7 +146,7 @@ class ClsLogic:
                 self.update_speed(dtime=inf)
         while not self.video.vout.empty():
             vout=self.video.vout.get()
-            self.winScreen.lblScreen['text']=vout
+            self.win_screen.lblScreen['text']=vout
     def generate_new_disk(self):
         #print 'generate_new_disk()'
         self.gui.winCreateDisk.destroy()
@@ -167,14 +167,14 @@ class ClsLogic:
         self.gui.winCreateDisk.show()
         
     def show_screen(self):
-        if not self.gui.winScreen.winScreen_show:
-            self.gui.winScreen.show()
+        if not self.gui.win_screen.winScreen_show:
+            self.gui.win_screen.show()
         else:
-            self.gui.winScreen.destroy()
+            self.gui.win_screen.destroy()
     def run(self):
         self.cpu=self.root.cpu
         self.gui=self.root.gui
-        self.winScreen=self.gui.winScreen
+        self.win_screen=self.gui.win_screen
         self.res=self.root.res
         self.video=self.root.video
         self.lang=self.root.res.lang_str.lang_dict
@@ -197,7 +197,7 @@ class ClsLogic:
         #print 'ClsLogic.exit()'
         try:
             self.root.gui.winEditBP.win_exit()
-            self.root.gui.winScreen.win_exit()
+            self.root.gui.win_screen.win_exit()
             self.root.gui.winLicense.win_exit()
             self.root.gui.win_idc.win_exit()
             self.root.gui.winCreateDisk.win_exit()
