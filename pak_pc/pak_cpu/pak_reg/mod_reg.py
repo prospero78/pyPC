@@ -424,7 +424,7 @@ class ClsReg:
         
         
         
-        #-------Control FlagZ--------------
+        #-------control FlagZ--------------
         if not_Z==0 and self.val==0:
                 self.FlagZ=1
         else:
