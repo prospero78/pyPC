@@ -73,13 +73,13 @@ class ClsReg:
         self.Port=port
         
         # сылка на программный счётчик
-        self.RegPC=pc
+        self.reg_pc=pc
         
         # ссылка на указатель стека
         self.RegSP=sp
         
         # ссылка на регистр программного прерывания
-        self.RegBP=self.root.RegBP
+        self.reg_pc=self.root.reg_pc
         
         # сбросить регистр в ноль и установить флаг нуля
         self.val=0
@@ -99,22 +99,22 @@ class ClsReg:
         not_Z=0
         
         # проверить на достижение программного бряка -- регистр ВР
-        if self.RegBP.act==1:
-            if self.RegBP.adr_break==self.RegPC.val:
-                print '    RegBP BREAK!!!'
-                self.RegBP.adr_old=self.RegPC.val
-                self.RegPC.val=self.RegBP.adr_proc
+        if self.reg_pc.act==1:
+            if self.reg_pc.adr_break==self.reg_pc.val:
+                print '    reg_pc BREAK!!!'
+                self.reg_pc.adr_old=self.reg_pc.val
+                self.reg_pc.val=self.reg_pc.adr_proc
         
-        cop=self.Mem.adr[self.RegPC.val]
-        #print 'PC=', self.RegPC.val, 'cop=', cop
+        cop=self.Mem.adr[self.reg_pc.val]
+        #print 'PC=', self.reg_pc.val, 'cop=', cop
         if cop==A_nop:          # тупой пропуск команды
-            self.RegPC.val+=1           # выровнять укзатель команд на следующую команду
+            self.reg_pc.val+=1           # выровнять укзатель команд на следующую команду
         elif cop==A_radd:        # установка регистра А со сложением содержимого регистра А
             self.val+=self.val
             if self.val>=self.max_val: # если в регистре перебор
                 self.FlagO=1   # установить флаг перебора
                 self.val=self.max_val-self.val
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
             # установка необходимых флагов
             self.FlagC=0
             self.FlagS=0
@@ -123,7 +123,7 @@ class ClsReg:
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_rinc:        # установка регистра А с инкрементом содержимого регистра А
             self.val+=1
             if self.val>=self.max_val: # если в регистре перебор
@@ -131,36 +131,36 @@ class ClsReg:
                 self.val=self.max_val-self.val
             self.FlagC=0
             self.FlagS=0
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_rdec:        # установка регистра А с декрементом содержимого регистра А
             self.val-=1
             if self.val<0: # если в регистре недобор
                 self.FlagC=1   # установить флаг заёма
                 self.val=self.max_val+self.val
             self.FlagO=0
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_rnot:      # инвертировать регистр А инверсным значением регистра А
             self.val=~self.val
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_rxor:      # поксорить регистр А значением регистра А
             self.val=0
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_ror:      # OR регистра А со значением регистра А
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_rand:      # AND регистра А со значением регистра А
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_rshr:      # сдвиг вправо регистра А со значением регистра А
             self.val>>=1
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_rshl:      # сдвиг влево регистра А со значением регистра А
             self.val<<=1
             if self.val>self.max_val: # превышено ли максимальное значение?
@@ -168,27 +168,27 @@ class ClsReg:
                 self.val=self.val-self.max_val
             self.FlagC=0
             self.FlagS=0
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_nset:      # установить регистр А значением числа n
-            self.RegPC.val+=1
-            self.val=self.Mem.adr[self.RegPC.val]
+            self.reg_pc.val+=1
+            self.val=self.Mem.adr[self.reg_pc.val]
             #self.FlagO=1
             self.FlagC=0
             self.FlagS=0
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_nadd:        # установка регистра А со сложением содержимого числа n
-            self.RegPC.val+=1
-            self.val+=self.Mem.adr[self.RegPC.val]
+            self.reg_pc.val+=1
+            self.val+=self.Mem.adr[self.reg_pc.val]
             if self.val>=self.max_val: # если в регистре перебор
                 self.FlagO=1   # установить флаг перебора
                 self.val=self.max_val-self.val
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
             # установка необходимых флагов
             self.FlagC=0
             self.FlagS=0
         elif cop==A_nsub:        # установка регистра А с вычитанием числа n
-            self.RegPC.val+=1
-            self.val=self.val-self.Mem.adr[self.RegPC.val]
+            self.reg_pc.val+=1
+            self.val=self.val-self.Mem.adr[self.reg_pc.val]
             if self.val<0:
                 self.val=self.max_val+self.val
                 self.FlagS=1
@@ -196,44 +196,44 @@ class ClsReg:
                 self.FlagS=0
             self.FlagO=0
             self.FlagC=0
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_nnot:      # инвертировать регистр А инверсным значением числа n
-            self.RegPC.val+=1
-            self.val=~self.Mem.adr[self.RegPC.val]
+            self.reg_pc.val+=1
+            self.val=~self.Mem.adr[self.reg_pc.val]
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_nxor:      # поксорить регистр А значением n
-            self.RegPC.val+=1
-            self.val^=self.Mem.adr[self.RegPC.val]
+            self.reg_pc.val+=1
+            self.val^=self.Mem.adr[self.reg_pc.val]
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_nor:      # OR регистра А со значением n
-            self.RegPC.val+=1
-            self.val|=self.Mem.adr[self.RegPC.val]
+            self.reg_pc.val+=1
+            self.val|=self.Mem.adr[self.reg_pc.val]
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_nand:      # AND регистра А со значением n
-            self.RegPC.val+=1
-            self.val&=self.Mem.adr[self.RegPC.val]
+            self.reg_pc.val+=1
+            self.val&=self.Mem.adr[self.reg_pc.val]
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_mget:      # установка значения регистра А из ячейки с адресом nn
-            m=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
+            m=self.Mem.adr[self.reg_pc.val+1] # получить адрес nn, в котором лежит число
             self.val=self.Mem.get_adr(m) # присовить
             self.FlagO=0
             self.FlagC=0
             self.FlagS=0
-            self.RegPC.val+=2
+            self.reg_pc.val+=2
         elif cop==A_madd:      # сложение значения регистра А из ячейки с адресом nn
-            m=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
+            m=self.Mem.adr[self.reg_pc.val+1] # получить адрес nn, в котором лежит число
             self.val+=self.Mem.get_adr(m) # сложить
             if self.val>=self.max_val:
                 self.val=self.val-self.max_val
@@ -242,9 +242,9 @@ class ClsReg:
                 self.FlagO=0
             self.FlagC=0
             self.FlagS=0
-            self.RegPC.val+=2
+            self.reg_pc.val+=2
         elif cop==A_msub:      # вычитание значения регистра А из ячейки с адресом nn
-            m=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
+            m=self.Mem.adr[self.reg_pc.val+1] # получить адрес nn, в котором лежит число
             self.val-=self.Mem.get_adr(m) # сложить
             if self.val<0:
                 self.val=self.val*(-1)
@@ -254,9 +254,9 @@ class ClsReg:
                 self.FlagC=0
                 self.FlagS=0
             self.FlagO=0
-            self.RegPC.val+=2
+            self.reg_pc.val+=2
         elif cop==A_minc:      # увеличить на 1 значение регистра А из ячейки с адресом nn
-            m=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
+            m=self.Mem.adr[self.reg_pc.val+1] # получить адрес nn, в котором лежит число
             self.val=self.Mem.adr[m]+1 # сложить
             if self.val>=self.max_val:
                 self.val=self.val-self.max_val
@@ -265,9 +265,9 @@ class ClsReg:
                 self.FlagO=0
             self.FlagS=0
             self.FlagC=0
-            self.RegPC.val+=2
+            self.reg_pc.val+=2
         elif cop==A_mdec:      # уменьшить на 1 значение регистра А из ячейки с адресом nn
-            m=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
+            m=self.Mem.adr[self.reg_pc.val+1] # получить адрес nn, в котором лежит число
             self.val=self.Mem.get_adr(m)-1 # вычесть
             if self.val==0:
                 self.FlagC=0
@@ -278,49 +278,49 @@ class ClsReg:
                 self.FlagC=0
             self.FlagO=0
             self.FlagS=0
-            self.RegPC.val+=2
+            self.reg_pc.val+=2
         elif cop==A_mnot:      # инвертировать значение регистра А из ячейки с адресом nn
-            m=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
+            m=self.Mem.adr[self.reg_pc.val+1] # получить адрес nn, в котором лежит число
             self.val=~self.Mem.adr[m] # инвертировать
             self.FlagO=0
             self.FlagS=0
             self.FlagC=0
-            self.RegPC.val+=2
+            self.reg_pc.val+=2
         elif cop==A_mxor:      # исключающее ИЛИ значение регистра А из ячейки с адресом nn
-            m=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
+            m=self.Mem.adr[self.reg_pc.val+1] # получить адрес nn, в котором лежит число
             self.val^=self.Mem.adr[m] # исключающее ИЛИ
             self.FlagO=0
             self.FlagS=0
             self.FlagC=0
-            self.RegPC.val+=2
+            self.reg_pc.val+=2
         elif cop==A_mor:      # логическое И значение регистра А из ячейки с адресом nn
-            m=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
+            m=self.Mem.adr[self.reg_pc.val+1] # получить адрес nn, в котором лежит число
             self.val|=self.Mem.adr[m] # логическое ИЛИ
             self.FlagO=0
             self.FlagS=0
             self.FlagC=0
-            self.RegPC.val+=2
+            self.reg_pc.val+=2
         elif cop==A_mand:      # логическое И значение регистра А из ячейки с адресом nn
-            m=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
+            m=self.Mem.adr[self.reg_pc.val+1] # получить адрес nn, в котором лежит число
             self.val&=self.Mem.adr[m] # логическое ИЛИ
             self.FlagO=0
             self.FlagS=0
             self.FlagC=0
-            self.RegPC.val+=2
+            self.reg_pc.val+=2
         elif cop==A_mshr:      # правый сдвиг значения регистра А из ячейки с адресом nn
-            m=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
+            m=self.Mem.adr[self.reg_pc.val+1] # получить адрес nn, в котором лежит число
             self.val=self.val>>self.Mem.adr[m] # правый сдвиг
             self.FlagO=0
             self.FlagS=0
             self.FlagC=0
-            self.RegPC.val+=2
+            self.reg_pc.val+=2
         elif cop==A_mshl:      # получить флаги регистра А
-            m=self.Mem.adr[self.RegPC.val+1] # получить адрес nn, в котором лежит число
+            m=self.Mem.adr[self.reg_pc.val+1] # получить адрес nn, в котором лежит число
             self.val=self.val>>self.Mem.adr[m] # левый сдвиг
             self.FlagO=0
             self.FlagS=0
             self.FlagC=0
-            self.RegPC.val+=2
+            self.reg_pc.val+=2
         elif cop==A_getf:      # получить флаги регистра А в регистр А
             self.val=0
             if self.FlagZ==1:
@@ -339,7 +339,7 @@ class ClsReg:
             self.FlagO=0
             self.FlagS=0
             self.FlagC=0
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_setf:      # установить флаги регистра А из регистра А
             if self.val & 1:
                 self.FlagZ=1
@@ -360,66 +360,66 @@ class ClsReg:
                 self.FlagS=1
             else:
                 self.FlagS=0
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_ifz:      # переход если Z==1
             if self.FlagZ == 1:
                 # переход, если регистр А равен нулю
-                self.RegPC.val=self.Mem.adr[self.RegPC.val+1]
+                self.reg_pc.val=self.Mem.adr[self.reg_pc.val+1]
             else:
-                self.RegPC.val+=2
+                self.reg_pc.val+=2
         elif cop==A_ncmp:      # сравнить с числом
-            self.RegPC.val+=1
-            if self.val==self.Mem.adr[self.RegPC.val]:
+            self.reg_pc.val+=1
+            if self.val==self.Mem.adr[self.reg_pc.val]:
                 self.FlagZ=1
             else:
                 self.FlagZ=0
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
             not_Z=1
         elif cop==A_ifnz:      # переход если Z==0
             if self.FlagZ==0:
                 # переход, если регистр А равен нулю
-                self.RegPC.val=self.Mem.adr[self.RegPC.val+1]
+                self.reg_pc.val=self.Mem.adr[self.reg_pc.val+1]
             else:
-                self.RegPC.val+=2
+                self.reg_pc.val+=2
         elif cop==A_mset:      # сохранить регистр А по адресу nn
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
             # переход, если регистр А равен нулю
-            self.Mem.adr[self.RegPC.val] = self.val
-            self.RegPC.val+=1
+            self.Mem.adr[self.reg_pc.val] = self.val
+            self.reg_pc.val+=1
         elif cop==A_push:      # сохранить регистр А в стеке
             self.RegSP.val-=1
             self.Mem.adr[self.RegSP.val] = self.val
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_pop:      # восстановить регистр А из стека
             self.val=self.Mem.adr[self.RegSP.val]
             self.RegSP.val+=1
-            self.RegPC.val+=1
+            self.reg_pc.val+=1
         elif cop==A_call:     # вызвать процедуру по адресу в m
             self.RegSP.val-=1
-            self.Mem.adr[self.RegSP.val] = self.RegPC.val+2
-            self.RegPC.val=self.Mem.adr[self.RegPC.val+1]
+            self.Mem.adr[self.RegSP.val] = self.reg_pc.val+2
+            self.reg_pc.val=self.Mem.adr[self.reg_pc.val+1]
         elif cop==A_ret:      # возврат из процедуры
-            self.RegPC.val=self.Mem.adr[self.RegSP.val]
+            self.reg_pc.val=self.Mem.adr[self.RegSP.val]
             self.RegSP.val+=1
         elif cop==A_in:      # чтение из порта в регистр А
-            port=self.Port.adr[self.Mem.adr[self.RegPC.val+1]]
+            port=self.Port.adr[self.Mem.adr[self.reg_pc.val+1]]
             print 'clsReg: port=', port
             # вызов процедуры детектирования используемого порта
             # если порт висит в воздухе, то просто возврат хранимого
             # значения.
             self.val=self.Port.detect_port(port=port)
-            self.RegPC.val+=2
+            self.reg_pc.val+=2
         elif cop==A_out:     # запись в порт
-            self.Port.adr[self.Mem.adr[self.RegPC.val+1]]=self.val
-            print 'clsReg: port=', self.Mem.adr[self.RegPC.val+1]
-            self.Port.detect_port(port= self.Mem.adr[self.RegPC.val+1], com=self.val)
-            self.RegPC.val+=2
+            self.Port.adr[self.Mem.adr[self.reg_pc.val+1]]=self.val
+            print 'clsReg: port=', self.Mem.adr[self.reg_pc.val+1]
+            self.Port.detect_port(port= self.Mem.adr[self.reg_pc.val+1], com=self.val)
+            self.reg_pc.val+=2
         elif cop==A_jmp:      # прыжок по абсолютному адресу
-            self.RegPC.val+=1
-            self.RegPC.val=self.Mem.adr[self.RegPC.val]
+            self.reg_pc.val+=1
+            self.reg_pc.val=self.Mem.adr[self.reg_pc.val]
         elif cop==A_jmpr:     # прыжок по относительному адресу
-            #self.RegPC.val+=1
-            self.RegPC.val=self.RegPC.val+self.Mem.adr[self.RegPC.val+1]
+            #self.reg_pc.val+=1
+            self.reg_pc.val=self.reg_pc.val+self.Mem.adr[self.reg_pc.val+1]
         
         
         
