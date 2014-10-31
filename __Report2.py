@@ -67,14 +67,14 @@ class ClsGUI(Tk):
                 a=clsSmallReporter()
                 self.txtReport.insert('1.0', a.HD)
 
-            self.bind('<Control-Q>', quit_reporter)
-            self.bind('<Control-q>', quit_reporter)
+            self.bind('<control-Q>', quit_reporter)
+            self.bind('<control-q>', quit_reporter)
 
-            self.bind('<Control-S>', save_reporter)
-            self.bind('<Control-s>', save_reporter)
+            self.bind('<control-S>', save_reporter)
+            self.bind('<control-s>', save_reporter)
 
-            self.bind('<Control-G>', generate_report)
-            self.bind('<Control-g>', generate_report)
+            self.bind('<control-G>', generate_report)
+            self.bind('<control-g>', generate_report)
 
         Tk.__init__(self)
         self.title(ru['winMain'])
@@ -165,16 +165,16 @@ class ClsGUI(Tk):
             self.btnEdit.pack(side='left')
 
         def CreateMnuCustom():
-            self.btnCustom=Menubutton(self.pnlMenu, text='mnuCustom', border=3, relief='groove')
-            self.mnuCustom=Menu(self.btnCustom)
-            self.btnCustom.config(menu=self.mnuCustom)
-            self.mnuCustom.add_command(label='Type files', accelerator='Ctrl+D')
-            self.mnuCustom.add_command(label='--1')
-            self.mnuCustom.add_separator()
-            self.mnuCustom.add_command(label='--2', accelerator='---')
-            self.mnuCustom.add_command(label='--3', accelerator='---')
-            self.mnuCustom.add_command(label='--4', accelerator='---')
-            self.mnuCustom.add_separator()
+            self.btnCustom=Menubutton(self.pnlMenu, text='mnu_custom', border=3, relief='groove')
+            self.mnu_custom=Menu(self.btnCustom)
+            self.btnCustom.config(menu=self.mnu_custom)
+            self.mnu_custom.add_command(label='Type files', accelerator='Ctrl+D')
+            self.mnu_custom.add_command(label='--1')
+            self.mnu_custom.add_separator()
+            self.mnu_custom.add_command(label='--2', accelerator='---')
+            self.mnu_custom.add_command(label='--3', accelerator='---')
+            self.mnu_custom.add_command(label='--4', accelerator='---')
+            self.mnu_custom.add_separator()
             self.btnCustom.pack(side='left')
 
         def CreateMnuHelp():
@@ -183,7 +183,7 @@ class ClsGUI(Tk):
             self.btnHelp.config(menu=self.mnuHelp)
             self.mnuHelp.add_command(label='Type files', accelerator='Ctrl+D')
             self.mnuHelp.add_command(label='--1')
-            self.mnuCustom.add_separator()
+            self.mnu_custom.add_separator()
             self.btnHelp.pack(side='left')
 
         self.pnlMenu=PanedWindow(self.frmUp, border=2, relief='raised')
