@@ -6,11 +6,11 @@
 
 from Tkinter import Frame
 
-from pakPC.pakGUI.pakWidgets.modFrmReg import clsFrmReg
-from pakPC.pakGUI.pakWidgets.modFrmreg_pc import clsFrmreg_pc
-from pakPC.pakGUI.pakWidgets.modFrmreg_pc import clsFrmreg_pc
-from pakPC.pakGUI.pakWidgets.modFrmCpuFrec import clsFrmCpuFreq
-from pakPC.pakGUI.pakWidgets.modFrmRegSP import clsFrmRegSP
+from pakPC.pak_gui.pakWidgets.modFrmReg import clsFrmReg
+from pakPC.pak_gui.pakWidgets.modFrmreg_pc import clsFrmreg_pc
+from pakPC.pak_gui.pakWidgets.modFrmreg_pc import clsFrmreg_pc
+from pakPC.pak_gui.pakWidgets.modFrmCpuFrec import clsFrmCpuFreq
+from pakPC.pak_gui.pakWidgets.modFrmRegSP import clsFrmRegSP
 
 class clsFrmCPU(Frame):
     def __init__(self, root=None):
