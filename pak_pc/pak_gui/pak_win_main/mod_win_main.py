@@ -100,7 +100,7 @@ class ClsWinMain(Tk):
         create_self()
     
     def win_update(self):
-        self.root.Logic.update_monitor()
+        self.root.logic.update_monitor()
         self.after(100, self.win_update)
     
     def begin(self):
