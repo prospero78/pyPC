@@ -18,8 +18,8 @@ class ClsFrmDiskSelect(Frame):
                         initialfile='./data/default.dsk',
                         filetypes=[('Disk images','.dsk'),],
                         title=self.root.res.winIDC_OpenDiskImage)
-                self.root.gui.winIDC.lift()
-                self.root.gui.winIDC.focus_get()
+                self.root.gui.win_idc.lift()
+                self.root.gui.win_idc.focus_get()
             Frame.__init__(self, master=self.master)
             self.pack(side='top', fill='x')
             
