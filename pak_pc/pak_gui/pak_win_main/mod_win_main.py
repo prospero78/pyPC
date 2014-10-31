@@ -10,31 +10,31 @@ class ClsWinMain(Tk):
         def create_self():
             def create_frmBtn():
                  # нижний фрейм главного окна
-                self.frmBtn=Frame(self, border=3, relief='sunken')
-                self.frmBtn.pack(side='bottom', fil='x')
+                self.frm_btn=Frame(self, border=3, relief='sunken')
+                self.frm_btn.pack(side='bottom', fil='x')
                 
                 # кнопка "шаг" главного окна
-                self.btnStep=Button(self.frmBtn, text='Step >', command=self.root.control.win_main_step_cpu)
+                self.btnStep=Button(self.frm_btn, text='Step >', command=self.root.control.win_main_step_cpu)
                 self.btnStep.pack(side='left')
                 
                 # кнопка "Отлдака" главного окна
-                self.btnDebug=Button(self.frmBtn, text='Debug >>', command=self.root.control.winMain_debug)
+                self.btnDebug=Button(self.frm_btn, text='Debug >>', command=self.root.control.winMain_debug)
                 self.btnDebug.pack(side='left')
                 
                 # кнопка "выход" главного окна
-                self.btnExit=Button(self.frmBtn,
+                self.btnExit=Button(self.frm_btn,
                             text='Exit [X]',
                             command=self.root.control.exit)
                 self.btnExit.pack(side='right')
                 
                 # кнопка для показа экрана виртуального компьютера
-                self.btnShowScreen=Button(self.frmBtn,
+                self.btnShowScreen=Button(self.frm_btn,
                             text='PC Screen',
                             command=self.root.control.show_screen)
                 self.btnShowScreen.pack(side='left')
                 
                 # кнопка для сброса виртуального компьютера
-                self.btnReset=Button(self.frmBtn,
+                self.btnReset=Button(self.frm_btn,
                             text='Reset (x)',
                             command=self.root.control.reset_pc)
                 self.btnReset.pack(side='left')
