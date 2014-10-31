@@ -4,7 +4,7 @@
 '''
 
 from Tkinter import Toplevel, Frame, Button, Canvas
-from pak_pc.pak_gui.pak_widgets.modFrmKeyValue import clsFrmKeyValue
+from pak_pc.pak_gui.pak_widgets.mod_frm_key_value import ClsFrmKeyValue
 
 class ClsWinCreateDisk(Toplevel):
     def __init__(self, root=None):
@@ -29,8 +29,8 @@ class ClsWinCreateDisk(Toplevel):
             self.frmDiskParam.pack(side='top', fill='both', expand=1)
             
             #TODO: надо запилить виджет -- пара ключ:значение
-            self.fkvName=clsFrmKeyValue(root=self.frmDiskParam, key='Name Disk', value='default')
-            self.fkvSize=clsFrmKeyValue(root=self.frmDiskParam, key='Size Disk (kB)', value='1')
+            self.fkvName=ClsFrmKeyValue(root=self.frmDiskParam, key='Name Disk', value='default')
+            self.fkvSize=ClsFrmKeyValue(root=self.frmDiskParam, key='Size Disk (kB)', value='1')
             
         self.root=root
         self.lang=root.res.lang_str.lang_dict
