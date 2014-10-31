@@ -8,7 +8,7 @@ class ClsGUI:
         self.root=root
         # импорт главного класса окна
         from pak_win_main.mod_win_main import ClsWinMain
-        self.winMain=ClsWinMain(root=self.root)
+        self.win_main=ClsWinMain(root=self.root)
         
         # импорт окна "О программе"
         from pak_win_about.mod_win_about import clsWinAbout
@@ -28,7 +28,7 @@ class ClsGUI:
         
         # импорт окна создания/монтирования дисков (IDC)
         from pak_win_idc.mod_win_idc import ClsWinIDC
-        self.winIDC=ClsWinIDC(root=self.root)
+        self.win_idc=ClsWinIDC(root=self.root)
         
         # импорт окна редактирования настроек регистра программного прерывания (winBP)
         from pak_win_edit_bp.mod_win_edit_bp import ClsWinEditBP
@@ -40,5 +40,5 @@ class ClsGUI:
         Класс загружает графику, должен запускаться последним!!!
         '''
         # запуск бесконечной петли
-        self.winMain.begin()
+        self.win_main.begin()
         pass
