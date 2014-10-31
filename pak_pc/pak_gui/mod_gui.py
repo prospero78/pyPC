@@ -20,7 +20,7 @@ class ClsGUI:
         
         # импорт окна экрана виртуального компьютера
         from pak_win_screen.mod_win_screen import ClsWinScreen
-        self.winScreen=ClsWinScreen(root=self.root)
+        self.win_screen=ClsWinScreen(root=self.root)
         
         # импорт окна для создания нового диска
         from pak_win_create_disk.mod_win_create_disk import ClsWinCreateDisk
