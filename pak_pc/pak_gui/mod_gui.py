@@ -19,19 +19,19 @@ class ClsGUI:
         self.winLicense=clsWinLicense(root=self.root)
         
         # импорт окна экрана виртуального компьютера
-        from pakWinScreen.mod_win_screen import ClsWinScreen
+        from pak_win_screen.mod_win_screen import ClsWinScreen
         self.winScreen=ClsWinScreen(root=self.root)
         
         # импорт окна для создания нового диска
-        from pakWinCreateDisk.mod_win_create_disk import clsWinCreateDisk
-        self.winCreateDisk=clsWinCreateDisk(root=self.root)
+        from pak_win_create_disk.mod_win_create_disk import ClsWinCreateDisk
+        self.winCreateDisk=ClsWinCreateDisk(root=self.root)
         
         # импорт окна создания/монтирования дисков (IDC)
-        from pakWinIDC.mod_win_idc import clsWinIDC
-        self.winIDC=clsWinIDC(root=self.root)
+        from pak_win_idc.mod_win_idc import ClsWinIDC
+        self.winIDC=ClsWinIDC(root=self.root)
         
         # импорт окна редактирования настроек регистра программного прерывания (winBP)
-        from pakWinEditBP.modWinEditBP import clsWinEditBP
+        from pakWinEditBP.mod_win_edit_bp import clsWinEditBP
         self.winEditBP=clsWinEditBP(root=self.root)
         
         
