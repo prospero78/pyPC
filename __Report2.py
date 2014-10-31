@@ -47,7 +47,7 @@ ru={
     'btnExit':  'Выход <Ctrl-Q>',
     }
 
-class clsGUI(Tk):
+class ClsGUI(Tk):
     '''
     Попытка создать ГУИ для репортера.
     '''
@@ -595,5 +595,5 @@ if __name__=='__main__':
     # вызов репортера на исполнение
     #report=clsSmallReporter()
     #raw_input('Press <Enter> key...\n' )
-    rep=clsGUI()
+    rep=ClsGUI()
     print'**********************************************'
