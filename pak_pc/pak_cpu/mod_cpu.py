@@ -10,10 +10,10 @@ from pak_pc.pak_cpu.pak_mem.mod_memory import ClsMemory
 #from pakMem.cmodMemory import clsMemory
 from pak_pc.pak_cpu.pak_mem.mod_port import ClsPort
 from pak_pc.pak_cpu.pak_reg.mod_reg_sp import ClsRegSP
-from pak_pc.pak_cpu.pak_reg.mod_reg_pc import Clsreg_pc
+from pak_pc.pak_cpu.pak_reg.mod_reg_pc import ClsRegPC
 from pak_pc.pak_cpu.pak_reg.mod_reg   import ClsReg
-from pak_pc.pak_cpu.pak_reg.mod_reg_bp import Clsreg_pc
-#from pakReg.cmodreg_pc import clsreg_pc
+from pak_pc.pak_cpu.pak_reg.mod_reg_bp import ClsRegBP
+#from pakReg.cmodreg_pc import ClsRegPC
 
 
 class ClsCPU(multiprocessing.Process):
