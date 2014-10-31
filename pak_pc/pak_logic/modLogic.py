@@ -7,8 +7,8 @@ class clsLogic:
     def __init__(self, root=None):
         self.root=root
         # локальная переменная для регистра программного счётчика
-        self.RegPC_old=0
-        self.RegPC_val=0
+        self.reg_pc_old=0
+        self.reg_pc_val=0
         # признаки запущенности ЦП в debug mode
         self.debug=0
     
@@ -60,14 +60,14 @@ class clsLogic:
     def winEditBP_hide(self):
         print '  clsLogic.winEditBP_hide()'
         #------- обновить содержимое реального регистра программных прерываний --------
-        self.RegBP_act=self.GUI.winEditBP.Act.get()
-        self.RegBP_adr_break=int(self.GUI.winEditBP.entAdrBreakVal.get())
-        self.RegBP_adr_proc=int(self.GUI.winEditBP.entAdrProcVal.get())
+        self.reg_pc_act=self.GUI.winEditBP.Act.get()
+        self.reg_pc_adr_break=int(self.GUI.winEditBP.entAdrBreakVal.get())
+        self.reg_pc_adr_proc=int(self.GUI.winEditBP.entAdrProcVal.get())
         
-        info={'RegBP':{'act':self.RegBP_act, 'adr_break':self.RegBP_adr_break, 'adr_proc':self.RegBP_adr_proc}}
+        info={'reg_pc':{'act':self.reg_pc_act, 'adr_break':self.reg_pc_adr_break, 'adr_proc':self.reg_pc_adr_proc}}
         self.CPU.qcom.put(info)
         
-        #print 'act=', self.CPU.RegBP.get_act()
+        #print 'act=', self.CPU.reg_pc.get_act()
         #self.update_monitor()
         
     def show_winEditBP(self):
@@ -112,23 +112,23 @@ class clsLogic:
                 RegA.lblValO['text']=inf['FlagO']
                 #print 'have key "RegA.FlagC"!', info['RegA.FlagC']
                 RegA.lblValC['text']=inf['FlagO']
-            if info.has_key('RegPC'):
-                inf=info['RegPC']
-                #print 'detect RegPC', inf
-                #print 'have key "RegPC.val"!', info['RegPC.val']
-                self.RegPC_val=inf['val']
-                self.GUI.winMain.frmCPU.frmRegPC.lblVal['text']=self.RegPC_old
-                self.RegPC_old=self.RegPC_val
+            if info.has_key('reg_pc'):
+                inf=info['reg_pc']
+                #print 'detect reg_pc', inf
+                #print 'have key "reg_pc.val"!', info['reg_pc.val']
+                self.reg_pc_val=inf['val']
+                self.GUI.winMain.frmCPU.frmreg_pc.lblVal['text']=self.reg_pc_old
+                self.reg_pc_old=self.reg_pc_val
             #---------------------------
-            if info.has_key('RegBP'):
-                inf=info['RegBP']
-                RegBP=self.GUI.winMain.frmCPU.frmRegBP
-                #print 'have key "RegBP.act"!', info['RegBP.act']
-                RegBP.lblActVal['text']=inf['act']
-                #print 'have key "RegBP.adr_proc"!', info['RegBP.adr_proc']
-                RegBP.lblProcVal['text']=inf['adr_proc']
-                #print 'have key "RegBP.adr_break"!', info['RegBP.adr_break']
-                RegBP.lblBreakVal['text']=inf['adr_break']
+            if info.has_key('reg_pc'):
+                inf=info['reg_pc']
+                reg_pc=self.GUI.winMain.frmCPU.frmreg_pc
+                #print 'have key "reg_pc.act"!', info['reg_pc.act']
+                reg_pc.lblActVal['text']=inf['act']
+                #print 'have key "reg_pc.adr_proc"!', info['reg_pc.adr_proc']
+                reg_pc.lblProcVal['text']=inf['adr_proc']
+                #print 'have key "reg_pc.adr_break"!', info['reg_pc.adr_break']
+                reg_pc.lblBreakVal['text']=inf['adr_break']
             #---------------------------
             if info.has_key('RegSP'):
                 inf=info['RegSP']
