@@ -4,8 +4,8 @@
 Довольно важная вещь. )
 '''
 
-from modFrmKeyValue import clsFrmKeyValue
+from mod_frm_key_value import ClsFrmKeyValue
 
-class clsFrmCpuFreq(clsFrmKeyValue):
+class ClsFrmCpuFreq(ClsFrmKeyValue):
     def __init__(self, root=None):
-        clsFrmKeyValue.__init__(self, root=root, key='Frec', value='0 Hz')
+        ClsFrmKeyValue.__init__(self, root=root, key='Frec', value='0 Hz')
