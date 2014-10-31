@@ -10,10 +10,10 @@ from pak_pc.pak_cpu.pak_mem.mod_memory import ClsMemory
 #from pakMem.cmodMemory import clsMemory
 from pak_pc.pak_cpu.pak_mem.mod_port import ClsPort
 from pak_pc.pak_cpu.pak_reg.mod_reg_sp import ClsRegSP
-from pak_pc.pak_cpu.pak_reg.mod_reg_pc import ClsRegPC
+from pak_pc.pak_cpu.pak_reg.mod_reg_pc import Clsreg_pc
 from pak_pc.pak_cpu.pak_reg.mod_reg   import ClsReg
-from pak_pc.pak_cpu.pak_reg.mod_reg_bp import ClsRegBP
-#from pakReg.cmodRegBP import clsRegBP
+from pak_pc.pak_cpu.pak_reg.mod_reg_bp import Clsreg_pc
+#from pakReg.cmodreg_pc import clsreg_pc
 
 
 class ClsCPU(multiprocessing.Process):
@@ -77,18 +77,18 @@ class ClsCPU(multiprocessing.Process):
                             vinfo=vinfo,
                             vcom=vcom)
 
-        self.reg_sp = clsRegSP(val=self.mem.act_mem-1,
+        self.reg_sp = ClsRegSP(val=self.mem.act_mem-1,
                                min_adr=self.mem.max_adr-101)
-        self.reg_pc = ClsRegPC(val=0, max_adr=self.RegSP.min_adr-1)
+        self.reg_pc = ClsRegPC(val=0, max_adr=self.reg_sp.min_adr-1)
 
         # регистр для установки принудительного прерывания исполнения программы
-        self.reg_bp = clsRegBP(act=0, adr_break=0, adr_proc=0)
+        self.reg_bp = ClsRegBP(act=0, adr_break=0, adr_proc=0)
 
-        self.reg_a = clsReg(root=self,
+        self.reg_a = ClsReg(root=self,
                             mem=self.mem,
-                            pc=self.RegPC,
-                            sp=self.RegSP,
-                            port=self.Port)
+                            pc=self.reg_pc,
+                            sp=self.reg_sp,
+                            port=self.port)
     def run(self):
         '''
         Метод необходим для запуска отдельного процесса.
@@ -100,9 +100,9 @@ class ClsCPU(multiprocessing.Process):
                 if com.has_key('com'):
                     com = com['com']
                     if com == 'step()':
-                        self.RegA.command()
-                        #print 'com:step()    RegBP.adr_break=',
-                        # self.RegBP.adr_break
+                        self.reg_a.command()
+                        #print 'com:step()    reg_pc.adr_break=',
+                        # self.reg_pc.adr_break
                         self.send_info()
                         #print '***'
                     elif com == 'debug(on)':
@@ -119,15 +119,15 @@ class ClsCPU(multiprocessing.Process):
                         self.reset_pc()
                     elif com == 'get_info()':
                         self.send_info()
-                elif com.has_key('RegBP'):
-                    reg = com['RegBP']
-                    self.RegBP.act = reg['act']
-                    self.RegBP.adr_proc = reg['adr_proc']
-                    self.RegBP.adr_break = reg['adr_break']
-                    RegBP = {'act':self.RegBP.act,
-                             'adr_proc':self.RegBP.adr_proc,
-                             'adr_break':self.RegBP.adr_break}
-                    info = {'RegBP':RegBP}
+                elif com.has_key('reg_pc'):
+                    reg = com['reg_pc']
+                    self.reg_bp.act = reg['act']
+                    self.reg_bp.adr_proc = reg['adr_proc']
+                    self.reg_bp.adr_break = reg['adr_break']
+                    reg_pc = {'act':self.reg_bp.act,
+                             'adr_proc':self.reg_bp.adr_proc,
+                             'adr_break':self.reg_bp.adr_break}
+                    info = {'reg_pc':reg_pc}
                     self.qinfo.put(info)
                     pass
             sleep(0.1)
@@ -137,7 +137,7 @@ class ClsCPU(multiprocessing.Process):
         while self.run_debug == 1:
             time1 = time()
             while i < self.time_code:
-                self.RegA.command()
+                self.reg_a.command()
                 i += 1
             else:
                 i = 0
@@ -164,29 +164,29 @@ class ClsCPU(multiprocessing.Process):
     def reset_pc(self):
         '''
         Принудительно сбрасывает текущее состояние компьютера.
-        Пока без сброса RegBP, не подчищает стек.
+        Пока без сброса reg_pc, не подчищает стек.
         '''
-        self.RegA.val = 0
-        self.RegA.FlagZ = 1
-        self.RegA.FlagO = 0
-        self.RegA.FlagC = 0
-        self.RegPC.val = 0
+        self.reg_a.val = 0
+        self.reg_a.FlagZ = 1
+        self.reg_a.FlagO = 0
+        self.reg_a.FlagC = 0
+        self.reg_pc.val = 0
         self.RegSP.val = 0
         self.send_info()
 
     def send_info(self):
-        RegA = {'val':self.RegA.val,
-                'FlagZ':self.RegA.FlagZ,
-                'FlagO':self.RegA.FlagO,
-                'FlagC':self.RegA.FlagC}
-        RegPC = {'val':self.RegPC.val}
-        RegBP = {'act':self.RegBP.act,
-                 'adr_proc':self.RegBP.adr_proc,
-                 'adr_break':self.RegBP.adr_break}
+        RegA = {'val':self.reg_a.val,
+                'FlagZ':self.reg_a.FlagZ,
+                'FlagO':self.reg_a.FlagO,
+                'FlagC':self.reg_a.FlagC}
+        reg_pc = {'val':self.reg_pc.val}
+        reg_pc = {'act':self.reg_bp.act,
+                 'adr_proc':self.reg_bp.adr_proc,
+                 'adr_break':self.reg_bp.adr_break}
         RegSP = {'adr':self.RegSP.val,
                  'val':self.mem.adr[self.RegSP.val]}
         info = {'RegA':RegA,
-                'RegPC' :RegPC,
-                'RegBP' :RegBP,
+                'reg_pc' :reg_pc,
+                'reg_pc' :reg_pc,
                 'RegSP':RegSP,}
         self.qinfo.put(info)
