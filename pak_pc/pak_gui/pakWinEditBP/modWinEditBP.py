@@ -17,8 +17,8 @@ class clsWinEditBP(Toplevel):
             self.frmUp=Frame(self, border=3, relief='groove')
             self.frmUp.pack(fill='both', expand=1, side='top')
             
-            self.lblRegBP=Label(self.frmUp, border=3, relief='raised', text=' RegBP ', bg='white', fg='red', font='Arial 24 bold')
-            self.lblRegBP.pack(side='left', fill='y')
+            self.lblreg_pc=Label(self.frmUp, border=3, relief='raised', text=' reg_pc ', bg='white', fg='red', font='Arial 24 bold')
+            self.lblreg_pc.pack(side='left', fill='y')
             #--------------------------------------------------------------
             self.frmAdrBreak=Frame(self.frmUp, border=3, relief='groove')
             self.frmAdrBreak.pack(fill='x', side='top')
