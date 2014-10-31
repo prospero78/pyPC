@@ -105,7 +105,7 @@ class ClsLogic:
                 #print 'detect reg_a', inf
                 reg_a=self.gui.win_main.frm_cpu.frm_reg_a
                 #print 'have key "reg_a.val"!', info['reg_a.val']
-                reg_a.lblVal['text']=inf['val']
+                reg_a.lbl_val['text']=inf['val']
                 #print 'have key "reg_a.FlagZ"!', info['reg_a.FlagZ']
                 reg_a.lblValZ['text']=inf['FlagZ']
                 #print 'have key "reg_a.FlagO"!', info['reg_a.FlagO']
@@ -117,7 +117,7 @@ class ClsLogic:
                 #print 'detect reg_pc', inf
                 #print 'have key "reg_pc.val"!', info['reg_pc.val']
                 self.reg_pc_val=inf['val']
-                self.gui.win_main.frm_cpu.frm_reg_pc.lblVal['text']=self.reg_pc_old
+                self.gui.win_main.frm_cpu.frm_reg_pc.lbl_val['text']=self.reg_pc_old
                 self.reg_pc_old=self.reg_pc_val
             #---------------------------
             if info.has_key('reg_bp'):
