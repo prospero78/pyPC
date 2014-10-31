@@ -20,8 +20,8 @@ class ClsFrmRegSP(Frame):
         self.lblAdrVal=Label(self, text='0000', border=1, relief='groove')
         self.lblAdrVal.pack(side='left')
         
-        self.lblVal=Label(self, text='val', border=1, relief='groove', bg='gray')
-        self.lblVal.pack(side='left')
+        self.lbl_val=Label(self, text='val', border=1, relief='groove', bg='gray')
+        self.lbl_val.pack(side='left')
         
         self.lblValVal=Label(self, text='0000', border=1, relief='groove')
         self.lblValVal.pack(side='left')
