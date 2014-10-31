@@ -171,7 +171,7 @@ class ClsCPU(multiprocessing.Process):
         self.reg_a.FlagO = 0
         self.reg_a.FlagC = 0
         self.reg_pc.val = 0
-        self.RegSP.val = 0
+        self.reg_sp.val = 0
         self.send_info()
 
     def send_info(self):
@@ -183,10 +183,10 @@ class ClsCPU(multiprocessing.Process):
         reg_pc = {'act':self.reg_bp.act,
                  'adr_proc':self.reg_bp.adr_proc,
                  'adr_break':self.reg_bp.adr_break}
-        RegSP = {'adr':self.RegSP.val,
-                 'val':self.mem.adr[self.RegSP.val]}
+        reg_sp = {'adr':self.reg_sp.val,
+                 'val':self.mem.adr[self.reg_sp.val]}
         info = {'RegA':RegA,
                 'reg_pc' :reg_pc,
                 'reg_pc' :reg_pc,
-                'RegSP':RegSP,}
+                'reg_sp':reg_sp,}
         self.qinfo.put(info)
