@@ -14,29 +14,29 @@ class ClsWinMain(Tk):
                 self.frmBtn.pack(side='bottom', fil='x')
                 
                 # кнопка "шаг" главного окна
-                self.btnStep=Button(self.frmBtn, text='Step >', command=self.root.Control.winMain_stepCPU)
+                self.btnStep=Button(self.frmBtn, text='Step >', command=self.root.control.win_main_step_cpu)
                 self.btnStep.pack(side='left')
                 
                 # кнопка "Отлдака" главного окна
-                self.btnDebug=Button(self.frmBtn, text='Debug >>', command=self.root.Control.winMain_debug)
+                self.btnDebug=Button(self.frmBtn, text='Debug >>', command=self.root.control.winMain_debug)
                 self.btnDebug.pack(side='left')
                 
                 # кнопка "выход" главного окна
                 self.btnExit=Button(self.frmBtn,
                             text='Exit [X]',
-                            command=self.root.Control.exit)
+                            command=self.root.control.exit)
                 self.btnExit.pack(side='right')
                 
                 # кнопка для показа экрана виртуального компьютера
                 self.btnShowScreen=Button(self.frmBtn,
                             text='PC Screen',
-                            command=self.root.Control.show_screen)
+                            command=self.root.control.show_screen)
                 self.btnShowScreen.pack(side='left')
                 
                 # кнопка для сброса виртуального компьютера
                 self.btnReset=Button(self.frmBtn,
                             text='Reset (x)',
-                            command=self.root.Control.reset_pc)
+                            command=self.root.control.reset_pc)
                 self.btnReset.pack(side='left')
                 
             def create_menu():
@@ -55,22 +55,22 @@ class ClsWinMain(Tk):
                     self.mbtCustom=Menubutton(self.frmMenu, text='Custom', relief='raised', border=3)
                     self.mbtCustom.pack(side='left')
                     
-                    self.mnuCustom=Menu(self.mbtCustom)
-                    self.mnuCustom.add_command(label=self.root.Res.winMain_mbtEditBP, accelerator='F11', command=self.root.Control.show_winEditBP)
-                    self.mnuCustom.add_separator()
-                    self.mnuCustom.add_command(label=self.root.Res.winMain_mbtEdit_disk, accelerator='F12', command=self.root.Control.show_winIDC)
+                    self.mnu_custom=Menu(self.mbtCustom)
+                    self.mnu_custom.add_command(label=self.lang['win_main_mbt_edit_bp'], accelerator='F11', command=self.root.control.show_winEditBP)
+                    self.mnu_custom.add_separator()
+                    self.mnu_custom.add_command(label=self.lang['win_main_mbt_edit_disk'], accelerator='F12', command=self.root.control.show_winIDC)
                     
-                    self.mbtCustom.config(menu=self.mnuCustom)
+                    self.mbtCustom.config(menu=self.mnu_custom)
                     
                 def create_mnuHelp():
                     # добавление менюхи справка
-                    self.btmHelp=Menubutton(self.frmMenu, text=self.root.Res.winMain_mbtHelp_name, relief='raised', border=3)
+                    self.btmHelp=Menubutton(self.frmMenu, text=self.lang['win_main_mbt_help_name'], relief='raised', border=3)
                     self.btmHelp.pack(side='right')
                     
                     self.mnuHelp=Menu(self.btmHelp)
-                    self.mnuHelp.add_command(label=self.root.Res.winMain_mbtHelp_help, accelerator='F1')
+                    self.mnuHelp.add_command(label=self.root.res.winMain_mbtHelp_help, accelerator='F1')
                     self.mnuHelp.add_separator()
-                    self.mnuHelp.add_command(label=self.root.Res.winMain_mbtHelp_about, accelerator='Ctrl-F1', command=self.root.Control.about)
+                    self.mnuHelp.add_command(label=self.root.res.winMain_mbtHelp_about, accelerator='Ctrl-F1', command=self.root.control.about)
                     
                     self.btmHelp.config(menu=self.mnuHelp)
                     
@@ -88,7 +88,7 @@ class ClsWinMain(Tk):
                 
             Tk.__init__(self)
             self.minsize(320,400)
-            self.title(self.root.Res.winMain_name)
+            self.title(self.lang['win_main_name'])
             self.after(100, self.win_update)
             
             create_frmBtn()
@@ -96,6 +96,7 @@ class ClsWinMain(Tk):
             create_frmCPU()
         
         self.root=root
+        self.lang=root.res.lang_str.lang_dict
         create_self()
     
     def win_update(self):
