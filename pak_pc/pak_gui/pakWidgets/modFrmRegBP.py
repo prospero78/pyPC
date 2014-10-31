@@ -6,13 +6,13 @@
 
 from Tkinter import Frame, Label
 
-class clsFrmRegBP(Frame):
+class clsFrmreg_pc(Frame):
     def __init__(self, root=None):
         self.root=root
         Frame.__init__(self, master=root, border=2, relief='ridge')
         self.pack(fill='x', side='top')
         
-        self.lblName=Label(self, text='RegBP', border=1, relief='ridge')
+        self.lblName=Label(self, text='reg_pc', border=1, relief='ridge')
         self.lblName.pack(side='left', fill='x')
         
         self.lblBreak=Label(self, text='adr_break', border=1, relief='groove', bg='gray')
@@ -36,8 +36,8 @@ class clsFrmRegBP(Frame):
 if __name__=='__main__':
     from Tkinter import Tk
     root=Tk()
-    root.title('test frmRegPC')
+    root.title('test frmreg_pc')
     root.minsize(300,200)
-    reg=clsFrmRegPC(root=root)
-    reg.lblName['text']='RegPC'
+    reg=clsFrmreg_pc(root=root)
+    reg.lblName['text']='reg_pc'
     root.mainloop()
