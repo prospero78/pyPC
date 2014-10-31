@@ -17,7 +17,7 @@ class clsFrmDiskSelect(Frame):
                 d=askopenfilename(defaultextension='.dsk',
                         initialfile='./data/default.dsk',
                         filetypes=[('Disk images','.dsk'),],
-                        title=self.root.Res.winIDC_OpenDiskImage)
+                        title=self.root.res.winIDC_OpenDiskImage)
                 self.root.GUI.winIDC.lift()
                 self.root.GUI.winIDC.focus_get()
             Frame.__init__(self, master=self.master)
@@ -29,13 +29,13 @@ class clsFrmDiskSelect(Frame):
             self.lblDiskPath=Label(self, text=self.path, anchor='w', border=2, relief='groove')
             self.lblDiskPath.pack(side='left', fill='both', expand=1)
             
-            self.btnCreate=Button(self, text=self.root.Res.winIDC_ImageCreate, command=self.root.Control.create_disk)
+            self.btnCreate=Button(self, text=self.root.res.winIDC_ImageCreate, command=self.root.control.create_disk)
             self.btnCreate.pack(side='left')
             
-            self.btnOpen=Button(self, text=self.root.Res.winIDC_open, command=open_disk)
+            self.btnOpen=Button(self, text=self.root.res.winIDC_open, command=open_disk)
             self.btnOpen.pack(side='left')
             
-            self.btnClear=Button(self, text=self.root.Res.winIDC_ImageUnpath)
+            self.btnClear=Button(self, text=self.root.res.winIDC_ImageUnpath)
             self.btnClear.pack(side='left')
             
             
