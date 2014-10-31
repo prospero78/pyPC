@@ -55,10 +55,10 @@ class clsWinEditBP(Toplevel):
             
         
         def create_frmBtn():
-            self.frmBtn=Frame(self, border=3, relief='raised')
-            self.frmBtn.pack(side='bottom', fill='x')
+            self.frm_btn=Frame(self, border=3, relief='raised')
+            self.frm_btn.pack(side='bottom', fill='x')
             
-            self.btnClose=Button(self.frmBtn, text=self.root.res.winEditBP_btnClose, bg='gray', command=self.destroy)
+            self.btnClose=Button(self.frm_btn, text=self.root.res.winEditBP_btnClose, bg='gray', command=self.destroy)
             self.btnClose.pack(side='right')
             
         
