@@ -26,58 +26,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd6f0ea5-3bc2-4faa-9e1c-56e82e823c75" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/ARM.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vagrant.xml" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakController\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakController\modController.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\modGUI.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWidgets\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWidgets\modFrmCPU.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWidgets\modFrmCpuFrec.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWidgets\modFrmDiskSelect.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWidgets\modFrmKeyValue.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWidgets\modFrmReg.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWidgets\modFrmRegBP.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWidgets\modFrmRegPC.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWidgets\modFrmRegSP.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWinAbout\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWinAbout\modWinAbout.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWinCreateDisk\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWinCreateDisk\modWinCreateDisk.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWinEditBP\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWinEditBP\modWinEditBP.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWinIDC\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWinIDC\modWinIDC.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWinLicense\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWinLicense\modWinLicense.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWinMain\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWinMain\modWinMain.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWinScreen\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakGUI\pakWinScreen\modWinScreen.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakIDC\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakIDC\modIDC.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakLogic\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pakLogic\modLogic.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\build\temp.win32-2.7\Release\.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\build_Reg.bat" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\build_RegBP.bat" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\build_RegPC.bat" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\cmodReg.pyd" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\cmodReg.pyx" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\cmodRegBP.pyd" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\cmodRegBP.pyx" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\cmodRegPC.pyd" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\cmodRegPC.pyx" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\modReg.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\modRegBP.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\modRegPC.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\modRegSP.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\setup_cmodReg.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\setup_cmodRegBP.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\_Walera\SmartGitHg 6\project\pyPC\pak_pc\pak_cpu\pakReg\setup_cmodRegPC.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pak_pc/pak_cpu/mod_cpu.py" afterPath="$PROJECT_DIR$/pak_pc/pak_cpu/mod_cpu.py" />
     </list>
     <ignored path="pyPC.iws" />
@@ -119,8 +67,8 @@
       <file leaf-file-name="mod_cpu.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pak_pc/pak_cpu/mod_cpu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3568216" vertical-offset="0" max-vertical-offset="3009">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.10194903" vertical-offset="0" max-vertical-offset="3009">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding>
                 <element signature="e#23#61#1" expanded="true" />
                 <element signature="e#1455#3261#0" expanded="true" />
@@ -245,28 +193,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="pak_cpu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pyPC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pyPC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pak_pc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pak_cpu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pak_reg" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -688,8 +614,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pak_pc/pak_cpu/mod_cpu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3568216" vertical-offset="0" max-vertical-offset="3009">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.10194903" vertical-offset="0" max-vertical-offset="3009">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
             <element signature="e#23#61#1" expanded="true" />
             <element signature="e#1455#3261#0" expanded="true" />
