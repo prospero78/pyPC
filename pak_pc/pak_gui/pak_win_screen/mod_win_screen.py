@@ -54,13 +54,13 @@ class ClsWinScreen(Toplevel):
         self.focus_set()
         #self.grab_set()
         #self.wait_window()
-        self.root.gui.winMain.btnShowScreen['text']=self.root.res.winMain_btnShowScreen_hide
+        self.root.gui.win_main.btnShowScreen['text']=self.root.res.winMain_btnShowScreen_hide
         
     def destroy(self):
         self.winScreen_show=0
         self.state('withdrawn')
         self.grab_release()
-        self.root.gui.winMain.btnShowScreen['text']=self.root.res.winMain_btnShowScreen_show
+        self.root.gui.win_main.btnShowScreen['text']=self.lang['win_main_btn_show_screen_show']
     
     def win_exit(self):
         self.destroy()
