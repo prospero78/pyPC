@@ -37,11 +37,11 @@ class ClsController:
     
     def winIDC_ok(self, event=None):
         #print '.ClsController.winIDC_ok()'
-        self.gui.winIDC.destroy()
+        self.gui.win_idc.destroy()
     
     def winIDC_cancel(self, event=None):
         #print '.ClsController.winIDC_cancel()'
-        self.gui.winIDC.destroy()
+        self.gui.win_idc.destroy()
     
     def create_disk(self, event=None):
         #print '.ClsController.create_disk()'
