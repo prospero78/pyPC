@@ -18,16 +18,16 @@ class ClsLogic:
         Процедура сделана с целью отвязки GUI от ресурсов
         (повышение атомарности класса).
         '''
-        winMain=self.gui.winMain
-        winMain.btnStep['text']=self.res.winMain_btnStep
-        winMain.btnDebug['text']=self.res.winMain_btnDebug_0
-        winMain.btnExit['text']=self.res.winMain_btnExit_name
-        winMain.btnShowScreen['text']=self.res.winMain_btnShowScreen_show
-        winMain.btnReset['text']=self.root.res.winMain_btnReset
-        winMain.mbtFile['text']=self.res.winMain_mbtFile_name
-        winMain.mbtEdit['text']=self.res.winMain_mbtEdit_name
-        winMain.mbtCustom['text']=self.res.winMain_mbtCustom_name
-        winMain.frmCPU.frmCpuFreq.lblKey['text']=self.res.winMain_frmCpuFreq_lblKey
+        win_main=self.gui.win_main
+        win_main.btnStep['text']=self.lang['win_main_btn_step']
+        win_main.btnDebug['text']=self.lang['win_main_btn_debug_0']
+        win_main.btnExit['text']=self.lang['win_main_btn_exit_name']
+        win_main.btnShowScreen['text']=self.lang['win_main_btn_show_screen_show']
+        win_main.btnReset['text']=self.lang['win_main_btn_reset']
+        win_main.mbtFile['text']=self.lang['win_main_mbt_file_name']
+        win_main.mbtEdit['text']=self.lang['win_main_mbt_edit_name']
+        win_main.mbtCustom['text']=self.lang['win_main_mbt_custom_name']
+        win_main.frmCPU.frmCpuFreq.lblKey['text']=self.lang['win_main_frm_cpu_freq_lbl_key']
         
     def reset_pc(self):
         '''
@@ -52,10 +52,10 @@ class ClsLogic:
                 fr=str(int(self.cpu.frec/1000))+' kHz'
             else:
                 fr=str(int(self.cpu.frec))+' Hz'
-            frec=self.gui.winMain.frmCPU.frmCpuFrec
+            frec=self.gui.win_main.frmCPU.frmCpuFrec
             frec.entVal.delete(0,'end')
             frec.entVal.insert(0, fr)
-        #self.gui.winMain.update()
+        #self.gui.win_main.update()
         
     def winEditBP_hide(self):
         print '  ClsLogic.winEditBP_hide()'
@@ -78,11 +78,11 @@ class ClsLogic:
         #print 'ClsLogic.debug_CPU()'
         if self.debug==0:
             self.debug=1
-            self.gui.winMain.btnDebug['text']=self.res.winMain_btnDebug_1
+            self.gui.win_main.btnDebug['text']=self.res.winMain_btnDebug_1
             info={'com':'debug(on)'}
         else:
             self.debug=0
-            self.gui.winMain.btnDebug['text']=self.res.winMain_btnDebug_0
+            self.gui.win_main.btnDebug['text']=self.res.winMain_btnDebug_0
             info={'com':'debug(off)'}
         self.cpu.qcom.put(info)
        
@@ -103,7 +103,7 @@ class ClsLogic:
             if info.has_key('RegA'):
                 inf=info['RegA']
                 #print 'detect RegA', inf
-                RegA=self.gui.winMain.frmCPU.frmRegA
+                RegA=self.gui.win_main.frmCPU.frmRegA
                 #print 'have key "RegA.val"!', info['RegA.val']
                 RegA.lblVal['text']=inf['val']
                 #print 'have key "RegA.FlagZ"!', info['RegA.FlagZ']
@@ -117,12 +117,12 @@ class ClsLogic:
                 #print 'detect reg_pc', inf
                 #print 'have key "reg_pc.val"!', info['reg_pc.val']
                 self.reg_pc_val=inf['val']
-                self.gui.winMain.frmCPU.frmreg_pc.lblVal['text']=self.reg_pc_old
+                self.gui.win_main.frmCPU.frmreg_pc.lblVal['text']=self.reg_pc_old
                 self.reg_pc_old=self.reg_pc_val
             #---------------------------
             if info.has_key('reg_pc'):
                 inf=info['reg_pc']
-                reg_pc=self.gui.winMain.frmCPU.frmreg_pc
+                reg_pc=self.gui.win_main.frmCPU.frmreg_pc
                 #print 'have key "reg_pc.act"!', info['reg_pc.act']
                 reg_pc.lblActVal['text']=inf['act']
                 #print 'have key "reg_pc.adr_proc"!', info['reg_pc.adr_proc']
@@ -130,11 +130,11 @@ class ClsLogic:
                 #print 'have key "reg_pc.adr_break"!', info['reg_pc.adr_break']
                 reg_pc.lblBreakVal['text']=inf['adr_break']
             #---------------------------
-            if info.has_key('RegSP'):
-                inf=info['RegSP']
-                RegSP=self.gui.winMain.frmCPU.frmRegSP
-                RegSP.lblAdrVal['text']=inf['adr']
-                RegSP.lblValVal['text']=inf['val']
+            if info.has_key('reg_sp'):
+                inf=info['reg_sp']
+                reg_sp=self.gui.win_main.frmCPU.frmRegSP
+                reg_sp.lblAdrVal['text']=inf['adr']
+                reg_sp.lblValVal['text']=inf['val']
             #---------------------------
             if info.has_key('debug'):
                 inf=info['debug']
@@ -144,8 +144,8 @@ class ClsLogic:
                 inf=info['dtime']
                 #print 'detect DTIME', inf
                 self.update_speed(dtime=inf)
-        while not self.Video.vout.empty():
-            vout=self.Video.vout.get()
+        while not self.video.vout.empty():
+            vout=self.video.vout.get()
             self.winScreen.lblScreen['text']=vout
     def generate_new_disk(self):
         #print 'generate_new_disk()'
@@ -176,8 +176,9 @@ class ClsLogic:
         self.gui=self.root.gui
         self.winScreen=self.gui.winScreen
         self.res=self.root.res
-        self.Video=self.root.Video
-        self.Video.start()
+        self.video=self.root.video
+        self.lang=self.root.res.lang_str.lang_dict
+        self.video.start()
         self.cpu.start()
         
         info={'com':'get_info()'}
@@ -198,12 +199,12 @@ class ClsLogic:
             self.root.gui.winEditBP.win_exit()
             self.root.gui.winScreen.win_exit()
             self.root.gui.winLicense.win_exit()
-            self.root.gui.winIDC.win_exit()
+            self.root.gui.win_idc.win_exit()
             self.root.gui.winCreateDisk.win_exit()
             self.root.gui.winAbout.win_exit()
-            self.root.gui.winMain.win_exit()
+            self.root.gui.win_main.win_exit()
             self.root.cpu.terminate()
-            self.root.Video.terminate()
+            self.root.video.terminate()
             del self.root.cpu
         finally:
             sys.exit(0)
@@ -212,7 +213,7 @@ class ClsLogic:
         self.root.gui.winLicense.show()
     
     def show_winIDC(self):
-        self.root.gui.winIDC.show()
+        self.root.gui.win_idc.show()
         
     def hide_winLicense(self):
         if 'lin' not in sys.platform:
