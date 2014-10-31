@@ -27,8 +27,8 @@ class clsController:
         #print  'clsController.win_main_step_cpu()'
         self.Logic.step_CPU()
     
-    def winCreateDisk_ok(self, event=''):
-        #print 'clsController.winCreateDisk_ok()'
+    def win_create_disk_ok(self, event=''):
+        #print 'clsController.win_create_disk_ok()'
         self.Logic.generate_new_disk()
     
     def create_new_disk(self, event=None):
