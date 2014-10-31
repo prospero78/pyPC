@@ -9,7 +9,7 @@ from Tkinter import Frame
 from pak_pc.pak_gui.pak_widgets.mod_frm_reg import ClsFrmReg
 from pak_pc.pak_gui.pak_widgets.mod_frm_reg_pc import ClsFrmRegPC
 from pak_pc.pak_gui.pak_widgets.mod_frm_reg_sp import ClsFrmRegSP
-from pak_pc.pak_gui.pak_widgets.mod_frm_cpu_frec import clsFrmCpuFreq
+from pak_pc.pak_gui.pak_widgets.mod_frm_cpu_frec import ClsFrmCpuFreq
 from pak_pc.pak_gui.pak_widgets.mod_frm_reg_sp import ClsFrmRegSP
 
 class ClsFrmCPU(Frame):
@@ -18,18 +18,18 @@ class ClsFrmCPU(Frame):
         self.pack(side='top', fill='x')
         
         # отображаем регистр программной отладки
-        self.frmreg_pc=ClsFrmRegPC(root=self)
+        self.frm_reg_bp=ClsFrmRegPC(root=self)
         
         # отображаем программный счётчик
-        self.frmreg_pc=ClsFrmRegPC(root=self)
-        #self.frmRegA.lblName['text']='reg_a'
+        self.frm_reg_pc=ClsFrmRegPC(root=self)
+        #self.frm_reg_a.lbl_name['text']='reg_a'
         
         # отображаем указатель стека
-        self.frmRegSP=ClsFrmRegSP(root=self)
+        self.frm_reg_sp=ClsFrmRegSP(root=self)
         
         # отображение регистра А
-        self.frmRegA=ClsFrmReg(root=self)
-        self.frmRegA.lblName['text']='reg_a'
+        self.frm_reg_a=ClsFrmReg(root=self)
+        self.frm_reg_a.lbl_name['text']='reg_a'
         
         # отображение частоты виртуального процессора
-        self.frmCpuFreq=clsFrmCpuFreq(root=self)
+        self.frm_cpu_freq=ClsFrmCpuFreq(root=self)
