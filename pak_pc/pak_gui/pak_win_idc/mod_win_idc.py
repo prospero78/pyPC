@@ -5,7 +5,7 @@
 
 from Tkinter import Toplevel, Frame, Button, Label
 
-from pak_pc.pak_gui.pak_widgets.mod_frm_disk_select import clsFrmDiskSelect
+from pak_pc.pak_gui.pak_widgets.mod_frm_disk_select import ClsFrmDiskSelect
 
 class ClsWinIDC(Toplevel):
     def __init__(self, root=None):
@@ -25,17 +25,17 @@ class ClsWinIDC(Toplevel):
             self.btnReset=Button(self.frm_btn, text=self.lang['win_idc_reset'])
             self.btnReset.pack(side='right')
             
-            self.btn_ok=Button(self.frm_btn, text=' Ok ', command=self.lang['win_idc_ok'])
+            self.btn_ok=Button(self.frm_btn, text=' Ok ', command=self.lang['win_idc_image_create'])
             self.btn_ok.pack(side='right')
             
         def create_frmIDC():
             self.frm_idc=Frame(self, border=2, relief='sunken')
             self.frm_idc.pack(side='top', fill='both', expand=1)
             
-            self.frmDisk0=clsFrmDiskSelect(master=self.frm_idc, root=self.root, text='Disk-0:')
-            self.frmDisk1=clsFrmDiskSelect(master=self.frm_idc, root=self.root, text='Disk-1:', path='None')
-            self.frmDisk2=clsFrmDiskSelect(master=self.frm_idc, root=self.root, text='Disk-2:', path='None')
-            self.frmDisk3=clsFrmDiskSelect(master=self.frm_idc, root=self.root, text='Disk-3:', path='None')
+            self.frm_disk0=ClsFrmDiskSelect(master=self.frm_idc, root=self.root, text='Disk-0:')
+            self.frm_disk1=ClsFrmDiskSelect(master=self.frm_idc, root=self.root, text='Disk-1:', path='None')
+            self.frm_disk2=ClsFrmDiskSelect(master=self.frm_idc, root=self.root, text='Disk-2:', path='None')
+            self.frm_disk3=ClsFrmDiskSelect(master=self.frm_idc, root=self.root, text='Disk-3:', path='None')
             
         self.root=root
         self.lang=root.res.lang_str.lang_dict
