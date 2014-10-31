@@ -11,14 +11,14 @@ class clsWinCreateDisk(Toplevel):
         def create_self():
             Toplevel.__init__(self)
             self.state('withdrawn')
-            self.title(self.root.Res.winCreateDisk_title)
+            self.title(self.root.res.winCreateDisk_title)
             self.minsize(350, 200)
             
         def create_frmBtn():
             self.frmBtn=Frame(self, border=2, relief='sunken')
             self.frmBtn.pack(side='bottom', fill='x')
             
-            self.btnOk=Button(self.frmBtn, text=' Ok ', command=self.root.Control.winCreateDisk_ok)
+            self.btnOk=Button(self.frmBtn, text=' Ok ', command=self.root.control.winCreateDisk_ok)
             self.btnOk.pack(side='right')
             
             self.btnCancel=Button(self.frmBtn, text='Cancel', command=self.destroy)
