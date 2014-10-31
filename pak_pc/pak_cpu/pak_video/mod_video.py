@@ -76,7 +76,7 @@ class ClsVideo(multiprocessing.Process):
         Очищает терминал от текста.
         Процедура заливки фактически это и делает.
         '''
-        print 'VIDEO: clear_screen()'
+        print 'video: clear_screen()'
         self.fill_screen()
         
     def fill_screen(self, sym=35):
@@ -101,7 +101,7 @@ class ClsVideo(multiprocessing.Process):
         '''
         Возвращает допустимый предельный номер режима экрана.
         '''
-        print 'VIDEO: get_max_mode()'
+        print 'video: get_max_mode()'
         return self.mode_max
         
     def set_current_mode(self, mode=None):
