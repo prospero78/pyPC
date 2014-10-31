@@ -10,7 +10,7 @@ from pak_pc.pak_gui.pak_widgets.mod_frm_reg import ClsFrmReg
 from pak_pc.pak_gui.pak_widgets.mod_frm_reg_pc import ClsFrmRegPC
 from pak_pc.pak_gui.pak_widgets.mod_frm_reg_sp import ClsFrmRegSP
 from pak_pc.pak_gui.pak_widgets.mod_frm_cpu_frec import clsFrmCpuFreq
-from pak_pc.pak_gui.pak_widgets.modFrmRegSP import clsFrmRegSP
+from pak_pc.pak_gui.pak_widgets.modFrmRegSP import ClsFrmRegSP
 
 class ClsFrmCPU(Frame):
     def __init__(self, root=None):
@@ -25,7 +25,7 @@ class ClsFrmCPU(Frame):
         #self.frmRegA.lblName['text']='RegA'
         
         # отображаем указатель стека
-        self.frmRegSP=clsFrmRegSP(root=self)
+        self.frmRegSP=ClsFrmRegSP(root=self)
         
         # отображение регистра А
         self.frmRegA=ClsFrmReg(root=self)
