@@ -48,8 +48,8 @@ class ClsWinCreateDisk(Toplevel):
     def destroy(self):
         self.state('withdrawn')
         self.grab_release()
-        self.root.GUI.winIDC.focus_set()
-        self.root.GUI.winIDC.grab_set()
+        self.root.gui.winIDC.focus_set()
+        self.root.gui.winIDC.grab_set()
         
     def win_exit(self):
         self.destroy()
