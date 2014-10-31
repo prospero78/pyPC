@@ -7,7 +7,7 @@ class clsGUI:
     def __init__(self, root=None):
         self.root=root
         # импорт главного класса окна
-        from pakWinMain.modWinMain import clsWinMain
+        from pak_win_main.modWinMain import clsWinMain
         self.winMain=clsWinMain(root=self.root)
         
         # импорт окна "О программе"
