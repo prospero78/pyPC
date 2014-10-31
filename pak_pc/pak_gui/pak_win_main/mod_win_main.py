@@ -5,7 +5,7 @@
 from Tkinter import Tk, Frame, Button, Menubutton, Menu
 from pak_pc.pak_gui.pak_widgets.mod_frm_cpu import ClsFrmCPU
 
-class clsWinMain(Tk):
+class ClsWinMain(Tk):
     def __init__(self, root=None):
         def create_self():
             def create_frmBtn():
