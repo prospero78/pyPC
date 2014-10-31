@@ -7,8 +7,8 @@
 from Tkinter import Frame
 
 from pakPC.pakGUI.pakWidgets.modFrmReg import clsFrmReg
-from pakPC.pakGUI.pakWidgets.modFrmRegPC import clsFrmRegPC
-from pakPC.pakGUI.pakWidgets.modFrmRegBP import clsFrmRegBP
+from pakPC.pakGUI.pakWidgets.modFrmreg_pc import clsFrmreg_pc
+from pakPC.pakGUI.pakWidgets.modFrmreg_pc import clsFrmreg_pc
 from pakPC.pakGUI.pakWidgets.modFrmCpuFrec import clsFrmCpuFreq
 from pakPC.pakGUI.pakWidgets.modFrmRegSP import clsFrmRegSP
 
@@ -18,10 +18,10 @@ class clsFrmCPU(Frame):
         self.pack(side='top', fill='x')
         
         # отображаем регистр программной отладки
-        self.frmRegBP=clsFrmRegBP(root=self)
+        self.frmreg_pc=clsFrmreg_pc(root=self)
         
         # отображаем программный счётчик
-        self.frmRegPC=clsFrmRegPC(root=self)
+        self.frmreg_pc=clsFrmreg_pc(root=self)
         #self.frmRegA.lblName['text']='RegA'
         
         # отображаем указатель стека
