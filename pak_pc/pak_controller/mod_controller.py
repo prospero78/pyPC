@@ -60,7 +60,7 @@ class ClsController:
     
     def about(self, event=None):
         #print 'about()'
-        self.root.gui.winAbout.show()
+        self.root.gui.win_about.show()
     
     def exit(self, event=None):
         #print '.ClsController.exit()'
