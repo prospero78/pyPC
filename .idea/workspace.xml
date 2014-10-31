@@ -26,7 +26,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd6f0ea5-3bc2-4faa-9e1c-56e82e823c75" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pak_pc/pak_gui/pakWidgets/modFrmCPU.py" afterPath="$PROJECT_DIR$/pak_pc/pak_gui/pakWidgets/modFrmCPU.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pak_pc/pak_gui/pakWidgets/modFrmKeyValue.py" afterPath="$PROJECT_DIR$/pak_pc/pak_gui/pakWidgets/modFrmKeyValue.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pak_pc/pak_gui/pakWidgets/modFrmRegBP.py" afterPath="$PROJECT_DIR$/pak_pc/pak_gui/pakWidgets/modFrmRegBP.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pak_pc/pak_gui/pakWidgets/modFrmRegPC.py" afterPath="$PROJECT_DIR$/pak_pc/pak_gui/pakWidgets/modFrmRegPC.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pak_pc/pak_gui/pakWidgets/modFrmRegSP.py" afterPath="$PROJECT_DIR$/pak_pc/pak_gui/pakWidgets/modFrmRegSP.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pak_pc/pak_logic/modLogic.py" afterPath="$PROJECT_DIR$/pak_pc/pak_logic/modLogic.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pak_pc/pak_gui/pakWinEditBP/modWinEditBP.py" afterPath="$PROJECT_DIR$/pak_pc/pak_gui/pakWinEditBP/modWinEditBP.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pak_pc/pak_cpu/mod_cpu.py" afterPath="$PROJECT_DIR$/pak_pc/pak_cpu/mod_cpu.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/mod_reg.py" afterPath="$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/mod_reg.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/mod_reg_bp.py" afterPath="$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/mod_reg_bp.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/mod_reg_pc.py" afterPath="$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/mod_reg_pc.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/setup_cmodRegBP.py" afterPath="$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/setup_cmodRegBP.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/setup_cmodRegPC.py" afterPath="$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/setup_cmodRegPC.py" />
     </list>
     <ignored path="pyPC.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,7 +50,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/pyPC$main.coverage" NAME="main Coverage Results" MODIFIED="1414740374270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyPC$main.coverage" NAME="main Coverage Results" MODIFIED="1414741910765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -64,20 +76,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mod_cpu.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="mod_reg.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/mod_reg.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.890909" vertical-offset="1122" max-vertical-offset="7378">
+              <caret line="101" column="19" selection-start-line="101" selection-start-column="16" selection-end-line="101" selection-end-column="22" />
+              <folding>
+                <element signature="e#1119#1711#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mod_cpu.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pak_pc/pak_cpu/mod_cpu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.10194903" vertical-offset="0" max-vertical-offset="3009">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state vertical-scroll-proportion="-111.0" vertical-offset="798" max-vertical-offset="2975">
+              <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
               <folding>
                 <element signature="e#23#61#1" expanded="true" />
-                <element signature="e#1455#3261#0" expanded="true" />
-                <element signature="e#1484#1929#0" expanded="true" />
-                <element signature="e#3289#5006#0" expanded="true" />
-                <element signature="e#5037#6031#0" expanded="true" />
-                <element signature="e#6065#6382#0" expanded="true" />
-                <element signature="e#6417#6992#0" expanded="true" />
+                <element signature="e#1488#1933#0" expanded="true" />
+                <element signature="e#3296#5027#0" expanded="true" />
+                <element signature="e#3296#3368#1" expanded="false" />
+                <element signature="e#5058#6053#0" expanded="true" />
+                <element signature="e#6087#6410#0" expanded="true" />
+                <element signature="e#6445#7034#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mod_reg_pc.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/mod_reg_pc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.076233186" vertical-offset="0" max-vertical-offset="669">
+              <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -107,10 +141,11 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/pak_pc/pak_cpu/mod_cpu.py" />
         <option value="$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/mod_reg_sp.py" />
         <option value="$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/mod_reg.py" />
         <option value="$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/mod_reg_bp.py" />
+        <option value="$PROJECT_DIR$/pak_pc/pak_cpu/mod_cpu.py" />
+        <option value="$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/mod_reg_pc.py" />
       </list>
     </option>
   </component>
@@ -575,22 +610,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/mod_reg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.86397606" vertical-offset="306" max-vertical-offset="7378">
-          <caret line="55" column="7" selection-start-line="55" selection-start-column="7" selection-end-line="55" selection-end-column="7" />
-          <folding>
-            <element signature="e#1119#1708#0" expanded="true" />
-            <element signature="e#1749#15487#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/mod_reg_bp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.076233186" vertical-offset="0" max-vertical-offset="669">
           <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/mod_reg.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.890909" vertical-offset="1122" max-vertical-offset="7378">
+          <caret line="101" column="19" selection-start-line="101" selection-start-column="16" selection-end-line="101" selection-end-column="22" />
+          <folding>
+            <element signature="e#1119#1711#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -604,6 +638,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pak_pc/pak_cpu/mod_cpu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-111.0" vertical-offset="798" max-vertical-offset="2975">
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#61#1" expanded="true" />
+            <element signature="e#1488#1933#0" expanded="true" />
+            <element signature="e#3296#5027#0" expanded="true" />
+            <element signature="e#3296#3368#1" expanded="false" />
+            <element signature="e#5058#6053#0" expanded="true" />
+            <element signature="e#6087#6410#0" expanded="true" />
+            <element signature="e#6445#7034#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/mod_reg_sp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="187">
@@ -612,19 +662,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pak_pc/pak_cpu/mod_cpu.py">
+    <entry file="file://$PROJECT_DIR$/pak_pc/pak_cpu/pak_reg/mod_reg_pc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10194903" vertical-offset="0" max-vertical-offset="3009">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="e#23#61#1" expanded="true" />
-            <element signature="e#1455#3261#0" expanded="true" />
-            <element signature="e#1484#1929#0" expanded="true" />
-            <element signature="e#3289#5006#0" expanded="true" />
-            <element signature="e#5037#6031#0" expanded="true" />
-            <element signature="e#6065#6382#0" expanded="true" />
-            <element signature="e#6417#6992#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.076233186" vertical-offset="0" max-vertical-offset="669">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
