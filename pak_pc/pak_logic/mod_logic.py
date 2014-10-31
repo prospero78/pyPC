@@ -27,7 +27,7 @@ class ClsLogic:
         win_main.mbtFile['text']=self.lang['win_main_mbt_file_name']
         win_main.mbtEdit['text']=self.lang['win_main_mbt_edit_name']
         win_main.mbtCustom['text']=self.lang['win_main_mbt_custom_name']
-        win_main.frmCPU.frmCpuFreq.lblKey['text']=self.lang['win_main_frm_cpu_freq_lbl_key']
+        win_main.frm_cpu.frmCpuFreq.lblKey['text']=self.lang['win_main_frm_cpu_freq_lbl_key']
         
     def reset_pc(self):
         '''
@@ -52,7 +52,7 @@ class ClsLogic:
                 fr=str(int(self.cpu.frec/1000))+' kHz'
             else:
                 fr=str(int(self.cpu.frec))+' Hz'
-            frec=self.gui.win_main.frmCPU.frmCpuFrec
+            frec=self.gui.win_main.frm_cpu.frmCpuFrec
             frec.entVal.delete(0,'end')
             frec.entVal.insert(0, fr)
         #self.gui.win_main.update()
@@ -100,29 +100,29 @@ class ClsLogic:
     def update_monitor(self):
         while not self.cpu.qinfo.empty():
             info=self.cpu.qinfo.get()
-            if info.has_key('RegA'):
-                inf=info['RegA']
-                #print 'detect RegA', inf
-                RegA=self.gui.win_main.frmCPU.frmRegA
-                #print 'have key "RegA.val"!', info['RegA.val']
-                RegA.lblVal['text']=inf['val']
-                #print 'have key "RegA.FlagZ"!', info['RegA.FlagZ']
-                RegA.lblValZ['text']=inf['FlagZ']
-                #print 'have key "RegA.FlagO"!', info['RegA.FlagO']
-                RegA.lblValO['text']=inf['FlagO']
-                #print 'have key "RegA.FlagC"!', info['RegA.FlagC']
-                RegA.lblValC['text']=inf['FlagO']
+            if info.has_key('reg_a'):
+                inf=info['reg_a']
+                #print 'detect reg_a', inf
+                reg_a=self.gui.win_main.frm_cpu.frmRegA
+                #print 'have key "reg_a.val"!', info['reg_a.val']
+                reg_a.lblVal['text']=inf['val']
+                #print 'have key "reg_a.FlagZ"!', info['reg_a.FlagZ']
+                reg_a.lblValZ['text']=inf['FlagZ']
+                #print 'have key "reg_a.FlagO"!', info['reg_a.FlagO']
+                reg_a.lblValO['text']=inf['FlagO']
+                #print 'have key "reg_a.FlagC"!', info['reg_a.FlagC']
+                reg_a.lblValC['text']=inf['FlagO']
             if info.has_key('reg_pc'):
                 inf=info['reg_pc']
                 #print 'detect reg_pc', inf
                 #print 'have key "reg_pc.val"!', info['reg_pc.val']
                 self.reg_pc_val=inf['val']
-                self.gui.win_main.frmCPU.frmreg_pc.lblVal['text']=self.reg_pc_old
+                self.gui.win_main.frm_cpu.frmreg_pc.lblVal['text']=self.reg_pc_old
                 self.reg_pc_old=self.reg_pc_val
             #---------------------------
             if info.has_key('reg_pc'):
                 inf=info['reg_pc']
-                reg_pc=self.gui.win_main.frmCPU.frmreg_pc
+                reg_pc=self.gui.win_main.frm_cpu.frmreg_pc
                 #print 'have key "reg_pc.act"!', info['reg_pc.act']
                 reg_pc.lblActVal['text']=inf['act']
                 #print 'have key "reg_pc.adr_proc"!', info['reg_pc.adr_proc']
@@ -132,7 +132,7 @@ class ClsLogic:
             #---------------------------
             if info.has_key('reg_sp'):
                 inf=info['reg_sp']
-                reg_sp=self.gui.win_main.frmCPU.frmRegSP
+                reg_sp=self.gui.win_main.frm_cpu.frmRegSP
                 reg_sp.lblAdrVal['text']=inf['adr']
                 reg_sp.lblValVal['text']=inf['val']
             #---------------------------
