@@ -10,7 +10,7 @@ class clsWinEditBP(Toplevel):
         def create_self():
             Toplevel.__init__(self)
             self.state('withdrawn')
-            self.title(self.root.Res.winEditBP_title)
+            self.title(self.root.res.winEditBP_title)
             self.minsize(380, 200)
         
         def create_frmUp():
@@ -58,7 +58,7 @@ class clsWinEditBP(Toplevel):
             self.frmBtn=Frame(self, border=3, relief='raised')
             self.frmBtn.pack(side='bottom', fill='x')
             
-            self.btnClose=Button(self.frmBtn, text=self.root.Res.winEditBP_btnClose, bg='gray', command=self.destroy)
+            self.btnClose=Button(self.frmBtn, text=self.root.res.winEditBP_btnClose, bg='gray', command=self.destroy)
             self.btnClose.pack(side='right')
             
         
@@ -79,7 +79,7 @@ class clsWinEditBP(Toplevel):
     def destroy(self):
         self.state('withdrawn')
         self.grab_release()
-        self.root.Control.winEditBP_hide()
+        self.root.control.winEditBP_hide()
     
     def win_exit(self):
         self.destroy()
