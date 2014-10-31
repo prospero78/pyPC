@@ -12,20 +12,20 @@ class clsWinIDC(Toplevel):
         def create_self():
             Toplevel.__init__(self)
             self.state('withdrawn')
-            self.title(self.root.Res.winIDC_name)
+            self.title(self.root.res.winIDC_name)
             self.minsize(350, 200)
         
         def create_frmBtn():
             self.frmBtn=Frame(self, border=2, relief='sunken')
             self.frmBtn.pack(side='bottom', fill='x')
             
-            self.btnCancel=Button(self.frmBtn, text=self.root.Res.winIDC_cancel, command=self.root.Control.winIDC_cancel)
+            self.btnCancel=Button(self.frmBtn, text=self.root.res.winIDC_cancel, command=self.root.control.winIDC_cancel)
             self.btnCancel.pack(side='right')
             
-            self.btnReset=Button(self.frmBtn, text=self.root.Res.winIDC_reset)
+            self.btnReset=Button(self.frmBtn, text=self.root.res.winIDC_reset)
             self.btnReset.pack(side='right')
             
-            self.btnOk=Button(self.frmBtn, text=' Ok ', command=self.root.Control.winIDC_ok)
+            self.btnOk=Button(self.frmBtn, text=' Ok ', command=self.root.control.winIDC_ok)
             self.btnOk.pack(side='right')
             
         def create_frmIDC():
