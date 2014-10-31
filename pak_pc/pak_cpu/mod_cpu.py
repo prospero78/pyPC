@@ -175,7 +175,7 @@ class ClsCPU(multiprocessing.Process):
         self.send_info()
 
     def send_info(self):
-        RegA = {'val':self.reg_a.val,
+        reg_a = {'val':self.reg_a.val,
                 'FlagZ':self.reg_a.FlagZ,
                 'FlagO':self.reg_a.FlagO,
                 'FlagC':self.reg_a.FlagC}
@@ -185,7 +185,7 @@ class ClsCPU(multiprocessing.Process):
                  'adr_break':self.reg_bp.adr_break}
         reg_sp = {'adr':self.reg_sp.val,
                  'val':self.mem.adr[self.reg_sp.val]}
-        info = {'RegA':RegA,
+        info = {'reg_a':reg_a,
                 'reg_pc' :reg_pc,
                 'reg_pc' :reg_pc,
                 'reg_sp':reg_sp,}
