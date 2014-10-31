@@ -22,16 +22,16 @@ class clsWinLicense(Toplevel):
                 self.txtLicense.delete('1.0', 'end')
                 self.txtLicense.insert('end',self.root.res.winLicense_locale)
                 
-            self.frmBtn=Frame(self, border=3, relief='raised')
-            self.frmBtn.pack(side='bottom', fill='x')
+            self.frm_btn=Frame(self, border=3, relief='raised')
+            self.frm_btn.pack(side='bottom', fill='x')
             
-            self.btnEngLicence=Button(self.frmBtn, text='England', bg='gray', command=btnEngLic_click)
+            self.btnEngLicence=Button(self.frm_btn, text='England', bg='gray', command=btnEngLic_click)
             self.btnEngLicence.pack(side='left')
             
-            self.btnLocalLicense=Button(self.frmBtn, text=self.lang['win_license_btn_local_license_text'], bg='gray', command=btnLocalsLic_click)
-            self.btnLocalLicense.pack(side='left')
+            self.btn_local_license=Button(self.frm_btn, text=self.lang['win_license_btn_local_text'], bg='gray', command=btnLocalsLic_click)
+            self.btn_local_license.pack(side='left')
             
-            self.btnClose=Button(self.frmBtn, text='Close', bg='gray', command=self.destroy)
+            self.btnClose=Button(self.frm_btn, text='Close', bg='gray', command=self.destroy)
             self.btnClose.pack(side='right')
         
         def create_frmUp():
@@ -43,7 +43,7 @@ class clsWinLicense(Toplevel):
             
             self.txtLicense=Text(self.frmUp, height=12, width=30, font='Courier 9')
             self.txtLicense.pack(fill='both', expand=1, side='left')
-            self.txtLicense.insert('end', self.root.res.winLicense_locale)
+            self.txtLicense.insert('end', self.lang['win_license_locale'])
             
             self.scbLicense.config(command=self.txtLicense.yview)
             self.txtLicense.config(yscrollcommand=self.scbLicense.set)
