@@ -3,7 +3,7 @@
 Инициализация класса главного окна.
 '''
 from Tkinter import Tk, Frame, Button, Menubutton, Menu
-from pak_pc.pak_gui.pakWidgets.modFrmCPU import clsFrmCPU
+from pak_pc.pak_gui.pak_widgets.mod_frm_cpu import ClsFrmCPU
 
 class clsWinMain(Tk):
     def __init__(self, root=None):
@@ -84,7 +84,7 @@ class clsWinMain(Tk):
                 create_mnuHelp()
             
             def create_frmCPU():
-                self.frmCPU=clsFrmCPU(root=self)
+                self.frmCPU=ClsFrmCPU(root=self)
                 
             Tk.__init__(self)
             self.minsize(320,400)
