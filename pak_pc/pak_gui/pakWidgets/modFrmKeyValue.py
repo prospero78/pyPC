@@ -29,6 +29,6 @@ if __name__=='__main__':
     root=Tk()
     root.title('test frmreg_pc')
     root.minsize(300,200)
-    reg=clsFrmreg_pc(root=root)
+    reg=ClsFrmRegPC(root=root)
     reg.lblName['text']='reg_pc'
     root.mainloop()
