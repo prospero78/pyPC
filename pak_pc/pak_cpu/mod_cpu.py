@@ -180,13 +180,13 @@ class ClsCPU(multiprocessing.Process):
                 'FlagO':self.reg_a.FlagO,
                 'FlagC':self.reg_a.FlagC}
         reg_pc = {'val':self.reg_pc.val}
-        reg_pc = {'act':self.reg_bp.act,
+        reg_bp = {'act':self.reg_bp.act,
                  'adr_proc':self.reg_bp.adr_proc,
                  'adr_break':self.reg_bp.adr_break}
         reg_sp = {'adr':self.reg_sp.val,
                  'val':self.mem.adr[self.reg_sp.val]}
         info = {'reg_a':reg_a,
                 'reg_pc' :reg_pc,
-                'reg_pc' :reg_pc,
+                'reg_bp' :reg_bp,
                 'reg_sp':reg_sp,}
         self.qinfo.put(info)
