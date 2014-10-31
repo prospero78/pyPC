@@ -12,7 +12,7 @@ class ClsRes(object):
         self.root = root
         self.lang = lang
         self.arg = arg
-        self.build = '0.975' # текущая версия сборки
+        self.build = '0.1167' # текущая версия сборки
 
         self.pars_arg()
         if self.lang == 'ru':
