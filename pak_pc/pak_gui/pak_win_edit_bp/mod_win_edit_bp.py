@@ -45,8 +45,8 @@ class ClsWinEditBP(Toplevel):
             self.frmAct=Frame(self.frmUp, border=3, relief='groove')
             self.frmAct.pack(fill='both', expand=1, side='top')
             
-            self.lblAct=Label(self.frmAct, text='act', relief='raised')
-            self.lblAct.pack(side='top', fill='x')
+            self.lbl_act=Label(self.frmAct, text='act', relief='raised')
+            self.lbl_act.pack(side='top', fill='x')
             
             self.Act=IntVar()
             self.cheActVal=Checkbutton(self.frmAct, cursor='hand2', state='active', text='active register', variable=self.Act)
