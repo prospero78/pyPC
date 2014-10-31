@@ -5,12 +5,12 @@
 
 from Tkinter import Toplevel, Frame, Button, Label, Entry, Checkbutton, IntVar
 
-class clsWinEditBP(Toplevel):
+class ClsWinEditBP(Toplevel):
     def __init__(self, root=None):
         def create_self():
             Toplevel.__init__(self)
             self.state('withdrawn')
-            self.title(self.root.res.winEditBP_title)
+            self.title(self.lang['win_edit_bp_title'])
             self.minsize(380, 200)
         
         def create_frmUp():
@@ -58,11 +58,12 @@ class clsWinEditBP(Toplevel):
             self.frm_btn=Frame(self, border=3, relief='raised')
             self.frm_btn.pack(side='bottom', fill='x')
             
-            self.btnClose=Button(self.frm_btn, text=self.root.res.winEditBP_btnClose, bg='gray', command=self.destroy)
+            self.btnClose=Button(self.frm_btn, text=self.lang['win_edit_bp_btn_close'], bg='gray', command=self.destroy)
             self.btnClose.pack(side='right')
             
         
         self.root=root
+        self.lang=root.res.lang_str.lang_dict
         create_self()
         create_frmUp()
         create_frmBtn()
