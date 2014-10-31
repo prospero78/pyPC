@@ -10,7 +10,7 @@ from pak_pc.pak_gui.pak_widgets.mod_frm_reg import ClsFrmReg
 from pak_pc.pak_gui.pak_widgets.mod_frm_reg_pc import ClsFrmRegPC
 from pak_pc.pak_gui.pak_widgets.mod_frm_reg_sp import ClsFrmRegSP
 from pak_pc.pak_gui.pak_widgets.mod_frm_cpu_frec import clsFrmCpuFreq
-from pak_pc.pak_gui.pak_widgets.modFrmRegSP import ClsFrmRegSP
+from pak_pc.pak_gui.pak_widgets.mod_frm_reg_sp import ClsFrmRegSP
 
 class ClsFrmCPU(Frame):
     def __init__(self, root=None):
