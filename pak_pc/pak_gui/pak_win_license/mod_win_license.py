@@ -9,18 +9,18 @@ class clsWinLicense(Toplevel):
     def __init__(self, root=None):
         def create_self():
             Toplevel.__init__(self)
-            self.title(self.root.Res.winLicense_title)
+            self.title(self.root.res.winLicense_title)
             self.minsize(350,240)
             self.state('withdrawn')
        
         def create_frmBtn():
             def btnEngLic_click(event=None):
                 self.txtLicense.delete('1.0', 'end')
-                self.txtLicense.insert('end',self.root.Res.winLicense_eng)
+                self.txtLicense.insert('end',self.root.res.winLicense_eng)
             
             def btnLocalsLic_click(event=None):
                 self.txtLicense.delete('1.0', 'end')
-                self.txtLicense.insert('end',self.root.Res.winLicense_locale)
+                self.txtLicense.insert('end',self.root.res.winLicense_locale)
                 
             self.frmBtn=Frame(self, border=3, relief='raised')
             self.frmBtn.pack(side='bottom', fill='x')
@@ -28,7 +28,7 @@ class clsWinLicense(Toplevel):
             self.btnEngLicence=Button(self.frmBtn, text='England', bg='gray', command=btnEngLic_click)
             self.btnEngLicence.pack(side='left')
             
-            self.btnLocalLicense=Button(self.frmBtn, text=self.root.Res.winLicense_btnLocalLicense_text, bg='gray', command=btnLocalsLic_click)
+            self.btnLocalLicense=Button(self.frmBtn, text=self.root.res.winLicense_btnLocalLicense_text, bg='gray', command=btnLocalsLic_click)
             self.btnLocalLicense.pack(side='left')
             
             self.btnClose=Button(self.frmBtn, text='Close', bg='gray', command=self.destroy)
@@ -43,7 +43,7 @@ class clsWinLicense(Toplevel):
             
             self.txtLicense=Text(self.frmUp, height=12, width=30, font='Courier 9')
             self.txtLicense.pack(fill='both', expand=1, side='left')
-            self.txtLicense.insert('end', self.root.Res.winLicense_locale)
+            self.txtLicense.insert('end', self.root.res.winLicense_locale)
             
             self.scbLicense.config(command=self.txtLicense.yview)
             self.txtLicense.config(yscrollcommand=self.scbLicense.set)
@@ -63,7 +63,7 @@ class clsWinLicense(Toplevel):
     def destroy(self):
         self.state('withdrawn')
         self.grab_release()
-        self.root.Control.hide_winLicense()
+        self.root.control.hide_winLicense()
     
     def win_exit(self):
         self.destroy()
