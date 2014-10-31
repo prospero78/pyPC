@@ -30,7 +30,7 @@ class ClsPC(object):
         self.control = clsController(root=self)
 
         # импорт класса графики
-        from pak_pc.pak_gui.modGUI import clsGUI
+        from pak_pc.pak_gui.mod_gui import clsGUI
         self.gui = clsGUI(root=self)
 
         # импорт класса интерфейса дискового кластера
