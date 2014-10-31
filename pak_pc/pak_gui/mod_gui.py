@@ -31,8 +31,8 @@ class ClsGUI:
         self.winIDC=ClsWinIDC(root=self.root)
         
         # импорт окна редактирования настроек регистра программного прерывания (winBP)
-        from pakWinEditBP.mod_win_edit_bp import clsWinEditBP
-        self.winEditBP=clsWinEditBP(root=self.root)
+        from pak_win_edit_bp.mod_win_edit_bp import ClsWinEditBP
+        self.winEditBP=ClsWinEditBP(root=self.root)
         
         
     def run(self):
