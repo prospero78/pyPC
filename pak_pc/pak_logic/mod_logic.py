@@ -27,7 +27,7 @@ class ClsLogic:
         win_main.mbtFile['text']=self.lang['win_main_mbt_file_name']
         win_main.mbtEdit['text']=self.lang['win_main_mbt_edit_name']
         win_main.mbtCustom['text']=self.lang['win_main_mbt_custom_name']
-        win_main.frm_cpu.frmCpuFreq.lblKey['text']=self.lang['win_main_frm_cpu_freq_lbl_key']
+        win_main.frm_cpu.frm_cpu_freq.lblKey['text']=self.lang['win_main_frm_cpu_freq_lbl_key']
         
     def reset_pc(self):
         '''
@@ -103,7 +103,7 @@ class ClsLogic:
             if info.has_key('reg_a'):
                 inf=info['reg_a']
                 #print 'detect reg_a', inf
-                reg_a=self.gui.win_main.frm_cpu.frmRegA
+                reg_a=self.gui.win_main.frm_cpu.frm_reg_a
                 #print 'have key "reg_a.val"!', info['reg_a.val']
                 reg_a.lblVal['text']=inf['val']
                 #print 'have key "reg_a.FlagZ"!', info['reg_a.FlagZ']
@@ -117,22 +117,22 @@ class ClsLogic:
                 #print 'detect reg_pc', inf
                 #print 'have key "reg_pc.val"!', info['reg_pc.val']
                 self.reg_pc_val=inf['val']
-                self.gui.win_main.frm_cpu.frmreg_pc.lblVal['text']=self.reg_pc_old
+                self.gui.win_main.frm_cpu.frm_reg_pc.lblVal['text']=self.reg_pc_old
                 self.reg_pc_old=self.reg_pc_val
             #---------------------------
-            if info.has_key('reg_pc'):
-                inf=info['reg_pc']
-                reg_pc=self.gui.win_main.frm_cpu.frmreg_pc
-                #print 'have key "reg_pc.act"!', info['reg_pc.act']
-                reg_pc.lblActVal['text']=inf['act']
-                #print 'have key "reg_pc.adr_proc"!', info['reg_pc.adr_proc']
-                reg_pc.lblProcVal['text']=inf['adr_proc']
+            if info.has_key('reg_bp'):
+                inf=info['reg_bp']
+                reg_bp=self.gui.win_main.frm_cpu.frm_reg_bp
+                #print 'have key "reg_bp.act"!', info['reg_bp.act']
+                reg_bp.lbl_act_val['text']=inf['act']
+                #print 'have key "reg_bp.adr_proc"!', info['reg_bp.adr_proc']
+                reg_bp.lblProcVal['text']=inf['adr_proc']
                 #print 'have key "reg_pc.adr_break"!', info['reg_pc.adr_break']
-                reg_pc.lblBreakVal['text']=inf['adr_break']
+                reg_bp.lblBreakVal['text']=inf['adr_break']
             #---------------------------
             if info.has_key('reg_sp'):
                 inf=info['reg_sp']
-                reg_sp=self.gui.win_main.frm_cpu.frmRegSP
+                reg_sp=self.gui.win_main.frm_cpu.frm_reg_sp
                 reg_sp.lblAdrVal['text']=inf['adr']
                 reg_sp.lblValVal['text']=inf['val']
             #---------------------------
