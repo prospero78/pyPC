@@ -15,8 +15,8 @@ class ClsFrmReg(Frame):
         self.lbl_name=Label(self, text='RegXX', border=1, relief='ridge')
         self.lbl_name.pack(side='left', fill='x')
         
-        self.lblVal=Label(self, text='00', border=1, relief='groove')
-        self.lblVal.pack(side='left')
+        self.lbl_val=Label(self, text='00', border=1, relief='groove')
+        self.lbl_val.pack(side='left')
         
         self.lblFlagZ=Label(self, text='Z', border=1, relief='ridge')
         self.lblFlagZ.pack(side='left', fill='x')
