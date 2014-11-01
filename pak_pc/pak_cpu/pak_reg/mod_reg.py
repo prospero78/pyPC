@@ -1,8 +1,8 @@
 # -*- coding: utf8 -*-
-'''
+"""
 Класс регистра общего назначения.
 По умолчанию класс имеет 8 бит (0...255) -- MAX_REG_VAL
-'''
+"""
 # константы для кодов операций
 if True:
     A_NOP = 0
@@ -54,7 +54,16 @@ if True:
     A_JMPR = 42
 
 
-class ClsReg:
+class ClsReg(object):
+    """
+    Класс описывает регистр общего назначения.
+    :param root:
+    :param mem:
+    :param pc:
+    :param sp:
+    :param port:
+    """
+
     def __init__(self, root=None,
                  mem=None,
                  pc=None,
@@ -69,7 +78,7 @@ class ClsReg:
         self.mem = mem
 
         # ссылка на порты
-        self.Port = port
+        self.port = port
 
         # сылка на программный счётчик
         self.reg_pc = pc
@@ -88,13 +97,13 @@ class ClsReg:
         self.flag_s = 0
 
     def command(self):
-        '''
+        """
             Вычисляет что за команда поступила на вход и
             далее обрабатывает её, в зависимости от кода
             --------------------
             cop - "код операции"
             -------------------
-        '''
+        """
         # признак "нельзя перебивать флаг Z" -- для команды сравнения с числом
         NOT_SET_Z = 0
 
@@ -431,17 +440,17 @@ class ClsReg:
             self.reg_pc.val = self.mem.adr[self.reg_sp.val]
             self.reg_sp.val += 1
         elif cop == A_IN:  # чтение из порта в регистр А
-            port = self.Port.adr[self.mem.adr[self.reg_pc.val + 1]]
+            port = self.port.adr[self.mem.adr[self.reg_pc.val + 1]]
             print 'clsReg: port=', port
             # вызов процедуры детектирования используемого порта
             # если порт висит в воздухе, то просто возврат хранимого
             # значения.
-            self.val = self.Port.detect_port(port=port)
+            self.val = self.port.detect_port(port=port)
             self.reg_pc.val += 2
         elif cop == A_OUT:  # запись в порт
-            self.Port.adr[self.mem.adr[self.reg_pc.val + 1]] = self.val
+            self.port.adr[self.mem.adr[self.reg_pc.val + 1]] = self.val
             print 'clsReg: port=', self.mem.adr[self.reg_pc.val + 1]
-            self.Port.detect_port(port=self.mem.adr[self.reg_pc.val + 1],
+            self.port.detect_port(port=self.mem.adr[self.reg_pc.val + 1],
                                   com=self.val)
             self.reg_pc.val += 2
         elif cop == A_JMP:  # прыжок по абсолютному адресу
