@@ -8,9 +8,10 @@ import sys
 
 
 class ClsLogic(object):
-    '''
+    """
     Класс логики, который связывает по действиям все классы.
-    '''
+    """
+
     def __init__(self, root=None):
         """
         Общая инициализация класса определение переменных.
@@ -23,7 +24,7 @@ class ClsLogic(object):
         # признаки запущенности ЦП в debug mode
         self.debug = 0
         # признак активности регистра bp
-        self.reg_bp_act=None
+        self.reg_bp_act = None
         # ссылка на ЦП
         self.cpu = None
         # ссылка на графический интерфейс
@@ -38,11 +39,11 @@ class ClsLogic(object):
         self.lang = None
 
     def set_res_str(self):
-        '''
+        """
         Присваивает строковые ресурсы графическому интерфейсу.
         Процедура сделана с целью отвязки GUI от ресурсов
         (повышение атомарности класса).
-        '''
+        """
         win_main = self.gui.win_main
         win_main.btnStep['text'] = self.lang['win_main_btn_step']
         win_main.btnDebug['text'] = self.lang['win_main_btn_debug_0']
@@ -64,18 +65,19 @@ class ClsLogic(object):
         self.cpu.qcom.put(info)
 
     def update_speed(self, dtime=0):
-        '''
+        """
         При отладке обновляет периодически монитор состояния ЦП и скорость
         виртуальной машины.
+        :type self: object
         :param dtime: производит замер по времени между циклами исполнения
         блока команд ЦП.
-        '''
+        """
         fr = 1.0 / dtime * self.cpu.time_code
         # print dtime, self.cpu.frec
         res = fr / self.cpu.frec
         if res > 1.1 or res < 0.9:
             if fr > self.cpu.frec:
-                self.cpu.frec = self.cpu.frec + int(fr / 100)
+                self.cpu.frec += int(fr / 100)
             elif fr < self.cpu.frec:
                 self.cpu.frec -= int(fr / 100)
             if fr > 1000:
@@ -85,7 +87,7 @@ class ClsLogic(object):
             frec = self.gui.win_main.frm_cpu.frmCpuFrec
             frec.entVal.delete(0, 'end')
             frec.entVal.insert(0, fr)
-            #self.gui.win_main.update()
+            # self.gui.win_main.update()
 
     def win_edit_bp_hide(self):
         """
@@ -103,7 +105,7 @@ class ClsLogic(object):
                            'adr_proc': self.reg_pc_adr_proc}}
         self.cpu.qcom.put(info)
 
-        #print 'act=', self.cpu.reg_pc.get_act()
+        # print 'act=', self.cpu.reg_pc.get_act()
         #self.update_monitor()
 
     def show_win_edit_bp(self):
@@ -132,21 +134,27 @@ class ClsLogic(object):
         Команды отправляются в очередь между процессами.
         """
         # print 'ClsLogic.step_cpu()'
-        #self.pre_update_monitor()
+        # self.pre_update_monitor()
         info = {'com': 'step()'}
         self.cpu.qcom.put(info)
         #self.post_update_monitor()
 
     def update_monitor(self):
+        """
+        Обновляет монитор ЦП через равные промежутки времени.
+        Информацию для обновления берёт от двух дочерних процессов:
+        1. ЦП.
+        2. Видеокарта.
+        """
         while not self.cpu.qinfo.empty():
             info = self.cpu.qinfo.get()
             if info.has_key('reg_a'):
                 inf = info['reg_a']
                 # print 'detect reg_a', inf
                 reg_a = self.gui.win_main.frm_cpu.frm_reg_a
-                #print 'have key "reg_a.val"!', info['reg_a.val']
+                # print 'have key "reg_a.val"!', info['reg_a.val']
                 reg_a.lbl_val['text'] = inf['val']
-                #print 'have key "reg_a.FlagZ"!', info['reg_a.FlagZ']
+                #print "have key \"reg_a.FlagZ\"!", info['reg_a.FlagZ']
                 reg_a.lblValZ['text'] = inf['FlagZ']
                 #print 'have key "reg_a.FlagO"!', info['reg_a.FlagO']
                 reg_a.lblValO['text'] = inf['FlagO']
@@ -155,7 +163,7 @@ class ClsLogic(object):
             if info.has_key('reg_pc'):
                 inf = info['reg_pc']
                 # print 'detect reg_pc', inf
-                #print 'have key "reg_pc.val"!', info['reg_pc.val']
+                # print 'have key "reg_pc.val"!', info['reg_pc.val']
                 self.reg_pc_val = inf['val']
                 self.gui.win_main.frm_cpu.frm_reg_pc.lbl_val[
                     'text'] = self.reg_pc_old
@@ -164,13 +172,13 @@ class ClsLogic(object):
             if info.has_key('reg_bp'):
                 inf = info['reg_bp']
                 reg_bp = self.gui.win_main.frm_cpu.frm_reg_bp
-                #print 'have key "reg_bp.act"!', info['reg_bp.act']
+                # print 'have key "reg_bp.act"!', info['reg_bp.act']
                 reg_bp.lbl_act_val['text'] = inf['act']
                 #print 'have key "reg_bp.adr_proc"!', info['reg_bp.adr_proc']
                 reg_bp.lblProcVal['text'] = inf['adr_proc']
                 #print 'have key "reg_pc.adr_break"!', info['reg_pc.adr_break']
                 reg_bp.lblBreakVal['text'] = inf['adr_break']
-            #---------------------------
+            # ---------------------------
             if info.has_key('reg_sp'):
                 inf = info['reg_sp']
                 reg_sp = self.gui.win_main.frm_cpu.frm_reg_sp
@@ -183,7 +191,7 @@ class ClsLogic(object):
             #---------------------------
             if info.has_key('dtime'):
                 inf = info['dtime']
-                #print 'detect DTIME', inf
+                #print 'detect dtime', inf
                 self.update_speed(dtime=inf)
         while not self.video.vout.empty():
             vout = self.video.vout.get()
