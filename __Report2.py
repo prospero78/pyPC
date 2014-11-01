@@ -11,10 +11,10 @@ from Tkinter import Tk, Button, Frame, PanedWindow, Menu, Menubutton, Text
 vers = 'Version 1.70'
 
 #
-# thanks={koder{mail:mail, NumEdit:NumEdit, site:site}, koder:{...}}
+# thanks={koder{mail:mail, num_edit:num_edit, site:site}, koder:{...}}
 #
 thanks = {'V.L.': {'mailto': 'arnys@mail.ru',
-                   'NumEdit': '2+',
+                   'num_edit': '2+',
                    'site': 'www.aloys.narod.ru'}}
 
 m = 'Special thanks: <a href="mailto:arnys@mail.ru">V.L. (2+)</a><br>'
@@ -55,6 +55,9 @@ class ClsGUI(Tk):
     """
 
     def __init__(self):
+        """
+        Создаёт интерфейс пользователя для репортера.
+        """
         self.frm_up = Frame(self)
 
         def bind_win():
@@ -64,6 +67,10 @@ class ClsGUI(Tk):
                 sys.exit()
 
             def save_reporter(event=''):
+                """
+                Сохраняет отчёт.
+                :param event:
+                """
                 print '===report==='
                 a = ClsSmallReporter
                 self.txt_report.insert('1.0', a.html_data)
@@ -146,28 +153,28 @@ class ClsGUI(Tk):
 
     def create_menu_bar(self):
         def create_mnu_file():
-            self.btn_file = Menubutton(self.pnlMenu, text=ru['mnu_file'],
-                                      border=3, relief='groove')
+            self.btn_file = Menubutton(self.pnl_menu, text=ru['mnu_file'],
+                                       border=3, relief='groove')
             self.mnu_file = Menu(self.btn_file)
             self.btn_file.config(menu=self.mnu_file)
             self.mnu_file.add_command(label=ru['mnuFile_New'],
-                                     accelerator='Ctrl+N')
+                                      accelerator='Ctrl+N')
             self.mnu_file.add_command(label=ru['mnuFile_Open'],
-                                     accelerator='Ctrl+O')
+                                      accelerator='Ctrl+O')
             self.mnu_file.add_separator()
             self.mnu_file.add_command(label=ru['mnuFile_Save'],
-                                     accelerator='Ctrl+S')
+                                      accelerator='Ctrl+S')
             self.mnu_file.add_command(label=ru['mnuFile_SaveAs'])
             self.mnu_file.add_separator()
             self.mnu_file.add_command(label=ru['mnuFile_Print'],
-                                     accelerator='Ctrl+P')
+                                      accelerator='Ctrl+P')
             self.mnu_file.add_separator()
             self.mnu_file.add_command(label=ru['mnuFile_Exit'],
-                                     accelerator='Ctrl+Q')
+                                      accelerator='Ctrl+Q')
             self.btn_file.pack(side='left')
 
         def create_mnu_edit():
-            self.btn_edit = Menubutton(self.pnlMenu,
+            self.btn_edit = Menubutton(self.pnl_menu,
                                        text=ru['mnu_edit'],
                                        border=3,
                                        relief='groove')
@@ -191,8 +198,8 @@ class ClsGUI(Tk):
             self.btn_edit.pack(side='left')
 
         def create_mnu_custom():
-            self.btn_custom = Menubutton(self.pnlMenu, text='mnu_custom',
-                                        border=3, relief='groove')
+            self.btn_custom = Menubutton(self.pnl_menu, text='mnu_custom',
+                                         border=3, relief='groove')
             self.mnu_custom = Menu(self.btn_custom)
             self.btn_custom.config(menu=self.mnu_custom)
             self.mnu_custom.add_command(label='Type files',
@@ -206,22 +213,24 @@ class ClsGUI(Tk):
             self.btn_custom.pack(side='left')
 
         def create_mnu_help():
-            self.btnHelp = Menubutton(self.pnlMenu, text='mnuHelp', border=3,
-                                      relief='groove')
-            self.mnuHelp = Menu(self.btnHelp)
-            self.btnHelp.config(menu=self.mnuHelp)
-            self.mnuHelp.add_command(label='Type files', accelerator='Ctrl+D')
-            self.mnuHelp.add_command(label='--1')
+            self.btn_help = Menubutton(self.pnl_menu,
+                                       text='mnu_help',
+                                       border=3,
+                                       relief='groove')
+            self.mnu_help = Menu(self.btn_help)
+            self.btn_help.config(menu=self.mnu_help)
+            self.mnu_help.add_command(label='Type files', accelerator='Ctrl+D')
+            self.mnu_help.add_command(label='--1')
             self.mnu_custom.add_separator()
-            self.btnHelp.pack(side='left')
+            self.btn_help.pack(side='left')
 
-        self.pnlMenu = PanedWindow(self.frm_up, border=2, relief='raised')
+        self.pnl_menu = PanedWindow(self.frm_up, border=2, relief='raised')
         create_mnu_file()
         create_mnu_edit()
         create_mnu_custom()
         create_mnu_help()
 
-        self.pnlMenu.pack(side='left', expand=1, fill='x')
+        self.pnl_menu.pack(side='left', expand=1, fill='x')
 
 
 class ClsSmallReporter:
@@ -239,7 +248,7 @@ class ClsSmallReporter:
             i = i + 1
         return a
 
-    def get_all_files_in_patch(self, ListElement, CurrentPatch):
+    def get_all_files_in_patch(self, ListElement, current_patch):
         def chek_dir(fileProcess='1.py'):
             '''
             Проверка на то, является ли элемент списка каталогом или файлом.
@@ -255,21 +264,21 @@ class ClsSmallReporter:
         i = 0
         while len(ListElement) > i:
             # получить текущий элемент
-            CurrentElement = ListElement[i]
+            current_element = ListElement[i]
             # исключение самого файла репортера
-            if CurrentElement == (CurrentPatch + '\\' + '__Report.py'):
+            if current_element == (current_patch + '\\' + '__Report.py'):
                 # если список не истощён - уменьшить его на один элемент
                 if len(ListElement) != i - 1:
                     ListElement = ListElement[:i] + ListElement[i + 1:]
                     # уменьшить список файлов-каталогов на один
-                    CurrentElement = ListElement[i - 1]
+                    current_element = ListElement[i - 1]
             # проверить на каталог и занятость
-            result = chek_dir(fileProcess=CurrentElement)
+            result = chek_dir(fileProcess=current_element)
             if result == 'not file':  # если не файл
                 # то значит каталог, получить список файлов
-                NewDir = self.get_dir(dir=CurrentElement)
+                new_dir = self.get_dir(dir=current_element)
                 # вставить в основной список
-                ListElement = ListElement[:i] + NewDir + ListElement[i + 1:]
+                ListElement = ListElement[:i] + new_dir + ListElement[i + 1:]
                 # продлить итерацию на один проход
                 i = i - 1
             # продвинуться к следующему элементу списка
@@ -334,6 +343,11 @@ class ClsSmallReporter:
             a.close()
 
         def get_files_py():
+            """
+            Возвращает список python-файлов.
+            :return:
+            """
+
             def filter_file_py(l=''):
                 '''
                 Проверка на то, является ли файл файлом с расширением .py
@@ -348,14 +362,14 @@ class ClsSmallReporter:
                 return l
 
             # получить текущий путь
-            CurrentPatch = getcwd()
+            current_patch = getcwd()
             # получить список элементов каталогов/файлов
-            ListElement = self.get_dir(CurrentPatch)
+            ListElement = self.get_dir(current_patch)
             # инициализация счётчика строк
             NumLines = 0
             # вернуть полный список файлов
             full_list_file, self.i = self.get_all_files_in_patch(ListElement,
-                                                                 CurrentPatch)
+                                                                 current_patch)
             # отбросить все файлы не являющиеся .py
             self.list_file_py = filter_file_py(full_list_file)
 
@@ -366,6 +380,12 @@ class ClsSmallReporter:
             """
 
             def get_table(list_file_py):
+                """
+                Возвращает таблицу файлов.
+                :param list_file_py:
+                :return:
+                """
+
                 def get_analis_file(f):
                     def doc_string(file=''):
                         '''
@@ -407,7 +427,7 @@ class ClsSmallReporter:
                 # построение тела HTML таблицы
                 down = 'Plis, up<br>densyti code.' + '\n'
                 up = 'Plis, down<br>densyti code.' + '\n'
-                body = ''
+                body_html = ''
                 i = 0
                 total_lines = 0
                 total_bytes = 0
@@ -418,11 +438,11 @@ class ClsSmallReporter:
                     file = list_file_py[i]
                     len_file, number_line, FileDoc = get_analis_file(file)
                     total_doc = total_doc + FileDoc
-                    body = body + '<tr>'
-                    body = body + col + '<h5>' + str(i + 1) + \
+                    body_html = body_html + '<tr>'
+                    body_html = body_html + col + '<h5>' + str(i + 1) + \
                            '. ' + '</td>' + col + '<h5>' + str(file) + \
                            '</td>\n'
-                    body = body + col + '<h5>' + str(number_line) + \
+                    body_html = body_html + col + '<h5>' + str(number_line) + \
                            '</td>' + col + '<h5>' + \
                            str(len_file) + '</td>\n'
                     densyti = Ratio(len_file, number_line)
@@ -432,12 +452,12 @@ class ClsSmallReporter:
                         Note = up
                     else:
                         Note = '-'
-                    body = body + '<td><h5>' + densyti + '</td><td><h5>' + \
-                           Note + '</td></tr>' + '\n'
+                    body_html = body_html + '<td><h5>' + densyti + \
+                                '</td><td><h5>' + Note + '</td></tr>' + '\n'
                     total_lines = total_lines + number_line
                     total_bytes = total_bytes + len_file
                     i = i + 1
-                return body, total_lines, total_bytes, total_doc
+                return body_html, total_lines, total_bytes, total_doc
 
             def Ratio(len_file, number_line):
                 '''
@@ -516,12 +536,12 @@ class ClsSmallReporter:
                         # получить мыло кодера
                         mail = info_coder['mailto']
                         # получить количество советов кодера
-                        NumEdit = info_coder['NumEdit']
+                        num_edit = info_coder['num_edit']
                         # получить сайт кодера
                         site = info_coder['site']
                         # сформировать строку
                         out += 'Koder: <a href="mailto:' + mail + '">' + \
-                               name_coder + ' (' + NumEdit + ')' + '\n'
+                               name_coder + ' (' + num_edit + ')' + '\n'
                         out += '</a>'
                         out += ' Site: <a href=http://' + site + '>' + site + \
                                '</a><br>\n'
@@ -535,27 +555,31 @@ class ClsSmallReporter:
                 html_data = '<head><META HTTP-EQUIV="Content-Type" CONTENT=' + \
                             '"text/html;' + '\n'
                 html_data = html_data + 'charset=windows-1251"></head>' + '\n'
-                body = '<html>' + html_data + '<title>Small reporter for ' + \
-                       'Python</title><body bgcolor="#CCFFCC">' + '\n'
-                body += '<b><center><h2>' + txt + '</center><hr></b>' + '\n'
-                body += '<br><code><h5>REPORTER ' + vers + '<br>' + '\n'
-                body += '<a href=http://www.fantom-lab.narod.ru>www.fantom-' + \
-                        'lab.narod.ru</a><br>\n'
-                body += 'Author: <a href="mailto:fantom-ab@mail.ru">-=[fant' + \
-                        'om]=-</a><br>\n'
-                body += get_thanks()
-                body += '<b>Summary info:<br>' + '\n'
-                body += '<table border=3 width=100% bgcolor="#00FFFF">' + '\n'
+                body_html = '<html>' + html_data + '<title>Small ' + \
+                            'reporter for Python</title>' + \
+                            '<body bgcolor="#CCFFCC">' + '\n'
+                body_html += '<b><center><h2>' + txt + \
+                             '</center><hr></b>' + '\n'
+                body_html += '<br><code><h5>REPORTER ' + vers + '<br>' + '\n'
+                body_html += '<a href=http://www.fantom-lab.narod.ru>' + \
+                             'www.fantom-lab.narod.ru</a><br>\n'
+                body_html += 'Author: <a href="mailto:fantom-ab@mai' + \
+                             'l.ru">-=[fantom]=-</a><br>\n'
+                body_html += get_thanks()
+                body_html += '<b>Summary info:<br>' + '\n'
+                body_html += '<table border=3 width=100% bgcol' + \
+                             'or="#00FFFF">' + '\n'
                 col = '<td bgcolor="#C0C0C0" align="center">' + '\n'
-                body += '<tr>' + col + '<b>Number<br>file</b></td>' + col + \
-                        '<b>\n'
-                body += 'Name File</b></td>' + col + '<b>Number<br>lines' + \
-                        '</b></td>' + '\n'
-                body += col + '<b>All<br>bytes</b></td>' + col + \
-                        '<b><h5>densyti<br>code</b>\n'
-                body += '</td>' + col + '<b>Note</b></td></tr>\n'
-                body = html_data + body
-                return body
+                body_html += '<tr>' + col + '<b>Number<br>file</b>' + \
+                             '</td>' + col + '<b>\n'
+                body_html += 'Name File</b></td>' + col + \
+                             '<b>Number<br>lines' + \
+                             '</b></td>' + '\n'
+                body_html += col + '<b>All<br>bytes</b></td>' + col + \
+                            '<b><h5>densyti<br>code</b>\n'
+                body_html += '</td>' + col + '<b>Note</b></td></tr>\n'
+                body_html = html_data + body_html
+                return body_html
 
             def get_end_html(total_py_files,
                              name_report,
@@ -564,6 +588,7 @@ class ClsSmallReporter:
                              total_doc):
                 """
                 Получает концовку html текста отчёта
+                :rtype : object
                 :param total_py_files: всего python файлов
                 :param name_report: имя отчёта
                 :param total_lines: всего строк
@@ -572,30 +597,30 @@ class ClsSmallReporter:
                 :return: строку отчёта в формате html
                 """
 
-                def SpezInfo():
+                def get_spez_info():
                     '''
                     Процедура выводит информацию о проекте и суммирует
                     номер сборки
                     '''
                     try:
-                        from _info import clsInfo
+                        from _info import ClsInfo
 
                         col = '<td bgcolor="#C0C0C0" align="center">' + '\n'
                         string = '<br><table border=3 width=60% bgcolor' + \
                             '="#00FFFF">' + '\n'
                         string += '<tr>' + col + '<h5>Parametrs</td>' + col + \
                                   '<h5>Variable</td></tr>' + '\n'
-                        a = clsInfo()
+                        _inf = clsInfo()
                         string += '<tr><td><h5>Author</td><td><h5>' + \
-                                  a.author() + '</td></tr>' + '\n'
+                                  _inf.author() + '</td></tr>' + '\n'
                         string += '<tr><td><h5>Project</td><td><h5>' + \
-                                  a.project() + '</td></tr>' + '\n'
+                                  _inf.project() + '</td></tr>' + '\n'
                         string += '<tr><td><h5>About</td><td><h5>' + \
-                                  a.about() + '</td></tr>' + '\n'
+                                  _inf.about() + '</td></tr>' + '\n'
                         string += '<tr><td><h5>Version</td><td><h5>' + \
-                                  a.version() + '</td></tr>' + '\n'
+                                  _inf.version() + '</td></tr>' + '\n'
                         string += '<tr><td><h5>Build</td><td><h5>' + \
-                                  a.build() + '</td></tr></table>' + '\n'
+                                  _inf.build() + '</td></tr></table>' + '\n'
                         return string
                     except:
                         return '''
@@ -638,7 +663,7 @@ about(self):</p>
 <hr>
 '''
 
-                def densytiDocString(KolString, KolLine):
+                def get_densyti_doc_string(KolString, KolLine):
                     '''
                     Процедура вычисляет плотность строк документации
                     KolString - количество строк документации
@@ -649,38 +674,39 @@ about(self):</p>
                     a = str(densyti)
                     a = a[0:5]
                     if a < str(1.0 / 10):
-                        m = '<font color="#808000">Plis, up densyti ' + \
+                        _msg = '<font color="#808000">Plis, up densyti ' + \
                             'doc_string!</font>'
                     elif a > str(1.0 / 10) and a < str(1.0 / 5):
-                        m = 'Normal densyti doc_string.'
+                        _msg = 'Normal densyti doc_string.'
                     else:
-                        m = '<font color="#808000">Plis, down densyti ' + \
+                        _msg = '<font color="#808000">Plis, down densyti ' + \
                             'doc_string!</font>'
-                    return m
+                    return _msg
 
                 # получить конец таблицы
-                body = ''
-                body += '</tr></table><br>' + '\n'
-                body += '<b>Date: ' + name_report + '</b><br>' + '\n'
-                body += SpezInfo()
-                body += '<br><table border=3 width=100% bgcolor="#00FFFF">' + \
+                body_html = ''
+                body_html += '</tr></table><br>' + '\n'
+                body_html += '<b>Date: ' + name_report + '</b><br>' + '\n'
+                body_html += get_spez_info()
+                body_html += '<br><table border=3 width=100% ' + \
+                             'bgcolor="#00FFFF">' + \
                         '<tr><td>' + '\n'
-                body += '<b><h5>Total lines=' + str(
+                body_html += '<b><h5>Total lines=' + str(
                     total_lines) + '</td><td>' + '\n'
-                body += '<b><h5>Total bytes=' + str(
+                body_html += '<b><h5>Total bytes=' + str(
                     total_bytes) + '</td><td>' + '\n'
-                body += '<b><h5>Total Files=' + str(
+                body_html += '<b><h5>Total Files=' + str(
                     total_py_files) + '</td><td><b><h5>' + '\n'
-                body += 'densyti code=' + Ratio(total_bytes, total_lines)
-                body += '</td></tr><tr><td><h5>Total String docs:</td><td>\n'
-                body += '<h5>' + str(total_doc) + '</td>' + '\n'
-                body += '<td><h5>densyti docs</td><td><h5>' + \
-                        str(densytiDocString(total_lines,
-                                             total_doc)) + '</tr></table>' + \
-                        '<br><br>' + '\n'
-                body += 'Size Project: ' + self.TypeProect(
-                    total_lines) + '</body></html>' + '\n'
-                return body
+                body_html += 'densyti code=' + Ratio(total_bytes, total_lines)
+                body_html += '</td></tr><tr><td><h5>Total ' + \
+                             'String docs:</td><td>\n'
+                body_html += '<h5>' + str(total_doc) + '</td>' + '\n'
+                body_html += '<td><h5>densyti docs</td><td><h5>' + \
+                        str(get_densyti_doc_string(total_lines,  total_doc)) + \
+                        '</tr></table><br><br>\n'
+                body_html += 'Size Project: ' + self.TypeProect(
+                    total_lines) + '</body></html>\n'
+                return body_html
 
             # модифицировано V.L. <arnys@mail.ru>(1+)
             if not self.list_file_py:
@@ -691,16 +717,16 @@ about(self):</p>
             self.name_report = GetTime()
             print 'Report file: ' + self.name_report + '.html'
             self.html_data = get_head_html()
-            body, total_lines, total_bytes, total_doc = get_table(
+            body_html, total_lines, total_bytes, total_doc = get_table(
                 self.list_file_py)
-            self.html_data += body
+            self.html_data += body_html
             total_py_files = len(self.list_file_py)
-            body = get_end_html(total_py_files,
+            body_html = get_end_html(total_py_files,
                                 self.name_report,
                                 total_lines,
                                 total_bytes,
                                 total_doc)
-            self.html_data += body
+            self.html_data += body_html
 
         get_files_py()
         create_report()
