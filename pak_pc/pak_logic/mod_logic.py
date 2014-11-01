@@ -14,6 +14,7 @@ class ClsLogic(object):
     def __init__(self, root=None):
         """
         Общая инициализация класса определение переменных.
+        :param root: ссылка на корневой класс.
         """
         self.root = root
         # локальная переменная для регистра программного счётчика
@@ -23,6 +24,18 @@ class ClsLogic(object):
         self.debug = 0
         # признак активности регистра bp
         self.reg_bp_act=None
+        # ссылка на ЦП
+        self.cpu = None
+        # ссылка на графический интерфейс
+        self.gui = None
+        # ссылка на экран виртуальной машины
+        self.win_screen = None
+        # ссылка на класс ресурсов
+        self.res = None
+        # ссылка на видеокарту
+        self.video = None
+        # ссылка на языковые ресурсы
+        self.lang = None
 
     def set_res_str(self):
         '''
@@ -178,6 +191,9 @@ class ClsLogic(object):
 
     def generate_new_disk(self):
         # print 'generate_new_disk()'
+        """
+        Создаёт новый диск.
+        """
         self.gui.winCreateDisk.destroy()
         disk_size = int(self.gui.winCreateDisk.fkvSize.get_val())
         disk_name = self.gui.winCreateDisk.fkvName.get_val()
@@ -189,19 +205,32 @@ class ClsLogic(object):
 
     def create_new_disk(self):
         # TODO: дописать процедуру создания нового диска
+        """
+        Вызывается при создании нового диска.
+        """
         pass
 
     def create_disk(self):
+        """
+        Вызывается при создании виртуального диска.
+        """
         print 'ClsLogic.create_disk()'
         self.gui.winCreateDisk.show()
 
     def show_screen(self):
+        """
+        Вызывается при показе экрана виртуальной машины.
+        """
         if not self.gui.win_screen.winScreen_show:
             self.gui.win_screen.show()
         else:
             self.gui.win_screen.destroy()
 
     def run(self):
+        """
+        Вызывается при запуске всей системы.
+
+        """
         self.cpu = self.root.cpu
         self.gui = self.root.gui
         self.win_screen = self.gui.win_screen
@@ -220,10 +249,10 @@ class ClsLogic(object):
         self.gui.run()
 
     def exit(self):
-        '''
+        """
         Общесистемный выход из программы.
         Всякие финальные действия.
-        '''
+        """
         # print 'ClsLogic.exit()'
         try:
             self.root.gui.winEditBP.win_exit()
@@ -240,6 +269,9 @@ class ClsLogic(object):
             sys.exit(0)
 
     def show_win_license(self):
+        """
+        Вызывается при показе окна показа лицензии (вот такая рекурсия)  )))
+        """
         self.root.gui.winLicense.show()
 
     def show_win_idc(self):
