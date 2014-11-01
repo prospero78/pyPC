@@ -57,7 +57,7 @@ class ClsController(object):
         Вызывается при запуске виртуальной машины в режиме отладки.
         :param event: событие при запуске машины в режиме отладки.
         """
-        self.logic.debug_CPU()
+        self.logic.debug_cpu()
 
     def win_main_step_cpu(self, event=''):
         # print  '.ClsController.win_main_step_cpu()'
