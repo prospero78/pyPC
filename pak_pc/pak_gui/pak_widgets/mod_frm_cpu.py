@@ -8,7 +8,7 @@ from Tkinter import Frame
 
 from pak_pc.pak_gui.pak_widgets.mod_frm_reg import ClsFrmReg
 from pak_pc.pak_gui.pak_widgets.mod_frm_reg_pc import ClsFrmRegPC
-from pak_pc.pak_gui.pak_widgets.mod_frm_reg_sp import ClsFrmRegSP
+from pak_pc.pak_gui.pak_widgets.mod_frm_reg_bp import ClsFrmRegBP
 from pak_pc.pak_gui.pak_widgets.mod_frm_cpu_frec import ClsFrmCpuFreq
 from pak_pc.pak_gui.pak_widgets.mod_frm_reg_sp import ClsFrmRegSP
 
@@ -18,7 +18,7 @@ class ClsFrmCPU(Frame):
         self.pack(side='top', fill='x')
         
         # отображаем регистр программной отладки
-        self.frm_reg_bp=ClsFrmRegPC(root=self)
+        self.frm_reg_bp=ClsFrmRegBP(root=self)
         
         # отображаем программный счётчик
         self.frm_reg_pc=ClsFrmRegPC(root=self)
