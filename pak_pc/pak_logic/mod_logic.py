@@ -37,6 +37,12 @@ class ClsLogic(object):
         self.video = None
         # ссылка на языковые ресурсы
         self.lang = None
+        # ссылка на регистр bp, признак akt
+        self.reg_pc_act = None
+        # ссылка на регистр bp и его адрес прерывания
+        self.reg_pc_adr_break = None
+        # ссылка на регистр bp и его адрес обработки
+        self.reg_pc_adr_proc = None
 
     def set_res_str(self):
         """
@@ -118,6 +124,9 @@ class ClsLogic(object):
 
     def debug_cpu(self):
         # print 'ClsLogic.debug_cpu()'
+        """
+        Вызывается при запуске ЦП в режиме отладки.
+        """
         if self.debug == 0:
             self.debug = 1
             self.gui.win_main.btnDebug['text'] = self.res.winMain_btnDebug_1
