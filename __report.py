@@ -621,6 +621,15 @@ class ClsGUI(Tk):
         self.btn_exit = None
         self.mnu_help = None
         self.mnu_edit = None
+        self.txt_report = None
+        self.btn_edit = None
+        self.btn_save = None
+        self.pnl_menu = None
+        self.btn_custom = None
+        self.btn_generate = None
+        self.btn_file = None
+        self.btn_help = None
+        self.frm_midle = None
 
         self.title(LANG_RU['win_main'])
         self.minsize(GEOMETRY['winMain_minSizeX'], GEOMETRY['winMain_minSizeY'])
