@@ -22,6 +22,8 @@ class ClsController(object):
         self.gui = None
         # ссылка на класс логики. Будет создана позже.
         self.logic = None
+        # ссылка на класс ЦП. Будет создана позже.
+        self.cpu = None
 
     def reset_pc(self, event=None):
         """
