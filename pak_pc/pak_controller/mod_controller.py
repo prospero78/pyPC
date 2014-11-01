@@ -110,6 +110,10 @@ class ClsController(object):
 
     def show_screen(self, event=None):
         # print '.ClsController.show_screen()'
+        """
+        Вызывается при показе экрана виртуальной машины.
+        :param event: событие при показе окна виртуальной машины.
+        """
         self.logic.show_screen()
 
     def run(self, event=None):
