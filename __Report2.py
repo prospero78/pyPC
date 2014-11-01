@@ -59,9 +59,19 @@ class ClsGUI(Tk):
         Создаёт интерфейс пользователя для репортера.
         """
         self.frm_up = Frame(self)
-
+        self.mnu_file = None
+        self.mnu_custom = None
         def bind_win():
+            """
+
+            Привязка событий к окнам.
+            """
+
             def quit_reporter(event=''):
+                """
+                Выходит из репортера.
+                :param event:
+                """
                 import sys
 
                 sys.exit()
@@ -72,13 +82,17 @@ class ClsGUI(Tk):
                 :param event:
                 """
                 print '===report==='
-                a = ClsSmallReporter
-                self.txt_report.insert('1.0', a.html_data)
+                reporter = ClsSmallReporter()
+                self.txt_report.insert('1.0', reporter.html_data)
 
             def generate_report(event=''):
+                """
+                Генерирует отчёт.
+                :param event:
+                """
                 print '===report==='
-                a = ClsSmallReporter
-                self.txt_report.insert('1.0', a.html_data)
+                reporter = ClsSmallReporter()
+                self.txt_report.insert('1.0', reporter.html_data)
 
             self.bind('<Control-Q>', quit_reporter)
             self.bind('<Control-q>', quit_reporter)
@@ -141,7 +155,6 @@ class ClsGUI(Tk):
                                        text=ru['btn_generate'],
                                        command=btn_generate_click)
             self.btn_generate.pack(side='left', expand=1, fill='x')
-
 
         self.frm_down = Frame(self)
 
@@ -234,6 +247,7 @@ class ClsGUI(Tk):
 
 
 class ClsSmallReporter:
+
     def get_dir(self, dir=''):
         """
         Получение списка каталогов и файлов.
@@ -328,10 +342,11 @@ class ClsSmallReporter:
         Создаёт класс репортера.
         :rtype : object
         """
+        # имя отчёта
         self.name_report = None
-        self.html_data = None
         self.i = None
         self.list_file_py = None
+        # выходные данные в формате html
         self.html_data = ""
 
         def save_report():
@@ -398,7 +413,7 @@ class ClsSmallReporter:
                                 file) - 3:  # искать символ начала комментария
                             a = file[i:i + 3]
 
-                            if (a == '"""' or a == "'''"):
+                            if a == '"""' or a == "'''":
                                 s += 1
                             i += 1
                         return s
@@ -701,11 +716,11 @@ about(self):</p>
                 body_html += '</td></tr><tr><td><h5>Total ' + \
                              'String docs:</td><td>\n'
                 body_html += '<h5>' + str(total_doc) + '</td>' + '\n'
-                body_html += '<td><h5>densyti docs</td><td><h5>' + \
-                        str(get_densyti_doc_string(total_lines,  total_doc)) + \
-                        '</tr></table><br><br>\n'
-                body_html += 'Size Project: ' + self.TypeProect(
-                    total_lines) + '</body></html>\n'
+                body_html += '<td><h5>densyti docs</td><td><h5>'
+                body_html += str(get_densyti_doc_string(total_lines, total_doc))
+                body_html += '</tr></table><br><br>\n'
+                body_html += 'Size Project: '
+                body_html += self.TypeProect(total_lines) + '</body></html>\n'
                 return body_html
 
             # модифицировано V.L. <arnys@mail.ru>(1+)
@@ -722,10 +737,10 @@ about(self):</p>
             self.html_data += body_html
             total_py_files = len(self.list_file_py)
             body_html = get_end_html(total_py_files,
-                                self.name_report,
-                                total_lines,
-                                total_bytes,
-                                total_doc)
+                                     self.name_report,
+                                     total_lines,
+                                     total_bytes,
+                                     total_doc)
             self.html_data += body_html
 
         get_files_py()
