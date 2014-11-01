@@ -159,6 +159,7 @@ class ClsSmallReporter(object):
         self.list_file_py = None
         # выходные данные в формате html
         self.html_data = ""
+        self.dir_list = None
 
         def save_report():
             """
@@ -630,6 +631,7 @@ class ClsGUI(Tk):
         self.btn_file = None
         self.btn_help = None
         self.frm_midle = None
+        self.frm_down = None
 
         self.title(LANG_RU['win_main'])
         self.minsize(GEOMETRY['winMain_minSizeX'], GEOMETRY['winMain_minSizeY'])
@@ -746,6 +748,9 @@ class ClsGUI(Tk):
             self.btn_file.pack(side='left')
 
         def create_mnu_edit():
+            """
+            Создаёт меню "Правка".
+            """
             self.btn_edit = Menubutton(self.pnl_menu,
                                        text=LANG_RU['mnu_edit'],
                                        border=3,
@@ -770,6 +775,9 @@ class ClsGUI(Tk):
             self.btn_edit.pack(side='left')
 
         def create_mnu_custom():
+            """
+            Создаёт меню нстроек.
+            """
             self.btn_custom = Menubutton(self.pnl_menu, text='mnu_custom',
                                          border=3, relief='groove')
             self.mnu_custom = Menu(self.btn_custom)
@@ -785,6 +793,9 @@ class ClsGUI(Tk):
             self.btn_custom.pack(side='left')
 
         def create_mnu_help():
+            """
+            Создаёт меню "Справка".
+            """
             self.btn_help = Menubutton(self.pnl_menu,
                                        text='mnu_help',
                                        border=3,
