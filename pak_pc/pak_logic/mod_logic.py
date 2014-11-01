@@ -20,6 +20,7 @@ class ClsLogic(object):
         self.root = root
         # локальная переменная для регистра программного счётчика
         self.reg_pc_old = 0
+        # значение регистра программного счётчика
         self.reg_pc_val = 0
         # признаки запущенности ЦП в debug mode
         self.debug = 0
@@ -78,21 +79,21 @@ class ClsLogic(object):
         :param dtime: производит замер по времени между циклами исполнения
         блока команд ЦП.
         """
-        fr = 1.0 / dtime * self.cpu.time_code
+        freq_cpu = 1.0 / dtime * self.cpu.time_code
         # print dtime, self.cpu.frec
-        res = fr / self.cpu.frec
+        res = freq_cpu / self.cpu.frec
         if res > 1.1 or res < 0.9:
-            if fr > self.cpu.frec:
-                self.cpu.frec += int(fr / 100)
-            elif fr < self.cpu.frec:
-                self.cpu.frec -= int(fr / 100)
-            if fr > 1000:
-                fr = str(int(self.cpu.frec / 1000)) + ' kHz'
+            if freq_cpu > self.cpu.frec:
+                self.cpu.frec += int(freq_cpu / 100)
+            elif freq_cpu < self.cpu.frec:
+                self.cpu.frec -= int(freq_cpu / 100)
+            if freq_cpu > 1000:
+                freq_cpu = str(int(self.cpu.frec / 1000)) + ' kHz'
             else:
-                fr = str(int(self.cpu.frec)) + ' Hz'
+                freq_cpu = str(int(self.cpu.frec)) + ' Hz'
             frec = self.gui.win_main.frm_cpu.frmCpuFrec
             frec.entVal.delete(0, 'end')
-            frec.entVal.insert(0, fr)
+            frec.entVal.insert(0, freq_cpu)
             # self.gui.win_main.update()
 
     def win_edit_bp_hide(self):
@@ -157,7 +158,7 @@ class ClsLogic(object):
         """
         while not self.cpu.qinfo.empty():
             info = self.cpu.qinfo.get()
-            if info.has_key('reg_a'):
+            if 'reg_a' in info:
                 inf = info['reg_a']
                 # print 'detect reg_a', inf
                 reg_a = self.gui.win_main.frm_cpu.frm_reg_a
@@ -169,7 +170,7 @@ class ClsLogic(object):
                 reg_a.lblValO['text'] = inf['FlagO']
                 #print 'have key "reg_a.FlagC"!', info['reg_a.FlagC']
                 reg_a.lblValC['text'] = inf['FlagO']
-            if info.has_key('reg_pc'):
+            if 'reg_pc' in info:
                 inf = info['reg_pc']
                 # print 'detect reg_pc', inf
                 # print 'have key "reg_pc.val"!', info['reg_pc.val']
@@ -178,7 +179,7 @@ class ClsLogic(object):
                     'text'] = self.reg_pc_old
                 self.reg_pc_old = self.reg_pc_val
             # ---------------------------
-            if info.has_key('reg_bp'):
+            if 'reg_bp' in info:
                 inf = info['reg_bp']
                 reg_bp = self.gui.win_main.frm_cpu.frm_reg_bp
                 # print 'have key "reg_bp.act"!', info['reg_bp.act']
@@ -188,17 +189,17 @@ class ClsLogic(object):
                 #print 'have key "reg_pc.adr_break"!', info['reg_pc.adr_break']
                 reg_bp.lblBreakVal['text'] = inf['adr_break']
             # ---------------------------
-            if info.has_key('reg_sp'):
+            if 'reg_sp' in info:
                 inf = info['reg_sp']
                 reg_sp = self.gui.win_main.frm_cpu.frm_reg_sp
                 reg_sp.lblAdrVal['text'] = inf['adr']
                 reg_sp.lblValVal['text'] = inf['val']
             #---------------------------
-            if info.has_key('debug'):
+            if 'debug' in info:
                 inf = info['debug']
                 #print 'detect DEBUG', inf
             #---------------------------
-            if info.has_key('dtime'):
+            if 'dtime' in info:
                 inf = info['dtime']
                 #print 'detect dtime', inf
                 self.update_speed(dtime=inf)
@@ -214,11 +215,11 @@ class ClsLogic(object):
         self.gui.winCreateDisk.destroy()
         disk_size = int(self.gui.winCreateDisk.fkvSize.get_val())
         disk_name = self.gui.winCreateDisk.fkvName.get_val()
-        str_ = '\0' * (2 ** 10)
-        f = open('./data/' + disk_name + '.dsk', 'wb')
+        str_ = '0' * (2 ** 10)
+        file_disk = open('./data/' + disk_name + '.dsk', 'wb')
         for i in xrange(0, disk_size):
-            f.write(str_)
-        f.close()
+            file_disk.write(str_)
+            file_disk.close()
 
     def create_new_disk(self):
         # TODO: дописать процедуру создания нового диска
