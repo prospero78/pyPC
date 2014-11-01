@@ -44,9 +44,9 @@ class ClsLogic(object):
             'win_main_frm_cpu_freq_lbl_key']
 
     def reset_pc(self):
-        '''
+        """
         Сброс состояния виртуального компьютера.
-        '''
+        """
         info = {'com': 'reset'}
         self.cpu.qcom.put(info)
 
@@ -54,6 +54,8 @@ class ClsLogic(object):
         '''
         При отладке обновляет периодически монитор состояния ЦП и скорость
         виртуальной машины.
+        :param dtime: производит замер по времени между циклами исполнения
+        блока команд ЦП.
         '''
         fr = 1.0 / dtime * self.cpu.time_code
         # print dtime, self.cpu.frec
@@ -93,6 +95,10 @@ class ClsLogic(object):
 
     def show_win_edit_bp(self):
         # print 'ClsLogic.show_win_edit_bp()'
+        """
+        Вызывается при показе окна редактирования свойств регистра
+        программного прерывания.
+        """
         self.gui.winEditBP.show()
 
     def debug_cpu(self):
@@ -237,6 +243,10 @@ class ClsLogic(object):
         self.root.gui.winLicense.show()
 
     def show_win_idc(self):
+        """
+
+        Вызывается при показе окна интерфейса дискового кластера.
+        """
         self.root.gui.win_idc.show()
 
     def hide_win_license(self):
