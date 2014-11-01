@@ -387,7 +387,8 @@ class ClsSmallReporter:
                     number_line = 1
                     ch = 0
                     len_file = len(t)  # получить длину файла
-                    while len_file > ch: # проверка на количество символов ввода
+                    # проверка на количество символов ввода
+                    while len_file > ch:
                         sym = t[ch]
                         # если перевод строки увеличить счётчик строк
                         if sym == '\n':
@@ -412,10 +413,10 @@ class ClsSmallReporter:
                     total_doc = total_doc + FileDoc
                     body = body + '<tr>'
                     body = body + col + '<h5>' + str(i + 1) + \
-                        '. ' + '</td>' + col + '<h5>' + str(file) + \
-                        '</td>\n'
+                           '. ' + '</td>' + col + '<h5>' + str(file) + \
+                           '</td>\n'
                     body = body + col + '<h5>' + str(number_line) + \
-                           '</td>' + col + '<h5>' +\
+                           '</td>' + col + '<h5>' + \
                            str(len_file) + '</td>\n'
                     densyti = Ratio(len_file, number_line)
                     if densyti == 'Low':
@@ -424,7 +425,8 @@ class ClsSmallReporter:
                         Note = up
                     else:
                         Note = '-'
-                    body = body + '<td><h5>' + densyti + '</td><td><h5>' + Note + '</td></tr>' + '\n'
+                    body = body + '<td><h5>' + densyti + '</td><td><h5>' + \
+                           Note + '</td></tr>' + '\n'
                     total_lines = total_lines + number_line
                     total_bytes = total_bytes + len_file
                     i = i + 1
@@ -445,7 +447,8 @@ class ClsSmallReporter:
 
             def GetTime():
                 '''
-                    Надо получить форматированное время в виде 'гг-мм-дд_чч-мм-сс'.
+                    Надо получить форматированное время в виде
+                    'гг-мм-дд_чч-мм-сс'.
                 '''
 
                 def NullTime(data):
@@ -483,7 +486,8 @@ class ClsSmallReporter:
                 second = NullTime(second)
 
                 # составить общую строку времени
-                result = god + '-' + mon + '-' + day + '_' + hour + '-' + minute + '-' + second
+                result = god + '-' + mon + '-' + day + '_' + hour + '-' + \
+                         minute + '-' + second
                 return result
 
 
@@ -496,7 +500,7 @@ class ClsSmallReporter:
                     # получить список кодеров
                     list_coder = thanks.keys()
                     # проход по списку кодеров
-                    out = '-------------------------<br>Special thanks: <BR>' + '\n'
+                    out = '-------------------------<br>Special thanks: <BR>\n'
                     for i in xrange(len(list_coder)):
                         # получить имя кодера
                         name_coder = list_coder[i]
@@ -509,9 +513,11 @@ class ClsSmallReporter:
                         # получить сайт кодера
                         site = info_coder['site']
                         # сформировать строку
-                        out += 'Koder: <a href="mailto:' + mail + '">' + name_coder + ' (' + NumEdit + ')' + '\n'
+                        out += 'Koder: <a href="mailto:' + mail + '">' + \
+                               name_coder + ' (' + NumEdit + ')' + '\n'
                         out += '</a>'
-                        out += ' Site: <a href=http://' + site + '>' + site + '</a><br>' + '\n'
+                        out += ' Site: <a href=http://' + site + '>' + site + \
+                               '</a><br>\n'
                     out += '-------------------------<br>'
                     return out
 
