@@ -1,13 +1,15 @@
 # -*- coding: utf8 -*-
-'''
+"""
 Модуль локализации русского языка.
-'''
+"""
 from pak_pc.pak_resurs.mod_lang import ClsLang
 
+
 class ClsLangRu(ClsLang):
-    '''
+    """
     Класс обеспечивает строковыми ресурсами для русского языка.
-    '''
+    """
+
     def __init__(self, lang='ru'):
         ClsLang.__init__(self, lang='ru')
         self.vers = self.vers + 3
@@ -64,14 +66,14 @@ class ClsLangRu(ClsLang):
                           'win_idc_name': 'Интерфейс дискового кластера',
                           'win_idc_open': 'Открыть',
                           'win_idc_open_disk_image': \
-                          'Открыть дисковый образ...',
+                              'Открыть дисковый образ...',
                           'win_idc_image_create': 'Cоздать',
                           'win_idc_image_unpath': 'Очистить',
                           'win_idc_cancel': 'Отменить',
                           'win_idc_reset': 'Сбросить',
 
                           'win_create_disk_title': \
-                          'Создание нового диска...',
+                              'Создание нового диска...',
 
                           'win_edit_bp_title': 'Свойства регистра BP',
-                          'win_edit_bp_btn_close': 'Закрыть',}
+                          'win_edit_bp_btn_close': 'Закрыть', }
