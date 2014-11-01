@@ -115,9 +115,9 @@ class ClsGUI(Tk):
                 sys.exit()
 
             self.btn_exit = Button(self.frmDown,
-                                  text=ru['btn_exit'],
-                                  command=report_exit,
-                                  bg='red')
+                                   text=ru['btn_exit'],
+                                   command=report_exit,
+                                   bg='red')
             self.btn_exit.pack(side='left', expand=1, fill='x')
 
         def create_btn_save():
@@ -126,8 +126,8 @@ class ClsGUI(Tk):
 
         def create_btn_generate():
             self.btn_generate = Button(self.frmDown,
-                                      text=ru['btn_generate'],
-                                      command=btn_generate_click)
+                                       text=ru['btn_generate'],
+                                       command=btn_generate_click)
             self.btn_generate.pack(side='left', expand=1, fill='x')
 
 
@@ -252,7 +252,7 @@ class ClsSmallReporter:
             # исключение самого файла репортера
             if CurrentElement == (CurrentPatch + '\\' + '__Report.py'):
                 # если список не истощён - уменьшить его на один элемент
-                if len(ListElement) <> i - 1:
+                if len(ListElement) != i - 1:
                     ListElement = ListElement[:i] + ListElement[i + 1:]
                     # уменьшить список файлов-каталогов на один
                     CurrentElement = ListElement[i - 1]
@@ -316,7 +316,7 @@ class ClsSmallReporter:
         self.html_data = None
         self.i = None
         self.list_file_py = None
-        self.html_data =""
+        self.html_data = ""
 
         def save_report():
             """
@@ -327,14 +327,14 @@ class ClsSmallReporter:
             a.close()
 
         def get_files_py():
-            def SortPy(l=''):
+            def filter_file_py(l=''):
                 '''
                 Проверка на то, является ли файл файлом с расширением .py
                 '''
                 i = 0
                 while len(l) > i:
                     f = l[i]
-                    if f[-3:] <> '.py':
+                    if f[-3:] != '.py':
                         l = l[:i] + l[i + 1:]
                         i = i - 1
                     i = i + 1
@@ -350,7 +350,7 @@ class ClsSmallReporter:
             FullListFile, self.i = self.get_all_files_in_patch(ListElement,
                                                                CurrentPatch)
             # отбросить все файлы не являющиеся .py
-            self.list_file_py = SortPy(FullListFile)
+            self.list_file_py = filter_file_py(FullListFile)
 
         def create_report():
             """
@@ -387,9 +387,10 @@ class ClsSmallReporter:
                     number_line = 1
                     ch = 0
                     len_file = len(t)  # получить длину файла
-                    while len_file > ch:  # проверка на количество символов ввода
+                    while len_file > ch: # проверка на количество символов ввода
                         sym = t[ch]
-                        if sym == '\n':  # если перевод строки увеличить счётчик строк
+                        # если перевод строки увеличить счётчик строк
+                        if sym == '\n':
                             number_line = number_line + 1
                         ch += 1
                     kol_doc_str = doc_string(file=t)
@@ -410,12 +411,12 @@ class ClsSmallReporter:
                     len_file, number_line, FileDoc = get_analis_file(file)
                     total_doc = total_doc + FileDoc
                     body = body + '<tr>'
-                    body = body + col + '<h5>' + str(
-                        i + 1) + '. ' + '</td>' + col + '<h5>' + str(
-                        file) + '</td>\n'
-                    body = body + col + '<h5>' + str(
-                        number_line) + '</td>' + col + '<h5>' + str(
-                        len_file) + '</td>\n'
+                    body = body + col + '<h5>' + str(i + 1) + \
+                        '. ' + '</td>' + col + '<h5>' + str(file) + \
+                        '</td>\n'
+                    body = body + col + '<h5>' + str(number_line) + \
+                           '</td>' + col + '<h5>' +\
+                           str(len_file) + '</td>\n'
                     densyti = Ratio(len_file, number_line)
                     if densyti == 'Low':
                         Note = down
@@ -465,7 +466,7 @@ class ClsSmallReporter:
                 # получить месяц
                 mon = str(t[1])
                 mon = NullTime(mon)
-                #получить день
+                # получить день
                 day = str(t[2])
                 day = NullTime(day)
                 # получить часы
@@ -486,29 +487,29 @@ class ClsSmallReporter:
                 return result
 
 
-            def GetHeadHTML():
-                def GetThanks():
+            def get_head_html():
+                def get_thanks():
                     '''
                     Процедурка формирует HTML-код с благодарностями и мылами.
                     '''
                     global thanks
                     # получить список кодеров
-                    ListKoder = thanks.keys()
+                    list_coder = thanks.keys()
                     # проход по списку кодеров
                     out = '-------------------------<br>Special thanks: <BR>' + '\n'
-                    for i in xrange(len(ListKoder)):
+                    for i in xrange(len(list_coder)):
                         # получить имя кодера
-                        NameKoder = ListKoder[i]
+                        name_coder = list_coder[i]
                         # получить информацию по кодеру
-                        InfoKoder = thanks[NameKoder]
+                        info_coder = thanks[name_coder]
                         # получить мыло кодера
-                        Mail = InfoKoder['mailto']
+                        mail = info_coder['mailto']
                         # получить количество советов кодера
-                        NumEdit = InfoKoder['NumEdit']
+                        NumEdit = info_coder['NumEdit']
                         # получить сайт кодера
-                        site = InfoKoder['site']
+                        site = info_coder['site']
                         # сформировать строку
-                        out += 'Koder: <a href="mailto:' + Mail + '">' + NameKoder + ' (' + NumEdit + ')' + '\n'
+                        out += 'Koder: <a href="mailto:' + mail + '">' + name_coder + ' (' + NumEdit + ')' + '\n'
                         out += '</a>'
                         out += ' Site: <a href=http://' + site + '>' + site + '</a><br>' + '\n'
                     out += '-------------------------<br>'
@@ -525,7 +526,7 @@ class ClsSmallReporter:
                 body += '<br><code><h5>REPORTER ' + vers + '<br>' + '\n'
                 body += '<a href=http://www.fantom-lab.narod.ru>www.fantom-lab.narod.ru</a><br>' + '\n'
                 body += 'Author: <a href="mailto:fantom-ab@mail.ru">-=[fantom]=-</a><br>' + '\n'
-                body += GetThanks()
+                body += get_thanks()
                 body += '<b>Summary info:<br>' + '\n'
                 body += '<table border=3 width=100% bgcolor="#00FFFF">' + '\n'
                 col = '<td bgcolor="#C0C0C0" align="center">' + '\n'
@@ -536,8 +537,21 @@ class ClsSmallReporter:
                 body = html_data + body
                 return body
 
-            def GetEndHTML(total_py_files, name_report, total_lines, total_bytes,
-                           total_doc):
+            def get_end_html(total_py_files,
+                             name_report,
+                             total_lines,
+                             total_bytes,
+                             total_doc):
+                """
+                Получает концовку html текста отчёта
+                :param total_py_files: всего python файлов
+                :param name_report: имя отчёта
+                :param total_lines: всего строк
+                :param total_bytes: всего байт
+                :param total_doc: всего строк документации
+                :return: строку отчёта в формате html
+                """
+
                 def SpezInfo():
                     '''
                     Процедура выводит информацию о проекте и суммирует номер сборки
@@ -641,16 +655,16 @@ about(self):</p>
                 self.list_file_py)
             self.name_report = GetTime()
             print 'Report file: ' + self.name_report + '.html'
-            self.html_data = GetHeadHTML()
+            self.html_data = get_head_html()
             body, total_lines, total_bytes, total_doc = get_table(
                 self.list_file_py)
             self.html_data += body
             total_py_files = len(self.list_file_py)
-            body = GetEndHTML(total_py_files,
-                              self.name_report,
-                              total_lines,
-                              total_bytes,
-                              total_doc)
+            body = get_end_html(total_py_files,
+                                self.name_report,
+                                total_lines,
+                                total_bytes,
+                                total_doc)
             self.html_data += body
 
         get_files_py()
