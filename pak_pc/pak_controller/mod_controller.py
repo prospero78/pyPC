@@ -12,7 +12,16 @@ class ClsController(object):
     """
 
     def __init__(self, root=None):
+        """
+        Инициализация класса.
+        Создание всех переменных, которые только могут встречаться.
+        :param root: ссылка на корневой класс.
+        """
         self.root = root
+        # ссылка на класс графики. Будет присвоена позже.
+        self.gui = None
+        # ссылка на класс логики. Будет создана позже.
+        self.logic = None
 
     def reset_pc(self, event=None):
         """
@@ -24,6 +33,11 @@ class ClsController(object):
 
     def win_edit_bp_hide(self, event=''):
         # print  '.ClsController.win_edit_bp_hide()'
+        """
+        Вызывается при скрытии окна настроек регистра программного прерывания.
+        :param event: событие при скрытии окна редактирования свойств
+        регистра программного прерывания.
+        """
         self.logic.win_edit_bp_hide()
 
     def show_win_edit_bp(self, event=''):
