@@ -5,14 +5,17 @@
 
 import sys
 
+
 def main():
     '''
     Импортирует главный класс, и запускает приложение.
     '''
     arg = sys.argv
     from pak_pc import ClsPC
+
     app = ClsPC(arg=arg)
     app.run()
+
 
 if __name__ == '__main__':
     '''
