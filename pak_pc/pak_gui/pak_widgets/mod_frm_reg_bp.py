@@ -6,7 +6,7 @@
 
 from Tkinter import Frame, Label
 
-class ClsFrmRegPC(Frame):
+class ClsFrmRegBP(Frame):
     def __init__(self, root=None):
         self.root=root
         Frame.__init__(self, master=root, border=2, relief='ridge')
