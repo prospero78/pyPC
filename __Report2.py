@@ -8,12 +8,12 @@
 from os import getcwd, listdir
 from Tkinter import Tk, Button, Frame, PanedWindow, Menu, Menubutton, Text
 
-vers = 'Version 1.70'
+VERS = 'Version 1.70'
 
 #
-# thanks={koder{mail:mail, num_edit:num_edit, site:site}, koder:{...}}
+# THANKS={koder{mail:mail, num_edit:num_edit, site:site}, koder:{...}}
 #
-thanks = {'V.L.': {'mailto': 'arnys@mail.ru',
+THANKS = {'V.L.': {'mailto': 'arnys@mail.ru',
                    'num_edit': '2+',
                    'site': 'www.aloys.narod.ru'}}
 
@@ -26,7 +26,7 @@ g = {
     'winMain_maxSizeY': 600
 }
 ru = {
-    'win_main': 'Small Reporter for -=[fantom lab]=- ' + vers,
+    'win_main': 'Small Reporter for -=[fantom lab]=- ' + VERS,
     'mnu_file': 'Файл',
     'mnuFile_New': 'Новый',
     'mnuFile_Open': 'Новый',
@@ -122,6 +122,9 @@ class ClsGUI(Tk):
         self.frm_up.pack(side='top', fill='x')
 
     def create_frm_middle(self):
+        """
+        Создаёт средний фрейм для отображения.
+        """
         self.frm_midle = Frame(self, border=2, relief='raised')
         self.frm_midle.pack(side='top', expand=1, fill='both')
         self.txt_report = Text(self.frm_midle, font='Consolas 9 normal')
@@ -129,13 +132,29 @@ class ClsGUI(Tk):
 
 
     def create_frm_down(self):
+        """
+        Создаёт нижний фрейм репортера.
+        """
+
         def btn_generate_click(event=''):
+            """
+            Обработчик нижатия кнопки генератора отчёта.
+            :param event:
+            """
             print '===report==='
-            a = ClsSmallReporter
+            a = ClsSmallReporter()
             self.txt_report.insert('1.0', a.html_data)
 
         def create_btn_exit():
+            """
+            Создаёт кнопки выхода из программы.
+            """
+
             def report_exit(event=''):
+                """
+                Обработчик нажатия кнопки выхода из программы.
+                :param event:
+                """
                 import sys
 
                 sys.exit()
@@ -147,10 +166,16 @@ class ClsGUI(Tk):
             self.btn_exit.pack(side='left', expand=1, fill='x')
 
         def create_btn_save():
+            """
+            Создаёт кнопку для сохранения отчёта.
+            """
             self.btn_save = Button(self.frm_down, text=ru['btn_save'])
             self.btn_save.pack(side='left', expand=1, fill='x')
 
         def create_btn_generate():
+            """
+            Создаёт кнопку для генерации отчёта
+            """
             self.btn_generate = Button(self.frm_down,
                                        text=ru['btn_generate'],
                                        command=btn_generate_click)
@@ -165,7 +190,14 @@ class ClsGUI(Tk):
         self.frm_down.pack(side='bottom', fill='x')
 
     def create_menu_bar(self):
+        """
+        Создаёт линейку для меню программы.
+        """
+
         def create_mnu_file():
+            """
+            Создаёт меню файл.
+            """
             self.btn_file = Menubutton(self.pnl_menu, text=ru['mnu_file'],
                                        border=3, relief='groove')
             self.mnu_file = Menu(self.btn_file)
@@ -402,9 +434,13 @@ class ClsSmallReporter:
                 """
 
                 def get_analis_file(f):
+                    '''
+                    Процедура анализирует .py файл на количество строк и
+                    длинну питонячьих файлов.
+                    '''
                     def doc_string(file=''):
                         '''
-                        Процедура вычисляет количество строк документации.
+                        Анализирует на количество документации в модуле.
                         '''
                         a = ''  # переменная строка
                         i = 0  # счётчик порядкового номера строки
@@ -417,11 +453,6 @@ class ClsSmallReporter:
                                 s += 1
                             i += 1
                         return s
-
-                    '''
-                    Процедура анализирует .py файл на количество строк и
-                    длинну кода.
-                    '''
                     fa = open(f, 'rb')  # прочитать файл в переменную
                     t = fa.read()
                     fa.close()
@@ -460,40 +491,40 @@ class ClsSmallReporter:
                     body_html = body_html + col + '<h5>' + str(number_line) + \
                            '</td>' + col + '<h5>' + \
                            str(len_file) + '</td>\n'
-                    densyti = Ratio(len_file, number_line)
+                    densyti = get_ratio(len_file, number_line)
                     if densyti == 'Low':
-                        Note = down
+                        _note = down
                     elif densyti == 'up':
-                        Note = up
+                        _note = up
                     else:
-                        Note = '-'
+                        _note = '-'
                     body_html = body_html + '<td><h5>' + densyti + \
-                                '</td><td><h5>' + Note + '</td></tr>' + '\n'
+                                '</td><td><h5>' + _note + '</td></tr>' + '\n'
                     total_lines = total_lines + number_line
                     total_bytes = total_bytes + len_file
                     i = i + 1
                 return body_html, total_lines, total_bytes, total_doc
 
-            def Ratio(len_file, number_line):
+            def get_ratio(len_file, number_line):
                 '''
                 Процедура проверяет плотность кода.
                 '''
-                a = len_file / number_line
-                if a <= 14:
+                _ratio = len_file / number_line
+                if _ratio <= 14:
                     return 'Low'
-                elif a >= 15 and a <= 59:
+                elif _ratio >= 15 and _ratio <= 59:
                     return 'Normal'
-                elif a >= 60:
+                elif _ratio >= 60:
                     return 'Hi'
                 return
 
-            def GetTime():
+            def get_time():
                 '''
                     Надо получить форматированное время в виде
                     'гг-мм-дд_чч-мм-сс'.
                 '''
 
-                def NullTime(data):
+                def get_format_str(data):
                     '''
                     Проверка на наличие двух цифр во времени.
                     Если нет, то добавление нуля слева.
@@ -504,28 +535,28 @@ class ClsSmallReporter:
 
                 from time import localtime
                 # получение даты и времени
-                t = localtime()
+                _time = localtime()
                 # получить год
-                god = str(t[0])
-                god = NullTime(god)
+                god = str(_time[0])
+                god = get_format_str(god)
                 # получить месяц
-                mon = str(t[1])
-                mon = NullTime(mon)
+                mon = str(_time[1])
+                mon = get_format_str(mon)
                 # получить день
-                day = str(t[2])
-                day = NullTime(day)
+                day = str(_time[2])
+                day = get_format_str(day)
                 # получить часы
-                hour = str(t[3])
+                hour = str(_time[3])
                 # форматировать часы
-                hour = NullTime(hour)
+                hour = get_format_str(hour)
                 # получить минуты
-                minute = str(t[4])
+                minute = str(_time[4])
                 # форматировать минуты
-                minute = NullTime(minute)
+                minute = get_format_str(minute)
                 # получить секунды
-                second = str(t[5])
+                second = str(_time[5])
                 # форматировать секунды
-                second = NullTime(second)
+                second = get_format_str(second)
 
                 # составить общую строку времени
                 result = god + '-' + mon + '-' + day + '_' + hour + '-' + \
@@ -534,20 +565,25 @@ class ClsSmallReporter:
 
 
             def get_head_html():
+                """
+                Возвращает заголовок html.
+                :return:
+                """
+
                 def get_thanks():
                     '''
                     Процедурка формирует HTML-код с благодарностями и мылами.
                     '''
-                    global thanks
+                    global THANKS
                     # получить список кодеров
-                    list_coder = thanks.keys()
+                    list_coder = THANKS.keys()
                     # проход по списку кодеров
                     out = '-------------------------<br>Special thanks: <BR>\n'
                     for i in xrange(len(list_coder)):
                         # получить имя кодера
                         name_coder = list_coder[i]
                         # получить информацию по кодеру
-                        info_coder = thanks[name_coder]
+                        info_coder = THANKS[name_coder]
                         # получить мыло кодера
                         mail = info_coder['mailto']
                         # получить количество советов кодера
@@ -563,7 +599,7 @@ class ClsSmallReporter:
                     out += '-------------------------<br>'
                     return out
 
-                global vers, thanks
+                global VERS, THANKS
                 txt = 'Small report for -=[fantom lab]=-<br>Desing in 2007\n\n'
                 # correct charset for cyrillic path-names
                 # модифицировано V.L. <arnys@mail.ru> (2+)
@@ -575,7 +611,7 @@ class ClsSmallReporter:
                             '<body bgcolor="#CCFFCC">' + '\n'
                 body_html += '<b><center><h2>' + txt + \
                              '</center><hr></b>' + '\n'
-                body_html += '<br><code><h5>REPORTER ' + vers + '<br>' + '\n'
+                body_html += '<br><code><h5>REPORTER ' + VERS + '<br>' + '\n'
                 body_html += '<a href=http://www.fantom-lab.narod.ru>' + \
                              'www.fantom-lab.narod.ru</a><br>\n'
                 body_html += 'Author: <a href="mailto:fantom-ab@mai' + \
@@ -592,7 +628,7 @@ class ClsSmallReporter:
                              '</b></td>' + '\n'
                 body_html += col + '<b>All<br>bytes</b></td>' + col + \
                             '<b><h5>densyti<br>code</b>\n'
-                body_html += '</td>' + col + '<b>Note</b></td></tr>\n'
+                body_html += '</td>' + col + '<b>_note</b></td></tr>\n'
                 body_html = html_data + body_html
                 return body_html
 
@@ -619,13 +655,13 @@ class ClsSmallReporter:
                     '''
                     try:
                         from _info import ClsInfo
+                        _inf = ClsInfo()
 
                         col = '<td bgcolor="#C0C0C0" align="center">' + '\n'
                         string = '<br><table border=3 width=60% bgcolor' + \
                             '="#00FFFF">' + '\n'
                         string += '<tr>' + col + '<h5>Parametrs</td>' + col + \
                                   '<h5>Variable</td></tr>' + '\n'
-                        _inf = clsInfo()
                         string += '<tr><td><h5>Author</td><td><h5>' + \
                                   _inf.author() + '</td></tr>' + '\n'
                         string += '<tr><td><h5>Project</td><td><h5>' + \
@@ -678,20 +714,20 @@ about(self):</p>
 <hr>
 '''
 
-                def get_densyti_doc_string(KolString, KolLine):
+                def get_densyti_doc_string(kol_string, kol_line):
                     '''
                     Процедура вычисляет плотность строк документации
-                    KolString - количество строк документации
-                    KolLine   - количество строк кода
+                    kol_string - количество строк документации
+                    kol_line   - количество строк кода
                     '''
-                    KolLine += 0.0
-                    densyti = KolLine / KolString
-                    a = str(densyti)
-                    a = a[0:5]
-                    if a < str(1.0 / 10):
+                    kol_line += 0.0
+                    densyti = kol_line / kol_string
+                    den_str = str(densyti)
+                    den_str = den_str[0:5]
+                    if den_str < str(1.0 / 10):
                         _msg = '<font color="#808000">Plis, up densyti ' + \
                             'doc_string!</font>'
-                    elif a > str(1.0 / 10) and a < str(1.0 / 5):
+                    elif den_str > str(1.0 / 10) and den_str < str(1.0 / 5):
                         _msg = 'Normal densyti doc_string.'
                     else:
                         _msg = '<font color="#808000">Plis, down densyti ' + \
@@ -700,22 +736,23 @@ about(self):</p>
 
                 # получить конец таблицы
                 body_html = ''
-                body_html += '</tr></table><br>' + '\n'
-                body_html += '<b>Date: ' + name_report + '</b><br>' + '\n'
+                body_html += '</tr></table><br>\n'
+                body_html += '<b>Date: ' + name_report + '</b><br>\n'
                 body_html += get_spez_info()
                 body_html += '<br><table border=3 width=100% ' + \
                              'bgcolor="#00FFFF">' + \
-                        '<tr><td>' + '\n'
-                body_html += '<b><h5>Total lines=' + str(
-                    total_lines) + '</td><td>' + '\n'
-                body_html += '<b><h5>Total bytes=' + str(
-                    total_bytes) + '</td><td>' + '\n'
-                body_html += '<b><h5>Total Files=' + str(
-                    total_py_files) + '</td><td><b><h5>' + '\n'
-                body_html += 'densyti code=' + Ratio(total_bytes, total_lines)
+                             '<tr><td>' + '\n'
+                body_html += '<b><h5>Total lines='
+                body_html += str(total_lines) + '</td><td>\n'
+                body_html += '<b><h5>Total bytes='
+                body_html += str(total_bytes) + '</td><td>\n'
+                body_html += '<b><h5>Total Files='
+                body_html += str(total_py_files) + '</td><td><b><h5>\n'
+                body_html += 'densyti code='
+                body_html += get_ratio(total_bytes, total_lines)
                 body_html += '</td></tr><tr><td><h5>Total ' + \
                              'String docs:</td><td>\n'
-                body_html += '<h5>' + str(total_doc) + '</td>' + '\n'
+                body_html += '<h5>' + str(total_doc) + '</td>\n'
                 body_html += '<td><h5>densyti docs</td><td><h5>'
                 body_html += str(get_densyti_doc_string(total_lines, total_doc))
                 body_html += '</tr></table><br><br>\n'
@@ -729,7 +766,7 @@ about(self):</p>
                 return
             print 'Number All file=', self.i, ',\t*.py files=', len(
                 self.list_file_py)
-            self.name_report = GetTime()
+            self.name_report = get_time()
             print 'Report file: ' + self.name_report + '.html'
             self.html_data = get_head_html()
             body_html, total_lines, total_bytes, total_doc = get_table(
@@ -754,5 +791,5 @@ if __name__ == '__main__':
     # вызов репортера на исполнение
     # report=СlsSmallReporter()
     # raw_input('Press <Enter> key...\n' )
-    rep = ClsGUI()
+    REPORT = ClsGUI()
     print'**********************************************'
