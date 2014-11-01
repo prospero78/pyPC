@@ -7,9 +7,9 @@ import sys
 
 
 def main():
-    '''
+    """
     Импортирует главный класс, и запускает приложение.
-    '''
+    """
     arg = sys.argv
     from pak_pc import ClsPC
 
