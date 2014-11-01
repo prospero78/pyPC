@@ -5,7 +5,7 @@
 2. Статистика по файлам
 """
 
-from os import getcwd, listdir
+from os import getcwd, listdir, system
 from Tkinter import Tk, Button, Frame, PanedWindow, Menu, Menubutton, Text
 
 VERS = 'Version 1.70'
@@ -49,94 +49,104 @@ LANG_RU = {
 }
 
 class ClsSmallReporter(object):
+    """
+    Класс обеспечивает формирование отчёта по проекту.
+    """
 
-    def get_dir(self, dir=''):
+    def get_dir(self, dir_current=''):
         """
         Получение списка каталогов и файлов.
         """
-        a = listdir(dir)
+        dir_list = listdir(dir_current)
         i = 0
         # необходимо добавить полный путь к списку файлов
-        while len(a) > i:
-            b = a[i]
-            b = dir + '\\' + b
-            a[i] = b
+        while len(dir_list) > i:
+            dir_element = dir_list[i]
+            dir_element = dir_current + '/' + dir_element
+            dir_list[i] = dir_element
             i = i + 1
-        return a
+        self.dir_list = dir_list
 
-    def get_all_files_in_patch(self, ListElement, current_patch):
-        def chek_dir(fileProcess='1.py'):
+    def get_all_files_in_patch(self, list_element, current_patch):
+        """
+        Возвращает все файлы в папке проекта.
+        :param list_element:
+        :param current_patch:
+        :return:
+        """
+        def chek_dir(chek_py_file='1.py'):
             '''
             Проверка на то, является ли элемент списка каталогом или файлом.
             '''
             try:  # ветка истинности файла
-                fP = open(fileProcess, 'rb')
-                fP.close()
+                file_chek = open(chek_py_file, 'rb')
+                file_chek.close()
             # если произошло исключение, то элемент - каталог, или занятый файл
             except:
                 return 'not file'
 
         # пока число элементов не сравняется со счётчиком
         i = 0
-        while len(ListElement) > i:
+        while len(list_element) > i:
             # получить текущий элемент
-            current_element = ListElement[i]
+            current_element = list_element[i]
             # исключение самого файла репортера
             if current_element == (current_patch + '\\' + '__Report.py'):
                 # если список не истощён - уменьшить его на один элемент
-                if len(ListElement) != i - 1:
-                    ListElement = ListElement[:i] + ListElement[i + 1:]
+                if len(list_element) != i - 1:
+                    list_element = list_element[:i] + list_element[i + 1:]
                     # уменьшить список файлов-каталогов на один
-                    current_element = ListElement[i - 1]
+                    current_element = list_element[i - 1]
             # проверить на каталог и занятость
-            result = chek_dir(fileProcess=current_element)
+            result = chek_dir(chek_py_file=current_element)
             if result == 'not file':  # если не файл
                 # то значит каталог, получить список файлов
-                new_dir = self.get_dir(dir=current_element)
+                self.get_dir(current_element)
                 # вставить в основной список
-                ListElement = ListElement[:i] + new_dir + ListElement[i + 1:]
+                list_element = list_element[:i] + self.dir_list + \
+                               list_element[i + 1:]
                 # продлить итерацию на один проход
                 i = i - 1
             # продвинуться к следующему элементу списка
             i = i + 1
         # все ветки перебраны - вернуть полный список файлов
-        full_list_file = ListElement
+        full_list_file = list_element
         return full_list_file, i
 
-    def TypeProect(self, Lines):
+    def get_type_proect(self, lines):
         '''
         Процедура по количеству строк кода определяет его крутость.
         Балл вычисляется по логарифмической шкале с десятичным основанием.
         '''
         from cmath import log10
 
-        Lines = str(abs(log10(Lines)))
-        Lines = Lines[:4]
-        print 'Current ball: ', Lines
-        if Lines[0] <= '1':
-            return 'Nano project (level ' + Lines[
-                0] + ')<br>Total ball: ' + Lines + '\n'
-        elif Lines[0] >= '1' and Lines[0] <= '2':
-            return 'Micro project (level ' + Lines[
-                0] + ')<br>Total ball: ' + Lines + '\n'
-        elif Lines[0] >= '2' and Lines[0] <= '3':
-            return 'Mini project (level ' + Lines[
-                0] + ')<br>Total ball: ' + Lines + '\n'
-        elif Lines[0] >= '3' and Lines[0] <= '4':
-            return 'Solid project (level ' + Lines[
-                0] + ')<br>Total ball: ' + Lines + '\n'
-        elif Lines[0] >= '4' and Lines[0] <= '5':
-            return 'Big project (level ' + Lines[
-                0] + ')<br>Total ball: ' + Lines + '\n'
-        elif Lines[0] >= '5' and Lines[0] <= '6':
-            return 'Whery big project (level ' + Lines[
-                0] + ')<br>Total ball: ' + Lines + '\n'
-        elif Lines[0] >= '6' and Lines[0] <= '7':
-            return 'Multi project (level ' + Lines[
-                0] + ')<br>Total ball: ' + Lines + '\n'
-        elif Lines[0] >= '7':
-            return 'Global project (level' + Lines[
-                0] + ')<br>Total ball: ' + Lines + '\n'
+        lines = str(abs(log10(lines)))
+        lines = lines[:4]
+        print 'Current ball: ', lines
+        if lines[0] <= '1':
+            return 'Nano project (level ' + lines[
+                0] + ')<br>Total ball: ' + lines + '\n'
+        elif lines[0] >= '1' and lines[0] <= '2':
+            return 'Micro project (level ' + lines[
+                0] + ')<br>Total ball: ' + lines + '\n'
+        elif lines[0] >= '2' and lines[0] <= '3':
+            return 'Mini project (level ' + lines[
+                0] + ')<br>Total ball: ' + lines + '\n'
+        elif lines[0] >= '3' and lines[0] <= '4':
+            return 'Solid project (level ' + lines[
+                0] + ')<br>Total ball: ' + lines + '\n'
+        elif lines[0] >= '4' and lines[0] <= '5':
+            return 'Big project (level ' + lines[
+                0] + ')<br>Total ball: ' + lines + '\n'
+        elif lines[0] >= '5' and lines[0] <= '6':
+            return 'Whery big project (level ' + lines[
+                0] + ')<br>Total ball: ' + lines + '\n'
+        elif lines[0] >= '6' and lines[0] <= '7':
+            return 'Multi project (level ' + lines[
+                0] + ')<br>Total ball: ' + lines + '\n'
+        elif lines[0] >= '7':
+            return 'Global project (level' + lines[
+                0] + ')<br>Total ball: ' + lines + '\n'
 
     def __init__(self):
         """
@@ -180,11 +190,11 @@ class ClsSmallReporter(object):
             # получить текущий путь
             current_patch = getcwd()
             # получить список элементов каталогов/файлов
-            ListElement = self.get_dir(current_patch)
+            self.get_dir(current_patch)
             # инициализация счётчика строк
             NumLines = 0
             # вернуть полный список файлов
-            full_list_file, self.i = self.get_all_files_in_patch(ListElement,
+            full_list_file, self.i = self.get_all_files_in_patch(self.dir_list,
                                                                  current_patch)
             # отбросить все файлы не являющиеся .py
             self.list_file_py = filter_file_py(full_list_file)
@@ -526,7 +536,8 @@ about(self):</p>
                 body_html += str(get_densyti_doc_string(total_lines, total_doc))
                 body_html += '</tr></table><br><br>\n'
                 body_html += 'Size Project: '
-                body_html += self.TypeProect(total_lines) + '</body></html>\n'
+                body_html += self.get_type_proect(total_lines) + \
+                             '</body></html>\n'
                 return body_html
 
             # модифицировано V.L. <arnys@mail.ru>(1+)
@@ -780,6 +791,7 @@ class ClsGUI(Tk):
         self.pnl_menu.pack(side='left', expand=1, fill='x')
 
 if __name__ == '__main__':
+    system('cls')
     print '**********************************************'
     print 'Begin report....'
     # вызов репортера на исполнение
