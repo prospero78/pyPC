@@ -27,14 +27,14 @@ g = {
 }
 ru = {
     'win_main': 'Small Reporter for -=[fantom lab]=- ' + vers,
-    'mnuFile': 'Файл',
+    'mnu_file': 'Файл',
     'mnuFile_New': 'Новый',
     'mnuFile_Open': 'Новый',
     'mnuFile_Save': 'Сохранить',
     'mnuFile_SaveAs': 'Сохранить как...',
     'mnuFile_Print': 'Печать',
     'mnuFile_Exit': 'Выход',
-    'mnuEdit': 'Правка',
+    'mnu_edit': 'Правка',
     'mnuEdit_Undo': 'Отмена',
     'mnuEdit_Redo': 'Повтор',
     'mnuEdit_Copy': 'Копировать',
@@ -55,6 +55,8 @@ class ClsGUI(Tk):
     """
 
     def __init__(self):
+        self.frm_up = Frame(self)
+
         def bind_win():
             def quit_reporter(event=''):
                 import sys
@@ -91,7 +93,10 @@ class ClsGUI(Tk):
         self.mainloop()
 
     def create_up_frame(self):
-        self.frm_up = Frame(self)
+        """
+        Создаёт верхний фрейм.
+        :type self: object
+        """
         self.create_menu_bar()
         self.frm_up.pack(side='top', fill='x')
 
@@ -114,80 +119,82 @@ class ClsGUI(Tk):
 
                 sys.exit()
 
-            self.btn_exit = Button(self.frmDown,
+            self.btn_exit = Button(self.frm_down,
                                    text=ru['btn_exit'],
                                    command=report_exit,
                                    bg='red')
             self.btn_exit.pack(side='left', expand=1, fill='x')
 
         def create_btn_save():
-            self.btn_save = Button(self.frmDown, text=ru['btn_save'])
+            self.btn_save = Button(self.frm_down, text=ru['btn_save'])
             self.btn_save.pack(side='left', expand=1, fill='x')
 
         def create_btn_generate():
-            self.btn_generate = Button(self.frmDown,
+            self.btn_generate = Button(self.frm_down,
                                        text=ru['btn_generate'],
                                        command=btn_generate_click)
             self.btn_generate.pack(side='left', expand=1, fill='x')
 
 
-        self.frmDown = Frame(self)
+        self.frm_down = Frame(self)
 
         create_btn_generate()
         create_btn_save()
         create_btn_exit()
 
-        self.frmDown.pack(side='bottom', fill='x')
+        self.frm_down.pack(side='bottom', fill='x')
 
     def create_menu_bar(self):
-        def CreateMnuFile():
-            self.btnFile = Menubutton(self.pnlMenu, text=ru['mnuFile'],
+        def create_mnu_file():
+            self.btn_file = Menubutton(self.pnlMenu, text=ru['mnu_file'],
                                       border=3, relief='groove')
-            self.mnuFile = Menu(self.btnFile)
-            self.btnFile.config(menu=self.mnuFile)
-            self.mnuFile.add_command(label=ru['mnuFile_New'],
+            self.mnu_file = Menu(self.btn_file)
+            self.btn_file.config(menu=self.mnu_file)
+            self.mnu_file.add_command(label=ru['mnuFile_New'],
                                      accelerator='Ctrl+N')
-            self.mnuFile.add_command(label=ru['mnuFile_Open'],
+            self.mnu_file.add_command(label=ru['mnuFile_Open'],
                                      accelerator='Ctrl+O')
-            self.mnuFile.add_separator()
-            self.mnuFile.add_command(label=ru['mnuFile_Save'],
+            self.mnu_file.add_separator()
+            self.mnu_file.add_command(label=ru['mnuFile_Save'],
                                      accelerator='Ctrl+S')
-            self.mnuFile.add_command(label=ru['mnuFile_SaveAs'])
-            self.mnuFile.add_separator()
-            self.mnuFile.add_command(label=ru['mnuFile_Print'],
+            self.mnu_file.add_command(label=ru['mnuFile_SaveAs'])
+            self.mnu_file.add_separator()
+            self.mnu_file.add_command(label=ru['mnuFile_Print'],
                                      accelerator='Ctrl+P')
-            self.mnuFile.add_separator()
-            self.mnuFile.add_command(label=ru['mnuFile_Exit'],
+            self.mnu_file.add_separator()
+            self.mnu_file.add_command(label=ru['mnuFile_Exit'],
                                      accelerator='Ctrl+Q')
-            self.btnFile.pack(side='left')
+            self.btn_file.pack(side='left')
 
-        def CreateMnuEdit():
-            self.btnEdit = Menubutton(self.pnlMenu, text=ru['mnuEdit'],
-                                      border=3, relief='groove')
-            self.mnuEdit = Menu(self.btnEdit)
-            self.btnEdit.config(menu=self.mnuEdit)
-            self.mnuEdit.add_command(label=ru['mnuEdit_Undo'],
-                                     accelerator='Ctrl+Z')
-            self.mnuEdit.add_command(label=ru['mnuEdit_Redo'])
-            self.mnuEdit.add_separator()
-            self.mnuEdit.add_command(label=ru['mnuEdit_Copy'],
-                                     accelerator='Ctrl+C')
-            self.mnuEdit.add_command(label=ru['mnuEdit_Cut'],
-                                     accelerator='Ctrl+X')
-            self.mnuEdit.add_command(label=ru['mnuEdit_Paste'],
-                                     accelerator='Ctrl+V')
-            self.mnuEdit.add_separator()
-            self.mnuEdit.add_command(label=ru['mnuEdit_Find'],
-                                     accelerator='Ctrl+F')
-            self.mnuEdit.add_command(label=ru['mnuEdit_Replace'],
-                                     accelerator='Ctrl+R')
-            self.btnEdit.pack(side='left')
+        def create_mnu_edit():
+            self.btn_edit = Menubutton(self.pnlMenu,
+                                       text=ru['mnu_edit'],
+                                       border=3,
+                                       relief='groove')
+            self.mnu_edit = Menu(self.btn_edit)
+            self.btn_edit.config(menu=self.mnu_edit)
+            self.mnu_edit.add_command(label=ru['mnuEdit_Undo'],
+                                      accelerator='Ctrl+Z')
+            self.mnu_edit.add_command(label=ru['mnuEdit_Redo'])
+            self.mnu_edit.add_separator()
+            self.mnu_edit.add_command(label=ru['mnuEdit_Copy'],
+                                      accelerator='Ctrl+C')
+            self.mnu_edit.add_command(label=ru['mnuEdit_Cut'],
+                                      accelerator='Ctrl+X')
+            self.mnu_edit.add_command(label=ru['mnuEdit_Paste'],
+                                      accelerator='Ctrl+V')
+            self.mnu_edit.add_separator()
+            self.mnu_edit.add_command(label=ru['mnuEdit_Find'],
+                                      accelerator='Ctrl+F')
+            self.mnu_edit.add_command(label=ru['mnuEdit_Replace'],
+                                      accelerator='Ctrl+R')
+            self.btn_edit.pack(side='left')
 
-        def CreateMnuCustom():
-            self.btnCustom = Menubutton(self.pnlMenu, text='mnu_custom',
+        def create_mnu_custom():
+            self.btn_custom = Menubutton(self.pnlMenu, text='mnu_custom',
                                         border=3, relief='groove')
-            self.mnu_custom = Menu(self.btnCustom)
-            self.btnCustom.config(menu=self.mnu_custom)
+            self.mnu_custom = Menu(self.btn_custom)
+            self.btn_custom.config(menu=self.mnu_custom)
             self.mnu_custom.add_command(label='Type files',
                                         accelerator='Ctrl+D')
             self.mnu_custom.add_command(label='--1')
@@ -196,9 +203,9 @@ class ClsGUI(Tk):
             self.mnu_custom.add_command(label='--3', accelerator='---')
             self.mnu_custom.add_command(label='--4', accelerator='---')
             self.mnu_custom.add_separator()
-            self.btnCustom.pack(side='left')
+            self.btn_custom.pack(side='left')
 
-        def CreateMnuHelp():
+        def create_mnu_help():
             self.btnHelp = Menubutton(self.pnlMenu, text='mnuHelp', border=3,
                                       relief='groove')
             self.mnuHelp = Menu(self.btnHelp)
@@ -209,10 +216,10 @@ class ClsGUI(Tk):
             self.btnHelp.pack(side='left')
 
         self.pnlMenu = PanedWindow(self.frm_up, border=2, relief='raised')
-        CreateMnuFile()
-        CreateMnuEdit()
-        CreateMnuCustom()
-        CreateMnuHelp()
+        create_mnu_file()
+        create_mnu_edit()
+        create_mnu_custom()
+        create_mnu_help()
 
         self.pnlMenu.pack(side='left', expand=1, fill='x')
 
@@ -268,8 +275,8 @@ class ClsSmallReporter:
             # продвинуться к следующему элементу списка
             i = i + 1
         # все ветки перебраны - вернуть полный список файлов
-        FullListFile = ListElement
-        return FullListFile, i
+        full_list_file = ListElement
+        return full_list_file, i
 
     def TypeProect(self, Lines):
         '''
@@ -347,10 +354,10 @@ class ClsSmallReporter:
             # инициализация счётчика строк
             NumLines = 0
             # вернуть полный список файлов
-            FullListFile, self.i = self.get_all_files_in_patch(ListElement,
-                                                               CurrentPatch)
+            full_list_file, self.i = self.get_all_files_in_patch(ListElement,
+                                                                 CurrentPatch)
             # отбросить все файлы не являющиеся .py
-            self.list_file_py = filter_file_py(FullListFile)
+            self.list_file_py = filter_file_py(full_list_file)
 
         def create_report():
             """
