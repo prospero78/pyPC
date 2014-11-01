@@ -59,14 +59,26 @@ class ClsController(object):
 
     def win_main_step_cpu(self, event=''):
         # print  '.ClsController.win_main_step_cpu()'
+        """
+        Вызывается при исполнении одной команды ЦП.
+        :param event: событие при исполнении одной команды ЦП.
+        """
         self.logic.step_cpu()
 
     def win_create_disk_ok(self, event=''):
         # print '.ClsController.win_create_disk_ok()'
+        """
+        Вызывается при закрытии окна при создании нового диска.
+        :param event: событие при согласии на создание диска.
+        """
         self.logic.generate_new_disk()
 
     def create_new_disk(self, event=None):
         # print '.ClsController.create_new_disk()'
+        """
+        Вызывается при создании нового диска.
+        :param event: событие при создании нового диска.
+        """
         self.logic.create_new_disk()
 
     def win_idc_ok(self, event=None):
