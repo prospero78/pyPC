@@ -164,9 +164,9 @@ class ClsSmallReporter(object):
             """
             Сохраняет отчёт.
             """
-            a = open(self.name_report + '.html', 'wb')
-            a.write(self.html_data)
-            a.close()
+            file_saver = open(self.name_report + '.html', 'wb')
+            file_saver.write(self.html_data)
+            file_saver.close()
 
         def get_files_py():
             """
@@ -174,25 +174,25 @@ class ClsSmallReporter(object):
             :return:
             """
 
-            def filter_file_py(l=''):
+            def filter_file_py(name_obj=''):
                 '''
                 Проверка на то, является ли файл файлом с расширением .py
                 '''
                 i = 0
-                while len(l) > i:
-                    f = l[i]
-                    if f[-3:] != '.py':
-                        l = l[:i] + l[i + 1:]
+                while len(name_obj) > i:
+                    file_obj = name_obj[i]
+                    if file_obj[-3:] != '.py':
+                        name_obj = name_obj[:i] + name_obj[i + 1:]
                         i = i - 1
                     i = i + 1
-                return l
+                return name_obj
 
             # получить текущий путь
             current_patch = getcwd()
             # получить список элементов каталогов/файлов
             self.get_dir(current_patch)
             # инициализация счётчика строк
-            NumLines = 0
+            #num_lines = 0
             # вернуть полный список файлов
             full_list_file, self.i = self.get_all_files_in_patch(self.dir_list,
                                                                  current_patch)
@@ -212,46 +212,47 @@ class ClsSmallReporter(object):
                 :return:
                 """
 
-                def get_analis_file(f):
+                def get_analis_file(file_py):
                     '''
                     Процедура анализирует .py файл на количество строк и
                     длинну питонячьих файлов.
                     '''
-                    def doc_string(file=''):
+                    def doc_string(file_py=''):
                         '''
                         Анализирует на количество документации в модуле.
                         '''
-                        a = ''  # переменная строка
+                        str_var = ''  # переменная строка
                         i = 0  # счётчик порядкового номера строки
-                        s = 0  # количество строк документации
-                        while i < len(
-                                file) - 3:  # искать символ начала комментария
-                            a = file[i:i + 3]
-
-                            if a == '"""' or a == "'''":
-                                s += 1
+                        num_str = 0  # количество строк документации
+                        # искать символ начала комментария
+                        while i < len(file_py) - 3:
+                            str_var = file_py[i:i + 3]
+                            if str_var == '"""' or str_var == "'''":
+                                num_str += 1
                             i += 1
-                        return s
-                    file_analiz = open(f, 'rb')  # прочитать файл в переменную
-                    t = file_analiz.read()
+                        return num_str
+
+                    # прочитать файл в переменную
+                    file_analiz = open(file_py, 'rb')
+                    txt_code = file_analiz.read()
                     file_analiz.close()
 
                     number_line = 1
                     _ch = 0
-                    len_file = len(t)  # получить длину файла
+                    len_file = len(txt_code)  # получить длину файла
                     # проверка на количество символов ввода
                     while len_file > _ch:
-                        sym = t[_ch]
+                        sym = txt_code[_ch]
                         # если перевод строки увеличить счётчик строк
                         if sym == '\n':
                             number_line = number_line + 1
                         _ch += 1
-                    kol_doc_str = doc_string(file=t)
+                    kol_doc_str = doc_string(txt_code)
                     return len_file, number_line, kol_doc_str
 
                 # построение тела HTML таблицы
                 down = 'Plis, up<br>densyti code.' + '\n'
-                up = 'Plis, down<br>densyti code.' + '\n'
+                up_str = 'Plis, down<br>densyti code.' + '\n'
                 body_html = ''
                 i = 0
                 total_lines = 0
@@ -260,12 +261,12 @@ class ClsSmallReporter(object):
                 # пока не обнулится счётчик файлов
                 col = '<td bgcolor="#00FFFF" align="left">\n'
                 while len(list_file_py) > i:
-                    file = list_file_py[i]
-                    len_file, number_line, file_doc = get_analis_file(file)
+                    file_name = list_file_py[i]
+                    len_file, number_line, file_doc = get_analis_file(file_name)
                     total_doc = total_doc + file_doc
                     body_html = body_html + '<tr>'
                     body_html = body_html + col + '<h5>' + str(i + 1) + \
-                           '. ' + '</td>' + col + '<h5>' + str(file) + \
+                           '. ' + '</td>' + col + '<h5>' + str(file_name) + \
                            '</td>\n'
                     body_html = body_html + col + '<h5>' + str(number_line) + \
                            '</td>' + col + '<h5>' + \
@@ -274,7 +275,7 @@ class ClsSmallReporter(object):
                     if densyti == 'Low':
                         _note = down
                     elif densyti == 'up':
-                        _note = up
+                        _note = up_str
                     else:
                         _note = '-'
                     body_html = body_html + '<td><h5>' + densyti + \
@@ -617,6 +618,10 @@ class ClsGUI(Tk):
         self.frm_up = Frame(self)
         self.mnu_file = None
         self.mnu_custom = None
+        self.btn_exit = None
+        self.mnu_help = None
+        self.mnu_edit = None
+
         self.title(LANG_RU['win_main'])
         self.minsize(GEOMETRY['winMain_minSizeX'], GEOMETRY['winMain_minSizeY'])
         self.maxsize(GEOMETRY['winMain_maxSizeX'], GEOMETRY['winMain_maxSizeY'])
