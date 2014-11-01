@@ -4,14 +4,14 @@
 '''
 
 import multiprocessing
-
 from time import time, sleep
+
 from pak_pc.pak_cpu.pak_mem.mod_memory import ClsMemory
-#from pakMem.cmodMemory import clsMemory
+# from pakMem.cmodMemory import clsMemory
 from pak_pc.pak_cpu.pak_mem.mod_port import ClsPort
 from pak_pc.pak_cpu.pak_reg.mod_reg_sp import ClsRegSP
 from pak_pc.pak_cpu.pak_reg.mod_reg_pc import ClsRegPC
-from pak_pc.pak_cpu.pak_reg.mod_reg   import ClsReg
+from pak_pc.pak_cpu.pak_reg.mod_reg import ClsReg
 from pak_pc.pak_cpu.pak_reg.mod_reg_bp import ClsRegBP
 #from pakReg.cmodreg_pc import ClsRegPC
 
@@ -45,12 +45,14 @@ class ClsCPU(multiprocessing.Process):
             '''
             # инициализация биоса
             from pak_pc.pak_resurs.mod_bios import bios
+
             for i in bios:
                 #print i, bios[i], type(i)
                 if i > self.mem.max_adr:
                     self.mem.add_adr()
                 self.mem.adr[i] = bios[i]
             print '  = BIOS load OK ='
+
         # создание отдельного процесса
         multiprocessing.Process.__init__(self)
         self.daemon = True
@@ -72,14 +74,14 @@ class ClsCPU(multiprocessing.Process):
         # инициализация памяти
         self.mem = ClsMemory()
         load_bios()
-         # инициализация портов
-        self.port = ClsPort(max_port=2**16,
+        # инициализация портов
+        self.port = ClsPort(max_port=2 ** 16,
                             vinfo=vinfo,
                             vcom=vcom)
 
-        self.reg_sp = ClsRegSP(val=self.mem.act_mem-1,
-                               min_adr=self.mem.max_adr-101)
-        self.reg_pc = ClsRegPC(val=0, max_adr=self.reg_sp.min_adr-1)
+        self.reg_sp = ClsRegSP(val=self.mem.act_mem - 1,
+                               min_adr=self.mem.max_adr - 101)
+        self.reg_pc = ClsRegPC(val=0, max_adr=self.reg_sp.min_adr - 1)
 
         # регистр для установки принудительного прерывания исполнения программы
         self.reg_bp = ClsRegBP(act=0, adr_break=0, adr_proc=0)
@@ -89,6 +91,7 @@ class ClsCPU(multiprocessing.Process):
                             pc=self.reg_pc,
                             sp=self.reg_sp,
                             port=self.port)
+
     def run(self):
         '''
         Метод необходим для запуска отдельного процесса.
@@ -107,12 +110,12 @@ class ClsCPU(multiprocessing.Process):
                         #print '***'
                     elif com == 'debug(on)':
                         self.run_debug = 1
-                        info = {'debug':'on'}
+                        info = {'debug': 'on'}
                         self.qinfo.put(info)
                         self.debug()
                     elif com == 'debug(off)':
                         self.run_debug = 0
-                        info = {'debug':'off'}
+                        info = {'debug': 'off'}
                         self.qinfo.put(info)
                     elif com == 'reset':
                         self.reset_pc()
@@ -124,10 +127,10 @@ class ClsCPU(multiprocessing.Process):
                     self.reg_bp.act = reg['act']
                     self.reg_bp.adr_proc = reg['adr_proc']
                     self.reg_bp.adr_break = reg['adr_break']
-                    reg_pc = {'act':self.reg_bp.act,
-                             'adr_proc':self.reg_bp.adr_proc,
-                             'adr_break':self.reg_bp.adr_break}
-                    info = {'reg_pc':reg_pc}
+                    reg_pc = {'act': self.reg_bp.act,
+                              'adr_proc': self.reg_bp.adr_proc,
+                              'adr_break': self.reg_bp.adr_break}
+                    info = {'reg_pc': reg_pc}
                     self.qinfo.put(info)
                     pass
             sleep(0.1)
@@ -142,7 +145,7 @@ class ClsCPU(multiprocessing.Process):
             else:
                 i = 0
                 dtime = time() - time1
-                inf_time = {'dtime':dtime}
+                inf_time = {'dtime': dtime}
                 self.qinfo.put(inf_time)
                 time1 = time()
                 if not self.qcom.empty():
@@ -151,14 +154,14 @@ class ClsCPU(multiprocessing.Process):
                         com = com['com']
                         if com == 'debug(off)':
                             self.run_debug = 0
-                            info = {'debug':'off'}
+                            info = {'debug': 'off'}
                             self.qinfo.put(info)
                         elif com == 'reset':
                             self.reset_pc()
-                            info = {'debug':'reset'}
+                            info = {'debug': 'reset'}
                             self.qinfo.put(info)
         else:
-            info = {'debug':'end'}
+            info = {'debug': 'end'}
             self.qinfo.put(info)
 
     def reset_pc(self):
@@ -175,18 +178,18 @@ class ClsCPU(multiprocessing.Process):
         self.send_info()
 
     def send_info(self):
-        reg_a = {'val':self.reg_a.val,
-                'FlagZ':self.reg_a.FlagZ,
-                'FlagO':self.reg_a.FlagO,
-                'FlagC':self.reg_a.FlagC}
-        reg_pc = {'val':self.reg_pc.val}
-        reg_bp = {'act':self.reg_bp.act,
-                 'adr_proc':self.reg_bp.adr_proc,
-                 'adr_break':self.reg_bp.adr_break}
-        reg_sp = {'adr':self.reg_sp.val,
-                 'val':self.mem.adr[self.reg_sp.val]}
-        info = {'reg_a':reg_a,
-                'reg_pc' :reg_pc,
-                'reg_bp' :reg_bp,
-                'reg_sp':reg_sp,}
+        reg_a = {'val': self.reg_a.val,
+                 'FlagZ': self.reg_a.FlagZ,
+                 'FlagO': self.reg_a.FlagO,
+                 'FlagC': self.reg_a.FlagC}
+        reg_pc = {'val': self.reg_pc.val}
+        reg_bp = {'act': self.reg_bp.act,
+                  'adr_proc': self.reg_bp.adr_proc,
+                  'adr_break': self.reg_bp.adr_break}
+        reg_sp = {'adr': self.reg_sp.val,
+                  'val': self.mem.adr[self.reg_sp.val]}
+        info = {'reg_a': reg_a,
+                'reg_pc': reg_pc,
+                'reg_bp': reg_bp,
+                'reg_sp': reg_sp, }
         self.qinfo.put(info)
