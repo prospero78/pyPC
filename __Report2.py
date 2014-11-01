@@ -525,21 +525,28 @@ class ClsSmallReporter:
                 txt = 'Small report for -=[fantom lab]=-<br>Desing in 2007\n\n'
                 # correct charset for cyrillic path-names
                 # модифицировано V.L. <arnys@mail.ru> (2+)
-                html_data = '<head><META HTTP-EQUIV="Content-Type" CONTENT="text/html;' + '\n'
+                html_data = '<head><META HTTP-EQUIV="Content-Type" CONTENT=' + \
+                            '"text/html;' + '\n'
                 html_data = html_data + 'charset=windows-1251"></head>' + '\n'
-                body = '<html>' + html_data + '<title>Small reporter for Python</title><body bgcolor="#CCFFCC">' + '\n'
+                body = '<html>' + html_data + '<title>Small reporter for ' + \
+                       'Python</title><body bgcolor="#CCFFCC">' + '\n'
                 body += '<b><center><h2>' + txt + '</center><hr></b>' + '\n'
                 body += '<br><code><h5>REPORTER ' + vers + '<br>' + '\n'
-                body += '<a href=http://www.fantom-lab.narod.ru>www.fantom-lab.narod.ru</a><br>' + '\n'
-                body += 'Author: <a href="mailto:fantom-ab@mail.ru">-=[fantom]=-</a><br>' + '\n'
+                body += '<a href=http://www.fantom-lab.narod.ru>www.fantom-' + \
+                        'lab.narod.ru</a><br>\n'
+                body += 'Author: <a href="mailto:fantom-ab@mail.ru">-=[fant' + \
+                        'om]=-</a><br>\n'
                 body += get_thanks()
                 body += '<b>Summary info:<br>' + '\n'
                 body += '<table border=3 width=100% bgcolor="#00FFFF">' + '\n'
                 col = '<td bgcolor="#C0C0C0" align="center">' + '\n'
-                body += '<tr>' + col + '<b>Number<br>file</b></td>' + col + '<b>' + '\n'
-                body += 'Name File</b></td>' + col + '<b>Number<br>lines</b></td>' + '\n'
-                body += col + '<b>All<br>bytes</b></td>' + col + '<b><h5>densyti<br>code</b>' + '\n'
-                body += '</td>' + col + '<b>Note</b></td></tr>' + '\n'
+                body += '<tr>' + col + '<b>Number<br>file</b></td>' + col + \
+                        '<b>\n'
+                body += 'Name File</b></td>' + col + '<b>Number<br>lines' + \
+                        '</b></td>' + '\n'
+                body += col + '<b>All<br>bytes</b></td>' + col + \
+                        '<b><h5>densyti<br>code</b>\n'
+                body += '</td>' + col + '<b>Note</b></td></tr>\n'
                 body = html_data + body
                 return body
 
@@ -560,32 +567,42 @@ class ClsSmallReporter:
 
                 def SpezInfo():
                     '''
-                    Процедура выводит информацию о проекте и суммирует номер сборки
+                    Процедура выводит информацию о проекте и суммирует
+                    номер сборки
                     '''
                     try:
                         from _info import clsInfo
 
                         col = '<td bgcolor="#C0C0C0" align="center">' + '\n'
-                        string = '<br><table border=3 width=60% bgcolor="#00FFFF">' + '\n'
-                        string += '<tr>' + col + '<h5>Parametrs</td>' + col + '<h5>Variable</td></tr>' + '\n'
+                        string = '<br><table border=3 width=60% bgcolor' + \
+                            '="#00FFFF">' + '\n'
+                        string += '<tr>' + col + '<h5>Parametrs</td>' + col + \
+                                  '<h5>Variable</td></tr>' + '\n'
                         a = clsInfo()
-                        string += '<tr><td><h5>Author</td><td><h5>' + a.author() + '</td></tr>' + '\n'
-                        string += '<tr><td><h5>Project</td><td><h5>' + a.project() + '</td></tr>' + '\n'
-                        string += '<tr><td><h5>About</td><td><h5>' + a.about() + '</td></tr>' + '\n'
-                        string += '<tr><td><h5>Version</td><td><h5>' + a.version() + '</td></tr>' + '\n'
-                        string += '<tr><td><h5>Build</td><td><h5>' + a.build() + '</td></tr></table>' + '\n'
+                        string += '<tr><td><h5>Author</td><td><h5>' + \
+                                  a.author() + '</td></tr>' + '\n'
+                        string += '<tr><td><h5>Project</td><td><h5>' + \
+                                  a.project() + '</td></tr>' + '\n'
+                        string += '<tr><td><h5>About</td><td><h5>' + \
+                                  a.about() + '</td></tr>' + '\n'
+                        string += '<tr><td><h5>Version</td><td><h5>' + \
+                                  a.version() + '</td></tr>' + '\n'
+                        string += '<tr><td><h5>Build</td><td><h5>' + \
+                                  a.build() + '</td></tr></table>' + '\n'
                         return string
                     except:
                         return '''
 </code><hr>
-</b><h3>Plis, add Your project file <font color="#0808FF"><b>'_info.py'</font><br>
+</b>
+<h3>Plis, add Your project file <font color="#0808FF"><b>'_info.py'</font><br>
 All variables defined programmers self.<br>
 This file must content string:<br><code><h5>
 <p style="margin-top: 0; margin-bottom: 0"><font color="#800080"><i><b># -*-
 coding: cp1251 -*-</b></i></font></p>
 <p style="margin-top: 0; margin-bottom: 0"><b>class</b> <font color="#0000FF">
 clsInfo</font>:</p>
-<p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp; <b>def</b> __init__(<b><font color="#000080">self</font></b>):<br>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp; <b>def</b> __init__(<b>
+<font color="#000080">self</font></b>):<br>
 &nbsp;&nbsp;&nbsp; self.authorInfo=''<br>
 &nbsp;&nbsp;&nbsp; self.projectInfo=''<br>
 &nbsp;&nbsp;&nbsp; self.aboutInfo=''<br>
@@ -598,7 +615,8 @@ clsInfo</font>:</p>
 (<font color="#000080"><b>self</b></font>):</p>
 <p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;
 <font color="#FF0000"><b>return</b></font> self.projectInfo</p>
-<p style="margin-top: 0; margin-bottom: 0"><span lang="ru">&nbsp; </span><b>def</b>
+<p style="margin-top: 0; margin-bottom: 0"><span lang="ru">&nbsp; </span>
+<b>def</b>
 about(self):</p>
 <p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;
 <font color="#FF0000">return</font> self.aboutInfo</p>
@@ -624,11 +642,13 @@ about(self):</p>
                     a = str(densyti)
                     a = a[0:5]
                     if a < str(1.0 / 10):
-                        m = '<font color="#808000">Plis, up densyti doc_string!</font>'
+                        m = '<font color="#808000">Plis, up densyti ' + \
+                            'doc_string!</font>'
                     elif a > str(1.0 / 10) and a < str(1.0 / 5):
                         m = 'Normal densyti doc_string.'
                     else:
-                        m = '<font color="#808000">Plis, down densyti doc_string!</font>'
+                        m = '<font color="#808000">Plis, down densyti ' + \
+                            'doc_string!</font>'
                     return m
 
                 # получить конец таблицы
@@ -636,7 +656,8 @@ about(self):</p>
                 body += '</tr></table><br>' + '\n'
                 body += '<b>Date: ' + name_report + '</b><br>' + '\n'
                 body += SpezInfo()
-                body += '<br><table border=3 width=100% bgcolor="#00FFFF"><tr><td>' + '\n'
+                body += '<br><table border=3 width=100% bgcolor="#00FFFF">' + \
+                        '<tr><td>' + '\n'
                 body += '<b><h5>Total lines=' + str(
                     total_lines) + '</td><td>' + '\n'
                 body += '<b><h5>Total bytes=' + str(
@@ -644,11 +665,12 @@ about(self):</p>
                 body += '<b><h5>Total Files=' + str(
                     total_py_files) + '</td><td><b><h5>' + '\n'
                 body += 'densyti code=' + Ratio(total_bytes, total_lines)
-                body += '</td></tr><tr><td><h5>Total String docs:</td><td>' + '\n'
+                body += '</td></tr><tr><td><h5>Total String docs:</td><td>\n'
                 body += '<h5>' + str(total_doc) + '</td>' + '\n'
                 body += '<td><h5>densyti docs</td><td><h5>' + \
                         str(densytiDocString(total_lines,
-                                             total_doc)) + '</tr></table><br><br>' + '\n'
+                                             total_doc)) + '</tr></table>' + \
+                        '<br><br>' + '\n'
                 body += 'Size Project: ' + self.TypeProect(
                     total_lines) + '</body></html>' + '\n'
                 return body
