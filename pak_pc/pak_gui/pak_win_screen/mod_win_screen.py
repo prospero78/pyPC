@@ -63,6 +63,12 @@ class ClsWinScreen(Toplevel):
 
         self.root = root
         self.lang = root.res.lang_str.lang_dict
+        self.lbl_screen = None
+        self.btn_screen_close = None
+        self.frm_button = None
+        self.frm_screen = None
+        self.frm_btn = None
+
         create_self()
         create_frm_btn()
         create_frm_screen()
@@ -96,4 +102,8 @@ class ClsWinScreen(Toplevel):
             'win_main_btn_show_screen_show']
 
     def win_exit(self):
+        """
+        Выполняется при уничтожении окна (выход из программы).
+        :return:
+        """
         self.destroy()
