@@ -1,7 +1,7 @@
 # -*- coding: utf8 -*-
-'''
+"""
 Класс центрального процессора.
-'''
+"""
 
 import multiprocessing
 from time import time, sleep
@@ -17,7 +17,7 @@ from pak_pc.pak_cpu.pak_reg.mod_reg_bp import ClsRegBP
 
 
 class ClsCPU(multiprocessing.Process):
-    '''
+    """
         Здесь надо хорошо подумать сколько элементарных операций будет
         выполнять процессор. Длина команды (без старшего бита)
         ограничена семью битами. Видимо, пока буду пилить один РОН, т.
@@ -35,22 +35,22 @@ class ClsCPU(multiprocessing.Process):
         расширенные команды процессора
 
         На каждый регистр отводится по 128 простых команд (7 бит)
-    '''
+    """
 
     def __init__(self, max_value=0, max_adr=0, vcom=None, vinfo=None):
         def load_bios():
-            '''
+            """
             Загружает BIOS по умолчанию.
             BIOS содержится в py-файле, обычный хитрый словарь.
-            '''
+            """
             # инициализация биоса
-            from pak_pc.pak_resurs.mod_bios import bios
+            from pak_pc.pak_resurs.mod_bios import BIOS
 
-            for i in bios:
-                #print i, bios[i], type(i)
+            for i in BIOS:
+                #print i, BIOS[i], type(i)
                 if i > self.mem.max_adr:
                     self.mem.add_adr()
-                self.mem.adr[i] = bios[i]
+                self.mem.adr[i] = BIOS[i]
             print '  = BIOS load OK ='
 
         # создание отдельного процесса
@@ -84,7 +84,7 @@ class ClsCPU(multiprocessing.Process):
         self.reg_pc = ClsRegPC(val=0, max_adr=self.reg_sp.min_adr - 1)
 
         # регистр для установки принудительного прерывания исполнения программы
-        self.reg_bp = ClsRegBP(act=0, adr_break=0, adr_proc=0)
+        self.reg_bp = ClsRegBP(flag_act=0, adr_break=0, adr_proc=0)
 
         self.reg_a = ClsReg(root=self,
                             mem=self.mem,
@@ -93,9 +93,9 @@ class ClsCPU(multiprocessing.Process):
                             port=self.port)
 
     def run(self):
-        '''
+        """
         Метод необходим для запуска отдельного процесса.
-        '''
+        """
         while True:
             #print("The process CPU!")
             if not self.qcom.empty():
@@ -124,10 +124,10 @@ class ClsCPU(multiprocessing.Process):
                         self.send_info()
                 elif com.has_key('reg_pc'):
                     reg = com['reg_pc']
-                    self.reg_bp.act = reg['act']
+                    self.reg_bp.flag_act = reg['flag_act']
                     self.reg_bp.adr_proc = reg['adr_proc']
                     self.reg_bp.adr_break = reg['adr_break']
-                    reg_pc = {'act': self.reg_bp.act,
+                    reg_pc = {'flag_act': self.reg_bp.flag_act,
                               'adr_proc': self.reg_bp.adr_proc,
                               'adr_break': self.reg_bp.adr_break}
                     info = {'reg_pc': reg_pc}
@@ -136,6 +136,10 @@ class ClsCPU(multiprocessing.Process):
             sleep(0.1)
 
     def debug(self):
+        """
+        Запуск в непрерывном режиме исполнения с отладкой.
+        :return:
+        """
         i = 0
         while self.run_debug == 1:
             time1 = time()
@@ -165,25 +169,25 @@ class ClsCPU(multiprocessing.Process):
             self.qinfo.put(info)
 
     def reset_pc(self):
-        '''
+        """
         Принудительно сбрасывает текущее состояние компьютера.
         Пока без сброса reg_pc, не подчищает стек.
-        '''
+        """
         self.reg_a.val = 0
-        self.reg_a.FlagZ = 1
-        self.reg_a.FlagO = 0
-        self.reg_a.FlagC = 0
+        self.reg_a.flag_z = 1
+        self.reg_a.flag_o = 0
+        self.reg_a.flag_c = 0
         self.reg_pc.val = 0
         self.reg_sp.val = 0
         self.send_info()
 
     def send_info(self):
         reg_a = {'val': self.reg_a.val,
-                 'FlagZ': self.reg_a.FlagZ,
-                 'FlagO': self.reg_a.FlagO,
-                 'FlagC': self.reg_a.FlagC}
+                 'flag_z': self.reg_a.flag_z,
+                 'flag_o': self.reg_a.flag_o,
+                 'flag_c': self.reg_a.flag_c}
         reg_pc = {'val': self.reg_pc.val}
-        reg_bp = {'act': self.reg_bp.act,
+        reg_bp = {'flag_act': self.reg_bp.flag_act,
                   'adr_proc': self.reg_bp.adr_proc,
                   'adr_break': self.reg_bp.adr_break}
         reg_sp = {'adr': self.reg_sp.val,
