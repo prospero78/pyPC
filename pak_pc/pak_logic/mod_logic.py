@@ -52,16 +52,16 @@ class ClsLogic(object):
         (повышение атомарности класса).
         """
         win_main = self.gui.win_main
-        win_main.btnStep['text'] = self.lang['win_main_btn_step']
-        win_main.btnDebug['text'] = self.lang['win_main_btn_debug_0']
-        win_main.btnExit['text'] = self.lang['win_main_btn_exit_name']
-        win_main.btnShowScreen['text'] = self.lang[
+        win_main.btn_step['text'] = self.lang['win_main_btn_step']
+        win_main.btn_debug['text'] = self.lang['win_main_btn_debug_0']
+        win_main.btn_exit['text'] = self.lang['win_main_btn_exit_name']
+        win_main.btn_show_screen['text'] = self.lang[
             'win_main_btn_show_screen_show']
-        win_main.btnReset['text'] = self.lang['win_main_btn_reset']
-        win_main.mbtFile['text'] = self.lang['win_main_mbt_file_name']
-        win_main.mbtEdit['text'] = self.lang['win_main_mbt_edit_name']
-        win_main.mbtCustom['text'] = self.lang['win_main_mbt_custom_name']
-        win_main.frm_cpu.frm_cpu_freq.lblKey['text'] = self.lang[
+        win_main.btn_reset['text'] = self.lang['win_main_btn_reset']
+        win_main.mbt_file['text'] = self.lang['win_main_mbt_file_name']
+        win_main.mbt_edit['text'] = self.lang['win_main_mbt_edit_name']
+        win_main.mbt_custom['text'] = self.lang['win_main_mbt_custom_name']
+        win_main.frm_cpu.frm_cpu_freq.lbl_key['text'] = self.lang[
             'win_main_frm_cpu_freq_lbl_key']
 
     def reset_pc(self):
@@ -91,9 +91,9 @@ class ClsLogic(object):
                 freq_cpu = str(int(self.cpu.frec / 1000)) + ' kHz'
             else:
                 freq_cpu = str(int(self.cpu.frec)) + ' Hz'
-            frec = self.gui.win_main.frm_cpu.frmCpuFrec
-            frec.entVal.delete(0, 'end')
-            frec.entVal.insert(0, freq_cpu)
+            frec = self.gui.win_main.frm_cpu.frm_cpu_frec
+            frec.ent_val.delete(0, 'end')
+            frec.ent_val.insert(0, freq_cpu)
             # self.gui.win_main.update()
 
     def win_edit_bp_hide(self):
@@ -103,9 +103,10 @@ class ClsLogic(object):
         """
         print '  ClsLogic.win_edit_bp_hide()'
         # --- обновить содержимое реального регистра программных прерываний ----
-        self.reg_pc_act = self.gui.winEditBP.Act.get()
-        self.reg_pc_adr_break = int(self.gui.winEditBP.entAdrBreakVal.get())
-        self.reg_pc_adr_proc = int(self.gui.winEditBP.entAdrProcVal.get())
+        win_edit_bp = self.gui.win_edit_bp
+        self.reg_pc_act = win_edit_bp.Act.get()
+        self.reg_pc_adr_break = int(win_edit_bp.ent_adr_break_val.get())
+        self.reg_pc_adr_proc = int(win_edit_bp.ent_adr_proc_val.get())
 
         info = {'reg_pc': {'act': self.reg_pc_act,
                            'adr_break': self.reg_pc_adr_break,
@@ -121,7 +122,7 @@ class ClsLogic(object):
         Вызывается при показе окна редактирования свойств регистра
         программного прерывания.
         """
-        self.gui.winEditBP.show()
+        self.gui.win_edit_bp.show()
 
     def debug_cpu(self):
         # print 'ClsLogic.debug_cpu()'
@@ -130,11 +131,11 @@ class ClsLogic(object):
         """
         if self.debug == 0:
             self.debug = 1
-            self.gui.win_main.btnDebug['text'] = self.res.winMain_btnDebug_1
+            self.gui.win_main.btn_debug['text'] = self.res.winMain_btnDebug_1
             info = {'com': 'debug(on)'}
         else:
             self.debug = 0
-            self.gui.win_main.btnDebug['text'] = self.res.winMain_btnDebug_0
+            self.gui.win_main.btn_debug['text'] = self.res.winMain_btnDebug_0
             info = {'com': 'debug(off)'}
         self.cpu.qcom.put(info)
 
@@ -164,12 +165,12 @@ class ClsLogic(object):
                 reg_a = self.gui.win_main.frm_cpu.frm_reg_a
                 # print 'have key "reg_a.val"!', info['reg_a.val']
                 reg_a.lbl_val['text'] = inf['val']
-                #print "have key \"reg_a.FlagZ\"!", info['reg_a.FlagZ']
-                reg_a.lblValZ['text'] = inf['FlagZ']
-                #print 'have key "reg_a.FlagO"!', info['reg_a.FlagO']
-                reg_a.lblValO['text'] = inf['FlagO']
-                #print 'have key "reg_a.FlagC"!', info['reg_a.FlagC']
-                reg_a.lblValC['text'] = inf['FlagO']
+                #print "have key \"reg_a.flag_z\"!", info['reg_a.flag_z']
+                reg_a.lblValZ['text'] = inf['flag_z']
+                #print 'have key "reg_a.flag_o"!', info['reg_a.flag_o']
+                reg_a.lblValO['text'] = inf['flag_o']
+                #print 'have key "reg_a.flag_c"!', info['reg_a.flag_c']
+                reg_a.lblValC['text'] = inf['flag_o']
             if 'reg_pc' in info:
                 inf = info['reg_pc']
                 # print 'detect reg_pc', inf
@@ -185,9 +186,9 @@ class ClsLogic(object):
                 # print 'have key "reg_bp.act"!', info['reg_bp.act']
                 reg_bp.lbl_act_val['text'] = inf['act']
                 #print 'have key "reg_bp.adr_proc"!', info['reg_bp.adr_proc']
-                reg_bp.lblProcVal['text'] = inf['adr_proc']
+                reg_bp.lbl_proc_val['text'] = inf['adr_proc']
                 #print 'have key "reg_pc.adr_break"!', info['reg_pc.adr_break']
-                reg_bp.lblBreakVal['text'] = inf['adr_break']
+                reg_bp.lbl_break_val['text'] = inf['adr_break']
             # ---------------------------
             if 'reg_sp' in info:
                 inf = info['reg_sp']
@@ -212,12 +213,12 @@ class ClsLogic(object):
         """
         Создаёт новый диск.
         """
-        self.gui.winCreateDisk.destroy()
-        disk_size = int(self.gui.winCreateDisk.fkvSize.get_val())
-        disk_name = self.gui.winCreateDisk.fkvName.get_val()
+        self.gui.win_create_disk.destroy()
+        disk_size = int(self.gui.win_create_disk.fkvSize.get_val())
+        disk_name = self.gui.win_create_disk.fkvName.get_val()
         str_ = '0' * (2 ** 10)
         file_disk = open('./data/' + disk_name + '.dsk', 'wb')
-        for i in xrange(0, disk_size):
+        for blok_kb in xrange(0, disk_size):
             file_disk.write(str_)
             file_disk.close()
 
@@ -233,13 +234,13 @@ class ClsLogic(object):
         Вызывается при создании виртуального диска.
         """
         print 'ClsLogic.create_disk()'
-        self.gui.winCreateDisk.show()
+        self.gui.win_create_disk.show()
 
     def show_screen(self):
         """
         Вызывается при показе экрана виртуальной машины.
         """
-        if not self.gui.win_screen.winScreen_show:
+        if not self.gui.win_screen.win_screen_show:
             self.gui.win_screen.show()
         else:
             self.gui.win_screen.destroy()
@@ -273,11 +274,11 @@ class ClsLogic(object):
         """
         # print 'ClsLogic.exit()'
         try:
-            self.root.gui.winEditBP.win_exit()
+            self.root.gui.win_edit_bp.win_exit()
             self.root.gui.win_screen.win_exit()
-            self.root.gui.winLicense.win_exit()
+            self.root.gui.win_license.win_exit()
             self.root.gui.win_idc.win_exit()
-            self.root.gui.winCreateDisk.win_exit()
+            self.root.gui.win_create_disk.win_exit()
             self.root.gui.win_about.win_exit()
             self.root.gui.win_main.win_exit()
             self.root.cpu.terminate()
@@ -290,7 +291,7 @@ class ClsLogic(object):
         """
         Вызывается при показе окна показа лицензии (вот такая рекурсия)  )))
         """
-        self.root.gui.winLicense.show()
+        self.root.gui.win_license.show()
 
     def show_win_idc(self):
         """
