@@ -206,7 +206,7 @@ class ClsLogic(object):
                 self.update_speed(dtime=inf)
         while not self.video.vout.empty():
             vout = self.video.vout.get()
-            self.win_screen.lblScreen['text'] = vout
+            self.win_screen.lbl_screen['text'] = vout
 
     def generate_new_disk(self):
         # print 'generate_new_disk()'
