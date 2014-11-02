@@ -34,16 +34,21 @@ class ClsWinEditBP(Toplevel):
             self.frm_up = Frame(self, border=3, relief='groove')
             self.frm_up.pack(fill='both', expand=1, side='top')
 
-            self.lbl_reg_pc = Label(self.frm_up, border=3, relief='raised',
-                                   text=' reg_pc ', bg='white', fg='red',
-                                   font='Arial 24 bold')
+            self.lbl_reg_pc = Label(self.frm_up,
+                                    border=3,
+                                    relief='raised',
+                                    text=' reg_pc ',
+                                    bg='white',
+                                    fg='red',
+                                    font='Arial 24 bold')
             self.lbl_reg_pc.pack(side='left', fill='y')
             # --------------------------------------------------------------
             self.frm_adr_break = Frame(self.frm_up, border=3, relief='groove')
             self.frm_adr_break.pack(fill='x', side='top')
 
-            self.lbl_adr_break = Label(self.frm_adr_break, text='adr_break',
-                                     relief='raised')
+            self.lbl_adr_break = Label(self.frm_adr_break,
+                                       text='adr_break',
+                                       relief='raised')
             self.lbl_adr_break.pack(side='top', fill='x')
 
             self.ent_adr_break_val = Entry(self.frm_adr_break, cursor='hand2')
@@ -54,8 +59,9 @@ class ClsWinEditBP(Toplevel):
             self.frm_adr_proc = Frame(self.frm_up, border=3, relief='groove')
             self.frm_adr_proc.pack(fill='x', side='top')
 
-            self.lbl_adr_proc = Label(self.frm_adr_proc, text='adr_proc',
-                                    relief='raised')
+            self.lbl_adr_proc = Label(self.frm_adr_proc,
+                                      text='adr_proc',
+                                      relief='raised')
             self.lbl_adr_proc.pack(side='top', fill='x')
 
             self.ent_adr_proc_val = Entry(self.frm_adr_proc, cursor='hand2')
@@ -70,9 +76,11 @@ class ClsWinEditBP(Toplevel):
             self.lbl_act.pack(side='top', fill='x')
 
             self.flag_act = IntVar()
-            self.chek_act_val = Checkbutton(self.frm_act, cursor='hand2',
-                                         state='active', text='active register',
-                                         variable=self.flag_act)
+            self.chek_act_val = Checkbutton(self.frm_act,
+                                            cursor='hand2',
+                                            state='active',
+                                            text='active register',
+                                            variable=self.flag_act)
             self.chek_act_val.select()
             self.chek_act_val.pack(side='top', fill='x')
 
@@ -86,8 +94,9 @@ class ClsWinEditBP(Toplevel):
             self.frm_btn.pack(side='bottom', fill='x')
 
             self.btn_close = Button(self.frm_btn,
-                                   text=self.lang['win_edit_bp_btn_close'],
-                                   bg='gray', command=self.destroy)
+                                    text=self.lang['win_edit_bp_btn_close'],
+                                    bg='gray',
+                                    command=self.destroy)
             self.btn_close.pack(side='right')
 
         self.root = root
@@ -102,6 +111,10 @@ class ClsWinEditBP(Toplevel):
         self.lbl_act = None
         self.lbl_reg_pc = None
         self.lbl_adr_proc = None
+        self.chek_act_val = None
+        self.frm_act = None
+        self.btn_close = None
+        self.lbl_adr_break = None
 
         create_self()
         create_frm_up()
