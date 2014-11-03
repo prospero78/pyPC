@@ -49,7 +49,7 @@ class ClsCPU(multiprocessing.Process):
             for i in BIOS:
                 #print i, BIOS[i], type(i)
                 if i > self.mem.max_adr:
-                    self.mem.add_adr()
+                    self.mem.add_memory()
                 self.mem.adr[i] = BIOS[i]
             print '  = BIOS load OK ='
 
@@ -132,7 +132,6 @@ class ClsCPU(multiprocessing.Process):
                               'adr_break': self.reg_bp.adr_break}
                     info = {'reg_pc': reg_pc}
                     self.qinfo.put(info)
-                    pass
             sleep(0.1)
 
     def debug(self):
@@ -182,6 +181,10 @@ class ClsCPU(multiprocessing.Process):
         self.send_info()
 
     def send_info(self):
+        """
+        Отправка информации главному процессу о состоянии ЦП.
+        :return:
+        """
         reg_a = {'val': self.reg_a.val,
                  'flag_z': self.reg_a.flag_z,
                  'flag_o': self.reg_a.flag_o,
