@@ -71,6 +71,16 @@ class ClsWinIDC(Toplevel):
 
         self.root = root
         self.lang = root.res.lang_str.lang_dict
+        self.frm_disk0 = None
+        self.frm_disk1 = None
+        self.frm_disk2= None
+        self.frm_disk3 = None
+        self.btn_cancel = None
+        self.btn_reset = None
+        self.frm_idc = None
+        self.btn_ok = None
+        self.frm_btn = None
+
         create_self()
         create_frm_btn()
         create_frmIDC()
