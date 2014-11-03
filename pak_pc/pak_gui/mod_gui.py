@@ -1,44 +1,60 @@
 # -*- coding: utf8 -*-
-'''
+"""
 Инициализация класса графики.
-'''
+"""
+
 
 class ClsGUI:
+    """
+    Главный класс GUI для приложения. Является точкой подключения всех
+    графических ресурсов.
+    """
     def __init__(self, root=None):
-        self.root=root
+        """
+        Импорт всех возможных окон.
+        :param root:
+        :return:
+        """
+        self.root = root
         # импорт главного класса окна
         from pak_win_main.mod_win_main import ClsWinMain
-        self.win_main=ClsWinMain(root=self.root)
-        
+
+        self.win_main = ClsWinMain(root=self.root)
+
         # импорт окна "О программе"
         from pak_win_about.mod_win_about import clsWinAbout
-        self.win_about=clsWinAbout(root=self.root)
-        
+
+        self.win_about = clsWinAbout(root=self.root)
+
         # импорт окна лицензии
         from pak_win_license.mod_win_license import clsWinLicense
-        self.winLicense=clsWinLicense(root=self.root)
-        
+
+        self.win_license = clsWinLicense(root=self.root)
+
         # импорт окна экрана виртуального компьютера
         from pak_win_screen.mod_win_screen import ClsWinScreen
-        self.win_screen=ClsWinScreen(root=self.root)
-        
+
+        self.win_screen = ClsWinScreen(root=self.root)
+
         # импорт окна для создания нового диска
         from pak_win_create_disk.mod_win_create_disk import ClsWinCreateDisk
-        self.winCreateDisk=ClsWinCreateDisk(root=self.root)
-        
+
+        self.win_create_disk = ClsWinCreateDisk(root=self.root)
+
         # импорт окна создания/монтирования дисков (IDC)
         from pak_win_idc.mod_win_idc import ClsWinIDC
-        self.win_idc=ClsWinIDC(root=self.root)
-        
+
+        self.win_idc = ClsWinIDC(root=self.root)
+
         # импорт окна редактирования настроек регистра программного прерывания (winBP)
         from pak_win_edit_bp.mod_win_edit_bp import ClsWinEditBP
-        self.winEditBP=ClsWinEditBP(root=self.root)
-        
-        
+
+        self.win_edit_bp = ClsWinEditBP(root=self.root)
+
+
     def run(self):
-        '''
+        """
         Класс загружает графику, должен запускаться последним!!!
-        '''
+        """
         # запуск бесконечной петли
         self.win_main.begin()
-        pass
