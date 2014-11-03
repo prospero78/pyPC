@@ -27,36 +27,40 @@ class ClsWinMain(Tk):
                 Создание кнопок на главном окне.
                 :return:
                 """
+                # укорочение ссылки
+                control = self.root.control
                 # нижний фрейм главного окна
                 self.frm_btn = Frame(self, border=3, relief='sunken')
                 self.frm_btn.pack(side='bottom', fil='x')
 
                 # кнопка "шаг" главного окна
-                self.btn_step = Button(self.frm_btn, text='Step >',
-                                      command=self.root.control.win_main_step_cpu)
+                self.btn_step = Button(self.frm_btn,
+                                       text='Step >',
+                                       command=control.win_main_step_cpu)
                 self.btn_step.pack(side='left')
 
                 # кнопка "Отлдака" главного окна
-                self.btn_debug = Button(self.frm_btn, text='Debug >>',
-                                       command=self.root.control.win_main_debug)
+                self.btn_debug = Button(self.frm_btn,
+                                        text='Debug >>',
+                                        command=control.win_main_debug)
                 self.btn_debug.pack(side='left')
 
                 # кнопка "выход" главного окна
                 self.btn_exit = Button(self.frm_btn,
-                                      text='Exit [X]',
-                                      command=self.root.control.exit)
+                                       text='Exit [X]',
+                                       command=control.exit)
                 self.btn_exit.pack(side='right')
 
                 # кнопка для показа экрана виртуального компьютера
                 self.btn_show_screen = Button(self.frm_btn,
-                                            text='PC Screen',
-                                            command=self.root.control.show_screen)
+                                              text='PC Screen',
+                                              command=control.show_screen)
                 self.btn_show_screen.pack(side='left')
 
                 # кнопка для сброса виртуального компьютера
                 self.btn_reset = Button(self.frm_btn,
-                                       text='Reset (x)',
-                                       command=self.root.control.reset_pc)
+                                        text='Reset (x)',
+                                        command=control.reset_pc)
                 self.btn_reset.pack(side='left')
 
             def create_menu():
@@ -64,24 +68,24 @@ class ClsWinMain(Tk):
                 Создание менб для главного окна.
                 :return:
                 """
-                def create_mnuFile():
+                def create_mnu_file():
                     """
                     Создание меню "Файл".
                     :return:
                     """
                     # добавление менюхи файл
-                    self.mbt_file = Menubutton(self.frmMenu, text='File',
-                                              relief='raised', border=3)
+                    self.mbt_file = Menubutton(self.frm_menu, text='File',
+                                               relief='raised', border=3)
                     self.mbt_file.pack(side='left')
 
-                def create_mnuEdit():
+                def create_mnu_edit():
                     """
                     Создание меню "Правка".
                     :return:
                     """
                     # добавление менюхи правка
-                    self.mbt_edit = Menubutton(self.frmMenu, text='Edit',
-                                              relief='raised', border=3)
+                    self.mbt_edit = Menubutton(self.frm_menu, text='Edit',
+                                               relief='raised', border=3)
                     self.mbt_edit.pack(side='left')
 
                 def create_mnuCustom():
@@ -90,8 +94,8 @@ class ClsWinMain(Tk):
                     :return:
                     """
                     # добавление менюхи настройка
-                    self.mbt_custom = Menubutton(self.frmMenu, text='Custom',
-                                                relief='raised', border=3)
+                    self.mbt_custom = Menubutton(self.frm_menu, text='Custom',
+                                                 relief='raised', border=3)
                     self.mbt_custom.pack(side='left')
 
                     self.mnu_custom = Menu(self.mbt_custom)
@@ -113,11 +117,14 @@ class ClsWinMain(Tk):
                     :return:
                     """
                     # добавление менюхи справка
-                    self.btmHelp = Menubutton(self.frmMenu, text=self.lang[
-                        'win_main_mbt_help_name'], relief='raised', border=3)
-                    self.btmHelp.pack(side='right')
+                    self.btm_help = Menubutton(self.frm_menu,
+                                              text=self.lang[
+                                                  'win_main_mbt_help_name'],
+                                              relief='raised',
+                                              border=3)
+                    self.btm_help.pack(side='right')
 
-                    self.mnu_help = Menu(self.btmHelp)
+                    self.mnu_help = Menu(self.btm_help)
                     self.mnu_help.add_command(
                         label=self.lang['win_main_mbt_help_help'],
                         accelerator='F1')
@@ -126,14 +133,14 @@ class ClsWinMain(Tk):
                         label=self.lang['win_main_mbt_help_about'],
                         accelerator='Ctrl-F1', command=self.root.control.about)
 
-                    self.btmHelp.config(menu=self.mnu_help)
+                    self.btm_help.config(menu=self.mnu_help)
 
                 # фрейм меню (в верхней части)
-                self.frmMenu = Frame(self, border=3, relief='sunken')
-                self.frmMenu.pack(side='top', fil='x')
+                self.frm_menu = Frame(self, border=3, relief='sunken')
+                self.frm_menu.pack(side='top', fil='x')
 
-                create_mnuFile()
-                create_mnuEdit()
+                create_mnu_file()
+                create_mnu_edit()
                 create_mnuCustom()
                 create_mnuHelp()
 
