@@ -88,7 +88,7 @@ class ClsWinMain(Tk):
                                                relief='raised', border=3)
                     self.mbt_edit.pack(side='left')
 
-                def create_mnuCustom():
+                def create_mnu_custom():
                     """
                     Создание меню "Настройки".
                     :return:
@@ -111,17 +111,17 @@ class ClsWinMain(Tk):
 
                     self.mbt_custom.config(menu=self.mnu_custom)
 
-                def create_mnuHelp():
+                def create_mnu_help():
                     """
                     Создание меню "Помощь".
                     :return:
                     """
                     # добавление менюхи справка
                     self.btm_help = Menubutton(self.frm_menu,
-                                              text=self.lang[
-                                                  'win_main_mbt_help_name'],
-                                              relief='raised',
-                                              border=3)
+                                               text=self.lang[
+                                                   'win_main_mbt_help_name'],
+                                               relief='raised',
+                                               border=3)
                     self.btm_help.pack(side='right')
 
                     self.mnu_help = Menu(self.btm_help)
@@ -141,10 +141,10 @@ class ClsWinMain(Tk):
 
                 create_mnu_file()
                 create_mnu_edit()
-                create_mnuCustom()
-                create_mnuHelp()
+                create_mnu_custom()
+                create_mnu_help()
 
-            def create_frmCPU():
+            def create_frm_cpu():
                 """
                 Создание ырема для отображения состояния ЦП.
                 :return:
@@ -158,10 +158,26 @@ class ClsWinMain(Tk):
 
             create_frm_btn()
             create_menu()
-            create_frmCPU()
+            create_frm_cpu()
 
         self.root = root
         self.lang = root.res.lang_str.lang_dict
+        self.btn_debug = None
+        self.frm_cpu = None
+        self.btn_reset = None
+        self.mbt_edit = None
+        self.btm_help = None
+        self.mbt_file = None
+        self.btn_step = None
+        self.mnu_custom = None
+        self.frm_menu = None
+        self.btn_show_screen = None
+        self.frm_button = None
+        self.btn_exit = None
+        self.mbt_custom = None
+        self.frm_btn = None
+        self.mnu_help = None
+
         create_self()
 
     def win_update(self):
