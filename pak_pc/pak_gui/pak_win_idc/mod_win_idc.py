@@ -37,19 +37,19 @@ class ClsWinIDC(Toplevel):
             self.frm_btn.pack(side='bottom', fill='x')
 
             self.btn_cancel = Button(self.frm_btn,
-                                    text=self.lang['win_idc_cancel'],
-                                    command=self.root.control.win_idc_cancel)
+                                     text=self.lang['win_idc_cancel'],
+                                     command=self.root.control.win_idc_cancel)
             self.btn_cancel.pack(side='right')
 
             self.btn_reset = Button(self.frm_btn,
-                                   text=self.lang['win_idc_reset'])
+                                    text=self.lang['win_idc_reset'])
             self.btn_reset.pack(side='right')
 
             self.btn_ok = Button(self.frm_btn, text=' Ok ',
                                  command=self.lang['win_idc_image_create'])
             self.btn_ok.pack(side='right')
 
-        def create_frmIDC():
+        def create_frm_idc():
             """
             Создание фрейма дискового контроллера.
             :return:
@@ -73,7 +73,7 @@ class ClsWinIDC(Toplevel):
         self.lang = root.res.lang_str.lang_dict
         self.frm_disk0 = None
         self.frm_disk1 = None
-        self.frm_disk2= None
+        self.frm_disk2 = None
         self.frm_disk3 = None
         self.btn_cancel = None
         self.btn_reset = None
@@ -83,7 +83,7 @@ class ClsWinIDC(Toplevel):
 
         create_self()
         create_frm_btn()
-        create_frmIDC()
+        create_frm_idc()
 
     def show(self):
         """
