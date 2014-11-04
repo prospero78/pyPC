@@ -53,12 +53,18 @@ class ClsWinCreateDisk(Toplevel):
             self.frm_disk_param.pack(side='top', fill='both', expand=1)
 
             self.fkv_name = ClsFrmKeyValue(root=self.frm_disk_param,
-                                          key='Name Disk', value='default')
+                                           key='Name Disk', value='default')
             self.fkv_size = ClsFrmKeyValue(root=self.frm_disk_param,
-                                          key='Size Disk (kB)', value='1')
+                                           key='Size Disk (kB)', value='1')
 
         self.root = root
         self.lang = root.res.lang_str.lang_dict
+        self.fkv_name = None
+        self.btn_cancel = None
+        self.fkv_size = None
+        self.btn_ok = None
+        self.frm_btn = None
+        self.frm_disk_param = None
         create_self()
         create_frm_btn()
         create_frm_disk_param()
