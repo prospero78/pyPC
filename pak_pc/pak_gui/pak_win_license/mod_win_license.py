@@ -6,7 +6,7 @@
 from Tkinter import Toplevel, Frame, Button, Scrollbar, Text
 
 
-class clsWinLicense(Toplevel):
+class ClsWinLicense(Toplevel):
     """
     Окно для показа лицензии.
     """
@@ -63,8 +63,10 @@ class clsWinLicense(Toplevel):
                                             command=btn_locals_lic_click)
             self.btn_local_license.pack(side='left')
 
-            self.btn_close = Button(self.frm_btn, text='Close', bg='gray',
-                                   command=self.destroy)
+            self.btn_close = Button(self.frm_btn,
+                                    text='Close',
+                                    bg='gray',
+                                    command=self.destroy)
             self.btn_close.pack(side='right')
 
         def create_frm_up():
