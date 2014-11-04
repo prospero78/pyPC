@@ -49,9 +49,9 @@ class ClsFrmReg(Frame):
 if __name__ == '__main__':
     from Tkinter import Tk
 
-    root = Tk()
-    root.title('test frm_reg')
-    root.minsize(300, 200)
-    reg = ClsFrmReg(root=root)
-    reg.lbl_name['text'] = '123'
-    root.mainloop()
+    WIN_TEST = Tk()
+    WIN_TEST.title('test frm_reg')
+    WIN_TEST.minsize(300, 200)
+    REG = ClsFrmReg(root=WIN_TEST)
+    REG.lbl_name['text'] = '123'
+    WIN_TEST.mainloop()
