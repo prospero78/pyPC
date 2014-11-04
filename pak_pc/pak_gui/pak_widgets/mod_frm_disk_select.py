@@ -45,25 +45,25 @@ class ClsFrmDiskSelect(Frame):
             Frame.__init__(self, master=self.master)
             self.pack(side='top', fill='x')
 
-            self.lblPath = Label(self, text=self.text, border=2,
-                                 relief='raised')
-            self.lblPath.pack(side='left')
+            self.lbl_path = Label(self, text=self.text, border=2,
+                                  relief='raised')
+            self.lbl_path.pack(side='left')
 
-            self.lblDiskPath = Label(self, text=self.path, anchor='w', border=2,
-                                     relief='groove')
-            self.lblDiskPath.pack(side='left', fill='both', expand=1)
+            self.lbl_disk_path = Label(self, text=self.path, anchor='w', border=2,
+                                       relief='groove')
+            self.lbl_disk_path.pack(side='left', fill='both', expand=1)
 
-            self.btnCreate = Button(self,
-                                    text=self.lang['win_idc_image_create'],
-                                    command=self.root.control.create_disk)
-            self.btnCreate.pack(side='left')
+            self.btn_create = Button(self,
+                                     text=self.lang['win_idc_image_create'],
+                                     command=self.root.control.create_disk)
+            self.btn_create.pack(side='left')
 
-            self.btnOpen = Button(self, text=self.lang['win_idc_open'],
-                                  command=open_disk)
-            self.btnOpen.pack(side='left')
+            self.btn_open = Button(self, text=self.lang['win_idc_open'],
+                                   command=open_disk)
+            self.btn_open.pack(side='left')
 
-            self.btnClear = Button(self, text=self.lang['win_idc_image_unpath'])
-            self.btnClear.pack(side='left')
+            self.btn_clear = Button(self, text=self.lang['win_idc_image_unpath'])
+            self.btn_clear.pack(side='left')
 
 
         self.root = root
