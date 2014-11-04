@@ -73,22 +73,26 @@ class clsWinLicense(Toplevel):
             self.frm_up = Frame(self, border=3, relief='groove')
             self.frm_up.pack(fill='both', expand=1, side='top')
 
-            self.scbLicense = Scrollbar(self.frm_up)
-            self.scbLicense.pack(side='right', fill='y')
+            self.scb_license = Scrollbar(self.frm_up)
+            self.scb_license.pack(side='right', fill='y')
 
             self.txtLicense = Text(self.frm_up, height=12, width=30,
                                    font='Courier 9')
             self.txtLicense.pack(fill='both', expand=1, side='left')
             self.txtLicense.insert('end', self.lang['win_license_locale'])
 
-            self.scbLicense.config(command=self.txtLicense.yview)
-            self.txtLicense.config(yscrollcommand=self.scbLicense.set)
+            self.scb_license.config(command=self.txtLicense.yview)
+            self.txtLicense.config(yscrollcommand=self.scb_license.set)
 
         self.root = root
         self.lang = root.res.lang_str.lang_dict
         self.frm_btn = None
         self.txtLicense = None
         self.btn_close = None
+        self.scb_license = None
+        self.btn_local_license = None
+        self.frm_up = None
+        self.btn_eng_license = None
         create_self()
         create_frm_btn()
         create_frm_up()
