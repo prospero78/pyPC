@@ -79,4 +79,5 @@ class ClsFrmDiskSelect(Frame):
         self.btn_open = None
         self.btn_clear = None
         self.btn_create = None
+        self.lbl_disk_path = None
         create_self()
