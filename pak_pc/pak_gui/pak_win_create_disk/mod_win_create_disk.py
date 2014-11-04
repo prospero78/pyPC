@@ -41,28 +41,27 @@ class ClsWinCreateDisk(Toplevel):
             self.btn_ok.pack(side='right')
 
             self.btn_cancel = Button(self.frm_btn, text='Cancel',
-                                    command=self.destroy)
+                                     command=self.destroy)
             self.btn_cancel.pack(side='right')
 
-        def create_frmDiskParam():
+        def create_frm_disk_param():
             """
             Создание фрейма для параметров нового диска.
             :return:
             """
-            self.frmDiskParam = Frame(self, border=2, relief='sunken')
-            self.frmDiskParam.pack(side='top', fill='both', expand=1)
+            self.frm_disk_param = Frame(self, border=2, relief='sunken')
+            self.frm_disk_param.pack(side='top', fill='both', expand=1)
 
-            # TODO: надо запилить виджет -- пара ключ:значение
-            self.fkvName = ClsFrmKeyValue(root=self.frmDiskParam,
+            self.fkv_name = ClsFrmKeyValue(root=self.frm_disk_param,
                                           key='Name Disk', value='default')
-            self.fkvSize = ClsFrmKeyValue(root=self.frmDiskParam,
+            self.fkv_size = ClsFrmKeyValue(root=self.frm_disk_param,
                                           key='Size Disk (kB)', value='1')
 
         self.root = root
         self.lang = root.res.lang_str.lang_dict
         create_self()
         create_frm_btn()
-        create_frmDiskParam()
+        create_frm_disk_param()
 
     def show(self):
         """
