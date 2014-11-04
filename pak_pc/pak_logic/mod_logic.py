@@ -166,11 +166,11 @@ class ClsLogic(object):
                 # print 'have key "reg_a.val"!', info['reg_a.val']
                 reg_a.lbl_val['text'] = inf['val']
                 #print "have key \"reg_a.flag_z\"!", info['reg_a.flag_z']
-                reg_a.lblValZ['text'] = inf['flag_z']
+                reg_a.lbl_val_z['text'] = inf['flag_z']
                 #print 'have key "reg_a.flag_o"!', info['reg_a.flag_o']
-                reg_a.lblValO['text'] = inf['flag_o']
+                reg_a.lbl_val_o['text'] = inf['flag_o']
                 #print 'have key "reg_a.flag_c"!', info['reg_a.flag_c']
-                reg_a.lblValC['text'] = inf['flag_o']
+                reg_a.lbl_val_c['text'] = inf['flag_o']
             if 'reg_pc' in info:
                 inf = info['reg_pc']
                 # print 'detect reg_pc', inf
