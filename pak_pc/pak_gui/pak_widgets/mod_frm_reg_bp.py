@@ -45,7 +45,7 @@ class ClsFrmRegBP(Frame):
         self.lbl_proc_val = Label(self, text='0', border=1, relief='groove')
         self.lbl_proc_val.pack(side='left')
 
-        self.lbl_act = Label(self, text='act', border=1, relief='groove',
+        self.lbl_act = Label(self, text='flag_act', border=1, relief='groove',
                              bg='gray')
         self.lbl_act.pack(side='left')
 
