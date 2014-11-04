@@ -104,16 +104,16 @@ class ClsLogic(object):
         print '  ClsLogic.win_edit_bp_hide()'
         # --- обновить содержимое реального регистра программных прерываний ----
         win_edit_bp = self.gui.win_edit_bp
-        self.reg_pc_act = win_edit_bp.Act.get()
+        self.reg_pc_act = win_edit_bp.flag_act.get()
         self.reg_pc_adr_break = int(win_edit_bp.ent_adr_break_val.get())
         self.reg_pc_adr_proc = int(win_edit_bp.ent_adr_proc_val.get())
 
-        info = {'reg_pc': {'act': self.reg_pc_act,
+        info = {'reg_pc': {'flag_act': self.reg_pc_act,
                            'adr_break': self.reg_pc_adr_break,
                            'adr_proc': self.reg_pc_adr_proc}}
         self.cpu.qcom.put(info)
 
-        # print 'act=', self.cpu.reg_pc.get_act()
+        # print 'flag_act=', self.cpu.reg_pc.get_act()
         #self.update_monitor()
 
     def show_win_edit_bp(self):
@@ -183,8 +183,8 @@ class ClsLogic(object):
             if 'reg_bp' in info:
                 inf = info['reg_bp']
                 reg_bp = self.gui.win_main.frm_cpu.frm_reg_bp
-                # print 'have key "reg_bp.act"!', info['reg_bp.act']
-                reg_bp.lbl_act_val['text'] = inf['act']
+                # print 'have key "reg_bp.flag_act"!', info['reg_bp.flag_act']
+                reg_bp.lbl_act_val['text'] = inf['flag_act']
                 #print 'have key "reg_bp.adr_proc"!', info['reg_bp.adr_proc']
                 reg_bp.lbl_proc_val['text'] = inf['adr_proc']
                 #print 'have key "reg_pc.adr_break"!', info['reg_pc.adr_break']
@@ -214,8 +214,8 @@ class ClsLogic(object):
         Создаёт новый диск.
         """
         self.gui.win_create_disk.destroy()
-        disk_size = int(self.gui.win_create_disk.fkvSize.get_val())
-        disk_name = self.gui.win_create_disk.fkvName.get_val()
+        disk_size = int(self.gui.win_create_disk.fkv_size.get_val())
+        disk_name = self.gui.win_create_disk.fkv_name.get_val()
         str_ = '0' * (2 ** 10)
         file_disk = open('./data/' + disk_name + '.dsk', 'wb')
         for blok_kb in xrange(0, disk_size):
