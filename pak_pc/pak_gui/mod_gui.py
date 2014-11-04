@@ -22,9 +22,9 @@ class ClsGUI(object):
         self.win_main = ClsWinMain(root=self.root)
 
         # импорт окна "О программе"
-        from pak_pc.pak_gui.pak_win_about.mod_win_about import clsWinAbout
+        from pak_pc.pak_gui.pak_win_about.mod_win_about import ClsWinAbout
 
-        self.win_about = clsWinAbout(root=self.root)
+        self.win_about = ClsWinAbout(root=self.root)
 
         # импорт окна лицензии
         from pak_pc.pak_gui.pak_win_license.mod_win_license import clsWinLicense
