@@ -37,8 +37,8 @@ class ClsWinLicense(Toplevel):
                 :param event:
                 :return:
                 """
-                self.txtLicense.delete('1.0', 'end')
-                self.txtLicense.insert('end', self.root.res.winLicense_eng)
+                self.txt_license.delete('1.0', 'end')
+                self.txt_license.insert('end', self.root.res.winLicense_eng)
 
             def btn_locals_lic_click(event=None):
                 """
@@ -46,8 +46,8 @@ class ClsWinLicense(Toplevel):
                 :param event:
                 :return:
                 """
-                self.txtLicense.delete('1.0', 'end')
-                self.txtLicense.insert('end', self.root.res.winLicense_locale)
+                self.txt_license.delete('1.0', 'end')
+                self.txt_license.insert('end', self.root.res.winLicense_locale)
 
             self.frm_btn = Frame(self, border=3, relief='raised')
             self.frm_btn.pack(side='bottom', fill='x')
@@ -80,18 +80,18 @@ class ClsWinLicense(Toplevel):
             self.scb_license = Scrollbar(self.frm_up)
             self.scb_license.pack(side='right', fill='y')
 
-            self.txtLicense = Text(self.frm_up, height=12, width=30,
-                                   font='Courier 9')
-            self.txtLicense.pack(fill='both', expand=1, side='left')
-            self.txtLicense.insert('end', self.lang['win_license_locale'])
+            self.txt_license = Text(self.frm_up, height=12, width=30,
+                                    font='Courier 9')
+            self.txt_license.pack(fill='both', expand=1, side='left')
+            self.txt_license.insert('end', self.lang['win_license_locale'])
 
-            self.scb_license.config(command=self.txtLicense.yview)
-            self.txtLicense.config(yscrollcommand=self.scb_license.set)
+            self.scb_license.config(command=self.txt_license.yview)
+            self.txt_license.config(yscrollcommand=self.scb_license.set)
 
         self.root = root
         self.lang = root.res.lang_str.lang_dict
         self.frm_btn = None
-        self.txtLicense = None
+        self.txt_license = None
         self.btn_close = None
         self.scb_license = None
         self.btn_local_license = None
