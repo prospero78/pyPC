@@ -1,29 +1,39 @@
 # -*- coding: utf8 -*-
-'''
+"""
 Класс ресурсов. Содержит всякие полезные штуки для интернационализации,
 графики и т. д.
-'''
+"""
+
 
 class ClsRes(object):
-    '''
+    """
     Класс создаёт все необходимые ресурсы в программе.
-    '''
+    """
+
     def __init__(self, root=None, lang='ru', arg=None):
+        """
+        Создаёт класс ресурсов
+        :param root: ссылка на себя
+        :param lang:  строка языка
+        :param arg: аргументы командной строки
+        :return:
+        """
         self.root = root
         self.lang = lang
         self.arg = arg
-        self.build = '0.1167' # текущая версия сборки
+        self.build = '0.1167'  # текущая версия сборки
 
         self.pars_arg()
         if self.lang == 'ru':
             from pak_pc.pak_resurs.mod_lang_ru import ClsLangRu
+
             self.lang_str = ClsLangRu(lang=self.lang)
 
     def pars_arg(self):
-        '''
+        """
         Осуществляет парсинг аргументов передаваемых при запуске
         программы.
-        '''
+        """
         if len(self.arg) > 1:
             for i in self.arg:
                 if ('--help' in i) or ('-h' in i) or ('/h' in i):
