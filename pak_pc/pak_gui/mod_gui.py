@@ -27,9 +27,9 @@ class ClsGUI(object):
         self.win_about = ClsWinAbout(root=self.root)
 
         # импорт окна лицензии
-        from pak_pc.pak_gui.pak_win_license.mod_win_license import clsWinLicense
+        from pak_pc.pak_gui.pak_win_license.mod_win_license import ClsWinLicense
 
-        self.win_license = clsWinLicense(root=self.root)
+        self.win_license = ClsWinLicense(root=self.root)
 
         # импорт окна экрана виртуального компьютера
         from pak_pc.pak_gui.pak_win_screen.mod_win_screen import ClsWinScreen
