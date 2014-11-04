@@ -31,7 +31,7 @@ class clsWinLicense(Toplevel):
             Создание фрейма кнопок.
             :return:
             """
-            def btnEngLic_click(event=None):
+            def btn_eng_lic_click(event=None):
                 """
                 Событие нажатия на кнопку лицензии на английском языке.
                 :param event:
@@ -40,7 +40,7 @@ class clsWinLicense(Toplevel):
                 self.txtLicense.delete('1.0', 'end')
                 self.txtLicense.insert('end', self.root.res.winLicense_eng)
 
-            def btnLocalsLic_click(event=None):
+            def btn_locals_lic_click(event=None):
                 """
                 Событие нажатия на кнопку показа лицензии на местном языке.
                 :param event:
@@ -52,13 +52,15 @@ class clsWinLicense(Toplevel):
             self.frm_btn = Frame(self, border=3, relief='raised')
             self.frm_btn.pack(side='bottom', fill='x')
 
-            self.btnEngLicence = Button(self.frm_btn, text='England', bg='gray',
-                                        command=btnEngLic_click)
-            self.btnEngLicence.pack(side='left')
+            self.btn_eng_licence = Button(self.frm_btn,
+                                          text='England',
+                                          bg='gray',
+                                          command=btn_eng_lic_click)
+            self.btn_eng_licence.pack(side='left')
 
             self.btn_local_license = Button(self.frm_btn, text=self.lang[
                 'win_license_btn_local_text'], bg='gray',
-                                            command=btnLocalsLic_click)
+                                            command=btn_locals_lic_click)
             self.btn_local_license.pack(side='left')
 
             self.btn_close = Button(self.frm_btn, text='Close', bg='gray',
@@ -92,7 +94,8 @@ class clsWinLicense(Toplevel):
         self.scb_license = None
         self.btn_local_license = None
         self.frm_up = None
-        self.btn_eng_license = None
+        self.btn_eng_licence = None
+
         create_self()
         create_frm_btn()
         create_frm_up()
