@@ -35,10 +35,10 @@ class ClsFrmDiskSelect(Frame):
                 :param event:
                 :return:
                 """
-                d = askopenfilename(defaultextension='.dsk',
-                                    initialfile='./data/default.dsk',
-                                    filetypes=[('Disk images', '.dsk'), ],
-                                    title=self.root.res.winIDC_OpenDiskImage)
+                dsk = askopenfilename(defaultextension='.dsk',
+                                      initialfile='./data/default.dsk',
+                                      filetypes=[('Disk images', '.dsk'), ],
+                                      title=self.root.res.winIDC_OpenDiskImage)
                 self.root.gui.win_idc.lift()
                 self.root.gui.win_idc.focus_get()
 
@@ -49,7 +49,10 @@ class ClsFrmDiskSelect(Frame):
                                   relief='raised')
             self.lbl_path.pack(side='left')
 
-            self.lbl_disk_path = Label(self, text=self.path, anchor='w', border=2,
+            self.lbl_disk_path = Label(self,
+                                       text=self.path,
+                                       anchor='w',
+                                       border=2,
                                        relief='groove')
             self.lbl_disk_path.pack(side='left', fill='both', expand=1)
 
@@ -62,7 +65,8 @@ class ClsFrmDiskSelect(Frame):
                                    command=open_disk)
             self.btn_open.pack(side='left')
 
-            self.btn_clear = Button(self, text=self.lang['win_idc_image_unpath'])
+            self.btn_clear = Button(self,
+                                    text=self.lang['win_idc_image_unpath'])
             self.btn_clear.pack(side='left')
 
 
@@ -71,4 +75,8 @@ class ClsFrmDiskSelect(Frame):
         self.master = master
         self.path = path
         self.text = text
+        self.lbl_path = None
+        self.btn_open = None
+        self.btn_clear = None
+        self.btn_create = None
         create_self()
