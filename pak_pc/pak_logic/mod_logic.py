@@ -125,17 +125,18 @@ class ClsLogic(object):
         self.gui.win_edit_bp.show()
 
     def debug_cpu(self):
-        # print 'ClsLogic.debug_cpu()'
         """
         Вызывается при запуске ЦП в режиме отладки.
         """
+        # print 'ClsLogic.debug_cpu()'
+        lang=self.root.res.lang_str.lang_dict
         if self.debug == 0:
             self.debug = 1
-            self.gui.win_main.btn_debug['text'] = self.res.winMain_btnDebug_1
+            self.gui.win_main.btn_debug['text'] = lang['win_main_btn_debug_1']
             info = {'com': 'debug(on)'}
         else:
             self.debug = 0
-            self.gui.win_main.btn_debug['text'] = self.res.winMain_btnDebug_0
+            self.gui.win_main.btn_debug['text'] = lang['win_main_btn_debug_0']
             info = {'com': 'debug(off)'}
         self.cpu.qcom.put(info)
 
