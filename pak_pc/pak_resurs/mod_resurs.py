@@ -18,7 +18,7 @@ class ClsRes(object):
         :param arg: аргументы командной строки
         :return:
         """
-        self.root = root
+        self.__root = root
         self.lang = lang
         self.arg = arg
         self.build = '0.1369'  # текущая версия сборки
