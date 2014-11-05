@@ -37,8 +37,9 @@ class ClsWinLicense(Toplevel):
                 :param event:
                 :return:
                 """
+                txt = self.root.res.lang_str.lang_dict['win_license_origin']
                 self.txt_license.delete('1.0', 'end')
-                self.txt_license.insert('end', self.root.res.winLicense_eng)
+                self.txt_license.insert('end', txt)
 
             def btn_locals_lic_click(event=None):
                 """
@@ -46,8 +47,9 @@ class ClsWinLicense(Toplevel):
                 :param event:
                 :return:
                 """
+                txt = self.root.res.lang_str.lang_dict['win_license_locale']
                 self.txt_license.delete('1.0', 'end')
-                self.txt_license.insert('end', self.root.res.winLicense_locale)
+                self.txt_license.insert('end', txt)
 
             self.frm_btn = Frame(self, border=3, relief='raised')
             self.frm_btn.pack(side='bottom', fill='x')
