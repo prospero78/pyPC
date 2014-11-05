@@ -38,7 +38,7 @@ class ClsWinIDC(Toplevel):
 
             self.btn_cancel = Button(self.frm_btn,
                                      text=self.lang['win_idc_cancel'],
-                                     command=self.root.control.win_idc_cancel)
+                                     command=self.__root.control.win_idc_cancel)
             self.btn_cancel.pack(side='right')
 
             self.btn_reset = Button(self.frm_btn,
@@ -58,18 +58,18 @@ class ClsWinIDC(Toplevel):
             self.frm_idc.pack(side='top', fill='both', expand=1)
 
             self.frm_disk0 = ClsFrmDiskSelect(master=self.frm_idc,
-                                              root=self.root, text='Disk-0:')
+                                              root=self.__root, text='Disk-0:')
             self.frm_disk1 = ClsFrmDiskSelect(master=self.frm_idc,
-                                              root=self.root, text='Disk-1:',
+                                              root=self.__root, text='Disk-1:',
                                               path='None')
             self.frm_disk2 = ClsFrmDiskSelect(master=self.frm_idc,
-                                              root=self.root, text='Disk-2:',
+                                              root=self.__root, text='Disk-2:',
                                               path='None')
             self.frm_disk3 = ClsFrmDiskSelect(master=self.frm_idc,
-                                              root=self.root, text='Disk-3:',
+                                              root=self.__root, text='Disk-3:',
                                               path='None')
 
-        self.root = root
+        self.__root = root
         self.lang = root.res.lang_str.lang_dict
         self.frm_disk0 = None
         self.frm_disk1 = None

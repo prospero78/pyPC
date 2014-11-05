@@ -17,7 +17,7 @@ class ClsIDC(object):
         :return:
         """
         #TODO: написать класс интерфейса дискового контроллера.
-        self.root = root
+        self.__root = root
 
     def create_disk(self):
         """

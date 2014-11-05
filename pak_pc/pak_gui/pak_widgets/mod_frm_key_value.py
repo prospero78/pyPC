@@ -19,7 +19,7 @@ class ClsFrmKeyValue(Frame):
         :param value:
         :return:
         """
-        self.root = root
+        self.__root = root
         Frame.__init__(self, master=root, border=2, relief='ridge')
         self.pack(fill='x', side='top')
 

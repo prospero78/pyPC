@@ -61,7 +61,7 @@ class ClsWinScreen(Toplevel):
                 'win_screen_btn_close_text'], bg='gray', command=self.destroy)
             self.btn_screen_close.pack(side='right')
 
-        self.root = root
+        self.__root = root
         self.lang = root.res.lang_str.lang_dict
         self.lbl_screen = None
         self.btn_screen_close = None
@@ -81,14 +81,14 @@ class ClsWinScreen(Toplevel):
         Показывает окно экрана виртуального компьютера.
         :return:
         """
-        lang=self.root.res.lang_str.lang_dict
+        lang=self.__root.res.lang_str.lang_dict
         self.win_screen_show = 1
         self.state('normal')
         # показать поверх всех с фокусом без удержания фокуса
         self.focus_set()
         # self.grab_set()
         #self.wait_window()
-        self.root.gui.win_main.btn_show_screen[
+        self.__root.gui.win_main.btn_show_screen[
             'text'] = lang['win_screen_btn_close_text']
 
     def destroy(self):
@@ -99,7 +99,7 @@ class ClsWinScreen(Toplevel):
         self.win_screen_show = 0
         self.state('withdrawn')
         self.grab_release()
-        self.root.gui.win_main.btn_show_screen['text'] = self.lang[
+        self.__root.gui.win_main.btn_show_screen['text'] = self.lang[
             'win_main_btn_show_screen_show']
 
     def win_exit(self):

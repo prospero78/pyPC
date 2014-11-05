@@ -69,7 +69,7 @@ class ClsReg(object):
                  pc=None,
                  sp=None,
                  port=None):
-        self.root = root
+        self.__root = root
 
         # максимальное значение в регистре
         self.max_val = 2 ** 16
@@ -87,7 +87,7 @@ class ClsReg(object):
         self.reg_sp = sp
 
         # ссылка на регистр программного прерывания
-        self.reg_bp = self.root.reg_bp
+        self.reg_bp = self.__root.reg_bp
 
         # сбросить регистр в ноль и установить флаг нуля
         self.val = 0

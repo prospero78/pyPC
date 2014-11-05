@@ -18,7 +18,7 @@ class ClsFrmRegPC(Frame):
         Создаёт фрейм отображения состояния регистра программного счётчика.
         :param root: ссылка на корневой элемент.
         """
-        self.root = root
+        self.__root = root
         Frame.__init__(self, master=root, border=2, relief='ridge')
         self.pack(fill='x', side='top')
 

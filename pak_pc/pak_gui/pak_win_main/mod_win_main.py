@@ -28,7 +28,7 @@ class ClsWinMain(Tk):
                 :return:
                 """
                 # укорочение ссылки
-                control = self.root.control
+                control = self.__root.control
                 # нижний фрейм главного окна
                 self.frm_btn = Frame(self, border=3, relief='sunken')
                 self.frm_btn.pack(side='bottom', fil='x')
@@ -102,12 +102,12 @@ class ClsWinMain(Tk):
                     self.mnu_custom.add_command(
                         label=self.lang['win_main_mbt_edit_bp'],
                         accelerator='F11',
-                        command=self.root.control.show_win_edit_bp)
+                        command=self.__root.control.show_win_edit_bp)
                     self.mnu_custom.add_separator()
                     self.mnu_custom.add_command(
                         label=self.lang['win_main_mbt_edit_disk'],
                         accelerator='F12',
-                        command=self.root.control.show_win_idc)
+                        command=self.__root.control.show_win_idc)
 
                     self.mbt_custom.config(menu=self.mnu_custom)
 
@@ -131,7 +131,7 @@ class ClsWinMain(Tk):
                     self.mnu_help.add_separator()
                     self.mnu_help.add_command(
                         label=self.lang['win_main_mbt_help_about'],
-                        accelerator='Ctrl-F1', command=self.root.control.about)
+                        accelerator='Ctrl-F1', command=self.__root.control.about)
 
                     self.btm_help.config(menu=self.mnu_help)
 
@@ -160,7 +160,7 @@ class ClsWinMain(Tk):
             create_menu()
             create_frm_cpu()
 
-        self.root = root
+        self.__root = root
         self.lang = root.res.lang_str.lang_dict
         self.btn_debug = None
         self.frm_cpu = None
@@ -185,7 +185,7 @@ class ClsWinMain(Tk):
         Обновление окна по таймеру.
         :return:
         """
-        self.root.logic.update_monitor()
+        self.__root.logic.update_monitor()
         self.after(100, self.win_update)
 
     def begin(self):

@@ -35,7 +35,7 @@ class ClsWinAbout(Toplevel):
             self.frm_up.pack(fill='both', expand=1, side='top')
 
             self.lbl_py_pc = Label(self.frm_up, border=3, relief='sunken',
-                                   text=' pyPC \n' + self.root.res.build,
+                                   text=' pyPC \n' + self.__root.res.build,
                                    bg='white', fg='red', font='Arial 24 bold')
             self.lbl_py_pc.pack(side='left', fill='y')
 
@@ -67,7 +67,7 @@ class ClsWinAbout(Toplevel):
                                           bg='gray', command=self.destroy)
             self.btn_close_about.pack(side='right')
 
-            control = self.root.control
+            control = self.__root.control
 
             self.btn_license = Button(self.frm_btn,
                                       text=self.lang['win_about_license'],
@@ -75,7 +75,7 @@ class ClsWinAbout(Toplevel):
                                       command=control.show_win_license)
             self.btn_license.pack()
 
-        self.root = root
+        self.__root = root
         self.lang = root.res.lang_str.lang_dict
         self.frm_up = None
         self.scb_about = None

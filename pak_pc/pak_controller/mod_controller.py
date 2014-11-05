@@ -17,7 +17,7 @@ class ClsController(object):
         Создание всех переменных, которые только могут встречаться.
         :param root: ссылка на корневой класс.
         """
-        self.root = root
+        self.__root = root
         # ссылка на класс графики. Будет присвоена позже.
         self.gui = None
         # ссылка на класс логики. Будет создана позже.
@@ -123,9 +123,9 @@ class ClsController(object):
         Вызывается при запуске всей системы.
         :param event: событие при запуске всей системы.
         """
-        self.gui = self.root.gui
-        self.logic = self.root.logic
-        self.cpu = self.root.cpu
+        self.gui = self.__root.gui
+        self.logic = self.__root.logic
+        self.cpu = self.__root.cpu
         # print '.ClsController.run()'
         self.logic.run()
 
@@ -135,7 +135,7 @@ class ClsController(object):
         Вызывается при показе окна "О программе"
         :param event: событие при показе окна о программе.
         """
-        self.root.gui.win_about.show()
+        self.__root.gui.win_about.show()
 
     def exit(self, event=None):
         # print '.ClsController.exit()'
@@ -143,20 +143,20 @@ class ClsController(object):
         Вызывает выход из всей программы.
         :param event: событие при закрытии главного окна.
         """
-        self.root.logic.exit()
+        self.__root.logic.exit()
 
     def show_win_license(self, event=None):
         """
         :param event: событие при показе окна лицензии.
         """
-        self.root.logic.show_win_license()
+        self.__root.logic.show_win_license()
 
     def hide_win_license(self, event=None):
         """
         Вызывается при скрытии окна показа лицензии.
         :param event:  событие при скрытия окна показа лицензии.
         """
-        self.root.logic.hide_win_license()
+        self.__root.logic.hide_win_license()
 
     def show_win_idc(self, event=None):
         """
@@ -164,4 +164,4 @@ class ClsController(object):
         :param event: передаётся из события показа окна интерфейса дискового
         кластера.
         """
-        self.root.logic.show_win_idc()
+        self.__root.logic.show_win_idc()

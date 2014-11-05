@@ -37,7 +37,7 @@ class ClsWinLicense(Toplevel):
                 :param event:
                 :return:
                 """
-                txt = self.root.res.lang_str.lang_dict['win_license_origin']
+                txt = self.__root.res.lang_str.lang_dict['win_license_origin']
                 self.txt_license.delete('1.0', 'end')
                 self.txt_license.insert('end', txt)
 
@@ -47,7 +47,7 @@ class ClsWinLicense(Toplevel):
                 :param event:
                 :return:
                 """
-                txt = self.root.res.lang_str.lang_dict['win_license_locale']
+                txt = self.__root.res.lang_str.lang_dict['win_license_locale']
                 self.txt_license.delete('1.0', 'end')
                 self.txt_license.insert('end', txt)
 
@@ -91,7 +91,7 @@ class ClsWinLicense(Toplevel):
             self.scb_license.config(command=self.txt_license.yview)
             self.txt_license.config(yscrollcommand=self.scb_license.set)
 
-        self.root = root
+        self.__root = root
         self.lang = root.res.lang_str.lang_dict
         self.frm_btn = None
         self.txt_license = None
@@ -123,7 +123,7 @@ class ClsWinLicense(Toplevel):
         """
         self.state('withdrawn')
         self.grab_release()
-        self.root.control.hide_win_license()
+        self.__root.control.hide_win_license()
 
     def win_exit(self):
         """

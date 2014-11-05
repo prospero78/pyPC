@@ -99,7 +99,7 @@ class ClsWinEditBP(Toplevel):
                                     command=self.destroy)
             self.btn_close.pack(side='right')
 
-        self.root = root
+        self.__root = root
         self.lang = root.res.lang_str.lang_dict
         self.ent_adr_break_val = None
         self.frm_up = None
@@ -138,7 +138,7 @@ class ClsWinEditBP(Toplevel):
         """
         self.state('withdrawn')
         self.grab_release()
-        self.root.control.win_edit_bp_hide()
+        self.__root.control.win_edit_bp_hide()
 
     def win_exit(self):
         """

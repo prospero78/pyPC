@@ -112,7 +112,7 @@ class ClsCPU(multiprocessing.Process):
                         self.run_debug = 1
                         info = {'debug': 'on'}
                         self.qinfo.put(info)
-                        self.debug()
+                        self.__debug()
                     elif com == 'debug(off)':
                         self.run_debug = 0
                         info = {'debug': 'off'}
@@ -134,7 +134,7 @@ class ClsCPU(multiprocessing.Process):
                     self.qinfo.put(info)
             sleep(0.1)
 
-    def debug(self):
+    def __debug(self):
         """
         Запуск в непрерывном режиме исполнения с отладкой.
         :return:

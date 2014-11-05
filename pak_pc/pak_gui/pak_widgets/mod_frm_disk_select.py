@@ -38,9 +38,9 @@ class ClsFrmDiskSelect(Frame):
                 dsk = askopenfilename(defaultextension='.dsk',
                                       initialfile='./data/default.dsk',
                                       filetypes=[('Disk images', '.dsk'), ],
-                                      title=self.root.res.winIDC_OpenDiskImage)
-                self.root.gui.win_idc.lift()
-                self.root.gui.win_idc.focus_get()
+                                      title=self.__root.res.winIDC_OpenDiskImage)
+                self.__root.gui.win_idc.lift()
+                self.__root.gui.win_idc.focus_get()
 
             Frame.__init__(self, master=self.master)
             self.pack(side='top', fill='x')
@@ -58,7 +58,7 @@ class ClsFrmDiskSelect(Frame):
 
             self.btn_create = Button(self,
                                      text=self.lang['win_idc_image_create'],
-                                     command=self.root.control.create_disk)
+                                     command=self.__root.control.create_disk)
             self.btn_create.pack(side='left')
 
             self.btn_open = Button(self, text=self.lang['win_idc_open'],
@@ -70,7 +70,7 @@ class ClsFrmDiskSelect(Frame):
             self.btn_clear.pack(side='left')
 
 
-        self.root = root
+        self.__root = root
         self.lang = root.res.lang_str.lang_dict
         self.master = master
         self.path = path

@@ -57,7 +57,7 @@ class ClsWinCreateDisk(Toplevel):
             self.fkv_size = ClsFrmKeyValue(root=self.frm_disk_param,
                                            key='Size Disk (kB)', value='1')
 
-        self.root = root
+        self.__root = root
         self.lang = root.res.lang_str.lang_dict
         self.fkv_name = None
         self.btn_cancel = None
@@ -87,8 +87,8 @@ class ClsWinCreateDisk(Toplevel):
         """
         self.state('withdrawn')
         self.grab_release()
-        self.root.gui.win_idc.focus_set()
-        self.root.gui.win_idc.grab_set()
+        self.__root.gui.win_idc.focus_set()
+        self.__root.gui.win_idc.grab_set()
 
     def win_exit(self):
         """

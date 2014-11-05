@@ -18,7 +18,7 @@ class ClsFrmRegBP(Frame):
         Создаёт экземпляр класса.
         :param root: ссылка на корневой класс приложения.
         """
-        self.root = root
+        self.__root = root
         Frame.__init__(self, master=root, border=2, relief='ridge')
         self.pack(fill='x', side='top')
 
