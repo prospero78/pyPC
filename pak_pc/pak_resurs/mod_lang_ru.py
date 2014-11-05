@@ -12,12 +12,10 @@ class ClsLangRu(ClsLang):
 
     def __init__(self, lang='ru'):
         ClsLang.__init__(self, lang='ru')
-        self.vers = self.vers + 3
+        self.vers = self.vers + 4
         fread = open('./pak_pc/pak_resurs/txt/GNU_GPL_v3_rus.txt', 'r')
         lic_ru = fread.read()
         fread.close()
-
-
 
         self.lang_dict = {'win_main_name': 'pyPC    верс. ' + str(self.vers),
                           'win_main_btn_exit_name': 'Выход',
