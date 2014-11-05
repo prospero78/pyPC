@@ -19,9 +19,9 @@ class ClsRes(object):
         :return:
         """
         self.__root = root
-        self.lang = lang
+        self.__lang = lang
         self.arg = arg
-        self.build = '0.1369'  # текущая версия сборки
+        self.build = '0.1390'  # текущая версия сборки
 
         fread = open('./pak_pc/pak_resurs/txt/GNU_GPL_v3_eng.txt', 'r')
         lic_eng = fread.read()
@@ -31,9 +31,23 @@ class ClsRes(object):
         if self.lang == 'ru':
             from pak_pc.pak_resurs.mod_lang_ru import ClsLangRu
 
-            self.lang_str = ClsLangRu(lang=self.lang)
+            self.lang_str = ClsLangRu(lang=self.__lang)
 
         self.lang_str.lang_dict['win_license_origin'] = lic_eng
+
+    @property
+    def lang(self):
+        """
+        Свойство хранит в себе значение языка.
+        """
+        return self.__lang
+
+    @lang.setter
+    def lang(self, lang='ru'):
+        """
+        Устанавливает текущий язык программы.
+        """
+        self.__lang = lang
 
     def pars_arg(self):
         """
