@@ -57,11 +57,10 @@ class ClsLangRu(ClsLang):
                           'win_about_license': 'Лицензионное требование',
 
                           'win_license_title': 'Лицензионное требование',
-
                           'win_license_locale': lic_ru,
                           'win_license_origin': None,
-
                           'win_license_btn_local_text': 'Русский',
+                          'win_license_btn_close_win': 'Закрыть окно',
 
                           'win_screen_title': 'Экран pyPC',
                           'win_screen_btn_close_text': 'Закрыть',
