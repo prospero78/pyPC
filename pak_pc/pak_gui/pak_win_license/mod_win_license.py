@@ -60,13 +60,14 @@ class ClsWinLicense(Toplevel):
                                           command=btn_eng_lic_click)
             self.btn_eng_licence.pack(side='left')
 
-            self.btn_local_license = Button(self.frm_btn, text=self.lang[
-                'win_license_btn_local_text'], bg='gray',
+            self.btn_local_license = Button(self.frm_btn,
+                                            text=self.lang['win_license_btn_local_text'],
+                                            bg='gray',
                                             command=btn_locals_lic_click)
             self.btn_local_license.pack(side='left')
 
             self.btn_close = Button(self.frm_btn,
-                                    text='Close',
+                                    text=self.lang['win_license_btn_close_win'],
                                     bg='gray',
                                     command=self.destroy)
             self.btn_close.pack(side='right')
