@@ -23,11 +23,17 @@ class ClsRes(object):
         self.arg = arg
         self.build = '0.1369'  # текущая версия сборки
 
+        fread = open('./pak_pc/pak_resurs/txt/GNU_GPL_v3_eng.txt', 'r')
+        lic_eng = fread.read()
+        fread.close()
+
         self.pars_arg()
         if self.lang == 'ru':
             from pak_pc.pak_resurs.mod_lang_ru import ClsLangRu
 
             self.lang_str = ClsLangRu(lang=self.lang)
+
+        self.lang_str.lang_dict['win_license_origin'] = lic_eng
 
     def pars_arg(self):
         """
