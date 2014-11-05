@@ -3,6 +3,7 @@
 Главный класс для работы pyPC.
 """
 
+__version__ = 5
 
 class ClsPC(object):
     """
@@ -10,11 +11,11 @@ class ClsPC(object):
     """
 
     def __init__(self, arg=None):
-        # импорт класса ресурсов
         """
         Создание главного класса-приложения.
         :param arg:
         """
+        # импорт класса ресурсов
         from pak_pc.pak_resurs.mod_resurs import ClsRes
 
         self.res = ClsRes(root=self, lang='ru', arg=arg)
@@ -38,7 +39,7 @@ class ClsPC(object):
         # импорт класса контроллера
         from pak_pc.pak_controller.mod_controller import ClsController
 
-        self.control = ClsController(root=self)
+        self.__control = ClsController(root=self)
 
         # импорт класса графики
         from pak_pc.pak_gui.mod_gui import ClsGUI
@@ -49,6 +50,13 @@ class ClsPC(object):
         from pak_pc.pak_idc.mod_idc import ClsIDC
 
         self.idc = ClsIDC(root=self)
+
+    @property
+    def control(self):
+        """
+        Возвращает ссылку на контроллер програмы.
+        """
+        return self.__control
 
     def run(self):
         """
