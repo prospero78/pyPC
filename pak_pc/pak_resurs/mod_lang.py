@@ -19,30 +19,15 @@ class ClsLang(object):
         # словарь переводов
         self.__lang_dict = {}
 
-    def _get_lang_dict(self):
-        """
-        Возвращает словарь для перевода надписей.
-        """
-        return self.__lang_dict
-
-    def _set_lang_dict(self, val_dict= {}):
-        """
-        Устанавливает новый словарь для переводов.
-        """
-        if val_dict == {} or val_dict == None:
-            print 'ClsLang._set_lang_dict(): invalid val_dict language!'
-        else:
-            self.__lang_dict = val_dict
-
-    lang_dict = property(_get_lang_dict, _set_lang_dict)
-
-    def _get_lang(self):
+    @property
+    def lang(self):
         """
         Возвращает установленный язык.
         """
         return self.__lang
 
-    def _set_lang(selfself, val='ru'):
+    @lang.setter
+    def lang(self, val='ru'):
         """
         Устанавливает текущий язык.
         Если значение неприемлимое -- ничего не делает.
@@ -52,5 +37,20 @@ class ClsLang(object):
         else:
             self.__lang = val
 
-    lang = property(_get_lang, _set_lang)
+    @property
+    def lang_dict(self):
+        """
+        Свойство определения словаря перевода.
+        """
+        return self.__lang_dict
+
+    @lang_dict.setter
+    def lang_dict(self, val_dict=None):
+        """
+        Устанавливает новый словарь для переводов.
+        """
+        if val_dict == None:
+            print 'ClsLang._set_lang_dict(): invalid val_dict language!'
+        else:
+            self.__lang_dict = val_dict
 
