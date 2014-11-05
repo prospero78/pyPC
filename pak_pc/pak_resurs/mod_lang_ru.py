@@ -17,6 +17,8 @@ class ClsLangRu(ClsLang):
         lic_ru = fread.read()
         fread.close()
 
+
+
         self.lang_dict = {'win_main_name': 'pyPC    верс. ' + str(self.vers),
                           'win_main_btn_exit_name': 'Выход',
                           'win_main_mbt_file_name': 'Файл',
@@ -57,6 +59,7 @@ class ClsLangRu(ClsLang):
                           'win_license_title': 'Лицензионное требование',
 
                           'win_license_locale': lic_ru,
+                          'win_license_origin': None,
 
                           'win_license_btn_local_text': 'Русский',
 
