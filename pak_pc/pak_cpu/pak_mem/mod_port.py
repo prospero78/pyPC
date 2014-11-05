@@ -8,57 +8,56 @@
 процедуры для каждого порта отдельно.
 '''
 
-import multiprocessing
 
 class ClsPort:
-    def __init__(self, max_port=2**16, vinfo=None, vcom=None):
+    def __init__(self, max_port=2 ** 16, vinfo=None, vcom=None):
         # максимально допустимое количество портов
-        self.max_port=max_port
-        
+        self.max_port = max_port
+
         # инициализация адресов портов виртуального компьютера
-        self.adr={}
+        self.adr = {}
         for i in xrange(0, max_port):
-            self.adr[i]=0
-        
-        self.vinfo=vinfo
-        self.vcom=vcom
-    
+            self.adr[i] = 0
+
+        self.vinfo = vinfo
+        self.vcom = vcom
+
     def get_adr(self, adr):
         '''
         Получить состояние порта
         '''
         return self.adr[adr]
-        
+
     def set_adr(self, adr, val):
         '''
         Установить состояние порта
         '''
-        print 'PORT: set(', adr, ')=', val
-        self.adr[adr]=val
-        
+        print 'port: set(', adr, ')=', val
+        self.adr[adr] = val
+
     def detect_port(self, port=None, com=None):
         '''
         Тут собственно сам детектор портов.
         '''
-        print '   ## PORT: detector   port=', port
-        if port == 0:   # порт запроса поддерживаемых режимов видеокарты
-            vcom={'com':{'get_max_mode':0}}
+        print '   ## port: detector   port=', port
+        if port == 0:  # порт запроса поддерживаемых режимов видеокарты
+            vcom = {'com': {'get_max_mode': 0}}
             self.vcom.put(vcom)
             while self.vinfo.empty():
                 sleep(0.05)
-            info=self.vinfo.get()
+            info = self.vinfo.get()
             if info.has_key('max_mode'):
-                max_mode=info['max_mode']
+                max_mode = info['max_mode']
                 return max_mode
             else:
                 return 0
-        elif port == 1: # порт установки режима видеокарты
-            vcom={'com':{'set_mode':self.adr[1]}}
+        elif port == 1:  # порт установки режима видеокарты
+            vcom = {'com': {'set_mode': self.adr[1]}}
             self.vcom.put(vcom)
         elif port == 2:  # режим исполнения команд
-            if com == 1:    # получена команда очистки экрана
-                vcom={'com':{'clear_screen':0}}
+            if com == 1:  # получена команда очистки экрана
+                vcom = {'com': {'clear_screen': 0}}
                 self.vcom.put(vcom)
-        elif port == 3: # режим заливки экрана
-            vcom={'com':{'fill_screen':com}}
-            self.vcom.put(vcom) # залить символом переданным в параметре
+        elif port == 3:  # режим заливки экрана
+            vcom = {'com': {'fill_screen': com}}
+            self.vcom.put(vcom)  # залить символом переданным в параметре
