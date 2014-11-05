@@ -4,6 +4,7 @@
 """
 from pak_pc.pak_resurs.mod_lang import ClsLang
 
+__version__ = 5
 
 class ClsLangRu(ClsLang):
     """
@@ -12,7 +13,7 @@ class ClsLangRu(ClsLang):
 
     def __init__(self, lang='ru'):
         ClsLang.__init__(self, lang='ru')
-        self.vers = self.vers + 4
+        self.vers = self.vers + 5
         fread = open('./pak_pc/pak_resurs/txt/GNU_GPL_v3_rus.txt', 'r')
         lic_ru = fread.read()
         fread.close()
