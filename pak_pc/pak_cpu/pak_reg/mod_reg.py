@@ -108,7 +108,7 @@ class ClsReg(object):
         NOT_SET_Z = 0
 
         # проверить на достижение программного бряка -- регистр ВР
-        if self.reg_bp.act == 1:
+        if self.reg_bp.flag_act == 1:
             if self.reg_bp.adr_break == self.reg_pc.val:
                 print '    reg_pc BREAK!!!'
                 self.reg_bp.adr_old = self.reg_pc.val
