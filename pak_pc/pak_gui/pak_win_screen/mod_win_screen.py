@@ -81,6 +81,7 @@ class ClsWinScreen(Toplevel):
         Показывает окно экрана виртуального компьютера.
         :return:
         """
+        lang=self.root.res.lang_str.lang_dict
         self.win_screen_show = 1
         self.state('normal')
         # показать поверх всех с фокусом без удержания фокуса
@@ -88,7 +89,7 @@ class ClsWinScreen(Toplevel):
         # self.grab_set()
         #self.wait_window()
         self.root.gui.win_main.btn_show_screen[
-            'text'] = self.root.res.winMain_btnShowScreen_hide
+            'text'] = lang['win_screen_btn_close_text']
 
     def destroy(self):
         """
