@@ -13,26 +13,44 @@ class ClsLang(object):
         """
         Корневой класс для всех классов языков.
         """
-        self.vers = 2
+        self.vers = 4
         self.__lang = lang
 
         # словарь переводов
-        self.lang_dict = {}
+        self.__lang_dict = {}
 
-    @property
-    def lang(self):
+    def _get_lang_dict(self):
+        """
+        Возвращает словарь для перевода надписей.
+        """
+        return self.__lang_dict
+
+    def _set_lang_dict(self, val_dict= {}):
+        """
+        Устанавливает новый словарь для переводов.
+        """
+        if val_dict == {} or val_dict == None:
+            print 'ClsLang._set_lang_dict(): invalid val_dict language!'
+        else:
+            self.__lang_dict = val_dict
+
+    lang_dict = property(_get_lang_dict, _set_lang_dict)
+
+    def _get_lang(self):
         """
         Возвращает установленный язык.
         """
         return self.__lang
 
-    @lang.setter
-    def lang(self, val=None):
-        """'
+    def _set_lang(selfself, val='ru'):
+        """
         Устанавливает текущий язык.
         Если значение неприемлимое -- ничего не делает.
         """
         if val == None or val == '':
-            print 'ClsLang.lang_setter(): invalid val language!'
+            print 'ClsLang._set_lang(): invalid val language!'
         else:
             self.__lang = val
+
+    lang = property(_get_lang, _set_lang)
+
