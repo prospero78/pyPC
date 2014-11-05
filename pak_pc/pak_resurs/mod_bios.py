@@ -22,6 +22,9 @@ SET_VIDEO_MODE -- установка режима экрана
     reg_a=1
 
 """
+
+__version__ = 5
+
 ADR_SET_VIDEO_MODE = 2  # устанавливает видео-режим
 ADR_CLEAR_SCREEN = 5  # адрес очитски экрана
 ADR_FILL_SCREEN = 12  # адрес заливки экрана
