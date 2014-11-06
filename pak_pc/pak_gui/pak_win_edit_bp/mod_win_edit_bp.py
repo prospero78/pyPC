@@ -3,10 +3,10 @@
 Класс окна "О программе".
 '''
 
-from Tkinter import Toplevel, Frame, Button, Label, Entry, Checkbutton, IntVar
+from Tkinter import Frame, Button, Label, Entry, Checkbutton, IntVar
+from pak_pc.pak_gui.pak_widgets.mod_win import ClsWin
 
-
-class ClsWinEditBP(Toplevel):
+class ClsWinEditBP(ClsWin):
     """
     Окно редактирования свойств регистра ВР.
     """
@@ -16,15 +16,6 @@ class ClsWinEditBP(Toplevel):
         :param root:
         :return:
         """
-        def create_self():
-            """
-            Создание самого окна.
-            :return:
-            """
-            Toplevel.__init__(self)
-            self.state('withdrawn')
-            self.title(self.lang['win_edit_bp_title'])
-            self.minsize(380, 200)
 
         def create_frm_up():
             """
@@ -84,7 +75,6 @@ class ClsWinEditBP(Toplevel):
             self.chek_act_val.select()
             self.chek_act_val.pack(side='top', fill='x')
 
-
         def create_frm_btn():
             """
             Создание фрейма кнопок.
@@ -116,7 +106,7 @@ class ClsWinEditBP(Toplevel):
         self.btn_close = None
         self.lbl_adr_break = None
 
-        create_self()
+        ClsWin.__init__(self, title=self.lang['win_edit_bp_title'])
         create_frm_up()
         create_frm_btn()
 
@@ -125,9 +115,8 @@ class ClsWinEditBP(Toplevel):
         Показ окна регистра программного прерывания.
         :return:
         """
-        self.state('normal')
-        # показать поверх всех с фокусом
-        self.focus_set()
+        ClsWin.show(self)
+        # показать поверх всех
         self.grab_set()
         self.wait_window()
 
@@ -136,13 +125,5 @@ class ClsWinEditBP(Toplevel):
         Скрытие окна регистра программного прерывания.
         :return:
         """
-        self.state('withdrawn')
-        self.grab_release()
+        ClsWin.destroy(self)
         self.__root.control.win_edit_bp_hide()
-
-    def win_exit(self):
-        """
-        Полное закрытие программы.
-        :return:
-        """
-        self.destroy()
