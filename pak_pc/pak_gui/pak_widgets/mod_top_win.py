@@ -29,4 +29,3 @@ class ClsTopWin(ClsWin):
         ClsWin.show(self)
         self.grab_set()
         self.wait_window()
-
