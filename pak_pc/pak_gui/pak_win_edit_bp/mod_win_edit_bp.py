@@ -4,9 +4,9 @@
 '''
 
 from Tkinter import Frame, Button, Label, Entry, Checkbutton, IntVar
-from pak_pc.pak_gui.pak_widgets.mod_win import ClsWin
+from pak_pc.pak_gui.pak_widgets.mod_top_win import ClsTopWin
 
-class ClsWinEditBP(ClsWin):
+class ClsWinEditBP(ClsTopWin):
     """
     Окно редактирования свойств регистра ВР.
     """
@@ -106,24 +106,15 @@ class ClsWinEditBP(ClsWin):
         self.btn_close = None
         self.lbl_adr_break = None
 
-        ClsWin.__init__(self, title=self.lang['win_edit_bp_title'])
+        ClsTopWin.__init__(self, title=self.lang['win_edit_bp_title'])
         create_frm_up()
         create_frm_btn()
 
-    def show(self):
-        """
-        Показ окна регистра программного прерывания.
-        :return:
-        """
-        ClsWin.show(self)
-        # показать поверх всех
-        self.grab_set()
-        self.wait_window()
 
     def destroy(self):
         """
         Скрытие окна регистра программного прерывания.
         :return:
         """
-        ClsWin.destroy(self)
+        ClsTopWin.destroy(self)
         self.__root.control.win_edit_bp_hide()
