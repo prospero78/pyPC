@@ -122,15 +122,15 @@ class ClsCPU(multiprocessing.Process):
                         self.reset_pc()
                     elif com == 'get_info()':
                         self.send_info()
-                elif com.has_key('reg_pc'):
-                    reg = com['reg_pc']
+                elif com.has_key('reg_bp'):
+                    reg = com['reg_bp']
                     self.reg_bp.flag_act = reg['flag_act']
                     self.reg_bp.adr_proc = reg['adr_proc']
                     self.reg_bp.adr_break = reg['adr_break']
-                    reg_pc = {'flag_act': self.reg_bp.flag_act,
+                    reg_bp = {'flag_act': self.reg_bp.flag_act,
                               'adr_proc': self.reg_bp.adr_proc,
                               'adr_break': self.reg_bp.adr_break}
-                    info = {'reg_pc': reg_pc}
+                    info = {'reg_bp': reg_bp}
                     self.qinfo.put(info)
             sleep(0.1)
 
