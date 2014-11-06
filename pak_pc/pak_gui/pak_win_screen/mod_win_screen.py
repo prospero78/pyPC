@@ -3,10 +3,11 @@
 Класс окна экрана виртуального компьютера.
 '''
 
-from Tkinter import Toplevel, Frame, Button, Label
+from Tkinter import Frame, Button, Label
+from pak_pc.pak_gui.pak_widgets.mod_win import ClsWin
 
 
-class ClsWinScreen(Toplevel):
+class ClsWinScreen(ClsWin):
     """
     Показывает экран виртуального компьютера.
     """
@@ -21,10 +22,7 @@ class ClsWinScreen(Toplevel):
             Создание самого окна.
             :return:
             """
-            Toplevel.__init__(self)
-            self.state('withdrawn')
-            self.title(self.__lang['win_screen_title'])
-            self.minsize(640, 480)
+            ClsWin.__init__(self, title=self.__lang['win_screen_title'])
 
         def __create_frm_screen():
             """
@@ -82,29 +80,15 @@ class ClsWinScreen(Toplevel):
         :return:
         """
         lang = self.__lang
-        self.win_screen_show = 1
-        self.state('normal')
-        # показать поверх всех с фокусом без удержания фокуса
-        self.focus_set()
-        # self.grab_set()
-        #self.wait_window()
         self.__root.gui.win_main.btn_show_screen[
             'text'] = lang['win_screen_btn_close_text']
+        ClsWin.show(self)
 
     def destroy(self):
         """
         Скрывает окно экрана виртуального компьютера.
         :return:
         """
-        self.win_screen_show = 0
-        self.state('withdrawn')
-        self.grab_release()
         self.__root.gui.win_main.btn_show_screen['text'] = self.__lang[
             'win_main_btn_show_screen_show']
-
-    def win_exit(self):
-        """
-        Выполняется при уничтожении окна (выход из программы).
-        :return:
-        """
-        self.destroy()
+        ClsWin.destroy(self)
