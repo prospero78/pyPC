@@ -4,16 +4,16 @@
 """
 
 from Tkinter import Frame, Button, Label, Text, Scrollbar
-from pak_pc.pak_gui.pak_widgets.mod_win import ClsWin
+from pak_pc.pak_gui.pak_widgets.mod_top_win import ClsTopWin
 
-class ClsWinAbout(ClsWin):
+class ClsWinAbout(ClsTopWin):
     """
     Окно "О программе".
     """
     def __init__(self, root=None):
         """
         Сощдание окна "О программе".
-        :param root:
+        :param root: ссылка на корневой объект
         :return:
         """
 
@@ -77,17 +77,6 @@ class ClsWinAbout(ClsWin):
         self.frm_btn = None
         self.lbl_git = None
 
-        ClsWin.__init__(self, title=self.lang['win_about_name'])
+        ClsTopWin.__init__(self, title=self.lang['win_about_name'])
         create_frm_up()
         create_frm_btn()
-
-
-    def show(self):
-        """
-        Показать окно.
-        :return:
-        """
-        ClsWin.show(self)
-        # показать поверх всех
-        self.grab_set()
-        self.wait_window()
