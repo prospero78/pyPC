@@ -104,7 +104,6 @@ class ClsWinLicense(ClsWin):
         :return:
         """
         ClsWin.show(self)
-        self.focus_set()
         self.grab_set()
         self.wait_window()
 
@@ -114,6 +113,5 @@ class ClsWinLicense(ClsWin):
         :return:
         """
         ClsWin.show(self)
-        self.grab_release()
         self.__root.control.hide_win_license()
 
