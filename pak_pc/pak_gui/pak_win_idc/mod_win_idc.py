@@ -3,12 +3,13 @@
 Класс окна интерфейса дискового кластера.
 """
 
-from Tkinter import Toplevel, Frame, Button
+from Tkinter import Frame, Button
 
 from pak_pc.pak_gui.pak_widgets.mod_frm_disk_select import ClsFrmDiskSelect
+from pak_pc.pak_gui.pak_widgets.mod_win import ClsWin
 
 
-class ClsWinIDC(Toplevel):
+class ClsWinIDC(ClsWin):
     """
     Окно интерфейса дискового кластера.
     """
@@ -18,15 +19,6 @@ class ClsWinIDC(Toplevel):
         :param root:
         :return:
         """
-        def create_self():
-            """
-            Создание окна самого себя.
-            :return:
-            """
-            Toplevel.__init__(self)
-            self.state('withdrawn')
-            self.title(self.lang['win_idc_name'])
-            self.minsize(350, 200)
 
         def create_frm_btn():
             """
@@ -80,8 +72,8 @@ class ClsWinIDC(Toplevel):
         self.frm_idc = None
         self.btn_ok = None
         self.frm_btn = None
+        ClsWin.__init__(self, title=self.lang['win_idc_name'])
 
-        create_self()
         create_frm_btn()
         create_frm_idc()
 
@@ -90,9 +82,8 @@ class ClsWinIDC(Toplevel):
         Показ окна интерфейса дискового контролеера.
         :return:
         """
-        self.state('normal')
+        ClsWin.show(self)
         # показать поверх всех с фокусом
-        self.focus_set()
         self.grab_set()
         self.wait_window()
 
@@ -101,13 +92,5 @@ class ClsWinIDC(Toplevel):
         Скрытие окна интерфейса дискового контроллера.
         :return:
         """
-        self.state('withdrawn')
-        self.grab_release()
+        ClsWin.destroy(self)
 
-    def win_exit(self):
-        """
-        Уничтожение окна интерфейса дискового контроллера.
-        при закрытии всей программы.
-        :return:
-        """
-        self.destroy()
