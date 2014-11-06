@@ -5,9 +5,9 @@
 
 from Tkinter import Frame, Button, Scrollbar, Text
 
-from pak_pc.pak_gui.pak_widgets.mod_win import ClsWin
+from pak_pc.pak_gui.pak_widgets.mod_top_win import ClsTopWin
 
-class ClsWinLicense(ClsWin):
+class ClsWinLicense(ClsTopWin):
     """
     Окно для показа лицензии.
     """
@@ -93,25 +93,17 @@ class ClsWinLicense(ClsWin):
         self.btn_local_license = None
         self.frm_up = None
         self.btn_eng_licence = None
-        ClsWin.__init__(self, title=self.lang['win_license_title'])
+        ClsTopWin.__init__(self, title=self.lang['win_license_title'])
 
         create_frm_btn()
         create_frm_up()
 
-    def show(self):
-        """
-        Показать окно.
-        :return:
-        """
-        ClsWin.show(self)
-        self.grab_set()
-        self.wait_window()
 
     def destroy(self):
         """
         Скрыть окно.
         :return:
         """
-        ClsWin.show(self)
+        ClsTopWin.destroy(self)
         self.__root.control.hide_win_license()
 
