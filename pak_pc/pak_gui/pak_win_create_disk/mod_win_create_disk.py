@@ -3,12 +3,13 @@
 Класс окна экрана виртуального компьютера.
 """
 
-from Tkinter import Toplevel, Frame, Button
+from Tkinter import Frame, Button
 
 from pak_pc.pak_gui.pak_widgets.mod_frm_key_value import ClsFrmKeyValue
+from pak_pc.pak_gui.pak_widgets.mod_win import ClsWin
 
 
-class ClsWinCreateDisk(Toplevel):
+class ClsWinCreateDisk(ClsWin):
     """
     Окно для создания нового диска.
     """
@@ -18,15 +19,6 @@ class ClsWinCreateDisk(Toplevel):
         :param root:
         :return:
         """
-        def create_self():
-            """
-            Создание самого окна.
-            :return:
-            """
-            Toplevel.__init__(self)
-            self.state('withdrawn')
-            self.title(self.lang['win_create_disk_title'])
-            self.minsize(350, 200)
 
         def create_frm_btn():
             """
@@ -37,7 +29,7 @@ class ClsWinCreateDisk(Toplevel):
             self.frm_btn.pack(side='bottom', fill='x')
 
             self.btn_ok = Button(self.frm_btn, text=' Ok ',
-                                 command=self.lang['win_idc_image_create'])
+                                 command=self.__lang['win_idc_image_create'])
             self.btn_ok.pack(side='right')
 
             self.btn_cancel = Button(self.frm_btn, text='Cancel',
@@ -58,14 +50,14 @@ class ClsWinCreateDisk(Toplevel):
                                            key='Size Disk (kB)', value='1')
 
         self.__root = root
-        self.lang = root.res.lang_str.lang_dict
+        self.__lang = root.res.lang_str.lang_dict
         self.fkv_name = None
         self.btn_cancel = None
         self.fkv_size = None
         self.btn_ok = None
         self.frm_btn = None
         self.frm_disk_param = None
-        create_self()
+        ClsWin.__init__(self, title=self.__lang['win_create_disk_title'])
         create_frm_btn()
         create_frm_disk_param()
 
@@ -74,7 +66,7 @@ class ClsWinCreateDisk(Toplevel):
         Показать окно.
         :return:
         """
-        self.state('normal')
+        ClsWin.show(self)
         # показать поверх всех с фокусом
         self.focus_set()
         self.grab_set()
@@ -85,14 +77,7 @@ class ClsWinCreateDisk(Toplevel):
         Спрятать окно.
         :return:
         """
-        self.state('withdrawn')
+        ClsWin.destroy(self)
         self.grab_release()
         self.__root.gui.win_idc.focus_set()
         self.__root.gui.win_idc.grab_set()
-
-    def win_exit(self):
-        """
-        Уничтожение окна при выходе из программы.
-        :return:
-        """
-        self.destroy()
