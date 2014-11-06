@@ -38,7 +38,7 @@ class ClsFrmDiskSelect(Frame):
                 dsk = askopenfilename(defaultextension='.dsk',
                                       initialfile='./data/default.dsk',
                                       filetypes=[('Disk images', '.dsk'), ],
-                                      title=self.__root.res.winIDC_OpenDiskImage)
+                                      title=self.__root.res.lang_str.lang_dict['win_idc_open_disk_image'])
                 self.__root.gui.win_idc.lift()
                 self.__root.gui.win_idc.focus_get()
 
