@@ -67,8 +67,7 @@ class ClsWinCreateDisk(ClsWin):
         :return:
         """
         ClsWin.show(self)
-        # показать поверх всех с фокусом
-        self.focus_set()
+        # показать поверх всех
         self.grab_set()
         self.wait_window()
 
@@ -78,6 +77,5 @@ class ClsWinCreateDisk(ClsWin):
         :return:
         """
         ClsWin.destroy(self)
-        self.grab_release()
         self.__root.gui.win_idc.focus_set()
         self.__root.gui.win_idc.grab_set()
