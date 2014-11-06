@@ -49,9 +49,16 @@ class ClsWinScreen(ClsWin):
             self.frm_btn = Frame(self, border=3, relief='raised')
             self.frm_btn.pack(side='bottom', fill='x')
 
-            self.btn_screen_close = Button(self.frm_btn, text=self.__lang[
-                'win_screen_btn_close_text'], bg='gray', command=self.destroy)
+            self.btn_screen_close = Button(self.frm_btn,
+                                           text=self.__lang['win_screen_btn_close_text'],
+                                           bg='gray',
+                                           command=self.destroy)
             self.btn_screen_close.pack(side='right')
+
+            self.btn_reset = Button(self.frm_btn,
+                                    text=self.__lang['win_screen_btn_reset'],
+                                    bg='gray',
+                                    command=self.__root.control.reset_pc)
 
         self.__root = root
         self.__lang = root.res.lang_str.lang_dict
@@ -61,6 +68,7 @@ class ClsWinScreen(ClsWin):
         self.__frm_button = None
         self.__frm_screen = None
         self.frm_btn = None
+        self.btn_reset = None
 
         __create_frm_btn()
         __create_frm_screen()
