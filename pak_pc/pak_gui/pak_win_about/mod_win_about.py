@@ -3,10 +3,10 @@
 Класс окна "О программе".
 """
 
-from Tkinter import Toplevel, Frame, Button, Label, Text, Scrollbar
+from Tkinter import Frame, Button, Label, Text, Scrollbar
+from pak_pc.pak_gui.pak_widgets.mod_win import ClsWin
 
-
-class ClsWinAbout(Toplevel):
+class ClsWinAbout(ClsWin):
     """
     Окно "О программе".
     """
@@ -16,15 +16,6 @@ class ClsWinAbout(Toplevel):
         :param root:
         :return:
         """
-        def create_self():
-            """
-            Создание самого окна.
-            :return:
-            """
-            Toplevel.__init__(self)
-            self.state('withdrawn')
-            self.title(self.lang['win_about_name'])
-            self.minsize(380, 200)
 
         def create_frm_up():
             """
@@ -85,7 +76,8 @@ class ClsWinAbout(Toplevel):
         self.txt_about = None
         self.frm_btn = None
         self.lbl_git = None
-        create_self()
+
+        ClsWin.__init__(self, title=self.lang['win_about_name'])
         create_frm_up()
         create_frm_btn()
 
@@ -95,23 +87,7 @@ class ClsWinAbout(Toplevel):
         Показать окно.
         :return:
         """
-        self.state('normal')
-        # показать поверх всех с фокусом
-        self.focus_set()
+        ClsWin.show(self)
+        # показать поверх всех
         self.grab_set()
         self.wait_window()
-
-    def destroy(self):
-        """
-        Скрыть окно.
-        :return:
-        """
-        self.state('withdrawn')
-        self.grab_release()
-
-    def win_exit(self):
-        """
-        Выход из программы и уничтожение окна.
-        :return:
-        """
-        self.destroy()
