@@ -3,10 +3,11 @@
 Класс окна "Лицензия".
 """
 
-from Tkinter import Toplevel, Frame, Button, Scrollbar, Text
+from Tkinter import Frame, Button, Scrollbar, Text
 
+from pak_pc.pak_gui.pak_widgets.mod_win import ClsWin
 
-class ClsWinLicense(Toplevel):
+class ClsWinLicense(ClsWin):
     """
     Окно для показа лицензии.
     """
@@ -16,15 +17,6 @@ class ClsWinLicense(Toplevel):
         :param root:
         :return:
         """
-        def create_self():
-            """
-            Создание самого окна.
-            :return:
-            """
-            Toplevel.__init__(self)
-            self.title(self.lang['win_license_title'])
-            self.minsize(350, 240)
-            self.state('withdrawn')
 
         def create_frm_btn():
             """
@@ -93,6 +85,7 @@ class ClsWinLicense(Toplevel):
 
         self.__root = root
         self.lang = root.res.lang_str.lang_dict
+
         self.frm_btn = None
         self.txt_license = None
         self.btn_close = None
@@ -100,8 +93,8 @@ class ClsWinLicense(Toplevel):
         self.btn_local_license = None
         self.frm_up = None
         self.btn_eng_licence = None
+        ClsWin.__init__(self, title=self.lang['win_license_title'])
 
-        create_self()
         create_frm_btn()
         create_frm_up()
 
@@ -110,8 +103,7 @@ class ClsWinLicense(Toplevel):
         Показать окно.
         :return:
         """
-        self.state('normal')
-        # показать поверх всех с фокусом
+        ClsWin.show(self)
         self.focus_set()
         self.grab_set()
         self.wait_window()
@@ -121,13 +113,7 @@ class ClsWinLicense(Toplevel):
         Скрыть окно.
         :return:
         """
-        self.state('withdrawn')
+        ClsWin.show(self)
         self.grab_release()
         self.__root.control.hide_win_license()
 
-    def win_exit(self):
-        """
-        При выходе из программы  -- уничтожить это окно.
-        :return:
-        """
-        self.destroy()
