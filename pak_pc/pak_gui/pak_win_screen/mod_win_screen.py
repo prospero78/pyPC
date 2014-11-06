@@ -17,12 +17,6 @@ class ClsWinScreen(ClsWin):
         :param root: ссылка на корневой объект
         :return:
         """
-        def __create_self():
-            """
-            Создание самого окна.
-            :return:
-            """
-            ClsWin.__init__(self, title=self.__lang['win_screen_title'])
 
         def __create_frm_screen():
             """
@@ -61,13 +55,13 @@ class ClsWinScreen(ClsWin):
 
         self.__root = root
         self.__lang = root.res.lang_str.lang_dict
+        ClsWin.__init__(self, title=self.__lang['win_screen_title'])
         self.lbl_screen = None
         self.btn_screen_close = None
         self.__frm_button = None
         self.__frm_screen = None
         self.frm_btn = None
 
-        __create_self()
         __create_frm_btn()
         __create_frm_screen()
         # признак отображённости окна терминала
