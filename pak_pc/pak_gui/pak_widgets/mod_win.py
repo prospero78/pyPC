@@ -16,8 +16,9 @@ class ClsWin(Toplevel):
         :param title:
         :return:
         """
+        self.title_txt = title
         Toplevel.__init__(self)
-        self.title(title)
+        self.title(self.title_txt)
         self.state('withdrawn')
         self.minsize(640, 480)
         # признак отображённости окна терминала
