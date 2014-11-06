@@ -6,10 +6,10 @@
 from Tkinter import Frame, Button
 
 from pak_pc.pak_gui.pak_widgets.mod_frm_disk_select import ClsFrmDiskSelect
-from pak_pc.pak_gui.pak_widgets.mod_win import ClsWin
+from pak_pc.pak_gui.pak_widgets.mod_top_win import ClsTopWin
 
 
-class ClsWinIDC(ClsWin):
+class ClsWinIDC(ClsTopWin):
     """
     Окно интерфейса дискового кластера.
     """
@@ -72,25 +72,7 @@ class ClsWinIDC(ClsWin):
         self.frm_idc = None
         self.btn_ok = None
         self.frm_btn = None
-        ClsWin.__init__(self, title=self.lang['win_idc_name'])
+        ClsTopWin.__init__(self, title=self.lang['win_idc_name'])
 
         create_frm_btn()
         create_frm_idc()
-
-    def show(self):
-        """
-        Показ окна интерфейса дискового контролеера.
-        :return:
-        """
-        ClsWin.show(self)
-        # показать поверх всех с фокусом
-        self.grab_set()
-        self.wait_window()
-
-    def destroy(self):
-        """
-        Скрытие окна интерфейса дискового контроллера.
-        :return:
-        """
-        ClsWin.destroy(self)
-
