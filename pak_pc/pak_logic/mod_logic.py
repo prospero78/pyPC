@@ -19,49 +19,49 @@ class ClsLogic(object):
         """
         self.__root = root
         # локальная переменная для регистра программного счётчика
-        self.reg_pc_old = 0
+        self.__reg_pc_old = 0
         # значение регистра программного счётчика
-        self.reg_pc_val = 0
+        self.__reg_pc_val = 0
         # признаки запущенности ЦП в debug mode
         self.__debug = 0
         # признак активности регистра bp
-        self.reg_bp_act = None
+        self.__reg_bp_act = None
         # ссылка на ЦП
         self.__cpu = None
         # ссылка на графический интерфейс
-        self.gui = None
+        self.__gui = None
         # ссылка на экран виртуальной машины
-        self.win_screen = None
+        self.__win_screen = None
         # ссылка на класс ресурсов
-        self.res = None
+        self.__res = None
         # ссылка на видеокарту
-        self.video = None
+        self.__video = None
         # ссылка на языковые ресурсы
-        self.lang = None
+        self.__lang = None
         # ссылка на регистр bp, признак akt
-        self.reg_pc_act = None
+        self.__reg_pc_act = None
         # ссылка на регистр bp и его адрес прерывания
         self.reg_pc_adr_break = None
         # ссылка на регистр bp и его адрес обработки
-        self.reg_pc_adr_proc = None
+        self.__reg_pc_adr_proc = None
 
-    def set_res_str(self):
+    def __set_res_str(self):
         """
         Присваивает строковые ресурсы графическому интерфейсу.
         Процедура сделана с целью отвязки GUI от ресурсов
         (повышение атомарности класса).
         """
         win_main = self.__gui.win_main
-        win_main.btn_step['text'] = self.lang['win_main_btn_step']
-        win_main.btn_debug['text'] = self.lang['win_main_btn_debug_0']
-        win_main.btn_exit['text'] = self.lang['win_main_btn_exit_name']
-        win_main.btn_show_screen['text'] = self.lang[
+        win_main.btn_step['text'] = self.__lang['win_main_btn_step']
+        win_main.btn_debug['text'] = self.__lang['win_main_btn_debug_0']
+        win_main.btn_exit['text'] = self.__lang['win_main_btn_exit_name']
+        win_main.btn_show_screen['text'] = self.__lang[
             'win_main_btn_show_screen_show']
-        win_main.btn_reset['text'] = self.lang['win_main_btn_reset']
-        win_main.mbt_file['text'] = self.lang['win_main_mbt_file_name']
-        win_main.mbt_edit['text'] = self.lang['win_main_mbt_edit_name']
-        win_main.mbt_custom['text'] = self.lang['win_main_mbt_custom_name']
-        win_main.frm_cpu.frm_cpu_freq.lbl_key['text'] = self.lang[
+        win_main.btn_reset['text'] = self.__lang['win_main_btn_reset']
+        win_main.mbt_file['text'] = self.__lang['win_main_mbt_file_name']
+        win_main.mbt_edit['text'] = self.__lang['win_main_mbt_edit_name']
+        win_main.mbt_custom['text'] = self.__lang['win_main_mbt_custom_name']
+        win_main.frm_cpu.frm_cpu_freq.lbl_key['text'] = self.__lang[
             'win_main_frm_cpu_freq_lbl_key']
 
     def reset_pc(self):
@@ -71,7 +71,7 @@ class ClsLogic(object):
         info = {'com': 'reset'}
         self.__cpu.qcom.put(info)
 
-    def update_speed(self, dtime=0):
+    def __update_speed(self, dtime=0):
         """
         При отладке обновляет периодически монитор состояния ЦП и скорость
         виртуальной машины.
@@ -104,13 +104,13 @@ class ClsLogic(object):
         print '  ClsLogic.win_edit_bp_hide()'
         # --- обновить содержимое реального регистра программных прерываний ----
         win_edit_bp = self.__gui.win_edit_bp
-        self.reg_pc_act = win_edit_bp.flag_act.get()
+        self.__reg_pc_act = win_edit_bp.flag_act.get()
         self.reg_pc_adr_break = int(win_edit_bp.ent_adr_break_val.get())
-        self.reg_pc_adr_proc = int(win_edit_bp.ent_adr_proc_val.get())
+        self.__reg_pc_adr_proc = int(win_edit_bp.ent_adr_proc_val.get())
 
-        info = {'reg_pc': {'flag_act': self.reg_pc_act,
+        info = {'reg_pc': {'flag_act': self.__reg_pc_act,
                            'adr_break': self.reg_pc_adr_break,
-                           'adr_proc': self.reg_pc_adr_proc}}
+                           'adr_proc': self.__reg_pc_adr_proc}}
         self.__cpu.qcom.put(info)
 
         # print 'flag_act=', self.__cpu.reg_pc.get_act()
@@ -176,10 +176,10 @@ class ClsLogic(object):
                 inf = info['reg_pc']
                 # print 'detect reg_pc', inf
                 # print 'have key "reg_pc.val"!', info['reg_pc.val']
-                self.reg_pc_val = inf['val']
+                self.__reg_pc_val = inf['val']
                 self.__gui.win_main.frm_cpu.frm_reg_pc.lbl_val[
-                    'text'] = self.reg_pc_old
-                self.reg_pc_old = self.reg_pc_val
+                    'text'] = self.__reg_pc_old
+                self.__reg_pc_old = self.__reg_pc_val
             # ---------------------------
             if 'reg_bp' in info:
                 inf = info['reg_bp']
@@ -204,10 +204,10 @@ class ClsLogic(object):
             if 'dtime' in info:
                 inf = info['dtime']
                 #print 'detect dtime', inf
-                self.update_speed(dtime=inf)
-        while not self.video.vout.empty():
-            vout = self.video.vout.get()
-            self.win_screen.lbl_screen['text'] = vout
+                self.__update_speed(dtime=inf)
+        while not self.__video.vout.empty():
+            vout = self.__video.vout.get()
+            self.__win_screen.lbl_screen['text'] = vout
 
     def generate_new_disk(self):
         # print 'generate_new_disk()'
@@ -219,9 +219,11 @@ class ClsLogic(object):
         disk_name = self.__gui.win_create_disk.fkv_name.get_val()
         str_ = '0' * (2 ** 10)
         file_disk = open('./data/' + disk_name + '.dsk', 'wb')
-        for blok_kb in xrange(0, disk_size):
+        block_kb = 0
+        while block_kb < disk_size:
             file_disk.write(str_)
             file_disk.close()
+            block_kb += 1
 
     def create_new_disk(self):
         # TODO: дописать процедуру создания нового диска
@@ -253,18 +255,18 @@ class ClsLogic(object):
         """
         self.__cpu = self.__root.cpu
         self.__gui = self.__root.gui
-        self.win_screen = self.gui.win_screen
-        self.res = self.__root.res
-        self.video = self.__root.video
-        self.lang = self.__root.res.lang_str.lang_dict
-        self.video.start()
+        self.__win_screen = self.__gui.win_screen
+        self.__res = self.__root.res
+        self.__video = self.__root.video
+        self.__lang = self.__root.res.lang_str.lang_dict
+        self.__video.start()
         self.__cpu.start()
 
         info = {'com': 'get_info()'}
         self.__cpu.qcom.put(info)
 
         # присвоение строковых ресурсов
-        self.set_res_str()
+        self.__set_res_str()
 
         self.__gui.run()
 
