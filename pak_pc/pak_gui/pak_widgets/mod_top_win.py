@@ -18,8 +18,8 @@ class ClsTopWin(ClsWin):
         :type title: string
         :param title:
         """
-        self.title = title
-        ClsWin.__init__(self, title=title)
+        self.title_txt = title
+        ClsWin.__init__(self, title=self.title_txt)
 
     def show(self):
         """
