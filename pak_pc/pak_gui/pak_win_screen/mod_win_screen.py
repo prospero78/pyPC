@@ -16,29 +16,29 @@ class ClsWinScreen(Toplevel):
         :param root: ссылка на корневой объект
         :return:
         """
-        def create_self():
+        def __create_self():
             """
             Создание самого окна.
             :return:
             """
             Toplevel.__init__(self)
             self.state('withdrawn')
-            self.title(self.lang['win_screen_title'])
+            self.title(self.__lang['win_screen_title'])
             self.minsize(640, 480)
 
-        def create_frm_screen():
+        def __create_frm_screen():
             """
             Создание формы для отображения окна вывода.
             :return:
             """
-            self.frm_screen = Frame(self, border=3, relief='groove')
-            self.frm_screen.pack(fill='both', expand=1, side='top')
+            self.__frm_screen = Frame(self, border=3, relief='groove')
+            self.__frm_screen.pack(fill='both', expand=1, side='top')
 
             # self.cnvScreen=Canvas(self.frm_screen,
             #                       bg='white', width=640, height=480)
             #self.cnvScreen.pack(fill='both')
 
-            self.lbl_screen = Label(self.frm_screen, bg='black', fg='yellow',
+            self.lbl_screen = Label(self.__frm_screen, bg='black', fg='yellow',
                                     font='Consolas 10')
             self.lbl_screen.pack(fill='both')
 
@@ -49,7 +49,7 @@ class ClsWinScreen(Toplevel):
                     str_out += '\n'
             self.lbl_screen['text'] = str_out
 
-        def create_frm_btn():
+        def __create_frm_btn():
             """
             Создание фрейма с кнопками.
             :return:
@@ -57,21 +57,21 @@ class ClsWinScreen(Toplevel):
             self.frm_btn = Frame(self, border=3, relief='raised')
             self.frm_btn.pack(side='bottom', fill='x')
 
-            self.btn_screen_close = Button(self.frm_btn, text=self.lang[
+            self.btn_screen_close = Button(self.frm_btn, text=self.__lang[
                 'win_screen_btn_close_text'], bg='gray', command=self.destroy)
             self.btn_screen_close.pack(side='right')
 
         self.__root = root
-        self.lang = root.res.lang_str.lang_dict
+        self.__lang = root.res.lang_str.lang_dict
         self.lbl_screen = None
         self.btn_screen_close = None
-        self.frm_button = None
-        self.frm_screen = None
+        self.__frm_button = None
+        self.__frm_screen = None
         self.frm_btn = None
 
-        create_self()
-        create_frm_btn()
-        create_frm_screen()
+        __create_self()
+        __create_frm_btn()
+        __create_frm_screen()
         # признак отображённости окна терминала
         self.win_screen_show = 0
 
@@ -81,7 +81,7 @@ class ClsWinScreen(Toplevel):
         Показывает окно экрана виртуального компьютера.
         :return:
         """
-        lang=self.__root.res.lang_str.lang_dict
+        lang = self.__lang
         self.win_screen_show = 1
         self.state('normal')
         # показать поверх всех с фокусом без удержания фокуса
@@ -99,7 +99,7 @@ class ClsWinScreen(Toplevel):
         self.win_screen_show = 0
         self.state('withdrawn')
         self.grab_release()
-        self.__root.gui.win_main.btn_show_screen['text'] = self.lang[
+        self.__root.gui.win_main.btn_show_screen['text'] = self.__lang[
             'win_main_btn_show_screen_show']
 
     def win_exit(self):
