@@ -6,10 +6,10 @@
 from Tkinter import Frame, Button
 
 from pak_pc.pak_gui.pak_widgets.mod_frm_key_value import ClsFrmKeyValue
-from pak_pc.pak_gui.pak_widgets.mod_win import ClsWin
+from pak_pc.pak_gui.pak_widgets.mod_top_win import ClsTopWin
 
 
-class ClsWinCreateDisk(ClsWin):
+class ClsWinCreateDisk(ClsTopWin):
     """
     Окно для создания нового диска.
     """
@@ -57,7 +57,7 @@ class ClsWinCreateDisk(ClsWin):
         self.btn_ok = None
         self.frm_btn = None
         self.frm_disk_param = None
-        ClsWin.__init__(self, title=self.__lang['win_create_disk_title'])
+        ClsTopWin.__init__(self, title=self.__lang['win_create_disk_title'])
         create_frm_btn()
         create_frm_disk_param()
 
@@ -66,7 +66,7 @@ class ClsWinCreateDisk(ClsWin):
         Показать окно.
         :return:
         """
-        ClsWin.show(self)
+        ClsTopWin.show(self)
         # показать поверх всех
         self.grab_set()
         self.wait_window()
@@ -76,6 +76,6 @@ class ClsWinCreateDisk(ClsWin):
         Спрятать окно.
         :return:
         """
-        ClsWin.destroy(self)
+        ClsTopWin.destroy(self)
         self.__root.gui.win_idc.focus_set()
         self.__root.gui.win_idc.grab_set()
