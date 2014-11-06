@@ -3,7 +3,7 @@
 """
 Модуль содержит класс отображающий окно поверх всех окон.
 """
-__author__ = 'ARM'
+__author__ = 'prospero78'
 
 from pak_pc.pak_gui.pak_widgets.mod_win import ClsWin
 
@@ -19,3 +19,14 @@ class ClsTopWin(ClsWin):
         :param title:
         """
         self.title = title
+        ClsWin.__init__(self, title=title)
+
+    def show(self):
+        """
+        Показать окно.
+        :return:
+        """
+        ClsWin.show(self)
+        self.grab_set()
+        self.wait_window()
+
