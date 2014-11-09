@@ -52,6 +52,7 @@ class ClsLogic(object):
         (повышение атомарности класса).
         """
         win_main = self.__gui.win_main
+        win_main.title(self.__lang['win_main_name'])
         win_main.btn_step['text'] = self.__lang['win_main_btn_step']
         win_main.btn_debug['text'] = self.__lang['win_main_btn_debug_0']
         win_main.btn_exit['text'] = self.__lang['win_main_btn_exit_name']
@@ -63,6 +64,11 @@ class ClsLogic(object):
         win_main.mbt_custom['text'] = self.__lang['win_main_mbt_custom_name']
         win_main.frm_cpu.frm_cpu_freq.lbl_key['text'] = self.__lang[
             'win_main_frm_cpu_freq_lbl_key']
+
+        win_screen = self.__gui.win_screen
+        win_screen.btn_screen_close['text'] = self.__lang[
+            'win_screen_btn_close_text']
+        win_screen.btn_reset['text'] = self.__lang['win_screen_btn_reset']
 
     def reset_pc(self):
         """
