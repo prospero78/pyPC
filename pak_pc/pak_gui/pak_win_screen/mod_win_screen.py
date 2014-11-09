@@ -11,7 +11,7 @@ class ClsWinScreen(ClsWin):
     """
     Показывает экран виртуального компьютера.
     """
-    def __init__(self, root=None):
+    def __init__(self, root=None, title='Screen virtual PC'):
         """
         Создаёт отдельное окно под экран виртуального компьютера.
         :param root: ссылка на корневой объект
@@ -63,7 +63,7 @@ class ClsWinScreen(ClsWin):
 
         self.__root = root
         self.__lang = root.res.lang_str.lang_dict
-        ClsWin.__init__(self, title=self.__lang['win_screen_title'])
+        ClsWin.__init__(self, title=title)
         self.lbl_screen = None
         self.btn_screen_close = None
         self.__frm_button = None
