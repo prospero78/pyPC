@@ -153,7 +153,6 @@ class ClsWinMain(Tk):
 
             Tk.__init__(self)
             self.minsize(320, 400)
-            self.title(self.lang['win_main_name'])
             self.after(100, self.win_update)
 
             create_frm_btn()
