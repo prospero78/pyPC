@@ -66,6 +66,7 @@ class ClsLogic(object):
             'win_main_frm_cpu_freq_lbl_key']
 
         win_screen = self.__gui.win_screen
+        win_screen.title(self.__lang['win_screen_title'])
         win_screen.btn_screen_close['text'] = self.__lang[
             'win_screen_btn_close_text']
         win_screen.btn_reset['text'] = self.__lang['win_screen_btn_reset']
