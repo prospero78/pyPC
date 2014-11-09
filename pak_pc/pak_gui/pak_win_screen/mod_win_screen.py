@@ -59,6 +59,7 @@ class ClsWinScreen(ClsWin):
                                     text=self.__lang['win_screen_btn_reset'],
                                     bg='gray',
                                     command=self.__root.control.reset_pc)
+            self.btn_reset.pack(side='right')
 
         self.__root = root
         self.__lang = root.res.lang_str.lang_dict
