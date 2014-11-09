@@ -63,6 +63,7 @@ class ClsLangRu(ClsLang):
 
                           'win_screen_title': 'Экран pyPC',
                           'win_screen_btn_close_text': 'Закрыть',
+                          'win_screen_btn_reset': 'Сброс ПК',
 
                           'win_idc_name': 'Интерфейс дискового кластера',
                           'win_idc_open': 'Открыть',
