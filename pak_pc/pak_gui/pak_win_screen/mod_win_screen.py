@@ -50,13 +50,13 @@ class ClsWinScreen(ClsWin):
             self.frm_btn.pack(side='bottom', fill='x')
 
             self.btn_screen_close = Button(self.frm_btn,
-                                           text=self.__lang['win_screen_btn_close_text'],
+                                           text='Close',
                                            bg='gray',
                                            command=self.destroy)
             self.btn_screen_close.pack(side='right')
 
             self.btn_reset = Button(self.frm_btn,
-                                    text=self.__lang['win_screen_btn_reset'],
+                                    text='Reset PC',
                                     bg='gray',
                                     command=self.__root.control.reset_pc)
             self.btn_reset.pack(side='right')
