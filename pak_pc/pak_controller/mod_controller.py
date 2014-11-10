@@ -125,7 +125,6 @@ class ClsController(object):
         """
         self.gui = self.__root.gui
         self.logic = self.__root.logic
-        self.cpu = self.__root.cpu
         # print '.ClsController.run()'
         self.logic.run()
 
