@@ -1,3 +1,3 @@
 echo off
 cls
-python setup_cmodMemory.py build_ext --inplace
+python setup_cmod_memory.py build_ext --inplace
