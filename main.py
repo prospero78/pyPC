@@ -4,6 +4,7 @@
 """
 
 import sys
+import os
 from time import sleep
 
 __version__ = 5
