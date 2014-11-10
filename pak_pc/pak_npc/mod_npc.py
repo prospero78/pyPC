@@ -7,7 +7,6 @@
 
 import socket
 from threading import Thread
-from Queue import Queue
 from time import sleep
 from mod_connect import ClsNetStor
 
@@ -22,13 +21,6 @@ class ClsNPC(Thread):
         обеспечивает инициализацию класса сетевых межпроцессорных взаимодействий
         :return: возвращает ссылку на себя.
         """
-        
-        # создание очередей для приёма и отправки информации в дочерние процессы
-        self.cpu_in = Queue()
-        self.cpu_out = Queue()
-        
-        self.video_in = Queue()
-        self.video_out = Queue()
         
         Thread.__init__(self)
 
