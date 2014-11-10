@@ -16,9 +16,9 @@ class ClsPC(object):
         :param arg: параметры командной строки.
         """
         # импорт клаcса сетевого взаимодействия процессов
-        from pak_ipc.mod_ipc import ClsIPC
+        from pak_pc.pak_npc.mod_npc import ClsNPC
 
-        self.ipc = ClsIPC()
+        self.npc = ClsNPC()
         
         # импорт класса ресурсов
         from pak_pc.pak_resurs.mod_resurs import ClsRes
