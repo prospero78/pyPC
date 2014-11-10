@@ -1,13 +1,15 @@
 # -*- coding: utf8 -*-
 """
 Класс центрального процессора.
+Поскольку мультипроцессинг тут не катит, самое правильное --
+сделать обмен через сокеты.
 """
 
 import multiprocessing
 from time import time, sleep
 
-from pak_pc.pak_cpu.pak_mem.mod_memory import ClsMemory
-# from pakMem.cmodMemory import clsMemory
+#from pak_pc.pak_cpu.pak_mem.mod_memory import ClsMemory
+from pak_pc.pak_cpu.pak_mem.cmod_memory import ClsMemory
 from pak_pc.pak_cpu.pak_mem.mod_port import ClsPort
 from pak_pc.pak_cpu.pak_reg.mod_reg_sp import ClsRegSP
 from pak_pc.pak_cpu.pak_reg.mod_reg_pc import ClsRegPC
@@ -50,7 +52,7 @@ class ClsCPU(multiprocessing.Process):
                 #print i, BIOS[i], type(i)
                 if i > self.mem.max_adr:
                     self.mem.add_memory()
-                self.mem.adr[i] = BIOS[i]
+                self.mem.set_adr(i,BIOS[i])
             print '  = BIOS load OK ='
 
         # создание отдельного процесса
