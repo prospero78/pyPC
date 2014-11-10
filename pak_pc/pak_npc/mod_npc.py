@@ -41,7 +41,20 @@ class ClsNPC(Thread):
             """
             Устанавливает соединение видеокарты.
             """
-            pass
+            #--- определение сетевых подключений ---
+            HOST = "" # localhost
+            PORT = 58633
+            
+            # --- создание сервера для подключения
+            srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            #srv.settimeout(5)
+            
+            #--- запуск сервера ---
+            srv.bind((HOST, PORT))
+            srv.listen(1)  # сколько можно одновременно получить подключений на порт
+            self.video_socket, self.video_addr = srv.accept() # ждём когда подкючится клиент видеокарты
+            
+                
         
         def get_cpu_connect():
             """
@@ -60,10 +73,6 @@ class ClsNPC(Thread):
             Получает сообщения по сети и ставит в очередь обработки.
             """
         
-        #--- определение сетевых подключений ---
-        HOST = "" # localhost
-        PORT = 58633
-        
         
         # -- признак подключения видеокарты ---
         self.video_connect = False
@@ -71,20 +80,14 @@ class ClsNPC(Thread):
         # -- признак подключения ЦП ---
         self.cpu_connect = False
         
-        # --- создание сервера для подключения
-        srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        #srv.settimeout(5)
-        
-        #--- запуск сервера ---
-        srv.bind((HOST, PORT))
         
         #--- счётчик циклов и цикл
         count_loop = 0
-        while True:
+        
             print 'Name = ', self.getName(), count_loop    # получить имя системы и счётчик циклов
             print "Слушаю порт".decode('utf8'), PORT
-            srv.listen(1)  # сколько можно одновременно получить подключений на порт
-            sock, addr = srv.accept() # ждём когда вылезит клиент
+            
+            
             while 1:
                 pal = sock.recv(1024) # получить данные
                 if not pal: # если данных нет -- не продолжать
