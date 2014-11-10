@@ -1,5 +1,4 @@
 # -*- coding: utf8 -*-
-
 """
 Главный класс общей логики.
 """
@@ -25,8 +24,6 @@ class ClsLogic(object):
         self.__debug = 0
         # признак активности регистра bp
         self.__reg_bp_act = None
-        # ссылка на ЦП
-        self.__cpu = None
         # ссылка на графический интерфейс
         self.__gui = None
         # ссылка на экран виртуальной машины
@@ -43,6 +40,10 @@ class ClsLogic(object):
         self.reg_pc_adr_break = None
         # ссылка на регистр bp и его адрес обработки
         self.__reg_pc_adr_proc = None
+        # значение частоты ЦП текущее
+        self.__cpu_frec = None
+        # значение частоты ЦП старое
+        self.__cpu_frec_old = None
 
     def __set_res_str(self):
         """
@@ -75,24 +76,27 @@ class ClsLogic(object):
         Сброс состояния виртуального компьютера.
         """
         info = {'com': 'reset'}
-        self.__cpu.qcom.put(info)
+        self.npc.cpu_out.put(info)
 
     def __update_speed(self, dtime=0):
         """
         При отладке обновляет периодически монитор состояния ЦП и скорость
         виртуальной машины.
         :type self: object
-        :param dtime: производит замер по времени между циклами исполнения
+        :param dtime: время между циклами исполнения
         блока команд ЦП.
         """
-        freq_cpu = 1.0 / dtime * self.__cpu.time_code
-        # print dtime, self.__cpu.frec
-        res = freq_cpu / self.__cpu.frec
-        if res > 1.1 or res < 0.9:
-            if freq_cpu > self.__cpu.frec:
-                self.__cpu.frec += int(freq_cpu / 100)
-            elif freq_cpu < self.__cpu.frec:
-                self.__cpu.frec -= int(freq_cpu / 100)
+        # получить текущее значение количества выполненных команд за 1 сек
+        num_command = self.npc.cpu_in['tik_command']
+        cpu_frec = 1.0 / dtime * num_command
+        # print dtime, self.npc.cpu_in~frec
+        
+        # вычислить отношение числа исполненных команд
+        # предыдущего периода к текущему
+        rel_frec = self.__cpu_frec_old / self.__cpu_frec
+        if rel_frec > 1.1 or rel_frec < 0.9:
+            self.__cpu_freq_old = self.__cpu_frec
+            self.__cpu_freq = int(cpu_freq / 100)
             if freq_cpu > 1000:
                 freq_cpu = str(int(self.__cpu.frec / 1000)) + ' kHz'
             else:
@@ -119,7 +123,7 @@ class ClsLogic(object):
                            'adr_proc': self.__reg_pc_adr_proc}}
         self.__cpu.qcom.put(info)
 
-        # print 'flag_act=', self.__cpu.reg_pc.get_act()
+        # print 'flag_act=', self.npc.cpu_in.reg_pc.get_act()
         #self.update_monitor()
 
     def show_win_edit_bp(self):
@@ -144,7 +148,7 @@ class ClsLogic(object):
             self.__debug = 0
             self.__gui.win_main.btn_debug['text'] = lang['win_main_btn_debug_0']
             info = {'com': 'debug(off)'}
-        self.__cpu.qcom.put(info)
+        self.npc.cpu_out.put(info)
 
     def step_cpu(self):
         """
@@ -154,7 +158,7 @@ class ClsLogic(object):
         # print 'ClsLogic.step_cpu()'
         # self.pre_update_monitor()
         info = {'com': 'step()'}
-        self.__cpu.qcom.put(info)
+        self.npc.cpu_out.put(info)
         #self.post_update_monitor()
 
     def update_monitor(self):
@@ -164,8 +168,8 @@ class ClsLogic(object):
         1. ЦП.
         2. Видеокарта.
         """
-        while not self.__cpu.qinfo.empty():
-            info = self.__cpu.qinfo.get()
+        while not self.npc.cpu_in.empty():
+            info = self.npc.cpu_in.get()
             if 'reg_a' in info:
                 inf = info['reg_a']
                 # print 'detect reg_a', inf
@@ -211,8 +215,8 @@ class ClsLogic(object):
                 inf = info['dtime']
                 #print 'detect dtime', inf
                 self.__update_speed(dtime=inf)
-        while not self.__video.vout.empty():
-            vout = self.__video.vout.get()
+        while not self.npc.video_in.empty():
+            vout = self.npc.video_out.get()
             self.__win_screen.lbl_screen['text'] = vout
 
     def generate_new_disk(self):
@@ -265,16 +269,12 @@ class ClsLogic(object):
         self.__res = self.__root.res
         #self.__video = self.__root.video
         self.__lang = self.__root.res.lang_str.lang_dict
+        self.npc=self.__root.npc
         #self.__video.start()
-        #self.__cpu.start()
-
-        import os
-        os.environ['PYTHONPATH'] = '"' + os.getcwdu() + '\\pak_pc\\pak_cpu\\pak_idc";' + os.environ['PYTHONPATH']
-        print os.environ['PYTHONPATH']
-        from pak_ipc.mod_ipc import ClsIPC
+        self.npc.start()
 
         info = {'com': 'get_info()'}
-        self.__cpu.qcom.put(info)
+        self.npc.cpu_out.put(info)
 
         # присвоение строковых ресурсов
         self.__set_res_str()
