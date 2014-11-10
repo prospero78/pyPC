@@ -1,4 +1,12 @@
 # -*- coding: utf8 -*-
 """
-Класс сохраняет данные о подключении.
+Модуль предоставляет класс для сохранения данных о подключении.
 """
+
+class ClsStoreNetConnect:
+    """
+    Класс хранит данные о подключении.
+    """
+    def __init__(self, adr = None, port = None):
+        self.adr = adr
+        self.port = port
