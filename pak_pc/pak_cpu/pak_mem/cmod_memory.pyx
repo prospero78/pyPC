@@ -1,25 +1,63 @@
 # -*- coding: utf8 -*-
-'''
-Класс памяти с компиляцией. Будем со временем дорабатывать.
-'''
-DEF all_mem=2 ** 22  # 4M
+"""
+Класс памяти. Будем со временем дорабатывать.
+"""
+DEF MAX_ADR=2 ** 22
+cdef struc Mem:
+    int adr[MAX_ADR]
 
-cdef class clsMemory:
-    cdef int adr[all_mem]  # 2**24 16M
-    cdef int max_adr
-    def __init__(self, long max_adr=all_mem):
+cdef class ClsMemory:
+    """
+    Описывает память в виде болчного устройства.
+    """
+    cdef public Mem *mem
+    def __init__(self, int max_adr=2 ** 22):
+        """
+        Начальная инициализация памяти.
+        :param max_adr:
+        :return:
+        """
+        # максимально допустимое количество памяти
         self.max_adr = max_adr
-        #cdef int adr[2**24] # 2**24
+        # текущее количество памяти
+        self.act_mem = 1024
         # инициализация памяти виртуального компьютера
-        cdef long i
-        for i in xrange(0, max_adr):
+        self.adr = {}
+        cdef int i = 0
+        for i in xrange(0, self.act_mem):
             self.adr[i] = 0
 
-    cpdef int get_adr(self, int adr):
+    def get_adr(self, adr):
+        """
+        Возвращает значение ячейки памяти по адресу (для cython)
+        :param adr:
+        :return:
+        """
         return self.adr[adr]
 
-    cpdef set_adr(self, int adr, int val):
+    def set_adr(self, adr, val):
+        """
+        Устанавливает ячейку памяти в значение. (для cython)
+        :param adr:
+        :param val:
+        :return:
+        """
         self.adr[adr] = val
 
-    cpdef int get_max_adr(self):
+    def get_max_adr(self):
+        """
+        Возвращает максимально-доступный адрес памяти.
+        Выше его быть памяти в любом случае не может.
+        :return:
+        """
         return self.max_adr
+
+    def add_memory(self):
+        """
+        Добавляет памяти блоками по 1024 ячейки (НЕ БАЙТА!!!)
+        :return:
+        """
+        if self.act_mem < self.max_adr - 1024:
+            for i in xrange(self.act_mem, self.act_mem + 1024):
+                self.adr[i] = 0
+            self.act_mem += 1024
