@@ -9,5 +9,5 @@ cOptions.annotate = True
 
 setup(
     cmdclass={'build_ext': build_ext},
-    ext_modules=[Extension("cmodMemory", ["cmodMemory.pyx"])]
+    ext_modules=[Extension("cmod_memory", ["cmod_memory.pyx"])]
 )
