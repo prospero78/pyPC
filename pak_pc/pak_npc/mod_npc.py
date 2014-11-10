@@ -37,39 +37,66 @@ class ClsNPC(Thread):
         Метод зациклен.
         """
         
+        def get_video_connect():
+            """
+            Устанавливает соединение видеокарты.
+            """
+            pass
+        
+        def get_cpu_connect():
+            """
+            Устанавливает соединение с ЦП.
+            """
+            pass
+        
+        def send_info():
+            """
+            Отправляет сообщения из очередей сообщений.
+            """
+            pass
+            
+        def get_info():
+            """
+            Получает сообщения по сети и ставит в очередь обработки.
+            """
+        
         #--- определение сетевых подключений ---
         HOST = "" # localhost
         PORT = 58633
+        
+        
+        # -- признак подключения видеокарты ---
+        self.video_connect = False
+        
+        # -- признак подключения ЦП ---
+        self.cpu_connect = False
         
         # --- создание сервера для подключения
         srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         #srv.settimeout(5)
         
-        while 1:
-            try:
-                #--- запуск сервера ---
-                srv.bind((HOST, PORT))
-                
-                #--- счётчик циклов и цикл
-                count_loop = 0
-                while True:
-                    print 'Name = ', self.getName(), count_loop    # получить имя системы и счётчик циклов
-                    print "Слушаю порт".decode('utf8'), PORT
-                    srv.listen(1)  # сколько можно одновременно получить подключений на порт
-                    sock, addr = srv.accept() # ждём когда вылезит клиент
-                    while 1:
-                        pal = sock.recv(1024) # получить данные
-                        if not pal: # если данных нет -- не продолжать
-                            print 'Not reada net data'
-                        else:
-                            print "Получено от %s:%s:" % addr, pal
-                            lap = do_something(pal)
-                            print "Отправлено %s:%s:" % addr, lap
-                            sock.send(lap)
-                        sock.close()
-            finally:
-                sleep(1)
-                count_loop += 1
+        #--- запуск сервера ---
+        srv.bind((HOST, PORT))
+        
+        #--- счётчик циклов и цикл
+        count_loop = 0
+        while True:
+            print 'Name = ', self.getName(), count_loop    # получить имя системы и счётчик циклов
+            print "Слушаю порт".decode('utf8'), PORT
+            srv.listen(1)  # сколько можно одновременно получить подключений на порт
+            sock, addr = srv.accept() # ждём когда вылезит клиент
+            while 1:
+                pal = sock.recv(1024) # получить данные
+                if not pal: # если данных нет -- не продолжать
+                    print 'Not reada net data'
+                else:
+                    print "Получено от %s:%s:" % addr, pal
+                    lap = do_something(pal)
+                    print "Отправлено %s:%s:" % addr, lap
+                    sock.send(lap)
+                    sock.close()
+                    sleep(1)
+                    count_loop += 1
 
 if __name__=='__main__':
     app=ClsNPC()
