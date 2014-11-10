@@ -15,20 +15,15 @@ class ClsPC(object):
         Создание главного класса-приложения.
         :param arg: параметры командной строки.
         """
+        # импорт клаcса сетевого взаимодействия процессов
+        from pak_ipc.mod_ipc import ClsIPC
+
+        self.ipc = ClsIPC()
+        
         # импорт класса ресурсов
         from pak_pc.pak_resurs.mod_resurs import ClsRes
 
         self.res = ClsRes(root=self, lang='ru', arg=arg)
-
-        # импорт класса видеокарты
-        #from pak_pc.pak_cpu.pak_video.mod_video import ClsVideo
-
-        #self.video = ClsVideo()
-
-        # импорт клаcса центрального процессора
-        from pak_pc.pak_cpu.mod_cpu import ClsCPU
-
-        self.cpu = ClsCPU()
 
         # импорт класса общей логики
         from pak_pc.pak_logic.mod_logic import ClsLogic
