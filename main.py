@@ -4,18 +4,26 @@
 """
 
 import sys
+from time import sleep
 
-__version__ = 4
+__version__ = 5
 
 
 def main():
     """
-    Импортирует главный класс, и запускает приложение.
+    Импортирует главные классы, и запускает приложение.
+    1. ClsPC
+    3. ClsCPU
+    2. ClsVideo
     """
     arg = sys.argv
     from pak_pc import ClsPC
 
     app = ClsPC(arg=arg)
+    os.system('start main_video.py')
+    sleep(0.3)
+    os.system('start main_cpu.py')
+    sleep(0.3)
     app.run()
 
 
