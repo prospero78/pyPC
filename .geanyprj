@@ -1,0 +1,8 @@
+
+[project]
+name=pak_cpu
+description=
+base_path=./
+run_cmd=
+regenerate=true
+type=Python
