@@ -9,6 +9,7 @@ import socket
 from threading import Thread
 from Queue import Queue
 from time import sleep
+from mod_connect import ClsNetStor
 
 
 class ClsNPC(Thread):
@@ -43,7 +44,7 @@ class ClsNPC(Thread):
             """
             #--- определение сетевых подключений ---
             HOST = "" # localhost
-            PORT = 58633
+            PORT = 58633 # порт, на который должно прийти подключение от видеокарты.
             
             # --- создание сервера для подключения
             srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -80,13 +81,17 @@ class ClsNPC(Thread):
         # -- признак подключения ЦП ---
         self.cpu_connect = False
         
+        # --- данные по подключению видеокарты ---
+        self.net_video = ClsNetStor()
+        
+        # --- данные по подключению ЦП ---
+        self.net_cpu = ClsNetStor()
         
         #--- счётчик циклов и цикл
         count_loop = 0
         
             print 'Name = ', self.getName(), count_loop    # получить имя системы и счётчик циклов
             print "Слушаю порт".decode('utf8'), PORT
-            
             
             while 1:
                 pal = sock.recv(1024) # получить данные
