@@ -260,7 +260,6 @@ class ClsLogic(object):
         Добавляет в системное окружение для правильного импорта пакета
         межсетевого взаимодействия отдельных частей программы.
         """
-        self.__cpu = self.__root.cpu
         self.__gui = self.__root.gui
         self.__win_screen = self.__gui.win_screen
         self.__res = self.__root.res
