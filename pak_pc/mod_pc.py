@@ -13,7 +13,7 @@ class ClsPC(object):
     def __init__(self, arg=None):
         """
         Создание главного класса-приложения.
-        :param arg:
+        :param arg: параметры командной строки.
         """
         # импорт класса ресурсов
         from pak_pc.pak_resurs.mod_resurs import ClsRes
@@ -21,15 +21,14 @@ class ClsPC(object):
         self.res = ClsRes(root=self, lang='ru', arg=arg)
 
         # импорт класса видеокарты
-        from pak_pc.pak_cpu.pak_video.mod_video import ClsVideo
+        #from pak_pc.pak_cpu.pak_video.mod_video import ClsVideo
 
-        self.video = ClsVideo()
+        #self.video = ClsVideo()
 
         # импорт клаcса центрального процессора
         from pak_pc.pak_cpu.mod_cpu import ClsCPU
 
-        self.cpu = ClsCPU(vcom=self.video.vcom,
-                          vinfo=self.video.vinfo)
+        self.cpu = ClsCPU()
 
         # импорт класса общей логики
         from pak_pc.pak_logic.mod_logic import ClsLogic
