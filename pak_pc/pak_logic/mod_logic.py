@@ -264,15 +264,15 @@ class ClsLogic(object):
         self.__gui = self.__root.gui
         self.__win_screen = self.__gui.win_screen
         self.__res = self.__root.res
-        self.__video = self.__root.video
+        #self.__video = self.__root.video
         self.__lang = self.__root.res.lang_str.lang_dict
-        self.__video.start()
+        #self.__video.start()
         #self.__cpu.start()
 
         import os
         os.environ['PYTHONPATH'] = '"' + os.getcwdu() + '\\pak_pc\\pak_cpu\\pak_idc";' + os.environ['PYTHONPATH']
         print os.environ['PYTHONPATH']
-        from mod_ipc import ClsIPC
+        from pak_ipc.mod_ipc import ClsIPC
 
         info = {'com': 'get_info()'}
         self.__cpu.qcom.put(info)
