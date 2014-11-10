@@ -1,7 +1,7 @@
 # -*- coding: utf8 -*-
 """
 Модуль предоставляющий класс для работы хост-процесса с
-множеством процессов по сетевому стеку. Это будет
+множеством процессов по сети. Это будет
 универсальное и переносимое решение.
 """
 
@@ -11,7 +11,7 @@ from Queue import Queue
 from time import sleep
 
 
-class ClsIPC(Thread):
+class ClsNPC(Thread):
     """
     Класс обеспечивает взаимодействие различных частей python и cython кода через различные процессы.
     Использование мультипроцессинга напрямую вызывает дикие проблемы.
@@ -21,8 +21,15 @@ class ClsIPC(Thread):
         обеспечивает инициализацию класса сетевых межпроцессорных взаимодействий
         :return: возвращает ссылку на себя.
         """
+        
+        # создание очередей для приёма и отправки информации в дочерние процессы
+        self.cpu_in = Queue()
+        self.cpu_out = Queue()
+        
+        self.video_in = Queue()
+        self.video_out = Queue()
+        
         Thread.__init__(self)
-        self.start()
 
     def run(self):
         """
@@ -65,4 +72,5 @@ class ClsIPC(Thread):
                 count_loop += 1
 
 if __name__=='__main__':
-    app=ClsIPC()
+    app=ClsNPC()
+    app.start()
