@@ -258,7 +258,8 @@ class ClsLogic(object):
     def run(self):
         """
         Вызывается при запуске всей системы.
-
+        Добавляет в системное окружение для правильного импорта пакета
+        межсетевого взаимодействия отдельных частей программы.
         """
         self.__cpu = self.__root.cpu
         self.__gui = self.__root.gui
@@ -268,6 +269,9 @@ class ClsLogic(object):
         self.__lang = self.__root.res.lang_str.lang_dict
         self.__video.start()
         self.__cpu.start()
+
+        import os
+        os.environ['PAK_IPC'] = './pak_pc/pak_cpu/'
 
         info = {'com': 'get_info()'}
         self.__cpu.qcom.put(info)
