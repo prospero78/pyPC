@@ -2,15 +2,21 @@
 """
 Класс памяти. Будем со временем дорабатывать.
 """
+
+#from cpython cimport array
+#from array import array
+
 DEF MAX_ADR=2 ** 22
-cdef struc Mem:
-    int adr[MAX_ADR]
+
+#cdef struc Mem:
+#    int adr[MAX_ADR]
 
 cdef class ClsMemory:
     """
     Описывает память в виде болчного устройства.
     """
-    cdef public Mem *mem
+    #cdef public Mem *mem
+    cdef int adr[MAX_ADR]
     def __init__(self, int max_adr=2 ** 22):
         """
         Начальная инициализация памяти.
@@ -22,7 +28,7 @@ cdef class ClsMemory:
         # текущее количество памяти
         self.act_mem = 1024
         # инициализация памяти виртуального компьютера
-        self.adr = {}
+        #self.adr = {}
         cdef int i = 0
         for i in xrange(0, self.act_mem):
             self.adr[i] = 0
