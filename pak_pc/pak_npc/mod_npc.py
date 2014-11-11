@@ -29,6 +29,16 @@ class ClsNPC(Thread):
         :return: возвращает ссылку на себя.
         """
 
+        Thread.__init__(self)
+        self.video = ClsNetStore()
+        self.cpu = ClsNetStore()
+
+    def run(self):
+        """
+        Метод исполняется при запуске отдельного потока.
+        Метод зациклен.
+        """
+
         def get_video_connect():
             """
             Устанавливает соединение видеокарты.
@@ -43,37 +53,17 @@ class ClsNPC(Thread):
             # сколько можно одновременно получить подключений на порт
             srv.listen(1)
             # ждём когда подкючится клиент видеокарты
-            self.video.port, self.video.adr = srv.accept()
-            net_data = self.video.port.recv(1024) # получить данные
+            self.video.conn, self.video.adr = srv.accept()
+            net_data = self.video.conn.recv(1024) # получить данные
             print 'conn data =', net_data
             srv.close()
-            self.video.port.close()
+            self.video.conn.close()
 
         def get_cpu_connect():
             """
             Устанавливает соединение с ЦП.
             """
             pass
-
-        Thread.__init__(self)
-        self.video = ClsNetStore()
-        self.cpu = ClsNetStore()
-
-        # -- признак подключения видеокарты ---
-        self.video_connect = False
-
-        # -- признак подключения ЦП ---
-        self.cpu_connect = False
-
-        # --- получить подключение от видеокарты ---
-        get_video_connect()
-        get_cpu_connect()
-
-    def run(self):
-        """
-        Метод исполняется при запуске отдельного потока.
-        Метод зациклен.
-        """
 
         def send_info():
             """
@@ -86,6 +76,10 @@ class ClsNPC(Thread):
             Получает сообщения по сети и ставит в очередь обработки.
             """
 
+        # --- получить подключение от видеокарты ---
+        get_video_connect()
+        # --- получить подключение от ЦП ---
+        get_cpu_connect()
         #--- счётчик циклов и цикл
         count_loop = 0
 
