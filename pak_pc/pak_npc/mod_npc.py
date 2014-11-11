@@ -46,9 +46,7 @@ class ClsNPC(Thread):
             srv.bind((HOST, PORT))
             srv.listen(1)  # сколько можно одновременно получить подключений на порт
             self.video_socket, self.video_addr = srv.accept() # ждём когда подкючится клиент видеокарты
-            
-                
-        
+
         def get_cpu_connect():
             """
             Устанавливает соединение с ЦП.
@@ -78,6 +76,9 @@ class ClsNPC(Thread):
         
         # --- данные по подключению ЦП ---
         self.net_cpu = ClsNetStor()
+
+        # --- получить подключение от видеокарты ---
+        get_video_connect()
         
         #--- счётчик циклов и цикл
         count_loop = 0
