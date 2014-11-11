@@ -76,7 +76,7 @@ class ClsLogic(object):
         Сброс состояния виртуального компьютера.
         """
         info = {'com': 'reset'}
-        self.npc.cpu_out.put(info)
+        self.npc.cpu.put(info)
 
     def __update_speed(self, dtime=0):
         """
@@ -148,7 +148,7 @@ class ClsLogic(object):
             self.__debug = 0
             self.__gui.win_main.btn_debug['text'] = lang['win_main_btn_debug_0']
             info = {'com': 'debug(off)'}
-        self.npc.cpu_out.put(info)
+        self.npc.cpu.put(info)
 
     def step_cpu(self):
         """
@@ -158,7 +158,7 @@ class ClsLogic(object):
         # print 'ClsLogic.step_cpu()'
         # self.pre_update_monitor()
         info = {'com': 'step()'}
-        self.npc.cpu_out.put(info)
+        self.npc.cpu.put(info)
         #self.post_update_monitor()
 
     def update_monitor(self):
@@ -168,8 +168,8 @@ class ClsLogic(object):
         1. ЦП.
         2. Видеокарта.
         """
-        while not self.npc.cpu_in.empty():
-            info = self.npc.cpu_in.get()
+        while not self.npc.cpu.in_.empty():
+            info = self.npc.cpu.in_.get()
             if 'reg_a' in info:
                 inf = info['reg_a']
                 # print 'detect reg_a', inf
@@ -215,8 +215,8 @@ class ClsLogic(object):
                 inf = info['dtime']
                 #print 'detect dtime', inf
                 self.__update_speed(dtime=inf)
-        while not self.npc.video_in.empty():
-            vout = self.npc.video_out.get()
+        while not self.npc.video.in_.empty():
+            vout = self.npc.video.out.get()
             self.__win_screen.lbl_screen['text'] = vout
 
     def generate_new_disk(self):
@@ -274,7 +274,7 @@ class ClsLogic(object):
         self.npc.start()
 
         info = {'com': 'get_info()'}
-        self.npc.cpu_out.put(info)
+        self.npc.cpu.put(info)
 
         # присвоение строковых ресурсов
         self.__set_res_str()
