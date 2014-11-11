@@ -44,6 +44,10 @@ class ClsNPC(Thread):
             srv.listen(1)
             # ждём когда подкючится клиент видеокарты
             self.video.port, self.video.adr = srv.accept()
+            net_data = self.video.port.recv(1024) # получить данные
+            print 'conn data =', net_data
+            srv.close()
+            self.video.port.close()
 
         def get_cpu_connect():
             """
@@ -90,17 +94,10 @@ class ClsNPC(Thread):
         print "Слушаю порт".decode('utf8'), PORT_VIDEO
 
         while 1:
-            pal = sock.recv(1024) # получить данные
-            if not pal: # если данных нет -- не продолжать
-                print 'Not reada net data'
-            else:
-                print "Получено от %s:%s:" % addr, pal
-                lap = do_something(pal)
-                print "Отправлено %s:%s:" % addr, lap
-                sock.send(lap)
-                sock.close()
-                sleep(1)
-                count_loop += 1
+            get_info()
+            send_info()
+            sleep(1)
+            count_loop += 1
 
 if __name__ == '__main__':
     APP = ClsNPC()
