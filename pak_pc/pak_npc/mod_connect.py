@@ -24,15 +24,22 @@ class ClsNetStore(object):
 
         # создание очередей для приёма и отправки информации в дочерние
         # процессы
-        self.out = Queue()
-        self.in_ = Queue()
+        self.__out = Queue()
+        self.__in = Queue()
 
-    def put (self, info=None):
+    def put(self, info=None):
         """
         Помещает информацию в исходящую очередь.
         """
-        if (info is dict) and (len(info) > 1):
+        if (info is dict) and not info.empty():
             self.out.append(info)
+    
+    def get(self):
+        """
+        Извлекает из очереди информацию.
+        """
+        if not self.__in.empty():
+            return self.__out[-1]
 
     @property
     def connecing(self):
