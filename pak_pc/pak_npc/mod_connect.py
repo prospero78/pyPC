@@ -26,6 +26,15 @@ class ClsNetStore(object):
         # процессы
         self.__out = Queue()
         self.__in = Queue()
+        
+    def empty_in(self):
+        """
+        Возвращает True если входная очередь пуста
+        """
+        if self.__in.empty():
+            return True
+        else:
+            return False
 
     def put(self, info=None):
         """
