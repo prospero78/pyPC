@@ -4,6 +4,8 @@
 """
 
 from Queue import Queue
+from time import sleep
+from Threading import Thread
 
 class ClsNetStore(object):
     """
@@ -16,7 +18,10 @@ class ClsNetStore(object):
         :param port: сетевой порт.
         """
         # сетевые адрес и порт
-        self.conn = adr
+        self.adr = adr
+        
+        # ссылка на объект сетевого сокета
+        self.conn = None
         self.port = port
 
         # признак установленного подключения
@@ -26,6 +31,16 @@ class ClsNetStore(object):
         # процессы
         self.__out = Queue()
         self.__in = Queue()
+        
+    def transmit(self):
+        """
+        Метод топравляет по назначению и принимает от адресата
+        необходимую информацию из очередей.
+        """
+        while self.__running:
+            while not self.__out.empty():
+                self.conn.resv(self.__out.get())
+                sleep(0.1)
         
     def empty_in(self):
         """
