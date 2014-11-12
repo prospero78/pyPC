@@ -168,7 +168,7 @@ class ClsLogic(object):
         1. ЦП.
         2. Видеокарта.
         """
-        while not self.npc.cpu.empty():
+        while not self.npc.cpu.empty_in():
             info = self.npc.cpu.get()
             if 'reg_a' in info:
                 inf = info['reg_a']
@@ -215,7 +215,7 @@ class ClsLogic(object):
                 inf = info['dtime']
                 #print 'detect dtime', inf
                 self.__update_speed(dtime=inf)
-        while not self.npc.video.in_.empty():
+        while not self.npc.video.empty_in():
             vout = self.npc.video.out.get()
             self.__win_screen.lbl_screen['text'] = vout
 
