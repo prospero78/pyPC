@@ -168,8 +168,8 @@ class ClsLogic(object):
         1. ЦП.
         2. Видеокарта.
         """
-        while not self.npc.cpu.in_.empty():
-            info = self.npc.cpu.in_.get()
+        while not self.npc.cpu.empty():
+            info = self.npc.cpu.get()
             if 'reg_a' in info:
                 inf = info['reg_a']
                 # print 'detect reg_a', inf
