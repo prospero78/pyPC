@@ -3,6 +3,8 @@
 Фрейм для кнопок.
 """
 
+from Tkinter import Frame, Button
+
 class clsFrmButton(Frame):
     """
     Класс добавляет фрейм с кнопками для пересчёта значений.
