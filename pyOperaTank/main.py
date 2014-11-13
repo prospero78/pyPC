@@ -25,25 +25,7 @@ if True: # ведёт статистику по боям
     stat_los_ver = [113, 113, 114]
 
 import sys
-from Tkinter import LabelFrame, Entry, Label, Frame
-
-class ClsKeyValue(Frame):
-    """
-    Класс обеспечивает пару "ключ:значение"
-    """
-    def __init__(self, root=None, key='key', value='None'):
-        Frame.__init__(self, master=root, border=3, relief='groove')
-        self.pack(side='top', fill='x')
-        
-        self.key=key
-        self.value=value
-        
-        self.lblKey = Label(master=self, text=key)
-        self.lblKey.pack(side='left', fill='x')
-        
-        self.entValue = Entry(master=self)
-        self.entValue.pack(side='right')
-        self.entValue.insert(0, value)
+from Tkinter import Entry, Label, Frame
 
 class ClsFrmRight(Frame):
     """
