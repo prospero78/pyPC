@@ -3,6 +3,8 @@
 Фрейм отображающий базовый класс танка.
 """
 
+from Tkinter import LabelFrame
+
 class clsLfrTank(LabelFrame):
     """
     Класс создаёт фрейм для редактирования характеристик танка.
