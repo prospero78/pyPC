@@ -5,6 +5,8 @@
 
 from Tkinter import LabelFrame
 
+from pakTank.pakGUI.modFrmKeyValue import clsFrmKeyValue
+
 class clsLfrTank(LabelFrame):
     """
     Класс создаёт фрейм для редактирования характеристик танка.
@@ -20,8 +22,8 @@ class clsLfrTank(LabelFrame):
                             font='Consolas 12 bold')
         self.pack(side='top', fill='y')
         
-        self.kvAtak = clsKeyValue(root=self, key='Атака', value=tank[0])
-        self.kvBron = clsKeyValue(root=self, key='Броня', value=tank[1])
-        self.kvBron = clsKeyValue(root=self, key='Точность', value=tank[2])
-        self.kvBron = clsKeyValue(root=self, key='Прочность', value=tank[3])
-        self.kvMosh = clsKeyValue(root=self, key='Мощность*', value='?')
+        self.kvAtak = clsFrmKeyValue(root=self, key='Атака', value=tank.atak)
+        self.kvBron = clsFrmKeyValue(root=self, key='Броня', value=tank.bron)
+        self.kvBron = clsFrmKeyValue(root=self, key='Точность', value=tank.toch)
+        self.kvBron = clsFrmKeyValue(root=self, key='Прочность', value=tank.proch)
+        self.kvMosh = clsFrmKeyValue(root=self, key='Мощность*', value=tank.name)
