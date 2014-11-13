@@ -25,7 +25,7 @@ if True: # ведёт статистику по боям
     stat_los_ver = [113, 113, 114]
 
 import sys
-from Tkinter import Tk, LabelFrame, Entry, Label, Frame, Button
+from Tkinter import LabelFrame, Entry, Label, Frame, Button
 
 class ClsKeyValue(Frame):
     """
@@ -110,24 +110,6 @@ class ClsFrmRight(Frame):
         self.pack(side='right', fill='y')
         self.lfrTank1 = ClsLfrTank(root=self, label = 'Противник 1', tank=tank1)
         self.lfrTank2 = ClsLfrTank(root=self, label = 'Противник 2', tank=tank2)
-
-class ClsWinMain(Tk):
-    """
-    Класс обеспечивает графику пользователя.
-    """
-    def __init__(self, my_tank=None, tank1=None, tank2=None):
-        Tk.__init__(self)
-        self.title('Калькулятор танков     ===build. 009===')
-        self.minsize(320, 240)
-        self.frmButton = ClsFrmButton(root=self)
-        self.frmLeft = ClsFrmLeft(root=self, my_tank=my_tank)
-        self.frmRight = ClsFrmRight(root=self, tank1=tank1, tank2=tank2)
-        self.after(1000, self.update_sound)
-        self.mainloop()
-        
-    def update_sound(self):
-        print 'aaa'
-        self.after(1000, self.update_sound)
 
 def main():
     """
