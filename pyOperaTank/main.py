@@ -25,7 +25,7 @@ if True: # ведёт статистику по боям
     stat_los_ver = [113, 113, 114]
 
 import sys
-from Tkinter import LabelFrame, Entry, Label, Frame, Button
+from Tkinter import LabelFrame, Entry, Label, Frame
 
 class ClsKeyValue(Frame):
     """
