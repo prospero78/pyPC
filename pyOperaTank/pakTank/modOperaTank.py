@@ -12,11 +12,17 @@ class clsOperaTank(object):
         """
         Инициализация программы.
         """
+        # чтение конфигурации танков
+        from pakTank.pakData.modData import clsData
+        
+        # создание танков
         from pakTank.modTank import clsTank
         self.my_tank = clsTank()
         self.tank1 = clsTank()
         self.tank2 = clsTank()
         
+        
+        # создание графики
         from pakTank.pakGUI.modWinMain import clsWinMain
         self.winMain = clsWinMain(my_tank=self.my_tank,
                                   tank1=self.tank1,
