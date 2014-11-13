@@ -31,35 +31,7 @@ def main():
     Главный запускающий скрипт.
     """
     app = clsOperaTank()
-    my_tank = ClsTank()
-    chuzak1 = ClsTank(atak=228,
-                     bron=210,
-                     toch=208,
-                     proch=384,
-                     name='Vrag 1')
-    
-    chuzak2 = ClsTank(atak=277,
-                     bron=244,
-                     toch=248,
-                     proch=321,
-                     name='Vrag 2')
-    my_tank.get_result(chuzak1.mosh)
-    print '#------------------------------#'
-    my_tank.get_result(chuzak2.mosh)
-
-def main_gui():
-    """
-    Запускается в работу по мере готовности gui.
-    """
-    winMain = ClsWinMain(my_tank=stat_my_tank,
-                         tank1=stat_tank1,
-                         tank2=stat_tank2)
+    app.run()
 
 if __name__ == '__main__':
-    # готовность графического экрана к работе
-    gui = 0
-
-    if gui == 1:
-        main_gui()
-    else:
-        main()
+    main()
