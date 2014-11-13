@@ -5,6 +5,8 @@
 
 from Tkinter import Frame
 
+from pakTank.pakGUI.modLfrTank import clsLfrTank
+
 class clsFrmLeft(Frame):
     """
     Левый фрейм содержит всякие расчётные данные по своему танку.
