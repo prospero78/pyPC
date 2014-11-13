@@ -15,7 +15,7 @@ class clsFrmButton(Frame):
         Frame.__init__(self, master=root, border=3, relief='sunken')
         self.pack(side='bottom', fill='x')
         
-        self.btnExit = Button(self, text='Выход', command=lambda:(sys.exit()))
+        self.btnExit = Button(self, text='Выход', command=lambda:(root.destroy()))
         self.btnExit.pack(side='right')
         
         self.btnCalc = Button(self, text='Пересчёт')
