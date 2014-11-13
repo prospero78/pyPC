@@ -3,6 +3,8 @@
 Фрейм для кнопок.
 """
 
+import sys
+
 from Tkinter import Frame, Button
 
 class clsFrmButton(Frame):
