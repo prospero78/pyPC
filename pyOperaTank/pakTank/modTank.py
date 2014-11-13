@@ -3,7 +3,7 @@
 Модуль описывающий свойства танка.
 """
 
-class ClsTank(object):
+class clsTank(object):
     def __init__(self, atak=0, bron=0, toch=0, proch=0, name='clsTank'):
         # сила атаки
         self.atak = atak * 1.0
