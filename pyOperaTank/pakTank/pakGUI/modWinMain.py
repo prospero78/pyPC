@@ -3,8 +3,8 @@
 Инициализация пакета для танковой графики.
 """
 
-from Tkinter import Tk
-
+from Tkinter import Tk, Frame
+from pakTank.pakGUI.modFrmButton import clsFrmButton
 class clsWinMain(Tk):
     """
     Класс обеспечивает графику пользователя.
