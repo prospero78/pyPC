@@ -17,7 +17,7 @@ class clsOperaTank(object):
         self.tank1 = clsTank()
         self.tank2 = clsTank()
         
-        from pakGui.modWinMain import clsWinMain
+        from pakTank.pakGui.modWinMain import clsWinMain
         self.winMain = clsWinMain()
         
     def run(self):
