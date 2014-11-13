@@ -24,7 +24,6 @@ if True: # ведёт статистику по боям
     # статистика проигрышей над вероятностями
     stat_los_ver = [113, 113, 114]
 
-import sys
 from Tkinter import Frame
 
 def main():
