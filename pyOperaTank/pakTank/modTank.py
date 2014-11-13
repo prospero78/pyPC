@@ -4,7 +4,12 @@
 """
 
 class clsTank(object):
-    def __init__(self, atak=0, bron=0, toch=0, proch=0, name='clsTank'):
+    def __init__(self,
+                 atak=0,
+                 bron=0,
+                 toch=0,
+                 proch=0,
+                 name='clsTank'):
         # сила атаки
         self.atak = atak * 1.0
         # броня
@@ -15,6 +20,9 @@ class clsTank(object):
         self.proch = proch
         # общая характеристика
         mosh_qw = 0
+        # имя танка
+        self.name = name
+        
         mosh_qw += self.atak**2
         mosh_qw += self.bron**2
         mosh_qw += self.toch**2
