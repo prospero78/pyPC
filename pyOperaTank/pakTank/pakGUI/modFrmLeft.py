@@ -6,6 +6,7 @@
 from Tkinter import Frame
 
 from pakTank.pakGUI.modLfrTank import clsLfrTank
+from pakTank.pakGUI.modFrmKeyValue import clsFrmKeyValue
 
 class clsFrmLeft(Frame):
     """
@@ -19,9 +20,9 @@ class clsFrmLeft(Frame):
         self.lfrMyTank = clsLfrTank(root=self,
                                     label = 'Мой танк',
                                     tank=my_tank)
-        self.lfrMyTank.kvVer1 = ClsKeyValue(root=self.lfrMyTank,
+        self.lfrMyTank.kvVer1 = clsFrmKeyValue(root=self.lfrMyTank,
                                             key='Вероятность 1*',
                                             value='?')
-        self.lfrMyTank.kvVer2 = ClsKeyValue(root=self.lfrMyTank,
+        self.lfrMyTank.kvVer2 = clsFrmKeyValue(root=self.lfrMyTank,
                                             key='Вероятность 2*',
                                             value='?')
