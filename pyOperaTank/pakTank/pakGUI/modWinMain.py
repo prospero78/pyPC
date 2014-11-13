@@ -21,7 +21,7 @@ class clsWinMain(Tk):
         self.frmLeft = clsFrmLeft(root=self, my_tank=my_tank)
         self.frmRight = clsFrmRight(root=self, tank1=tank1, tank2=tank2)
         self.after(1000, self.update_sound)
-        self.mainloop()
+        #self.mainloop()
         
     def update_sound(self):
         print 'aaa'
