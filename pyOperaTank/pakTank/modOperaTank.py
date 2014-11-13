@@ -14,6 +14,7 @@ class clsOperaTank(object):
         """
         # чтение конфигурации танков
         from pakTank.pakData.modData import clsData
+        self.dbData = clsData()
         
         # создание танков
         from pakTank.modTank import clsTank
@@ -30,3 +31,4 @@ class clsOperaTank(object):
         
     def run(self):
         self.winMain.mainloop()
+        self.dbData.close_base()
