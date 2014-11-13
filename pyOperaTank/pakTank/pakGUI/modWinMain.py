@@ -7,6 +7,7 @@ from Tkinter import Tk, Frame
 
 from pakTank.pakGUI.modFrmButton import clsFrmButton
 from pakTank.pakGUI.modFrmLeft import clsFrmLeft
+from pakTank.pakGUI.modFrmRight import clsFrmRight
 
 class clsWinMain(Tk):
     """
@@ -18,7 +19,7 @@ class clsWinMain(Tk):
         self.minsize(320, 240)
         self.frmButton = clsFrmButton(root=self)
         self.frmLeft = clsFrmLeft(root=self, my_tank=my_tank)
-        self.frmRight = ClsFrmRight(root=self, tank1=tank1, tank2=tank2)
+        self.frmRight = clsFrmRight(root=self, tank1=tank1, tank2=tank2)
         self.after(1000, self.update_sound)
         self.mainloop()
         
