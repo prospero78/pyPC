@@ -13,7 +13,7 @@ class clsWinMain(Tk):
         Tk.__init__(self)
         self.title('Калькулятор танков     ===build. 009===')
         self.minsize(320, 240)
-        self.frmButton = ClsFrmButton(root=self)
+        self.frmButton = clsFrmButton(root=self)
         self.frmLeft = ClsFrmLeft(root=self, my_tank=my_tank)
         self.frmRight = ClsFrmRight(root=self, tank1=tank1, tank2=tank2)
         self.after(1000, self.update_sound)
