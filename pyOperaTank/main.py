@@ -129,33 +129,6 @@ class ClsWinMain(Tk):
         print 'aaa'
         self.after(1000, self.update_sound)
 
-class ClsTank(object):
-    def __init__(self, atak=312, bron=282, toch=291, proch=328, name='My tank'):
-        # сила атаки
-        self.atak = atak * 1.0
-        # броня
-        self.bron = bron
-        # точность стрельбы
-        self.toch = toch
-        # прочность танка
-        self.proch = proch
-        # общая характеристика
-        self.mosh = (self.atak**2 + self.bron**2 + self.toch**2 + self.proch**2)**0.5
-        print 'Name:', name, '\tmosh=', int(self.mosh)
-        
-    def get_result(self, mosh=0):
-        """
-        Процедурка высчитывает примерный результат боя.
-        Вероятность в процентах.
-        """
-        res = self.mosh / mosh * 100
-        
-        print 'Isxod=', int(res), '%'
-        if res < 112:
-            print 'not recomended'
-        else:
-            print 'recomended! )))'
-        
 def main():
     """
     Главный запускающий скрипт.
