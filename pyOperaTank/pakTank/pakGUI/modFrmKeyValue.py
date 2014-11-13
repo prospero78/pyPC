@@ -3,7 +3,9 @@
 Фрейм отображающий пару "ключ:значение".
 """
 
-class clsKeyValue(Frame):
+from Tkinter import Frame, Label, Entry
+
+class clsFrmKeyValue(Frame):
     """
     Класс обеспечивает пару "ключ:значение"
     """
