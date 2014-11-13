@@ -160,6 +160,7 @@ def main():
     """
     Главный запускающий скрипт.
     """
+    app = clsOperaTank()
     my_tank = ClsTank()
     chuzak1 = ClsTank(atak=228,
                      bron=210,
