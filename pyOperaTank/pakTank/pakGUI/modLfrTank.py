@@ -24,6 +24,6 @@ class clsLfrTank(LabelFrame):
         
         self.kvAtak = clsFrmKeyValue(root=self, key='Атака', value=tank.atak)
         self.kvBron = clsFrmKeyValue(root=self, key='Броня', value=tank.bron)
-        self.kvBron = clsFrmKeyValue(root=self, key='Точность', value=tank.toch)
-        self.kvBron = clsFrmKeyValue(root=self, key='Прочность', value=tank.proch)
+        self.kvtoch = clsFrmKeyValue(root=self, key='Точность', value=tank.toch)
+        self.kvProch = clsFrmKeyValue(root=self, key='Прочность', value=tank.proch)
         self.kvMosh = clsFrmKeyValue(root=self, key='Мощность*', value=tank.name)
