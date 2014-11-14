@@ -22,11 +22,13 @@ class clsLogic(object):
         my_tank.kvAtak.value = self.myTank.atak
         my_tank.kvBron.value = self.myTank.bron
         my_tank.kvToch.value = self.myTank.toch
+        my_tank.kvProch.value = self.myTank.proch
         
         tank1 = self.winMain.frmRight.lfrTank1
         tank1.kvAtak.value = self.Tank1.atak
         tank1.kvBron.value = self.Tank1.bron
         tank1.kvToch.value = self.Tank1.toch
+        tank1.kvProch.value = self.Tank1.proch
         
     def run(self):
         """
