@@ -25,6 +25,9 @@ class clsLogic(object):
         my_tank.kvBron.entValue.delete(0, 'end')
         my_tank.kvBron.entValue.insert(0, self.dbData.my_tank['bron'])
         
+        my_tank.kvToch.entValue.delete(0, 'end')
+        my_tank.kvToch.entValue.insert(0, self.dbData.my_tank['toch'])
+        
     def run(self):
         """
         Выполняется при запуске всей программы.
