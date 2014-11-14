@@ -13,12 +13,17 @@ class clsLogic(object):
         """
         self.root = root
         
+        
     def load_oper_data(self):
         """
         Загружает оперативные данные из модуля базы данных.
         Работает при старте системы.
         """
         self.myTank.atak = self.dbData.myTank['atak']
+        self.myTank.bron = self.dbData.myTank['bron']
+        self.myTank.toch = self.dbData.myTank['toch']
+        self.myTank.proch = self.dbData.myTank['proch']
+        
         
     def update_gui(self):
         """
