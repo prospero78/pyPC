@@ -57,7 +57,8 @@ class clsData(object):
                                   'atak': 0,
                                   'bron': 0,
                                   'toch': 0,
-                                  'proch': 0,}
+                                  'proch': 0,
+                                  'mosh':0}
                     
                     self.base['my_tank'] = self.myTank
                     self.base.sync()
@@ -74,7 +75,8 @@ class clsData(object):
                                   'atak': 0,
                                   'bron': 0,
                                   'toch': 0,
-                                  'proch': 0,}
+                                  'proch': 0,
+                                  'mosh':0}
                     
                     self.base['tank1'] = self.tank1
                     self.base.sync()
@@ -91,7 +93,8 @@ class clsData(object):
                                   'atak': 0,
                                   'bron': 0,
                                   'toch': 0,
-                                  'proch': 0,}
+                                  'proch': 0,
+                                  'mosh':0}
                     
                     self.base['tank2'] = self.tank1
                     self.base.sync()
