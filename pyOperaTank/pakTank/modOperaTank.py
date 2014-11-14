@@ -28,7 +28,12 @@ class clsOperaTank(object):
         self.winMain = clsWinMain(my_tank=self.my_tank,
                                   tank1=self.tank1,
                                   tank2=self.tank2)
+                                  
+        # создание логики
+        from pakTank.pakLogic.modLogic import clsLogic
+        self.logic = clsLogic(root=self)
         
     def run(self):
+        self.logic.run()
         self.winMain.mainloop()
         self.dbData.close_base()
