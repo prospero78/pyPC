@@ -23,6 +23,11 @@ class clsLogic(object):
         my_tank.kvBron.value = self.myTank.bron
         my_tank.kvToch.value = self.myTank.toch
         
+        tank1 = self.winMain.frmRight.lfrTank1
+        tank1.kvAtak.value = self.Tank1.atak
+        tank1.kvBron.value = self.Tank1.bron
+        tank1.kvToch.value = self.Tank1.toch
+        
     def run(self):
         """
         Выполняется при запуске всей программы.
@@ -30,6 +35,8 @@ class clsLogic(object):
         self.dbData = self.root.dbData
         self.winMain = self.root.winMain
         self.myTank = self.root.myTank
+        self.Tank1 = self.root.Tank1
+        self.Tank2 = self.root.Tank2
         
         self.update_gui()
         
