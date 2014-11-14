@@ -30,6 +30,12 @@ class clsLogic(object):
         tank1.kvToch.value = self.Tank1.toch
         tank1.kvProch.value = self.Tank1.proch
         
+        tank2 = self.winMain.frmRight.lfrTank2
+        tank2.kvAtak.value = self.Tank2.atak
+        tank2.kvBron.value = self.Tank2.bron
+        tank2.kvToch.value = self.Tank2.toch
+        tank2.kvProch.value = self.Tank2.proch
+        
     def run(self):
         """
         Выполняется при запуске всей программы.
