@@ -51,15 +51,15 @@ class clsData(object):
                 Если данных нет -- то заполняет нулями.
                 """
                 if self.base.has_key('my_tank'):
-                    self.my_tank = self.base['my_tank']
+                    self.myTank = self.base['my_tank']
                 else:
-                    self.my_tank={'name':'my tank',
+                    self.myTank={'name':'my tank',
                                   'atak': 0,
                                   'bron': 0,
                                   'toch': 0,
                                   'proch': 0,}
                     
-                    self.base['my_tank'] = self.my_tank
+                    self.base['my_tank'] = self.myTank
                     self.base.sync()
             
             def get_tank1():
