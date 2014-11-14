@@ -12,8 +12,7 @@ class clsLfrTank(LabelFrame):
     Класс создаёт фрейм для редактирования характеристик танка.
     """
     def __init__(self, root=None,
-                 label='MyTank',
-                 tank=None):
+                 label='MyTank'):
         LabelFrame.__init__(self,
                             master=root,
                             text = label,
@@ -22,8 +21,8 @@ class clsLfrTank(LabelFrame):
                             font='Consolas 12 bold')
         self.pack(side='top', fill='y')
         
-        self.kvAtak = clsFrmKeyValue(root=self, key='Атака', value=tank.atak)
-        self.kvBron = clsFrmKeyValue(root=self, key='Броня', value=tank.bron)
-        self.kvtoch = clsFrmKeyValue(root=self, key='Точность', value=tank.toch)
-        self.kvProch = clsFrmKeyValue(root=self, key='Прочность', value=tank.proch)
-        self.kvMosh = clsFrmKeyValue(root=self, key='Мощность*', value=tank.name)
+        self.kvAtak = clsFrmKeyValue(root=self, key='Атака', value=0)
+        self.kvBron = clsFrmKeyValue(root=self, key='Броня', value=0)
+        self.kvToch = clsFrmKeyValue(root=self, key='Точность', value=0)
+        self.kvProch = clsFrmKeyValue(root=self, key='Прочность', value=0)
+        self.kvMosh = clsFrmKeyValue(root=self, key='[Мощность]', value=0)
