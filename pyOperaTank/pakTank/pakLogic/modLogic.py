@@ -33,7 +33,6 @@ class clsLogic(object):
         self.Tank2.bron = self.dbData.Tank2['bron']
         self.Tank2.toch = self.dbData.Tank2['toch']
         self.Tank2.proch = self.dbData.Tank2['proch']
-        
     
     def save_oper_data(self):
         """
@@ -94,6 +93,9 @@ class clsLogic(object):
         self.update_gui()
         
         self.winMain.mainloop()
+        
+        # --- после остановки графики
+        self.save_oper_data()
         self.dbData.close_base()
     
     def stop(self):
