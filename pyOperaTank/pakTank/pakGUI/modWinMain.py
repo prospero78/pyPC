@@ -13,13 +13,13 @@ class clsWinMain(Tk):
     """
     Класс обеспечивает графику пользователя.
     """
-    def __init__(self, my_tank=None, tank1=None, tank2=None):
+    def __init__(self):
         Tk.__init__(self)
         self.title('Калькулятор танков     ===build. 009===')
         self.minsize(320, 240)
         self.frmButton = clsFrmButton(root=self)
-        self.frmLeft = clsFrmLeft(root=self, my_tank=my_tank)
-        self.frmRight = clsFrmRight(root=self, tank1=tank1, tank2=tank2)
+        self.frmLeft = clsFrmLeft(root=self)
+        self.frmRight = clsFrmRight(root=self)
         self.after(1000, self.update_sound)
         #self.mainloop()
         
