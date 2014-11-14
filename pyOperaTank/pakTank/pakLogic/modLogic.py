@@ -24,6 +24,16 @@ class clsLogic(object):
         self.myTank.toch = self.dbData.myTank['toch']
         self.myTank.proch = self.dbData.myTank['proch']
         
+        self.Tank1.atak = self.dbData.Tank1['atak']
+        self.Tank1.bron = self.dbData.Tank1['bron']
+        self.Tank1.toch = self.dbData.Tank1['toch']
+        self.Tank1.proch = self.dbData.Tank1['proch']
+        
+        self.Tank2.atak = self.dbData.Tank2['atak']
+        self.Tank2.bron = self.dbData.Tank2['bron']
+        self.Tank2.toch = self.dbData.Tank2['toch']
+        self.Tank2.proch = self.dbData.Tank2['proch']
+        
         
     def update_gui(self):
         """
