@@ -34,6 +34,7 @@ class clsOperaTank(object):
         self.logic = clsLogic(root=self)
         
     def run(self):
+        """
+        Выполняется один раз при запуске всей программы.
+        """
         self.logic.run()
-        self.winMain.mainloop()
-        self.dbData.close_base()
