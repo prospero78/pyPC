@@ -18,17 +18,15 @@ class clsOperaTank(object):
         
         # создание танков
         from pakTank.modTank import clsTank
-        self.my_tank = clsTank()
-        self.tank1 = clsTank()
-        self.tank2 = clsTank()
+        self.myTank = clsTank()
+        self.Tank1 = clsTank()
+        self.Tank2 = clsTank()
         
         
         # создание графики
         from pakTank.pakGUI.modWinMain import clsWinMain
-        self.winMain = clsWinMain(my_tank=self.my_tank,
-                                  tank1=self.tank1,
-                                  tank2=self.tank2)
-                                  
+        self.winMain = clsWinMain()
+        
         # создание логики
         from pakTank.pakLogic.modLogic import clsLogic
         self.logic = clsLogic(root=self)
