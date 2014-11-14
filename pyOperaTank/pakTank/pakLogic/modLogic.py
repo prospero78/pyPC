@@ -19,14 +19,9 @@ class clsLogic(object):
         """
         # --- обновления по своему танку ---
         my_tank = self.winMain.frmLeft.lfrMyTank
-        my_tank.kvAtak.entValue.delete(0, 'end')
-        my_tank.kvAtak.entValue.insert(0, self.dbData.my_tank['atak'])
-        
-        my_tank.kvBron.entValue.delete(0, 'end')
-        my_tank.kvBron.entValue.insert(0, self.dbData.my_tank['bron'])
-        
-        my_tank.kvToch.entValue.delete(0, 'end')
-        my_tank.kvToch.entValue.insert(0, self.dbData.my_tank['toch'])
+        my_tank.kvAtak.value = self.myTank.atak
+        my_tank.kvBron.value = self.myTank.bron
+        my_tank.kvToch.value = self.myTank.toch
         
     def run(self):
         """
@@ -34,6 +29,7 @@ class clsLogic(object):
         """
         self.dbData = self.root.dbData
         self.winMain = self.root.winMain
+        self.myTank = self.root.myTank
         
         self.update_gui()
         
