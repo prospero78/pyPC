@@ -57,8 +57,7 @@ class clsData(object):
                                   'atak': 0,
                                   'bron': 0,
                                   'toch': 0,
-                                  'proch': 0,
-                                  'mosh':0}
+                                  'proch': 0}
                     
                     self.base['my_tank'] = self.myTank
                     self.base.sync()
@@ -69,16 +68,15 @@ class clsData(object):
                 Если их нет -- автозаполнение нулями.
                 """
                 if self.base.has_key('tank1'):
-                    self.tank1 = self.base['tank1']
+                    self.Tank1 = self.base['tank1']
                 else:
-                    self.tank1={'name':'Tank #1',
+                    self.Tank1={'name':'Tank #1',
                                   'atak': 0,
                                   'bron': 0,
                                   'toch': 0,
-                                  'proch': 0,
-                                  'mosh':0}
+                                  'proch': 0}
                     
-                    self.base['tank1'] = self.tank1
+                    self.base['tank1'] = self.Tank1
                     self.base.sync()
             
             def get_tank2():
@@ -87,16 +85,15 @@ class clsData(object):
                 Если их нет -- автозаполнение нулями.
                 """
                 if self.base.has_key('tank2'):
-                    self.tank1 = self.base['tank2']
+                    self.Tank2 = self.base['tank2']
                 else:
-                    self.tank1={'name':'Tank #2',
+                    self.Tank2={'name':'Tank #2',
                                   'atak': 0,
                                   'bron': 0,
                                   'toch': 0,
-                                  'proch': 0,
-                                  'mosh':0}
+                                  'proch': 0}
                     
-                    self.base['tank2'] = self.tank1
+                    self.base['tank2'] = self.Tank2
                     self.base.sync()
             self.base = shelve.open('./pakTank/pakData/tank_data.db')
             
