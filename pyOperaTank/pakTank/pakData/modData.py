@@ -3,7 +3,7 @@
 Модуль хранения танковых данных.
 """
 
-import shelve
+import shelve, os
 
 class clsData(object):
     """
@@ -44,7 +44,7 @@ class clsData(object):
                         pas1 = raw_input('Plis input password:')
                         pas2 = raw_input('Plis confirm password:')
                     self.base['pass'] = pas1
-            
+                os.system('cls')
             def get_my_tank():
                 """
                 Получает данные по своему танку.
@@ -78,12 +78,29 @@ class clsData(object):
                     
                     self.base['tank1'] = self.tank1
                     self.base.sync()
-                
+            
+            def get_tank2():
+                """
+                Получает данные по первому вражескому танку.
+                Если их нет -- автозаполнение нулями.
+                """
+                if self.base.has_key('tank2'):
+                    self.tank1 = self.base['tank2']
+                else:
+                    self.tank1={'name':'Tank #2',
+                                  'atak': 0,
+                                  'bron': 0,
+                                  'toch': 0,
+                                  'proch': 0,}
+                    
+                    self.base['tank2'] = self.tank1
+                    self.base.sync()
             self.base = shelve.open('./pakTank/pakData/tank_data.db')
             
             get_pass()
             get_my_tank()
             get_tank1()
+            get_tank2()
            
         self.base = None
         base_read()
