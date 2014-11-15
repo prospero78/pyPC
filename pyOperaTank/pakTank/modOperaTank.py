@@ -29,7 +29,7 @@ class clsOperaTank(object):
         
         # создание графики
         from pakTank.pakGUI.modWinMain import clsWinMain
-        self.winMain = clsWinMain(clb=self.logic.update_gui)
+        self.winMain = clsWinMain(clb=self.logic.save_data)
         
     def run(self):
         """
