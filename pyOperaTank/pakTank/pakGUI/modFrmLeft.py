@@ -13,14 +13,18 @@ class clsFrmLeft(Frame):
     Левый фрейм содержит всякие расчётные данные по своему танку.
     """
     def __init__(self,
-                 root=None):
+                 root=None,
+                 clb=None):
         Frame.__init__(self, master=root, border=3, relief='sunken')
         self.pack(side='left', fill='both', expand=1)
         self.lfrMyTank = clsLfrTank(root=self,
-                                    label = 'Мой танк')
+                                    label = 'Мой танк',
+                                    clb=clb)
         self.lfrMyTank.kvVer1 = clsFrmKeyValue(root=self.lfrMyTank,
                                             key='[Вероятность 1]',
-                                            value=0)
+                                            value=0,
+                                            clb=clb)
         self.lfrMyTank.kvVer2 = clsFrmKeyValue(root=self.lfrMyTank,
                                             key='[Вероятность 2]',
-                                            value=0)
+                                            value=0,
+                                            clb=clb)
