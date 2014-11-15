@@ -13,9 +13,10 @@ class clsFrmKeyValue(Frame):
         Frame.__init__(self, master=root, border=3, relief='groove')
         self.pack(side='top', fill='both', expand=1)
         
-        self.__key=key
-        self.__value=value
+        self.__key = key
+        self.__val = value
         self.callback = clb
+        self.val_ = value
         
         self.__lblKey = Label(master=self, text=key, anchor='e')
         self.__lblKey.pack(side='left', fill='x', expand=1)
@@ -36,20 +37,24 @@ class clsFrmKeyValue(Frame):
         При нажатии на кнопку сохранить происходит сохранение в файл.
         """
         txt = self.__entValue.get()
-        print 'txt=', txt
         type_txt = ''
         try:
             txt = int(txt)
             type_txt = 'int'
+        except:
+            print 'clsKeyValue: error in save value!'
         finally:
-            print 'txt=', txt, 'type(txt)=', type(txt)
+            print 'clsKeyValue.btnSave_click(): txt=', txt, 'type(txt)=', type(txt)
         if type_txt == 'int':
-            self.__value = txt
-            print 'clsKeyValue.value=', self.__value
+            self.__val = txt
+            self.val_ = txt
+            print 'clsKeyValue.value=', self.__val
+            #self.after(100, self.callback)
             self.callback()
         else:
             self.__entValue.delete(0, 'end')
-            self.__entValue.insert(0, self.__value)
+            self.__entValue.insert(0, self.__val)
+            print 'clsKeyValue.value=', self.__val, 'type(value)=', type(self.__val)
         self.__btnSave['fg'] = 'blue'
         self.__btnSave['state'] = 'disabled'
         
@@ -58,14 +63,14 @@ class clsFrmKeyValue(Frame):
         При нажатии на кнопку сброс происходит сброс значения value.
         """
         self.__entValue.delete(0, 'end')
-        self.__entValue.insert(0, self.__value)
+        self.__entValue.insert(0, self.__val)
     
     def __control_change(self):
         """
         Процедурка фиксрует изменения в поле ввода.
         """
         txt = self.__entValue.get()
-        if txt != str(self.__value):
+        if txt != str(self.__val):
             self.__btnReset['fg'] = 'red'
             self.__btnSave['fg'] = 'red'
             self.__btnSave['state'] = 'normal'
@@ -88,11 +93,26 @@ class clsFrmKeyValue(Frame):
             print 'invalid type -- not integer!'
         
     @property
-    def value(self):
-        return self.__value
+    def val(self):
+        """
+        Возвращает значение пары ключ:значение.
+        """
+        print 'clsKeyValue.get_value() value=', self.__val
+        return self.__val
         
-    @value.setter
-    def value(self, value=None):
+    @val.setter
+    def val(self, value=None):
+        """
+        Устанавливает значение пары ключ:значение.
+        """
         self.__entValue.delete(0, 'end')
         self.__entValue.insert(0, value)
-        self.__value = value
+        self.__val = value
+        
+    def set_value(self, value):
+        """
+        Устанавливает значение пары ключ:значение.
+        """
+        self.__entValue.delete(0, 'end')
+        self.__entValue.insert(0, value)
+        self.val_ = value
