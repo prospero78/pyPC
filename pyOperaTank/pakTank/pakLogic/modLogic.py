@@ -18,9 +18,10 @@ class clsLogic(object):
         Принудительно сохраняет данные в базе.
         """
         lfrTank = self.winMain.frmLeft.lfrMyTank
-        print 'lfrTank.kvAtak.value=', lfrTank.kvAtak.value
+        print '#------------------------------#'
+        print 'lfrTank.kvAtak.value=', lfrTank.kvAtak.val_
         
-        self.myTank.atak = lfrTank.kvAtak.value
+        self.myTank.atak = lfrTank.kvAtak.val_
         print 'self.myTank.atak=', self.myTank.atak
         
         self.myTank.bron = lfrTank.kvBron.value
@@ -90,7 +91,7 @@ class clsLogic(object):
         """
         # --- обновления по своему танку ---
         my_tank = self.winMain.frmLeft.lfrMyTank
-        my_tank.kvAtak.value = self.myTank.atak
+        my_tank.kvAtak.set_value(self.myTank.atak_)
         my_tank.kvBron.value = self.myTank.bron
         my_tank.kvToch.value = self.myTank.toch
         my_tank.kvProch.value = self.myTank.proch
