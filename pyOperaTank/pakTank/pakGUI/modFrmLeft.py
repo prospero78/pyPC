@@ -15,7 +15,7 @@ class clsFrmLeft(Frame):
     def __init__(self,
                  root=None):
         Frame.__init__(self, master=root, border=3, relief='sunken')
-        self.pack(side='left', fill='y')
+        self.pack(side='left', fill='both', expand=1)
         self.lfrMyTank = clsLfrTank(root=self,
                                     label = 'Мой танк')
         self.lfrMyTank.kvVer1 = clsFrmKeyValue(root=self.lfrMyTank,
