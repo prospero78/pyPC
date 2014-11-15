@@ -13,7 +13,38 @@ class clsLogic(object):
         """
         self.root = root
         
+    def save_data(self):
+        """
+        Принудительно сохраняет данные в базе.
+        """
+        lfrTank = self.winMain.frmLeft.lfrMyTank
+        print 'lfrTank.kvAtak.value=', lfrTank.kvAtak.value
         
+        self.myTank.atak = lfrTank.kvAtak.value
+        print 'self.myTank.atak=', self.myTank.atak
+        
+        self.myTank.bron = lfrTank.kvBron.value
+        self.myTank.toch = lfrTank.kvToch.value
+        self.myTank.proch = lfrTank.kvProch.value
+        
+        
+        self.dbData.myTank['atak'] = self.myTank.atak
+        self.dbData.myTank['bron'] = self.myTank.bron
+        self.dbData.myTank['toch'] = self.myTank.toch
+        self.dbData.myTank['proch']= self.myTank.proch
+        
+        self.dbData.Tank1['atak'] = self.Tank1.atak
+        self.dbData.Tank1['bron'] = self.Tank1.bron
+        self.dbData.Tank1['toch'] = self.Tank1.toch
+        self.dbData.Tank1['proch']= self.Tank1.proch
+        
+        self.dbData.Tank2['atak'] = self.Tank2.atak
+        self.dbData.Tank2['bron'] = self.Tank2.bron
+        self.dbData.Tank2['toch'] = self.Tank2.toch
+        self.dbData.Tank2['proch']= self.Tank2.proch
+        
+        self.dbData.save()
+    
     def load_oper_data(self):
         """
         Загружает оперативные данные из модуля базы данных.
