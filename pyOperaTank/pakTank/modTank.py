@@ -14,7 +14,7 @@ class clsTank(object):
                  proch=0,
                  name='clsTank'):
         # сила атаки
-        self.__atak = atak
+        self.atak_ = atak
         # броня
         self.bron = bron
         # точность стрельбы
@@ -30,14 +30,14 @@ class clsTank(object):
     
     @property
     def atak(self):
-        return self.__atak
+        return self.atak_
     
     @atak.setter
     def atak(self, value=None):
         print 'value=', value, 'type=', type(value)
         value = int(value)
-        self.__atak = value
-        print 'clsTank.atak=', self.__atak
+        self.atak_ = value
+        print 'clsTank.atak=', self.atak_
         #except:
         #    print 'clsTank: invalid value for atak! value=', value, 'type=', type(value)
     def __get_mosh(self):
@@ -47,7 +47,7 @@ class clsTank(object):
         
         # расчёное значение мощности
         mosh_qw = 0
-        mosh_qw += self.atak**2
+        mosh_qw += self.atak_**2
         mosh_qw += self.bron**2
         mosh_qw += self.toch**2
         mosh_qw += self.proch**2
