@@ -13,6 +13,6 @@ class clsFrmRight(Frame):
     """
     def __init__(self, root=None):
         Frame.__init__(self, master=root, border=3, relief='sunken')
-        self.pack(side='right', fill='y')
+        self.pack(side='right', fill='both', expand=1)
         self.lfrTank1 = clsLfrTank(root=self, label = 'Противник 1')
         self.lfrTank2 = clsLfrTank(root=self, label = 'Противник 2')
