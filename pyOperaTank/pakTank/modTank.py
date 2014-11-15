@@ -4,6 +4,9 @@
 """
 
 class clsTank(object):
+    """
+    Описывает общий класс танка.
+    """
     def __init__(self,
                  atak=0,
                  bron=0,
