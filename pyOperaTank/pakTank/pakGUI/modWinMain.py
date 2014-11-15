@@ -20,7 +20,7 @@ class clsWinMain(Tk):
         self.frmButton = clsFrmButton(root=self)
         self.frmLeft = clsFrmLeft(root=self, clb=clb)
         self.frmRight = clsFrmRight(root=self, clb=clb)
-        self.after(1000, self.update_sound)
+        #self.after(1000, self.update_sound)
         #self.mainloop()
         
     def update_sound(self):
