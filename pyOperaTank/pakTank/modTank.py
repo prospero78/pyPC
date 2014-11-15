@@ -14,7 +14,7 @@ class clsTank(object):
                  proch=0,
                  name='clsTank'):
         # сила атаки
-        self.atak = atak * 1.0
+        self.__atak = atak
         # броня
         self.bron = bron
         # точность стрельбы
@@ -26,7 +26,20 @@ class clsTank(object):
         # имя танка
         self.name = name
         self.__get_mosh()
-        
+    
+    
+    @property
+    def atak(self):
+        return self.__atak
+    
+    @atak.setter
+    def atak(self, value=None):
+        print 'value=', value, 'type=', type(value)
+        value = int(value)
+        self.__atak = value
+        print 'clsTank.atak=', self.__atak
+        #except:
+        #    print 'clsTank: invalid value for atak! value=', value, 'type=', type(value)
     def __get_mosh(self):
         """
         Спец метод для расчёта мощности танка
