@@ -45,13 +45,14 @@ class clsData(object):
                         pas2 = raw_input('Plis confirm password:')
                     self.base['pass'] = pas1
                 os.system('cls')
+            
             def get_my_tank():
                 """
                 Получает данные по своему танку.
                 Если данных нет -- то заполняет нулями.
                 """
-                if self.base.has_key('my_tank'):
-                    self.myTank = self.base['my_tank']
+                if self.base.has_key('myTank'):
+                    self.myTank = self.base['myTank']
                 else:
                     self.myTank={'name':'my tank',
                                   'atak': 0,
@@ -59,7 +60,7 @@ class clsData(object):
                                   'toch': 0,
                                   'proch': 0}
                     
-                    self.base['my_tank'] = self.myTank
+                    self.base['myTank'] = self.myTank
                     self.base.sync()
             
             def get_tank1():
@@ -108,3 +109,13 @@ class clsData(object):
     def close_base(self):
         self.base.close()
         print '   [tank_data.db close]'
+        
+    def save(self):
+        """
+        Сохраняет данные в базу данных.
+        """
+        self.base['myTank'] = self.myTank
+        self.base['Tank1'] = self.Tank1
+        self.base['Tank2'] = self.Tank2
+        self.base.sync()
+        print 'myTank["atak"]=',self.base['myTank']['atak']
