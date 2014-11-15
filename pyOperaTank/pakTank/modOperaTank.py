@@ -16,6 +16,10 @@ class clsOperaTank(object):
         from pakTank.pakData.modData import clsData
         self.dbData = clsData()
         
+        # создание логики
+        from pakTank.pakLogic.modLogic import clsLogic
+        self.logic = clsLogic(root=self)
+        
         # создание танков
         from pakTank.modTank import clsTank
         self.myTank = clsTank()
@@ -25,11 +29,7 @@ class clsOperaTank(object):
         
         # создание графики
         from pakTank.pakGUI.modWinMain import clsWinMain
-        self.winMain = clsWinMain()
-        
-        # создание логики
-        from pakTank.pakLogic.modLogic import clsLogic
-        self.logic = clsLogic(root=self)
+        self.winMain = clsWinMain(clb=self.logic.update_gui)
         
     def run(self):
         """
