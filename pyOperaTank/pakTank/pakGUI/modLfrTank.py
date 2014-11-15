@@ -19,7 +19,7 @@ class clsLfrTank(LabelFrame):
                             border=3,
                             relief='raised',
                             font='Consolas 12 bold')
-        self.pack(side='top', fill='y')
+        self.pack(side='top', fill='x')
         
         self.kvAtak = clsFrmKeyValue(root=self, key='Атака', value=0)
         self.kvBron = clsFrmKeyValue(root=self, key='Броня', value=0)
