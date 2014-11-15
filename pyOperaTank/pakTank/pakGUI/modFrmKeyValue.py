@@ -36,8 +36,20 @@ class clsFrmKeyValue(Frame):
         При нажатии на кнопку сохранить происходит сохранение в файл.
         """
         txt = self.__entValue.get()
-        self.__value = txt
-        self.callback()
+        print 'txt=', txt
+        type_txt = ''
+        try:
+            txt = int(txt)
+            type_txt = 'int'
+        finally:
+            print 'txt=', txt, 'type(txt)=', type(txt)
+        if type_txt == 'int':
+            self.__value = txt
+            print 'clsKeyValue.value=', self.__value
+            self.callback()
+        else:
+            self.__entValue.delete(0, 'end')
+            self.__entValue.insert(0, self.__value)
         self.__btnSave['fg'] = 'blue'
         self.__btnSave['state'] = 'disabled'
         
@@ -69,8 +81,11 @@ class clsFrmKeyValue(Frame):
         
     @key.setter
     def key(self, value=None):
-        self.__lblKey['text'] = value
-        self.__key = value
+        if type(value) == int:
+            self.__lblKey['text'] = value
+            self.__key = value
+        else:
+            print 'invalid type -- not integer!'
         
     @property
     def value(self):
