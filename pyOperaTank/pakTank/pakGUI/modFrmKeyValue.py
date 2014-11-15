@@ -16,15 +16,34 @@ class clsFrmKeyValue(Frame):
         self.__key=key
         self.__value=value
         
-        self.__lblKey = Label(master=self, text=key, justify='right')
+        self.__lblKey = Label(master=self, text=key, anchor='e')
         self.__lblKey.pack(side='left', fill='x', expand=1)
         
         self.__entValue = Entry(master=self, width=5)
+        self.__entValue.after(100, self.__control_change)
         self.__entValue.pack(side='left')
         self.__entValue.insert(0, value)
         
-        self.__btnReset = Button(self, text='R', border=4, relief='groove')
+        self.__btnReset = Button(self, text='R', border=4, relief='groove', fg='blue', command=self.__btnReset_click)
         self.__btnReset.pack(side='left')
+    
+    def __btnReset_click(self, event=None):
+        """
+        При нажатии на кнопку сброс происходит сброс значения value.
+        """
+        self.__entValue.delete(0, 'end')
+        self.__entValue.insert(0, self.__value)
+    
+    def __control_change(self):
+        """
+        Процедурка фиксрует изменения в поле ввода.
+        """
+        txt = self.__entValue.get()
+        if txt != str(self.__value):
+            self.__btnReset['fg'] = 'red'
+        else:
+            self.__btnReset['fg'] = 'blue'
+        self.__entValue.after(100, self.__control_change)
     
     @property
     def key(self):
